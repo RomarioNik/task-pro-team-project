@@ -19,7 +19,7 @@
   --log-out-icon-color-active: #9dc888;
   /* user avatar */
   --background-color: #f6f6f7;
-   --user-icon-color: #fff; */
+   --user-icon-color: #fff; 
 }
 
 [data-theme='Light'] {

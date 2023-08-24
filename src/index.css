@@ -8,6 +8,18 @@
   /* button */
   --btn-bg-color: #bedbb0;
   --btn-bg-color-hover: #9dc888;
+  /* icon */
+  --icon-logo-background-color: #1f1f1f;
+  --icon-logo-color: #fff;
+  --icon-pop-up-color: rgba(22, 22, 22, 0.5);
+  --icon-pop-up-color-active: #161616; 
+  --icon-card-color: rgba(22, 22, 22, 0.5);
+  --icon-card-color-active: rgba(190, 219, 176, 1);
+  --log-out-icon-color: #bedbb0;
+  --log-out-icon-color-active: #9dc888;
+  /* user avatar */
+  --background-color: #f6f6f7;
+   --user-icon-color: #fff; 
 }
 
 [data-theme='Light'] {
@@ -17,6 +29,18 @@
   /* button */
   --btn-bg-color: #bedbb0;
   --btn-bg-color-hover: #9dc888;
+   /* icon */
+   --icon-logo-background-color: #1f1f1f;
+   --icon-logo-color: #fff;
+   --icon-pop-up-color: rgba(22, 22, 22, 0.5);   
+   --icon-pop-up-color-active: #161616; 
+   --icon-card-color: rgba(22, 22, 22, 0.5);
+   --icon-card-color-active: rgba(190, 219, 176, 1);
+   --log-out-icon-color: #bedbb0;
+   --log-out-icon-color-active: #9dc888;
+   /* user avatar */
+   --background-color: #f6f6f7;
+    --user-icon-color: #fff; 
 }
 
 [data-theme='Dark'] {
@@ -26,6 +50,18 @@
   /* button */
   --btn-bg-color: #bedbb0;
   --btn-bg-color-hover: #9dc888;
+   /* icon */
+   --icon-logo-background-color: #1f1f1f;
+   --icon-logo-color: #fff;
+   --icon-pop-up-color: rgba(255, 255, 255, 0.5);
+   --icon-pop-up-color-active: #fff; 
+   --icon-card-color: rgba(255, 255, 255, 0.5);
+   --icon-card-color-active:  #bedbb0;
+   --log-out-icon-color: #bedbb0;
+   --log-out-icon-color-active: #9dc888;
+   /* user avatar */
+   --background-color: #1f1f1f; 
+   --user-icon-color: #151515;
 }
 
 [data-theme='Violet'] {
@@ -35,6 +71,18 @@
   /* button */
   --btn-bg-color: #5255bc;
   --btn-bg-color-hover: #7b7ede;
+   /* icon */
+   --icon-logo-background-color: #ecedfd;
+   --icon-logo-color: #5255bc;
+   --icon-pop-up-color: rgba(22, 22, 22, 0.5);
+   --icon-pop-up-color-active: #161616; 
+   --icon-card-color: rgba(22, 22, 22, 0.5);
+   --icon-card-color-active:  #5255bc;
+   --log-out-icon-color: #fff;
+   --log-out-icon-color-active: #b8bcfd;
+   /* user avatar */
+   --background-color: #ecedfd; 
+    --user-icon-color: #fff;
 }
 
 body {

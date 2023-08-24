@@ -1,0 +1,124 @@
+.backdrop {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgba(21, 21, 21, 0.2);
+}
+
+.filter {
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 234px;
+  border-radius: 8px;
+  /* background-color: #151515; */
+  background-color: var(--background-color);
+  padding: 24px;
+}
+
+.closeIcon {
+  transform: rotate(45deg);
+  stroke: var(--text-primary-color);
+  cursor: pointer;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 18px;
+  height: 18px;
+}
+
+.title {
+  /* color: #fff; */
+  color: var(--text-primary-color);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+}
+
+.filterContainer {
+  /* border-top: 1px solid rgba(255, 255, 255, 0.1); */
+  border-top: 1px solid rgba(22, 22, 22, 0.1);
+  padding-top: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.listTitle {
+  /* color: #fff; */
+  color: var(--text-primary-color);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+}
+
+.btn {
+  /* color: rgba(255, 255, 255, 0.5); */
+  color: rgba(22, 22, 22, 0.5);
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  text-decoration-line: underline;
+}
+
+.filterListItem {
+  /* color: rgba(255, 255, 255, 0.5); */
+  color: rgba(22, 22, 22, 0.5);
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filterListItem:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+.inputBtn {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+
+.visuallyHidden:checked + .filterListItem .inputBtn::before {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 8px;
+  height: 8px;
+  background-color: transparent;
+  border-radius: 50%;
+  border: 2px solid var(--background-color);
+}
+
+.visuallyHidden:checked + .filterListItem {
+  /* color: #fff; */
+  color: var(--text-primary-color);
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}

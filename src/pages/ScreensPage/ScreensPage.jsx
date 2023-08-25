@@ -5,7 +5,7 @@ const ScreensPage = () => {
   const { boardName } = useParams();
   console.log(boardName);
   return (
-    <div style={{ backgroundColor: '#d7bfd9' }}>
+    <div style={{ border: '#fc4e23 solid 2px' }}>
       <div>ScreensPage</div>
       <p>Board Name = {boardName}</p>
     </div>

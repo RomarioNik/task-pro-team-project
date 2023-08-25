@@ -7,6 +7,8 @@ import Sidebar from 'components/Sidebar';
 import ScreensPage from '../ScreensPage/ScreensPage';
 
 const HomePage = () => {
+
+  //по временной схеме храним тему в локальном стейте
   const [theme, setTheme] = useState('light');
 
   const switchTheme = e => {
@@ -14,7 +16,6 @@ const HomePage = () => {
   };
 
   return (
-
     <div className={style.test} data-theme={theme}>
       <div>
         <select value={theme} onChange={switchTheme}>

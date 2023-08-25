@@ -1,16 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import style from './Filter.module.css';
 import sprite from '../../img/svg/symbol-defs.svg';
 
 const Filter = () => {
+  const [filter, setFilter] = useState(null);
+
+  const setFilterValue = evt => {
+    setFilter(evt.target.value);
+  };
+
+  const onSubmitHandle = evt => {
+    evt.preventDefault();
+    setFilter(null);
+    console.log(filter);
+  };
+
   return (
     <div className={style.backdrop}>
       <div className={style.filter}>
-        <svg className={style.closeIcon}>
-          <use href={sprite + '#plus'} />
-        </svg>
+        <div className={style.closeIcon}>
+          <svg className={style.icon}>
+            <use href={sprite + '#plus'} />
+          </svg>
+        </div>
         <h2 className={style.title}>Filters</h2>
-        <form className={style.filterContainer}>
+        <form
+          onChange={setFilterValue}
+          onSubmit={onSubmitHandle}
+          className={style.filterContainer}
+        >
           <div className={style.filterListWrap}>
             <h3 className={style.listTitle}>Label color</h3>
             <div className={style.filterList}>

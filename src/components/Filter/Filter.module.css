@@ -22,14 +22,24 @@
 }
 
 .closeIcon {
-  transform: rotate(45deg);
-  stroke: var(--text-primary-color);
+  color: var(--text-primary-color);
   cursor: pointer;
   position: absolute;
   top: 14px;
   right: 14px;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.closeIcon:hover {
+  color: var(--btn-bg-color-hover);
+}
+
+.icon {
+  transform: rotate(45deg);
+
   width: 18px;
   height: 18px;
+  stroke: currentColor;
 }
 
 .title {
@@ -68,6 +78,11 @@
   line-height: 1.5;
   letter-spacing: -0.02em;
   text-decoration-line: underline;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn:hover {
+  color: var(--btn-bg-color-hover);
 }
 
 .filterListItem {
@@ -80,6 +95,11 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.filterListItem:hover {
+  color: var(--btn-bg-color-hover);
 }
 
 .filterListItem:not(:last-child) {

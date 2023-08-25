@@ -8,7 +8,7 @@ import HomePage from 'pages/HomePage';
 import NotFound from './NotFound';
 
 // import { PrivateRoute, RestrictedRoute } from './Routes/Routes';
-import ScreensPage from 'pages/ScreensPage';
+import ScreensPage from 'pages/ScreensPage/ScreensPage';
 
 const App = () => {
   return (

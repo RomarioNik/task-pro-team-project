@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const SidebarTemp = () => {
-
+const Sidebar = () => {
   //дошки будуть приходити з бекенду, назви рендеряться в сайдбарі
   const boards = [
     {
@@ -28,8 +27,8 @@ const SidebarTemp = () => {
   ];
 
   return (
-    <div style={{ backgroundColor: '#fcea23' }}>
-      <div>SidebarTemp</div>
+    <div style={{ border: '#fcea23 solid 2px' }}>
+      <div>Sidebar</div>
 
       <ul>
         {boards.map(({ name, id }) => (
@@ -42,4 +41,4 @@ const SidebarTemp = () => {
   );
 };
 
-export default SidebarTemp;
+export default Sidebar;

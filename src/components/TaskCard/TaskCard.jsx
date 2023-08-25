@@ -1,22 +1,22 @@
-import css from "./TaskCard.module.css";
+import css from './TaskCard.module.css';
 
-import cn from "classnames";
+import cn from 'classnames';
 
 const TaskCard = ({ data, onDelete, onEdit, onChange }) => {
-  const { title, description, priority, deadline } = data;
+  const { _id, title, description, priority, deadline } = data;
 
-  const formatDate = (isoDate) => {
+  const formatDate = isoDate => {
     const date = new Date(isoDate);
     const day = date.getDate();
     const month = date.getMonth() + 1;
     const year = date.getFullYear();
 
-    return `${day.toString().padStart(2, "0")}/${month
+    return `${day.toString().padStart(2, '0')}/${month
       .toString()
-      .padStart(2, "0")}/${year}`;
+      .padStart(2, '0')}/${year}`;
   };
 
-  const onDateCompare = (isoDate) => {
+  const onDateCompare = isoDate => {
     const date = new Date();
     const currentDate = date.toISOString();
 
@@ -31,10 +31,10 @@ const TaskCard = ({ data, onDelete, onEdit, onChange }) => {
     <div className={css.wrap}>
       <div
         className={cn(css.priorityIndicator, {
-          [css.priorityDefault]: priority === "Default",
-          [css.priorityLow]: priority === "Low",
-          [css.priorityMedium]: priority === "Medium",
-          [css.priorityHigh]: priority === "High",
+          [css.priorityDefault]: priority === 'Default',
+          [css.priorityLow]: priority === 'Low',
+          [css.priorityMedium]: priority === 'Medium',
+          [css.priorityHigh]: priority === 'High',
         })}
       ></div>
       <div className={css.content}>
@@ -46,10 +46,10 @@ const TaskCard = ({ data, onDelete, onEdit, onChange }) => {
             <div className={css.priorityWrap}>
               <div
                 className={cn(css.priorityIcon, {
-                  [css.priorityDefault]: priority === "Default",
-                  [css.priorityLow]: priority === "Low",
-                  [css.priorityMedium]: priority === "Medium",
-                  [css.priorityHigh]: priority === "High",
+                  [css.priorityDefault]: priority === 'Default',
+                  [css.priorityLow]: priority === 'Low',
+                  [css.priorityMedium]: priority === 'Medium',
+                  [css.priorityHigh]: priority === 'High',
                 })}
               ></div>
               <span className={css.additionValue}>{priority}</span>
@@ -65,24 +65,23 @@ const TaskCard = ({ data, onDelete, onEdit, onChange }) => {
               <li className={css.actionItem}>
                 <button
                   type="button"
-                  onClick={onChange}
+                  onClick={() => onChange(_id)}
                   className={css.actionBtn}
                 ></button>
               </li>
               <li className={css.actionItem}>
                 <button
                   type="button"
-                  onClick={onEdit}
+                  onClick={() => onEdit(_id)}
                   className={css.actionBtn}
                 ></button>
               </li>
               <li className={css.actionItem}>
                 <button
                   type="button"
-                  onClick={onDelete}
+                  onClick={() => onDelete(_id)}
                   className={css.actionBtn}
-                >
-                </button>
+                ></button>
               </li>
             </ul>
           </div>

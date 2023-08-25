@@ -1,18 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+// import { useDispatch } from 'react-redux';
 import style from './Filter.module.css';
 import sprite from '../../img/svg/symbol-defs.svg';
 
 const Filter = () => {
+  // const dispatch = useDispatch();
   const [filter, setFilter] = useState(null);
+
+  useEffect(() => {
+    console.log(filter);
+  }, [filter]);
 
   const setFilterValue = evt => {
     setFilter(evt.target.value);
   };
 
   const onSubmitHandle = evt => {
-    evt.preventDefault();
     setFilter(null);
-    console.log(filter);
   };
 
   return (
@@ -24,14 +28,10 @@ const Filter = () => {
           </svg>
         </div>
         <h2 className={style.title}>Filters</h2>
-        <form
-          onChange={setFilterValue}
-          onSubmit={onSubmitHandle}
-          className={style.filterContainer}
-        >
+        <div className={style.filterContainer}>
           <div className={style.filterListWrap}>
             <h3 className={style.listTitle}>Label color</h3>
-            <div className={style.filterList}>
+            <form onChange={setFilterValue} className={style.filterList}>
               <input
                 className={style.visuallyHidden}
                 value="without-priority"
@@ -89,12 +89,12 @@ const Filter = () => {
                 ></span>
                 High
               </label>
-            </div>
+            </form>
           </div>
-          <button className={style.btn} type="submit">
+          <button onClick={onSubmitHandle} className={style.btn} type="button">
             Show all
           </button>
-        </form>
+        </div>
       </div>
     </div>
   );

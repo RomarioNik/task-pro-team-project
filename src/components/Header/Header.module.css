@@ -10,7 +10,12 @@
 
 .container {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   height: calc(100% - (14px * 2));
   padding: 14px 20px;
+}
+
+.menu_btn {
+  height: 24px;
+  width: 24px;
 }

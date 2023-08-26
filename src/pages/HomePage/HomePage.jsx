@@ -15,9 +15,11 @@ const HomePage = () => {
   // };
 
   return (
-  <div>
-     {/* <div className={style.test} data-theme={theme}> */}
-      {/* <div>
+    <>
+      <Header />
+      <div>
+        {/* <div className={style.test} data-theme={theme}> */}
+        {/* <div>
         <select value={theme} onChange={switchTheme}>
           <option>Light</option>
           <option>Dark</option>

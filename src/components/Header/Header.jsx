@@ -15,6 +15,7 @@ import { CacheProvider } from '@emotion/react';
 import createCache from '@emotion/cache';
 import { width } from '@mui/system';
 import icon from '../../img/svg/sprite-icon.svg';
+import { Button } from 'components/Button/Button';
 
 const Header = () => {
   const cache = createCache({ key: 'css', prepend: true });
@@ -22,11 +23,11 @@ const Header = () => {
   return (
     <header className={css.header}>
       <div className={css.container}>
-        <button type="button">
+        <Button className={css.menu_btn}>
           <svg width={24} height={24}>
             <use href={`${icon}#icon-menu`}></use>
           </svg>
-        </button>
+        </Button>
       </div>
     </header>
 

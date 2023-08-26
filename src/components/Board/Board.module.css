@@ -1,0 +1,28 @@
+.sectoion {
+    min-width: 1440px;
+    height: 150px;
+    border: #161616 solid 1px;
+    align-items: center;
+    justify-content: center;
+}
+
+.component {
+background-color: grey;
+}
+
+.container {
+width: 486px;
+height: 72px;
+font-size: 14px;
+font-weight: 400;
+text-align: center;
+margin-left: auto;
+margin-right: auto;
+align-items: center;
+justify-content: center;
+margin-top: 20px;
+}
+
+.button_create {
+    color: red;
+}

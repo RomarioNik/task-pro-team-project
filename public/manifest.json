@@ -1,6 +1,14 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "TaskPro",
+  "name": "The best task manager - TaskPro",
+  "author": "Project Group 3",
+  "default_locale": "en",
+  "description": "Visual tool that allows your team to manage projects, workflows and tasks of any type",
+  "manifest_version": 1,
+  "developer": {
+    "name": "Project Group 3",
+    "url": "/"
+  },
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,14 +16,14 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "logo.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "32x32"
     },
     {
-      "src": "logo512.png",
+      "src": "logo@2x.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "64x64"
     }
   ],
   "start_url": ".",

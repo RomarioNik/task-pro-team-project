@@ -7,7 +7,6 @@ import Sidebar from 'components/Sidebar';
 import ScreensPage from '../ScreensPage/ScreensPage';
 
 const HomePage = () => {
-
   //по временной схеме храним тему в локальном стейте
   const [theme, setTheme] = useState('light');
 
@@ -16,24 +15,26 @@ const HomePage = () => {
   };
 
   return (
-    <div className={style.test} data-theme={theme}>
-      <div>
-        <select value={theme} onChange={switchTheme}>
-          <option>Light</option>
-          <option>Dark</option>
-          <option>Violet</option>
-        </select>
-      </div>
+    <>
+      <Header />
+      <div className={style.test} data-theme={theme}>
+        <div>
+          <select value={theme} onChange={switchTheme}>
+            <option>Light</option>
+            <option>Dark</option>
+            <option>Violet</option>
+          </select>
+        </div>
 
-      <div style={{ display: 'flex' }}>
-        <Sidebar />
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <Header />
-          <Outlet />
-          {/* <ScreensPage /> */}
+        <div style={{ display: 'flex' }}>
+          <Sidebar />
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <Outlet />
+            {/* <ScreensPage /> */}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

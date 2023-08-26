@@ -1,0 +1,16 @@
+.header {
+  /* background-color: var(--background-color); */
+  background-color: red;
+  height: 60px;
+}
+
+.header_iconMenu {
+  fill: var(--mobile-menu-icon);
+}
+
+.container {
+  display: flex;
+  align-items: baseline;
+  height: calc(100% - (14px * 2));
+  padding: 14px 20px;
+}

@@ -1,9 +1,11 @@
 // import React, { useState } from 'react';
-// import style from './HomePage.module.css';
+import style from './HomePage.module.css';
 import { Outlet } from 'react-router-dom';
 
 import Header from 'components/Header';
 import Sidebar from 'components/Sidebar';
+import { useUserTheme } from 'hooks/useUserTheme';
+
 // import ScreensPage from '../ScreensPage/ScreensPage';
 
 const HomePage = () => {

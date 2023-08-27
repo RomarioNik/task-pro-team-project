@@ -7,21 +7,35 @@ import RegisterForm from './RegisterForm';
 import HomePage from 'pages/HomePage';
 import NotFound from './NotFound';
 
-// import { PrivateRoute, RestrictedRoute } from './Routes/Routes';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { useEffect } from 'react';
+import { refreshUser } from 'redux/auth/operations';
+
+import { PrivateRoute, RestrictedRoute } from './Routes/Routes';
 import ScreensPage from 'pages/ScreensPage/ScreensPage';
+import { useIsUserRefresh } from 'hooks/useIsUserRefreshing';
 
 const App = () => {
-  return (
+  const isRefreshing = useIsUserRefresh();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
     <Routes>
       <Route>
         <Route path="/" element={<Layout />} />
         <Route index element={<WelcomePage />} />
         <Route
           path="auth/:id"
-          // element={
-          //   <RestrictedRoute redirectTo="/home" component={<AuthPage />} />
-          // }
-          element={<AuthPage />}
+          element={
+            <RestrictedRoute redirectTo="/home" component={<AuthPage />} />
+          }
         >
           <Route path="login" element={<LoginForm />} />
           <Route path="register" element={<RegisterForm />} />
@@ -29,10 +43,10 @@ const App = () => {
 
         <Route
           path="home"
-          // element={<PrivateRoute redirectTo="/auth" component={<HomePage />} />}
-          element={<HomePage />}
+          element={<PrivateRoute redirectTo="/auth/login" component={<HomePage />} />}
         >
           <Route path=":boardName" element={<ScreensPage />} />
+          {/* <Route path="test" element={<ScreensPage />} /> */}
         </Route>
         <Route path="*" element={<NotFound />} />
       </Route>

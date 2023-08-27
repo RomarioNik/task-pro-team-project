@@ -1,0 +1,164 @@
+
+/*  */
+
+.wrap {
+  display: flex;
+
+  width: 334px;
+  height: 154px;
+
+  border-radius: 8px;
+  background-color: #121212;
+
+  overflow: hidden;
+}
+
+/* INDICATOR */
+
+.priorityIndicator {
+  width: 4px;
+  height: 100%;
+
+  margin-right: auto;
+}
+
+.priorityDefault {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.priorityLow {
+  background-color: #8fa1d0;
+}
+
+.priorityMedium {
+  background-color: #e09cb5;
+}
+
+.priorityHigh {
+  background-color: #bedbb0;
+}
+
+/*  */
+
+.content {
+  width: fit-content;
+  padding: 14px 20px;
+}
+
+.title {
+  margin-bottom: 8px;
+
+  font-size: 14px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.28px;
+  color: #ffffff;
+}
+
+.description {
+  width: 290px;
+  height: 38px;
+
+  margin-bottom: 14px;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+  font-size: 12px;
+  line-height: 1.3;
+  letter-spacing: -0.24px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* ADDITIONS */
+
+.additionsWrap {
+  display: flex;
+  align-items: last baseline;
+
+  padding-top: 14px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.addition {
+  display: flex;
+  flex-direction: column;
+}
+
+.additionLabel {
+  margin-bottom: 4px;
+
+  font-size: 8px;
+  line-height: normal;
+  letter-spacing: -0.16px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.additionValue {
+  font-size: 10px;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  color: #ffffff;
+}
+
+.priorityWrap {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  margin-right: 14px;
+}
+
+.priorityIcon {
+  width: 12px;
+  height: 12px;
+
+  border-radius: 999px;
+}
+
+/* DEADLINE ICON */
+
+.deadlineIcon {
+  width: 16px;
+  height: 16px;
+  margin-left: auto;
+
+  background-color: aqua;
+}
+
+/* ACTIONS */
+
+.actionsWrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  width: fit-content;
+  margin-left: auto;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 64px;
+}
+
+.actionItem {
+  width: 16px;
+  height: 16px;
+}
+
+.actionBtn {
+  width: 16px;
+  height: 16px;
+
+  padding: 0;
+
+  border: 0;
+  background-color: #ffffff;
+
+  cursor: pointer;
+}

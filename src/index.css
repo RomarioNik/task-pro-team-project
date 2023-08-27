@@ -1,4 +1,3 @@
-@import-normalize; /* bring in normalize.css styles */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
 :root {
@@ -121,6 +120,18 @@ button {
 
 address {
   font-style: normal;
+}
+
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  font-style: normal;
+  text-decoration: none;
 }
 
 button {

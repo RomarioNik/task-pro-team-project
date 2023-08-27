@@ -1,0 +1,44 @@
+.select {
+  height: 21px;
+  min-width: 85px;
+}
+
+.select_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  border-radius: 2px;
+
+  background-color: transparent;
+
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.28px;
+
+  cursor: pointer;
+}
+.select_content {
+  background-color: var(--select-bg-color);
+  border: 1px solid var(--bg-screen);
+  border-radius: 8px;
+  margin-top: 1px;
+  padding: 4px 8px;
+}
+
+.select_item {
+  text-align: center;
+  transition: all 200ms linear;
+  cursor: pointer;
+
+  font-weight: 400;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+    color: var(--text-select-color);
+  }
+}

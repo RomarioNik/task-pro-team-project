@@ -1,7 +1,7 @@
 .header {
-  /* background-color: var(--background-color); */
+  background-color: var(--background-color);
   background-color: red;
-  height: 60px;
+  height: 300px;
 }
 
 .header_iconMenu {
@@ -11,6 +11,7 @@
 .container {
   display: flex;
   align-items: center;
+  justify-content: space-around;
   height: calc(100% - (14px * 2));
   padding: 14px 20px;
 }

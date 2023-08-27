@@ -1,0 +1,5 @@
+.divCard {
+    border-radius: 8px;
+border: 1px solid rgba(190, 219, 176, 0.50);
+background: var(--text-primary-color);
+}

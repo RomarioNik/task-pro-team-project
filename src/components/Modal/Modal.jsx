@@ -50,5 +50,5 @@ export default Modal;
   
     //     <>
     //         <p onClick={() => setOpenModal(true)}>Open</p>
-    //         {openModal && <Modal title={"Filter"} children={<p>content of you modal window</p>} openModal={setOpenModal} />}
+    //         {openModal && <Modal children={<YOU MODAL COMPONENT/>} openModal={setOpenModal} />}
     //     </>

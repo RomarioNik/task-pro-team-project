@@ -9,12 +9,13 @@ import NotFound from './NotFound';
 
 import { useDispatch} from 'react-redux';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { refreshUser } from 'redux/auth/operations';
 
 import { PrivateRoute, RestrictedRoute } from './Routes/Routes';
 import ScreensPage from 'pages/ScreensPage/ScreensPage';
 import { useIsUserRefresh } from 'hooks/useIsUserRefreshing';
+import Modal from './Modal/Modal';
 
 const App = () => {
   const isRefreshing = useIsUserRefresh();
@@ -24,34 +25,13 @@ const App = () => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  return isRefreshing ? (
-    <b>Refreshing user...</b>
-  ) : (
-    <Routes>
-      <Route>
-        <Route path="/" element={<Layout />} />
-        <Route index element={<WelcomePage />} />
-        <Route
-          path="auth/:id"
-          element={
-            <RestrictedRoute redirectTo="/home" component={<AuthPage />} />
-          }
-        >
-          <Route path="login" element={<LoginForm />} />
-          <Route path="register" element={<RegisterForm />} />
-        </Route>
+     const [openModal, setOpenModal] = useState(false)
 
-        <Route
-          path="home"
-          element={<PrivateRoute redirectTo="/auth/login" component={<HomePage />} />}
-        >
-          <Route path=":boardName" element={<ScreensPage />} />
-          {/* <Route path="test" element={<ScreensPage />} /> */}
-        </Route>
-        <Route path="*" element={<NotFound />} />
-      </Route>
-    </Routes>
-  );
+    return (
+        <>
+            <p onClick={() => setOpenModal(true)}>Open</p>
+            {openModal && <Modal title={"Filter"} children={<p>content of you modal window</p>} openModal={setOpenModal} />}
+        </>)
 };
 
 export default App;

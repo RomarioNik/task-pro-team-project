@@ -14,7 +14,7 @@ export const registerUser = createAsyncThunk(
 
         return loginData.data;
       }
-        return data;
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
     }
@@ -40,6 +40,30 @@ export const logOutUser = createAsyncThunk(
       await apiPrivate.post('/api/auth/signout');
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const refreshUser = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await apiPrivate.get('/api/auth/current');
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const changeTheme = createAsyncThunk(
+  'auth/usertheme',
+  async (userTheme, thunkAPI) => {
+    try {
+      const { data } = await apiPrivate.patch('/api/auth', userTheme);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );

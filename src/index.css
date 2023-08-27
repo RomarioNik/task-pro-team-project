@@ -24,7 +24,7 @@
   --user-icon-color: #fff;
 }
 
-[data-theme='Light'] {
+[data-theme='light'] {
   --background-color: #fdfdfd;
   --text-primary-color: #161616;
   --text-secondary-color: #000;
@@ -48,7 +48,7 @@
   --user-icon-color: #fff;
 }
 
-[data-theme='Dark'] {
+[data-theme='dark'] {
   --background-color: #232323;
   --text-primary-color: #fff;
   --bg-sidebar: #121212;
@@ -72,7 +72,7 @@
   --user-icon-color: #151515;
 }
 
-[data-theme='Violet'] {
+[data-theme='violet'] {
   --background-color: #d6d8ff;
   --text-primary-color: #fff;
   --text-secondary-color: #161616;

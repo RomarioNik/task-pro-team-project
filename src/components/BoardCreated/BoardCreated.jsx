@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 import {Icon} from '../../img/svg/Icon'
-import icon from '../../img/svg/sprite-icon.svg'
+// import icon from '../../img/svg/sprite-icon.svg'
 import style from './BoardCreated.module.css'
 
 

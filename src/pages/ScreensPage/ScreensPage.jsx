@@ -29,9 +29,9 @@ const ScreensPage = () => {
     console.log('filter');
   };
   //----функція-відкривання-модалки-створення-колонки
-  const createColumn = () => {
-    console.log('add column');
-  };
+  // const createColumn = () => {
+  //   console.log('add column');
+  // };
 
   return (
     <div style={{ border: '#fc4e23 solid 2px' }}>

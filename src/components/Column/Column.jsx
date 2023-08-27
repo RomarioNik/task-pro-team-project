@@ -2,7 +2,7 @@
 // import icon from '../../img/svg/sprite-icon.svg';
 import style from './Column.module.css';
 
-import {Icon} from '../../img/svg/Icon'
+import { Icon } from '../../img/svg/Icon';
 
 const Column = () => {
   // const [theme, setTheme] = useState('light');
@@ -29,14 +29,14 @@ const Column = () => {
           <div className={style.column__section}>
             <p className={style.column_title}>To Do</p>
             <div className={style.column__title__button}>
-              <button >
-              <Icon id='pencil'className={style.column__icon}/>
+              <button>
+                <Icon id="pencil" className={style.column__icon} />
                 {/* <svg className={style.column__icon}>
                   <use href={`${icon}#pencil`}></use>
                 </svg> */}
               </button>
               <button>
-              <Icon id='trash'className={style.column__icon}/>
+                <Icon id="trash" className={style.column__icon} />
                 {/* <svg className={style.column__icon}>
                   <use xlinkHref={`${icon}#trash`}></use>
                 </svg> */}
@@ -46,16 +46,15 @@ const Column = () => {
           {/* <div  className={style.icon__ejkbfewkjbwb} >
             <Icon id='radio-button'/>
           </div> */}
-          <button className={style.button_create}
-          
-          type="button">
+          <button className={style.button_create} type="button">
             <div>
-            <Icon id='plus'className={style.button__create__icon}/>
+              <Icon id="plus" className={style.button__create__icon} />
             </div>
             {/* <svg className={style.button__create__icon}>
                   <use href={`${icon}#plus`}></use>
                 </svg> */}
-            Add another card</button>
+            Add another card
+          </button>
         </li>
       </ul>
     </div>

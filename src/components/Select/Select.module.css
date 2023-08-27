@@ -1,6 +1,7 @@
 .select {
   height: 21px;
   min-width: 85px;
+  position: relative;
 }
 
 .select_btn {

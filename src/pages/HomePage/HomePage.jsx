@@ -1,30 +1,21 @@
 // import React, { useState } from 'react';
-// import style from './HomePage.module.css';
+import style from './HomePage.module.css';
 import { Outlet } from 'react-router-dom';
 
 import Header from 'components/Header';
 import Sidebar from 'components/Sidebar';
+import { useUserTheme } from 'hooks/useUserTheme';
+
 // import ScreensPage from '../ScreensPage/ScreensPage';
 
 const HomePage = () => {
 
-  //по временной схеме храним тему в локальном стейте
-  // const [theme, setTheme] = useState('light');
-
-  // const switchTheme = e => {
-  //   setTheme(e.target.value);
-  // };
+  const theme = useUserTheme();
 
   return (
-  <div>
-     {/* <div className={style.test} data-theme={theme}> */}
-      {/* <div>
-        <select value={theme} onChange={switchTheme}>
-          <option>Light</option>
-          <option>Dark</option>
-          <option>Violet</option>
-        </select>
-      </div> */}
+ 
+    <div className={style.test} data-theme={theme}>
+
 
       <div style={{ display: 'flex' }}>
         <Sidebar />

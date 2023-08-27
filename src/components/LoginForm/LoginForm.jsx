@@ -16,38 +16,41 @@
 
 
 
-import React, { useState, useEffect } from 'react';
+import React, {
+  // useState
+  // , useEffect
+} from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { loginUser } from '../../redux/auth/operations';
 import { loginFormSchema } from 'scheme/index';
 import css from '../RegisterForm/RegisterForm.module.css';
-import { useLoggedIn } from '../../hooks/useLoggedIn.js';
-import { useUserLoading } from 'hooks/useUserLoading';
+// import { useLoggedIn } from '../../hooks/useLoggedIn.js';
+// import { useUserLoading } from 'hooks/useUserLoading';
 import AuthBtn from 'components/AthBtn/AuthBtn';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const isLoggedIn = useLoggedIn();
+  // const navigate = useNavigate();
+  // const isLoggedIn = useLoggedIn();
   // console.log(isLoggedIn);
-    const isLoading = useUserLoading();
-  const [passwordVisible, setPasswordVisible] = useState(false);
+    // const isLoading = useUserLoading();
+  // const [passwordVisible, setPasswordVisible] = useState(false);
 
-  const togglePasswordVisibility = () => {
-    setPasswordVisible(!passwordVisible);
-  };
+  // const togglePasswordVisibility = () => {
+  //   setPasswordVisible(!passwordVisible);
+  // };
 
   const initialValues = {
     email: '',
     password: '',
   };
-  useEffect(() => {
-    if (isLoggedIn) {
-      navigate('/');
-    }
-  }, [isLoggedIn]);
+  // useEffect(() => {
+  //   if (isLoggedIn) {
+  //     navigate('/');
+  //   }
+  // }, [isLoggedIn]);
 
   const onSubmit = (values, { resetForm }) => {
     console.log(values);
@@ -80,7 +83,9 @@ const LoginForm = () => {
             </label>
             <label className={css.form__input}>
               <Field
-                type={passwordVisible ? 'text' : 'password'}
+                type={
+                  // passwordVisible ? 'text' :
+                    'password'}
                 name="password"
                 placeholder="Confirm a password"
                 className={css.form__field}

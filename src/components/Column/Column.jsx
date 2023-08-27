@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import icon from '../../img/svg/sprite-icon.svg';
+// import React, { useState } from 'react';
+// import icon from '../../img/svg/sprite-icon.svg';
 import style from './Column.module.css';
 
 import {Icon} from '../../img/svg/Icon'

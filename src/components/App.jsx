@@ -7,7 +7,7 @@ import RegisterForm from './RegisterForm';
 import HomePage from 'pages/HomePage';
 import NotFound from './NotFound';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 
 import { useEffect } from 'react';
 import { refreshUser } from 'redux/auth/operations';

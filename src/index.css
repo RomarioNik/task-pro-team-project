@@ -7,6 +7,8 @@
   --bg-sidebar: #fff;
   --bg-header: #fcfcfc;
   --bg-screen: #f6f6f7;
+  --modal-level-color: rgba(22, 22, 22, 0.3);
+  --modal-secondary-text-color: rgba(22, 22, 22, 0.1);
   /* button */
   --btn-bg-color: #bedbb0;
   --btn-bg-color-hover: #9dc888;
@@ -31,6 +33,8 @@
   --bg-sidebar: #fff;
   --bg-header: #fcfcfc;
   --bg-screen: #f6f6f7;
+  --modal-level-color: rgba(22, 22, 22, 0.3);
+  --modal-secondary-text-color: rgba(22, 22, 22, 0.1);
   /* button */
   --btn-bg-color: #bedbb0;
   --btn-bg-color-hover: #9dc888;
@@ -54,6 +58,8 @@
   --bg-sidebar: #121212;
   --bg-header: #161616;
   --bg-screen: #1f1f1f;
+  --modal-level-color: rgba(255, 255, 255, 0.3);
+  --modal-secondary-text-color: rgba(255, 255, 255, 0.1);
   /* --text-secondary: none; */
   /* button */
   --btn-bg-color: #bedbb0;
@@ -79,6 +85,8 @@
   --bg-sidebar: #5255bc;
   --bg-header: #fff;
   --bg-screen: #ecedfd;
+  --modal-level-color: rgba(22, 22, 22, 0.3);
+  --modal-secondary-text-color: rgba(22, 22, 22, 0.1);
   /* button */
   --btn-bg-color: #5255bc;
   --btn-bg-color-hover: #7b7ede;

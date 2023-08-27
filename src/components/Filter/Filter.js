@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import style from './Filter.module.css';
+// import { useDispatch } from 'react-redux';
 
 const Filter = () => {
   // const dispatch = useDispatch();
@@ -33,8 +34,7 @@ const Filter = () => {
             />
             <label htmlFor="without-priority" className={style.filterListItem}>
               <span
-                style={{ backgroundColor: 'rgba(22, 22, 22, 0.30)' }} //violet,light
-                //style={{ backgroundColor: 'rgba(255, 255, 255, 0.30)' }} //dark
+                style={{ backgroundColor: 'var(--modal-level-color)' }}
                 className={style.inputBtn}
               ></span>
               Without priority

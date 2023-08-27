@@ -43,16 +43,12 @@ const Modal = ({ children, openModal }) => {
 
 export default Modal;
 
-// import { useState } from 'react';
-// import Modal from './Modal/Modal';
-// import Filter from './Filter/Filter';
+// =================for testing============================================================================
 
-// const App = () => {
-//     const [openModal, setOpenModal] = useState(false)
+    //  const [openModal, setOpenModal] = useState(false)
 
-//     return (
-//         <>
-//             <p onClick={() => setOpenModal(true)}>Open</p>
-//             {openModal && <Modal title={"Filter"} children={<Filter />} openModal={setOpenModal} />}
-//         </>)
-// }
+  
+    //     <>
+    //         <p onClick={() => setOpenModal(true)}>Open</p>
+    //         {openModal && <Modal title={"Filter"} children={<p>content of you modal window</p>} openModal={setOpenModal} />}
+    //     </>

@@ -43,8 +43,6 @@ const Modal = ({ children, openModal }) => {
 
 export default Modal;
 
-/* <div id="modal-root"></div>; */
-
 // import { useState } from 'react';
 // import Modal from './Modal/Modal';
 // import Filter from './Filter/Filter';

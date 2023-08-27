@@ -3,7 +3,12 @@ import icon from '../../img/svg/sprite-icon.svg';
 import { Button } from 'components/Button/Button';
 import { Select } from 'components/Select/Select';
 import Profile from '../Profile';
+import ThemeChanger from 'components/ThemeChanger';
+import { useUserData } from 'hooks/useUserData';
+import React from 'react';
+
 const Header = () => {
+  const { name } = useUserData();
   return (
     <header className={css.header}>
       <div className={css.container}>

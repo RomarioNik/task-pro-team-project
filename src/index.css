@@ -4,6 +4,9 @@
   --background-color: #fdfdfd;
   --text-primary-color: #161616;
   --text-secondary-color: #000;
+  /* text-link */
+  --text-color: rgba(22, 22, 22, 0.7);
+  --text-link-color: #bedbb0;
   /* button */
   --btn-bg-color: #bedbb0;
   --btn-bg-color-hover: #9dc888;
@@ -25,6 +28,9 @@
   --background-color: #fdfdfd;
   --text-primary-color: #161616;
   --text-secondary-color: #000;
+  /* text-link */
+  --text-color: rgba(22, 22, 22, 0.7);
+  --text-link-color: #bedbb0;
   /* button */
   --btn-bg-color: #bedbb0;
   --btn-bg-color-hover: #9dc888;
@@ -46,6 +52,9 @@
   --background-color: #232323;
   --text-primary-color: #fff;
   /* --text-secondary: none; */
+  /* text-link */
+  --text-color: rgba(255, 255, 255, 0.5);
+  --text-link-color: #bedbb0;
   /* button */
   --btn-bg-color: #bedbb0;
   --btn-bg-color-hover: #9dc888;
@@ -67,6 +76,9 @@
   --background-color: #d6d8ff;
   --text-primary-color: #fff;
   --text-secondary-color: #161616;
+  /* text-link */
+  --text-color: rgba(22, 22, 22, 0.7);
+  --text-link-color: #5255BC;
   /* button */
   --btn-bg-color: #5255bc;
   --btn-bg-color-hover: #7b7ede;

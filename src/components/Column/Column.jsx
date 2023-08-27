@@ -1,8 +1,24 @@
 import React, { useState } from 'react';
-import icon from '../../img/svg/sprite-icon.svg';
+// import icon from '../../img/svg/sprite-icon.svg';
 import style from './Column.module.css';
 
-import {Icon} from '../../img/svg/Icon'
+import {Icon} from '../Svg/Icon'
+
+const columns = [
+  {
+     name: "To Do",
+  id: '1',
+  },
+  {
+    name: "In progress",
+ id: '2',
+ },
+ {
+  name: "Done",
+id: '3',
+}
+]
+
 
 const Column = () => {
   // const [theme, setTheme] = useState('light');
@@ -13,10 +29,12 @@ const Column = () => {
   //*отсюда передать тему в глобальній стейт и записать в юзера
 
   return (
-    <div style={{ border: '#161616 solid 2px' }}>
-      <div className={style.component}>Column component</div>
+    <div 
+    // style={{ border: '#161616 solid 2px' }}
+    >
+      
       {/* <p className={style.board_title}>{BoardName}</p> */}
-      <p className={style.board_title}>Project office</p>
+      {/* <p className={style.board_title}>Project office</p> */}
       {/* <div>
         <select value={theme} onChange={switchTheme}>
           <option>Light</option>
@@ -24,12 +42,13 @@ const Column = () => {
           <option>Violet</option>
         </select>
       </div> */}
-      <ul>
-        <li>
+      <ul>{
+        columns.map(({name, id}) => 
+<li key={id}>
           <div className={style.column__section}>
-            <p className={style.column_title}>To Do</p>
-            <div className={style.column__title__button}>
-              <button >
+            <p className={style.column_title}>{name}</p>
+            <div className={style.column__edit__button}>
+              <button>
               <Icon id='pencil'className={style.column__icon}/>
                 {/* <svg className={style.column__icon}>
                   <use href={`${icon}#pencil`}></use>
@@ -49,7 +68,7 @@ const Column = () => {
           <button className={style.button_create}
           
           type="button">
-            <div>
+            <div className={style.button__icon__background}>
             <Icon id='plus'className={style.button__create__icon}/>
             </div>
             {/* <svg className={style.button__create__icon}>
@@ -57,6 +76,9 @@ const Column = () => {
                 </svg> */}
             Add another card</button>
         </li>
+
+        )}
+        
       </ul>
     </div>
   );

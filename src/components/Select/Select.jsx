@@ -11,9 +11,16 @@ export const Select = ({
   const [selectedOption, setSelectedOption] = useState(null);
 
   // useEffect(() => {
+  //   const handleClick = evt => {
+  //     if (!evt.target.closest(`${css.select}`)) {
+  //       console.log(evt.target.closest(`${css.select_btn}`));
+  //       console.log(css.select);
+  //     }
+  //     return;
+  //   };
   //   document.addEventListener('click', handleClick);
   //   // return document.removeEventListener('click', handleClick);
-  // }, []);
+  // }, [isOpen]);
 
   const handlerIsOpen = () => {
     setIsOpen(!isOpen);
@@ -22,14 +29,9 @@ export const Select = ({
     setSelectedOption(target.textContent);
     setIsOpen(false);
   };
-  const handleClick = evt => {
-    console.log(evt.target, evt.currentTarget);
-    if (evt.target !== evt.currentTarget) {
-      console.log('Закрываю');
-    }
-  };
+
   return (
-    <div className={css.select} onClick={handleClick}>
+    <div className={css.select}>
       <div className={css.select_btn} onClick={handlerIsOpen}>
         <p>
           {!selectedOption

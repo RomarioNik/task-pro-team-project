@@ -16,7 +16,6 @@ const ScreensPage = () => {
   const filter = () => {
     console.log('filter');
   };
-  
 
   return (
     <div style={{ border: '#fc4e23 solid 2px' }}>

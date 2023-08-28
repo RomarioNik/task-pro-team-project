@@ -1,4 +1,7 @@
+
 import React from 'react';
+
+
 // import icon from '../../img/svg/sprite-icon.svg'
 import style from './Board.module.css'
 

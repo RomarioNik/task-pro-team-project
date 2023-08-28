@@ -4,30 +4,6 @@ import { useState } from 'react';
 
 import sprite from '../img/svg/sprite-icon.svg';
 
-///////////////aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-
-//////////////////aaaaaaaaaaaaaaaaaaaaaaaaaaaa
-
-// import Icon from '../img/svg/Icon.jsx';
-
-// const CustomRadio = ({ value, checked, onChange }) => {
-//   return (
-//     <label className={`${css.customRadio} ${checked ? css.checked : ''}`}>
-//       <input
-//         type="radio"
-//         name="radioGroup"
-//         value={value}
-//         checked={checked}
-//         onChange={onChange}
-//         className={css.hiddenRadio}
-//       />
-//       <svg className={css.customIcon}>
-//         <use xlinkHref={`${sprite}#radio-button`} />
-//       </svg>
-//     </label>
-//   );
-// };
-
 const CustomRadio = ({ value, checked, onChange, color }) => {
   return (
     <label className={`${css.customRadio} ${checked ? css.checked : ''}`}>
@@ -51,7 +27,7 @@ const CustomRadio = ({ value, checked, onChange, color }) => {
 };
 
 export default function CreateCardPopUp() {
-  const [selectedLabel, setSelectedLabel] = useState('Default');
+  const [selectedLabel, setSelectedLabel] = useState('without priority');
   const [titleValue, setTitleValue] = useState('');
   const [descriptionValue, setDescriptionValue] = useState('');
 
@@ -62,6 +38,16 @@ export default function CreateCardPopUp() {
   return (
     <div className={css.modalBackdrop}>
       <div className={css.modalBody}>
+        <span
+          type="button"
+          className={css.closeIconContainer}
+          onClick={'onClose'}
+        >
+          <svg className={css.closeIcon}>
+            <use xlinkHref={`${sprite}#plus`} />
+          </svg>
+        </span>
+
         <h3 className={css.modalTitle}>Add card</h3>
         <form action="" className={css.inputForm}>
           <input
@@ -82,71 +68,33 @@ export default function CreateCardPopUp() {
           />
           <div action="" className={css.inputLabelColorContainer}>
             <h4 className={css.inputLabelColor}>Label color</h4>
-
-            {/* <input
-              type="radio"
-              name="radioGroup"
-              value="Default"
-              checked={selectedLabel === 'Default'}
-              onChange={handleRadioChange}
-              className={css.radioOptionDefault}
-            />
-
-            <input
-              type="radio"
-              name="radioGroup"
-              value="Low"
-              checked={selectedLabel === 'Low'}
-              onChange={handleRadioChange}
-              className={css.radioOptionLow}
-            />
-
-            <input
-              type="radio"
-              name="radioGroup"
-              value="Medium"
-              checked={selectedLabel === 'Medium'}
-              onChange={handleRadioChange}
-              className={css.radioOptionMedium}
-            />
-
-            <input
-              type="radio"
-              name="radioGroup"
-              value="High"
-              color="red"
-              background-color="blue"
-              checked={selectedLabel === 'High'}
-              onChange={handleRadioChange}
-              className={css.radioOptionHigh}
-            /> */}
           </div>
 
           <CustomRadio
             color="#8fa1d04D"
-            value="Default"
-            checked={selectedLabel === 'Default'}
+            value="without priority"
+            checked={selectedLabel === 'without priority'}
             onChange={handleRadioChange}
           />
 
           <CustomRadio
             color="#E09CB54D"
-            value="Low"
-            checked={selectedLabel === 'Low'}
+            value="low"
+            checked={selectedLabel === 'low'}
             onChange={handleRadioChange}
           />
 
           <CustomRadio
             color="#BEDBB04D"
-            value="Medium"
-            checked={selectedLabel === 'Medium'}
+            value="medium"
+            checked={selectedLabel === 'medium'}
             onChange={handleRadioChange}
           />
 
           <CustomRadio
             color="#FFFFFF4D"
-            value="High"
-            checked={selectedLabel === 'High'}
+            value="high"
+            checked={selectedLabel === 'high'}
             onChange={handleRadioChange}
           />
         </form>

@@ -28,16 +28,24 @@
   background-color: transparent;
 }
 
-/* .myButton::after {
-  content: '';
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  background: url('') -24px -24px;
-} */
+.chevronDownContainer {
+  display: flex;
+  align-items: center;
+}
 
-/* .radioOptionHigh {
-  width: 44px;
-  color: #e09cb5;
-  background-color: #e09cb5;
-} */
+.chevronDown {
+  stroke: #bedbb0;
+  width: 18px;
+  height: 18px;
+  transition: transform 250ms ease;
+}
+
+.chevronDown:focus {
+  stroke: #bd7517;
+  transform: rotate(180);
+}
+
+.rotate {
+  transform: rotate(180deg);
+  transition: transform 250ms ease;
+}

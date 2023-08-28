@@ -10,6 +10,7 @@ import dayjs from 'dayjs';
 import { useState } from 'react';
 
 import css from './calendar.module.css';
+import sprite from '../img/svg/sprite-icon.svg';
 
 function ButtonField(props) {
   const {
@@ -17,10 +18,11 @@ function ButtonField(props) {
     label,
     id,
     disabled,
+    open,
     InputProps: { ref } = {},
     inputProps: { 'aria-label': ariaLabel } = {},
   } = props;
-
+  console.log(open);
   return (
     <Button
       sx={{
@@ -42,7 +44,12 @@ function ButtonField(props) {
       onClick={() => setOpen?.(prev => !prev)}
       className={css.myButton}
     >
-      {label ?? 'Pick a date'}
+      {label ?? 'Pick a date'}{' '}
+      <span className={css.chevronDownContainer}>
+        <svg className={`${css.chevronDown} ${open ? css.rotate : ''}`}>
+          <use xlinkHref={`${sprite}#chevron-down`} />
+        </svg>
+      </span>
     </Button>
   );
 }
@@ -54,7 +61,7 @@ function ButtonDatePicker(props) {
     <DatePicker
       showDaysOutsideCurrentMonth
       slots={{ field: ButtonField, ...props.slots }}
-      slotProps={{ field: { setOpen } }}
+      slotProps={{ field: { setOpen, open } }}
       {...props}
       open={open}
       onClose={() => setOpen(false)}
@@ -92,6 +99,7 @@ export default function Calendar() {
               ? `Today, ${format(deadlineDate, 'MMMM d')}`
               : format(deadlineDate, 'MM/dd/yyyy')
           }`}
+          disablePast
           value={deadlineDate}
           onChange={chooseDeadlineDate}
           className={css.myButton}
@@ -100,33 +108,3 @@ export default function Calendar() {
     </LocalizationProvider>
   );
 }
-
-// function CalendarCom() {
-//   const [open, setOpen] = useState(false);
-//   const [selectedDate, setSelectedDate] = useState(null);
-
-//   const handleDateChange = date => {
-//     setSelectedDate(date);
-//     setOpen(false);
-//   };
-
-//   return (
-//     <LocalizationProvider dateAdapter={AdapterDayjs}>
-//       <div>
-//         <button onClick={() => setOpen(true)}>
-//           {selectedDate ? selectedDate.toDateString() : 'Выберите дату'}
-//         </button>
-//         {open && (
-//           <DateCalendar
-//             open={open}
-//             date={selectedDate}
-//             onChange={handleDateChange}
-//             onClose={() => setOpen(false)}
-//           />
-//         )}
-//       </div>
-//     </LocalizationProvider>
-//   );
-// }
-
-// export default CalendarCom;

@@ -10,6 +10,15 @@ export default function NeedHelp() {
   return (
     <div className={css.modalBackdrop}>
       <div className={css.modalBody}>
+        <span
+          type="button"
+          className={css.closeIconContainer}
+          onClick={'onClose'}
+        >
+          <svg className={css.closeIcon}>
+            <use xlinkHref={`${sprite}#plus`} />
+          </svg>
+        </span>
         <h3 className={css.modalTitle}>Need help</h3>
         <form action="" className={css.inputForm}>
           <input

@@ -1,7 +1,9 @@
-// import React, { useState } from 'react';
-import {Icon} from '../../img/svg/Icon'
-// import icon from '../../img/svg/sprite-icon.svg'
-import style from './BoardCreated.module.css'
+import React, { useState } from 'react';
+import {Icon} from '../Svg/Icon';
+import Column from 'components/Column/Column';
+import icon from '../../img/svg/sprite-icon.svg';
+import css from '../../../src/index.css';
+import style from './BoardCreated.module.css';
 
 
 const BoardCreated = () => {
@@ -13,7 +15,7 @@ const BoardCreated = () => {
   //*отсюда передать тему в глобальній стейт и записать в юзера
 
   return (
-    <div style={{ border: '#161616 solid 2px' }}>
+    <div style={{ border: '#161616 solid 2px' }}   >
       <div className={style.component}>Created Board component</div>
     
 
@@ -31,13 +33,16 @@ const BoardCreated = () => {
         
       </div>
       <div className={style.column__container}>
-        {/* <Column/> */}
-        {/* <div>{Column}</div> */}
+        <div className={style.column__item}>
+             <Column />
+        </div>
+     
+       
         <button
           className={style.button__create}
           type="button"
           // onClick={createColumn}
-        ><div >
+        ><div className={style.button__icon__background}>
         <Icon id='plus' className={style.button__create__icon}/>
         </div>
           {/* <svg className={style.button__create__icon}>
@@ -46,7 +51,7 @@ const BoardCreated = () => {
           <p className={style.button__create__title}>Add another column</p>
         </button>
       </div>
-      <image src/>
+    
     </div>
   );
 };

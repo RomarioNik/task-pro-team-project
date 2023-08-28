@@ -9,7 +9,10 @@
   --bg-screen: #f6f6f7;
   /* Select */
   --text-select-color: #bedbb0;
-  --select-bg-color: #fcfcfc;
+
+  /* text-link */
+  --text-color: rgba(22, 22, 22, 0.7);
+  --text-link-color: #bedbb0;
   /* button */
   --btn-bg-color: #bedbb0;
   --btn-bg-color-hover: #9dc888;
@@ -35,6 +38,9 @@
   --bg-sidebar: #fff;
   --bg-header: #fcfcfc;
   --bg-screen: #f6f6f7;
+  /* text-link */
+  --text-color: rgba(22, 22, 22, 0.7);
+  --text-link-color: #bedbb0;
   /* button */
   --btn-bg-color: #bedbb0;
   --btn-bg-color-hover: #9dc888;
@@ -51,6 +57,12 @@
   /* user avatar */
   --background-color: #f6f6f7;
   --user-icon-color: #fff;
+  /* task card */
+  --task-card-background-color: #fff;
+  --task-card-title-color: #161616;
+  --task-card-description-color: rgba(22, 22, 22, 0.7);
+  --task-card-secondary-title-color: rgba(22, 22, 22, 0.5);
+  --task-card--line-color: rgba(22, 22, 22, 0.1);
 }
 
 [data-theme='dark'] {
@@ -62,6 +74,9 @@
   /* --text-secondary: none; */
   /* Select */
   --select-bg-color: #151515;
+  /* text-link */
+  --text-color: rgba(255, 255, 255, 0.5);
+  --text-link-color: #bedbb0;
   /* button */
   --btn-bg-color: #bedbb0;
   --btn-bg-color-hover: #9dc888;
@@ -78,6 +93,12 @@
   /* user avatar */
   --background-color: #1f1f1f;
   --user-icon-color: #151515;
+  /* task card */
+  --task-card-background-color: #121212;
+  --task-card-title-color: #fff;
+  --task-card-description-color: rgba(255, 255, 255, 0.5);
+  --task-card-secondary-title-color: rgba(22, 22, 22, 0.5);
+  --task-card--line-color: rgba(22, 22, 22, 0.1);
 }
 
 [data-theme='violet'] {
@@ -87,9 +108,9 @@
   --bg-sidebar: #5255bc;
   --bg-header: #fff;
   --bg-screen: #ecedfd;
-  /* Select  */
-  --text-select-color: #5255bc;
-
+  /* text-link */
+  --text-color: rgba(22, 22, 22, 0.7);
+  --text-link-color: #5255bc;
   /* button */
   --btn-bg-color: #5255bc;
   --btn-bg-color-hover: #7b7ede;
@@ -106,6 +127,12 @@
   /* user avatar */
   --background-color: #ecedfd;
   --user-icon-color: #fff;
+  /* task card */
+  --task-card-background-color: #fff;
+  --task-card-title-color: #161616;
+  --task-card-description-color: rgba(22, 22, 22, 0.7);
+  --task-card-secondary-title-color: rgba(22, 22, 22, 0.5);
+  --task-card--line-color: rgba(22, 22, 22, 0.1);
 }
 
 * {

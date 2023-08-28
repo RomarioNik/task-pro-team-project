@@ -2,6 +2,8 @@ import css from './TaskCard.module.css';
 
 import cn from 'classnames';
 
+import { Icon } from './../Svg/Icon';
+
 const TaskCard = ({ data, onDelete, onEdit, onChange }) => {
   const { _id, title, description, priority, deadline } = data;
 
@@ -19,8 +21,7 @@ const TaskCard = ({ data, onDelete, onEdit, onChange }) => {
   const onDateCompare = isoDate => {
     const date = new Date();
     const currentDate = date.toISOString();
-
-    if (isoDate === currentDate) {
+    if (isoDate.substring(0, 10) === currentDate.substring(0, 10)) {
       return true;
     }
 
@@ -60,28 +61,34 @@ const TaskCard = ({ data, onDelete, onEdit, onChange }) => {
             <span className={css.additionValue}>{formatDate(deadline)}</span>
           </div>
           <div className={css.actionsWrap}>
-            {onDateCompare() && <div className={css.deadlineIcon}></div>}
+            {onDateCompare(deadline) && <Icon id='bell' className={css.deadlineIcon}></Icon>}
             <ul className={css.actions}>
               <li className={css.actionItem}>
                 <button
                   type="button"
                   onClick={() => onChange(_id)}
                   className={css.actionBtn}
-                ></button>
+                >
+                  <Icon id="broken-right" className={css.actionIcon}/>
+                </button>
               </li>
               <li className={css.actionItem}>
                 <button
                   type="button"
                   onClick={() => onEdit(_id)}
                   className={css.actionBtn}
-                ></button>
+                >
+                  <Icon id="pencil" className={css.actionIcon}/>
+                </button>
               </li>
               <li className={css.actionItem}>
                 <button
                   type="button"
                   onClick={() => onDelete(_id)}
                   className={css.actionBtn}
-                ></button>
+                >
+                  <Icon id="trash" className={css.actionIcon}/>
+                </button>
               </li>
             </ul>
           </div>

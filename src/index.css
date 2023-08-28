@@ -4,6 +4,9 @@
   --background-color: #fdfdfd;
   --text-primary-color: #161616;
   --text-secondary-color: #000;
+  --bg-sidebar: #fff;
+  --bg-header: #fcfcfc;
+  --bg-screen: #f6f6f7;
   /* text-link */
   --text-color: rgba(22, 22, 22, 0.7);
   --text-link-color: #bedbb0;
@@ -14,43 +17,49 @@
   --icon-logo-background-color: #1f1f1f;
   --icon-logo-color: #fff;
   --icon-pop-up-color: rgba(22, 22, 22, 0.5);
-  --icon-pop-up-color-active: #161616; 
+  --icon-pop-up-color-active: #161616;
   --icon-card-color: rgba(22, 22, 22, 0.5);
   --icon-card-color-active: rgba(190, 219, 176, 1);
   --log-out-icon-color: #bedbb0;
   --log-out-icon-color-active: #9dc888;
   /* user avatar */
   --background-color: #f6f6f7;
-   --user-icon-color: #fff; 
+  --user-icon-color: #fff;
 }
 
-[data-theme='Light'] {
+[data-theme='light'] {
   --background-color: #fdfdfd;
   --text-primary-color: #161616;
   --text-secondary-color: #000;
+  --bg-sidebar: #fff;
+  --bg-header: #fcfcfc;
+  --bg-screen: #f6f6f7;
   /* text-link */
   --text-color: rgba(22, 22, 22, 0.7);
   --text-link-color: #bedbb0;
   /* button */
   --btn-bg-color: #bedbb0;
   --btn-bg-color-hover: #9dc888;
-   /* icon */
-   --icon-logo-background-color: #1f1f1f;
-   --icon-logo-color: #fff;
-   --icon-pop-up-color: rgba(22, 22, 22, 0.5);   
-   --icon-pop-up-color-active: #161616; 
-   --icon-card-color: rgba(22, 22, 22, 0.5);
-   --icon-card-color-active: rgba(190, 219, 176, 1);
-   --log-out-icon-color: #bedbb0;
-   --log-out-icon-color-active: #9dc888;
-   /* user avatar */
-   --background-color: #f6f6f7;
-    --user-icon-color: #fff; 
+  /* icon */
+  --icon-logo-background-color: #1f1f1f;
+  --icon-logo-color: #fff;
+  --icon-pop-up-color: rgba(22, 22, 22, 0.5);
+  --icon-pop-up-color-active: #161616;
+  --icon-card-color: rgba(22, 22, 22, 0.5);
+  --icon-card-color-active: rgba(190, 219, 176, 1);
+  --log-out-icon-color: #bedbb0;
+  --log-out-icon-color-active: #9dc888;
+  /* user avatar */
+  --background-color: #f6f6f7;
+  --user-icon-color: #fff;
 }
 
-[data-theme='Dark'] {
+[data-theme='dark'] {
   --background-color: #232323;
   --text-primary-color: #fff;
+  --bg-sidebar: #121212;
+  --bg-header: #161616;
+  --bg-screen: #1f1f1f;
   /* --text-secondary: none; */
   /* text-link */
   --text-color: rgba(255, 255, 255, 0.5);
@@ -58,42 +67,45 @@
   /* button */
   --btn-bg-color: #bedbb0;
   --btn-bg-color-hover: #9dc888;
-   /* icon */
-   --icon-logo-background-color: #1f1f1f;
-   --icon-logo-color: #fff;
-   --icon-pop-up-color: rgba(255, 255, 255, 0.5);
-   --icon-pop-up-color-active: #fff; 
-   --icon-card-color: rgba(255, 255, 255, 0.5);
-   --icon-card-color-active:  #bedbb0;
-   --log-out-icon-color: #bedbb0;
-   --log-out-icon-color-active: #9dc888;
-   /* user avatar */
-   --background-color: #1f1f1f; 
-   --user-icon-color: #151515;
+  /* icon */
+  --icon-logo-background-color: #1f1f1f;
+  --icon-logo-color: #fff;
+  --icon-pop-up-color: rgba(255, 255, 255, 0.5);
+  --icon-pop-up-color-active: #fff;
+  --icon-card-color: rgba(255, 255, 255, 0.5);
+  --icon-card-color-active: #bedbb0;
+  --log-out-icon-color: #bedbb0;
+  --log-out-icon-color-active: #9dc888;
+  /* user avatar */
+  --background-color: #1f1f1f;
+  --user-icon-color: #151515;
 }
 
-[data-theme='Violet'] {
+[data-theme='violet'] {
   --background-color: #d6d8ff;
   --text-primary-color: #fff;
   --text-secondary-color: #161616;
+  --bg-sidebar: #5255bc;
+  --bg-header: #fff;
+  --bg-screen: #ecedfd;
   /* text-link */
   --text-color: rgba(22, 22, 22, 0.7);
   --text-link-color: #5255BC;
   /* button */
   --btn-bg-color: #5255bc;
   --btn-bg-color-hover: #7b7ede;
-   /* icon */
-   --icon-logo-background-color: #ecedfd;
-   --icon-logo-color: #5255bc;
-   --icon-pop-up-color: rgba(22, 22, 22, 0.5);
-   --icon-pop-up-color-active: #161616; 
-   --icon-card-color: rgba(22, 22, 22, 0.5);
-   --icon-card-color-active:  #5255bc;
-   --log-out-icon-color: #fff;
-   --log-out-icon-color-active: #b8bcfd;
-   /* user avatar */
-   --background-color: #ecedfd; 
-    --user-icon-color: #fff;
+  /* icon */
+  --icon-logo-background-color: #ecedfd;
+  --icon-logo-color: #5255bc;
+  --icon-pop-up-color: rgba(22, 22, 22, 0.5);
+  --icon-pop-up-color-active: #161616;
+  --icon-card-color: rgba(22, 22, 22, 0.5);
+  --icon-card-color-active: #5255bc;
+  --log-out-icon-color: #fff;
+  --log-out-icon-color-active: #b8bcfd;
+  /* user avatar */
+  --background-color: #ecedfd;
+  --user-icon-color: #fff;
 }
 
 body {

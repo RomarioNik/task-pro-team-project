@@ -1,5 +1,5 @@
 .header {
-  background-color: var(--background-color);
+  background-color: var(--bg-header);
   /* background-color: red; */
   height: 60px;
   @media screen and (min-width: 768px) {

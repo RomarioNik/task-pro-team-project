@@ -1,5 +1,5 @@
 // import React, { useState } from 'react';
-import style from './HomePage.module.css';
+import css from './HomePage.module.css';
 import { Outlet } from 'react-router-dom';
 
 import Header from 'components/Header';
@@ -16,10 +16,10 @@ const HomePage = () => {
   return (
     !isLoading && (
       <>
-        <div className={style.test} data-theme={userTheme}>
+        <div className={css.test} data-theme={userTheme}>
           <div style={{ display: 'flex' }}>
             <Sidebar />
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <div className={css.homePage_wrap}>
               <Header />
               <Outlet />
               {/* <ScreensPage /> */}

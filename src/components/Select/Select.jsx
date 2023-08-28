@@ -3,12 +3,12 @@ import icon from '../../img/svg/sprite-icon.svg';
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { changeTheme } from 'redux/auth/operations';
+import { useUserData } from 'hooks/useUserData';
 
-export const Select = ({
-  option = ['Light', 'Dark', 'Violet'],
-  placeholder,
-}) => {
+export const Select = ({ option = [], placeholder }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const { userTheme } = useUserData();
+
   const dispatch = useDispatch();
   const ref = useRef(null);
 
@@ -29,35 +29,40 @@ export const Select = ({
     setIsOpen(!isOpen);
   };
   const handlerSelectedOption = ({ target }) => {
-    dispatch(changeTheme({ userTheme: target.textContent.toLowerCase() }));
+    const newTheme = target.textContent.toLowerCase();
+    if (newTheme === userTheme) return;
+
+    dispatch(changeTheme({ userTheme: newTheme }));
 
     setIsOpen(false);
   };
 
   return (
     <div className={css.select} ref={ref}>
-      <div className={css.select_btn} onClick={handlerIsOpen}>
-        <p>
-          {/* {!selectedOption
+      <button className={css.select_btn} onClick={handlerIsOpen}>
+        {/* {!selectedOption
             ? placeholder && typeof placeholder === 'string'
               ? placeholder
               : 'Select'
             : selectedOption} */}
-          {placeholder}
-        </p>
+        {placeholder}
+
         <svg width={16} height={16}>
           <use href={`${icon}#chevron-down`}></use>
         </svg>
-      </div>
+      </button>
       {isOpen && (
         <ul className={css.select_content}>
           {option.map((el, index) => (
-            <li
-              key={index}
-              className={css.select_item}
-              onClick={handlerSelectedOption}
-            >
-              {el}
+            <li key={index}>
+              <button
+                className={`${css.select_item} ${
+                  el.toLowerCase() === userTheme ? css.selected_item : ''
+                }  `}
+                onClick={handlerSelectedOption}
+              >
+                {el}
+              </button>
             </li>
           ))}
         </ul>

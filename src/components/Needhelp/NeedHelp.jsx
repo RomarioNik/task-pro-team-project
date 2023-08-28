@@ -1,9 +1,9 @@
-import Calendar from 'components/calendar/calendar';
+// import Calendar from 'components/calendar/calendar';
 import css from './CreateCardPopUp.module.css';
 import { useState } from 'react';
 
 export default function NeedHelp() {
-  const [selectedLabel, setSelectedLabel] = useState('Default');
+  // const [selectedLabel, setSelectedLabel] = useState('Default');
   const [titleValue, setTitleValue] = useState('');
   const [descriptionValue, setDescriptionValue] = useState('');
 

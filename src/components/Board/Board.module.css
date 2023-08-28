@@ -1,15 +1,9 @@
-.sectoion {
-    min-width: 1440px;
-    height: 150px;
-    border: #161616 solid 1px;
+.sectoion {    
     align-items: center;
     justify-content: center;
     background-color: var(--background-color);
 }
 
-.component {
-background-color: grey;
-}
 
 .container {
 width: 486px;

@@ -1,4 +1,3 @@
-
 .container {
   width: 486px;
   height: 72px;
@@ -15,7 +14,7 @@
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 24px;
-  color: var(--text-primary-color);
+  color: var(--text-secondary-color);
 }
 
 .title__container {
@@ -24,11 +23,12 @@
   justify-content: space-between;
 }
 
+.column__item {
+  display: flex;
+}
 
 .column__container {
-  display: flex;
-  /* align-items: center;
-  justify-content: space-between; */
+  display: flex;  
 }
 
 .button__create {
@@ -37,29 +37,27 @@
   height: 56px;
   align-items: center;
   justify-content: center;
-  background-color: #fff;
+  background-color: var(--bg-column-title);
   margin-left: 24px;
-  /* border: #161616 solid 1px; */
-  /* padding: 0;
-  margin: 0; */
   border-radius: 8px;
 }
 
 .button__icon__background {
-  background-color: #161616; 
-  width: 28px; 
+  background-color: var(--icon-btn-plus-bg);
+  width: 28px;
   height: 28px;
   margin-right: 15px;
-  padding: 7px; 
-  border-radius: 8px; 
+  padding: 7px;
+  border-radius: 8px;
 }
 .button__create__icon {
- width: 14px; 
- height: 14px;
- stroke: #fff;    
+  width: 14px;
+  height: 14px;
+  stroke: var(--icon-btn-plus);
 }
 
 .button__create__title {
   font-size: 14;
   font-weight: 500;
+  color: var(--icon-btn-plus-bg);
 }

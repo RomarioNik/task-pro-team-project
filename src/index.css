@@ -4,9 +4,11 @@
   --background-color: #fdfdfd;
   --text-primary-color: #161616;
   --text-secondary-color: #000;
+  --text-btn-column: #161616;
   --bg-sidebar: #fff;
   --bg-header: #fcfcfc;
   --bg-screen: #f6f6f7;
+  --bg-column-title:#fff;
   /* Select */
   --text-select-color: #bedbb0;
 
@@ -25,6 +27,8 @@
   --icon-card-color-active: rgba(190, 219, 176, 1);
   --log-out-icon-color: #bedbb0;
   --log-out-icon-color-active: #9dc888;
+  --icon-btn-plus:#fff;
+  --icon-btn-plus-bg: #161616;
   /* user avatar */
   --background-color: #f6f6f7;
   --user-icon-color: #fff;
@@ -35,9 +39,11 @@
   --text-primary-color: #161616;
   --text-secondary-color: #000;
   --text-select-color: #bedbb0;
+  --text-btn-column: #161616;
   --bg-sidebar: #fff;
   --bg-header: #fcfcfc;
   --bg-screen: #f6f6f7;
+  --bg-column-title:#fff;
   /* text-link */
   --text-color: rgba(22, 22, 22, 0.7);
   --text-link-color: #bedbb0;
@@ -54,6 +60,8 @@
   --icon-card-color-active: rgba(190, 219, 176, 1);
   --log-out-icon-color: #bedbb0;
   --log-out-icon-color-active: #9dc888;
+  --icon-btn-plus:#fff;
+  --icon-btn-plus-bg: #161616;
   /* user avatar */
   --background-color: #f6f6f7;
   --user-icon-color: #fff;
@@ -68,9 +76,12 @@
 [data-theme='dark'] {
   --background-color: #232323;
   --text-primary-color: #fff;
+  --text-secondary-color: #fff;
+  --text-btn-column: #161616;
   --bg-sidebar: #121212;
   --bg-header: #161616;
   --bg-screen: #1f1f1f;
+  --bg-column-title:#121212;
   /* --text-secondary: none; */
   /* Select */
   --select-bg-color: #151515;
@@ -90,6 +101,8 @@
   --icon-card-color-active: #bedbb0;
   --log-out-icon-color: #bedbb0;
   --log-out-icon-color-active: #9dc888;
+  --icon-btn-plus:#161616;
+  --icon-btn-plus-bg: #ffffff;
   /* user avatar */
   --background-color: #1f1f1f;
   --user-icon-color: #151515;
@@ -105,9 +118,11 @@
   --background-color: #d6d8ff;
   --text-primary-color: #fff;
   --text-secondary-color: #161616;
+  --text-btn-column: #fff;
   --bg-sidebar: #5255bc;
   --bg-header: #fff;
   --bg-screen: #ecedfd;
+  --bg-column-title:#fff;
   /* text-link */
   --text-color: rgba(22, 22, 22, 0.7);
   --text-link-color: #5255bc;
@@ -124,6 +139,8 @@
   --icon-card-color-active: #5255bc;
   --log-out-icon-color: #fff;
   --log-out-icon-color-active: #b8bcfd;
+  --icon-btn-plus:#fff;
+  --icon-btn-plus-bg: #5255bc;
   /* user avatar */
   --background-color: #ecedfd;
   --user-icon-color: #fff;

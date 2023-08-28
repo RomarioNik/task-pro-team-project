@@ -1,6 +1,4 @@
-
 import React from 'react';
-
 
 // import icon from '../../img/svg/sprite-icon.svg'
 import style from './Board.module.css'
@@ -22,10 +20,6 @@ const Board = () => {
 
   return (
     <div className={style.sectoion}>
-        
-      <div className={style.component}>Home Board component</div>
-    
-
       {/* <div>
         <select value={theme} onChange={switchTheme}>
           <option>Light</option>

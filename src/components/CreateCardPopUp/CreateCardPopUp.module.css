@@ -1,4 +1,4 @@
-.modalBackdrop {
+/* .modalBackdrop {
   position: fixed;
   top: 0;
   left: 0;
@@ -9,9 +9,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */
 
-.modalBody {
+/* .modalBody {
   position: fixed;
   display: inline-block;
   border-radius: 8px;
@@ -25,7 +25,7 @@
 
   margin-right: auto;
   margin-left: auto;
-}
+} */
 .closeIcon {
   rotate: 45deg;
   width: 18px;

@@ -8,39 +8,28 @@ export default function NeedHelp() {
   const [descriptionValue, setDescriptionValue] = useState('');
 
   return (
-    <div className={css.modalBackdrop}>
-      <div className={css.modalBody}>
-        <span
-          type="button"
-          className={css.closeIconContainer}
-          onClick={'onClose'}
-        >
-          <svg className={css.closeIcon}>
-            <use xlinkHref={`${sprite}#plus`} />
-          </svg>
-        </span>
-        <h3 className={css.modalTitle}>Need help</h3>
-        <form action="" className={css.inputForm}>
-          <input
-            type="text"
-            action=""
-            placeholder="Email address"
-            value={titleValue}
-            onChange={event => setTitleValue(event.target.value)}
-            className={css.inputCardTitle}
-          />
-          <textarea
-            type="text"
-            action=""
-            placeholder="Comment"
-            value={descriptionValue}
-            onChange={event => setDescriptionValue(event.target.value)}
-            className={css.inputCardDescription}
-          />
-        </form>
+    <div className={css.modalBody}>
+      <h3 className={css.modalTitle}>Need help</h3>
+      <form action="" className={css.inputForm}>
+        <input
+          type="text"
+          action=""
+          placeholder="Email address"
+          value={titleValue}
+          onChange={event => setTitleValue(event.target.value)}
+          className={css.inputCardTitle}
+        />
+        <textarea
+          type="text"
+          action=""
+          placeholder="Comment"
+          value={descriptionValue}
+          onChange={event => setDescriptionValue(event.target.value)}
+          className={css.inputCardDescription}
+        />
+      </form>
 
-        <button className={css.inputAddBtn}>Send</button>
-      </div>
+      <button className={css.inputAddBtn}>Send</button>
     </div>
   );
 }

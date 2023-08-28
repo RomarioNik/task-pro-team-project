@@ -2,6 +2,10 @@
   background-color: grey;
 }
 
+.column {
+  display: inline-block;
+}
+
 .column__section {
   background-color: #fff;
   margin-left: 24px;
@@ -54,9 +58,10 @@
 
 .column__icon {
   stroke: var(--icon-pop-up-color);
+
   width: 16px;
   height: 16px;
-  fill:#161616;
+  /* fill:red; */
 }
 
 

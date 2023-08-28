@@ -7,6 +7,9 @@
   --bg-sidebar: #fff;
   --bg-header: #fcfcfc;
   --bg-screen: #f6f6f7;
+  /* Select */
+  --text-select-color: #bedbb0;
+
   /* text-link */
   --text-color: rgba(22, 22, 22, 0.7);
   --text-link-color: #bedbb0;
@@ -33,6 +36,7 @@
   --background-color: #fdfdfd;
   --text-primary-color: #161616;
   --text-secondary-color: #000;
+  --text-select-color: #bedbb0;
   --bg-sidebar: #fff;
   --bg-header: #fcfcfc;
   --bg-screen: #f6f6f7;
@@ -40,6 +44,7 @@
   --btn-bg-color: #bedbb0;
   --btn-bg-color-hover: #9dc888;
   /* icon */
+  --mobile-menu-icon: #161616;
   --icon-logo-background-color: #1f1f1f;
   --icon-logo-color: #fff;
   --icon-pop-up-color: rgba(22, 22, 22, 0.5);
@@ -68,6 +73,8 @@
   --modal-level-color: rgba(255, 255, 255, 0.3);
   --modal-secondary-text-color: rgba(255, 255, 255, 0.1);
   /* --text-secondary: none; */
+  /* Select */
+  --select-bg-color: #151515;
   /* text-link */
   --text-color: rgba(255, 255, 255, 0.5);
   --text-link-color: #bedbb0;
@@ -75,6 +82,7 @@
   --btn-bg-color: #bedbb0;
   --btn-bg-color-hover: #9dc888;
   /* icon */
+  --mobile-menu-icon: #ffffff;
   --icon-logo-background-color: #1f1f1f;
   --icon-logo-color: #fff;
   --icon-pop-up-color: rgba(255, 255, 255, 0.5);
@@ -105,6 +113,7 @@
   --btn-bg-color: #5255bc;
   --btn-bg-color-hover: #7b7ede;
   /* icon */
+  --mobile-menu-icon: #161616;
   --icon-logo-background-color: #ecedfd;
   --icon-logo-color: #5255bc;
   --icon-pop-up-color: rgba(22, 22, 22, 0.5);
@@ -122,6 +131,10 @@
   --task-card-description-color: rgba(22, 22, 22, 0.7);
   --task-card-secondary-title-color: rgba(22, 22, 22, 0.5);
   --task-card--line-color: rgba(22, 22, 22, 0.1);
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {

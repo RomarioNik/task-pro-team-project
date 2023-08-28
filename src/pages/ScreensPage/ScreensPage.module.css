@@ -1,0 +1,25 @@
+
+.button__filter {
+    display: flex;
+    width: 64px;
+    height: 20px;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin-left: auto;
+    }
+
+    .button__filter__icon {
+        width: 13px; 
+        height: 12px;
+        align-items: center;
+        justify-content: center;
+        stroke: rgba(22, 22, 22, 0.8);      
+    }
+
+    .button__filter__title {
+        font-size: 12px;
+        font-weight: 500;
+        margin-left: 8px;
+        color: rgba(22, 22, 22, 0.8);
+    }

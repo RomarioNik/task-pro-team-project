@@ -1,46 +1,46 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
-import { createPortal } from 'react-dom';
+// import { createPortal } from 'react-dom';
 import { useUserData } from 'hooks/useUserData';
 
 import css from './EditProfile.module.css';
 
-const modalRoot = document.querySelector('#modalRoot');
+// const modalRoot = document.querySelector('#modalRoot');
 
-const EditProfile = ({ onClose }) => {
-  useEffect(() => {
-    const keyDown = event => {
-      if (event.code === 'Escape') {
-        onClose();
-      }
-    };
+const EditProfile = () => {
+  // useEffect(() => {
+  //   const keyDown = event => {
+  //     if (event.code === 'Escape') {
+  //       onClose();
+  //     }
+  //   };
 
-    window.addEventListener('keydown', keyDown);
+  //   window.addEventListener('keydown', keyDown);
 
-    return () => {
-      window.removeEventListener('keydown', keyDown);
-    };
-  }, [onClose]);
+  //   return () => {
+  //     window.removeEventListener('keydown', keyDown);
+  //   };
+  // }, [onClose]);
 
-  const onOverlayClose = event => {
-    if (event.currentTarget === event.target) {
-      onClose();
-    }
-  };
+  // const onOverlayClose = event => {
+  //   if (event.currentTarget === event.target) {
+  //     onClose();
+  //   }
+  // };
 
-  const modalClose = event => {
-    onClose();
-  };
+  // const modalClose = event => {
+  //   onClose();
+  // };
 
   const user = useUserData();
 
-  return createPortal(
-    <div onClick={onOverlayClose} className={css.overlay}>
+  return (
+    // <div onClick={onOverlayClose} className={css.overlay}>
       <div className={css.modal}>
         <h2 className={css.titleName}>Edit profile</h2>
-        <button type="button" className={css.btnClose} onClick={modalClose}>
+        {/* <button type="button" className={css.btnClose} onClick={modalClose}>
           Модалка ЗАКРОЙСЯ
-        </button>
+        </button> */}
         <form className={css.formStyle}>
           <label className={css.labelStyle}>
             <input className={css.inputName} type="text" placeholder={user.name} />
@@ -60,8 +60,8 @@ const EditProfile = ({ onClose }) => {
           </button>
         </form>
       </div>
-    </div>,
-    modalRoot
+    // </div>,
+    // modalRoot
   );
 };
 

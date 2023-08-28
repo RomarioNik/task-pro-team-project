@@ -1,10 +1,3 @@
-:root {
-  --color-default: #8fa1d0; /* Здесь указывается цвет по умолчанию */
-  --color-low: #e09cb5;
-  --color-medium: #bedbb0;
-  --color-high: #ffffff4d;
-}
-
 .modalBackdrop {
   position: fixed;
   top: 0;

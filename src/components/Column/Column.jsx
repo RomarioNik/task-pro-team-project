@@ -28,9 +28,8 @@ const Column = () => {
   // };
   //*отсюда передать тему в глобальній стейт и записать в юзера
   const addColumn = () => {
-    console.log('Add column')
-  }
-
+    console.log('Add column');
+  };
 
   return (
     <div
@@ -45,18 +44,18 @@ const Column = () => {
           <option>Violet</option>
         </select>
       </div> */}
-      <ul>{
-        columns.map(({name, id}) => 
-<li key={id} className={style.column}>
-          <div className={style.column__section}>
-            <p className={style.column_title}>{name}</p>
-            <div className={style.column__edit__button}>
-              <button>
-              <Icon id='pencil'className={style.column__icon}/>
+      <ul>
+        {columns.map(({ name, id }) => (
+          <li key={id} className={style.column}>
+            <div className={style.column__section}>
+              <p className={style.column_title}>{name}</p>
+              <div className={style.column__edit__button}>
+                <button>
+                  <Icon id="pencil" className={style.column__icon} />
                 </button>
-              <button>
-              <Icon id='trash'className={style.column__icon}/>
-                {/* <svg className={style.column__icon}>
+                <button>
+                  <Icon id="trash" className={style.column__icon} />
+                  {/* <svg className={style.column__icon}>
                   <use xlinkHref={`${icon}#trash`}></use>
                 </svg> */}
                 </button>

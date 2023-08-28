@@ -27,6 +27,10 @@ const Column = () => {
   //   setTheme(e.target.value);
   // };
   //*отсюда передать тему в глобальній стейт и записать в юзера
+  const addColumn = () => {
+    console.log('Add column')
+  }
+
 
   return (
     <div 
@@ -44,16 +48,13 @@ const Column = () => {
       </div> */}
       <ul>{
         columns.map(({name, id}) => 
-<li key={id}>
+<li key={id} className={style.column}>
           <div className={style.column__section}>
             <p className={style.column_title}>{name}</p>
             <div className={style.column__edit__button}>
               <button>
               <Icon id='pencil'className={style.column__icon}/>
-                {/* <svg className={style.column__icon}>
-                  <use href={`${icon}#pencil`}></use>
-                </svg> */}
-              </button>
+                </button>
               <button>
               <Icon id='trash'className={style.column__icon}/>
                 {/* <svg className={style.column__icon}>

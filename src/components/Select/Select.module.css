@@ -5,6 +5,7 @@
 }
 
 .select_btn {
+  color: var(--slider-text);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,14 +24,16 @@
   cursor: pointer;
 }
 .select_content {
-  background-color: var(--select-bg-color);
-  border: 1px solid var(--bg-screen);
+  background-color: var(--bg-select);
+
+  border: 1px solid var(--slider-border-color);
   border-radius: 8px;
   margin-top: 1px;
   padding: 4px 8px;
 }
 
 .select_item {
+  color: var(--select-text-color);
   text-align: center;
   transition: all 200ms linear;
   cursor: pointer;
@@ -40,6 +43,11 @@
   &:hover,
   &:focus {
     transform: scale(1.1);
-    color: var(--text-link-color);
+    color: var(--select-active-color);
   }
+}
+
+.selected_item {
+  transform: scale(1.1);
+  color: var(--select-active-color);
 }

@@ -29,7 +29,11 @@ const Modal = ({ children, openModal }) => {
   return createPortal(
     <div className={style.backdrop} onClick={handleBackdropClick}>
       <div className={style.modal}>
-        <button type="button" className={style.closeIcon} onClick={handleBackdropClick}>
+        <button
+          type="button"
+          className={style.closeIcon}
+          onClick={handleBackdropClick}
+        >
           <svg className={style.icon}>
             <use href={sprite + '#plus'} />
           </svg>

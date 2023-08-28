@@ -46,7 +46,7 @@ const App = () => {
           element={<PrivateRoute redirectTo="/auth/login" component={<HomePage />} />}
         >
           <Route path=":boardName" element={<ScreensPage />} />
-          {/* <Route path="test" element={<ScreensPage />} /> */}
+        
         </Route>
         <Route path="*" element={<NotFound />} />
       </Route>

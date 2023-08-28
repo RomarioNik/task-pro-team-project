@@ -1,6 +1,7 @@
 // import React, { useState } from 'react';
 // import icon from '../../img/svg/sprite-icon.svg'
 import style from './Board.module.css'
+
 // import { Link } from 'react-router-dom';
 
 const Board = () => {
@@ -10,6 +11,11 @@ const Board = () => {
   //   setTheme(e.target.value);
   // };
   //*отсюда передать тему в глобальній стейт и записать в юзера
+
+  const openModal = () => {
+    console.log('Create board')
+  }
+
 
   return (
     <div className={style.sectoion}>
@@ -24,7 +30,7 @@ const Board = () => {
           <option>Violet</option>
         </select>
       </div> */}
-      <div className={style.container}>Before starting your project, it is essential <button type='button' className={style.button_create}> to create a board </button> to visualize and track all the necessary tasks and milestones. This board serves as a powerful tool to organize the workflow and ensure effective collaboration among team members.
+      <div className={style.container}>Before starting your project, it is essential <button type='button' className={style.button_create} onClick={openModal}> to create a board </button> to visualize and track all the necessary tasks and milestones. This board serves as a powerful tool to organize the workflow and ensure effective collaboration among team members.
 
 
 </div>

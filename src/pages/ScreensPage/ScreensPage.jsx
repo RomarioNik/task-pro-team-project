@@ -2,8 +2,8 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import Board from 'components/Board';
 import BoardCreated from 'components/BoardCreated';
-import Column from 'components/Column';
-import icon from '../../img/svg/sprite-icon.svg';
+// import Column from 'components/Column';
+// import icon from '../../img/svg/sprite-icon.svg';
 import {Icon} from '../../components/Svg/Icon'
 import style from './ScreensPage.module.css';
 

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import icon from '../../img/svg/sprite-icon.svg'
+import React from 'react';
+// import icon from '../../img/svg/sprite-icon.svg'
 import style from './Board.module.css'
 
 // import { Link } from 'react-router-dom';

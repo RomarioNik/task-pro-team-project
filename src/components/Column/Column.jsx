@@ -34,6 +34,7 @@ const Column = () => {
     <div
     // style={{ border: '#161616 solid 2px' }}
     >
+
       {/* <p className={style.board_title}>{BoardName}</p> */}
       {/* <p className={style.board_title}>Project office</p> */}
       {/* <div>

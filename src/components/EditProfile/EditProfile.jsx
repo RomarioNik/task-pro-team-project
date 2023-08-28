@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { createPortal } from 'react-dom';
+import { useUserData } from 'hooks/useUserData';
 
 import css from './EditProfile.module.css';
 
@@ -31,6 +32,8 @@ const EditProfile = ({ onClose }) => {
     onClose();
   };
 
+  const user = useUserData();
+
   return createPortal(
     <div onClick={onOverlayClose} className={css.overlay}>
       <div className={css.modal}>
@@ -40,10 +43,10 @@ const EditProfile = ({ onClose }) => {
         </button>
         <form className={css.formStyle}>
           <label className={css.labelStyle}>
-            <input className={css.inputName} type="text" placeholder="Name" />
+            <input className={css.inputName} type="text" placeholder={user.name} />
           </label>
           <label className={css.labelStyle}>
-            <input className={css.inputName} type="email" placeholder="Email" />
+            <input className={css.inputName} type="email" placeholder={user.email} />
           </label>
           <label className={css.labelStyle}>
             <input

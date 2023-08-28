@@ -4,6 +4,7 @@ import Board from 'components/Board';
 import BoardCreated from 'components/BoardCreated';
 import Column from 'components/Column';
 import icon from '../../img/svg/sprite-icon.svg';
+import {Icon} from '../../components/Svg/Icon'
 import style from './ScreensPage.module.css';
 
 const ScreensPage = () => {
@@ -38,14 +39,15 @@ const ScreensPage = () => {
       <div>ScreensPage</div>
       {/* <p>Board Name = {boardName}</p> */}
       <button className={style.button__filter} type="button" onClick={filter}>
-        <svg className={style.button__filter__icon}>
+      <Icon id='filter'className={style.button__filter__icon}/>
+        {/* <svg className={style.button__filter__icon}>
           <use href={`${icon}#filter`}></use>
-        </svg>
+        </svg> */}
         <p className={style.button__filter__title}>Filter</p>
       </button>
       <Board />
-      <BoardCreated />
-      <Column />
+      <BoardCreated /> 
+      {/* <Column />  */}
     </div>
   );
 };

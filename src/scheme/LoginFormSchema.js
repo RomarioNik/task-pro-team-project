@@ -5,10 +5,11 @@ export const loginFormSchema = yup.object().shape({
     .string()
     .required('Email is required')
     .matches(
-      /^[a-zA-Z0-9!@#$%^&*()_+{}\[\]:;<>,.?~-]+$/, // eslint-disable-next-line
+      // /^[a-zA-Z0-9!@#$%^&*()_+{}\[\]:;<>,.?~-]+$/,
+      /^[a-zA-Z0-9!@#$%^&*()_+{}[\]:;<>,.?~-]+$/,
       'Invalid email format'
     )
-    .trim(),    
+    .trim(),
 
   password: yup
     .string()
@@ -18,5 +19,5 @@ export const loginFormSchema = yup.object().shape({
       /^[A-Za-z0-9!@#$%^&*()_+=\-[\]{}|\\:;"'<>,.?/~`]+$/,
       'Invalid password format'
     )
-    .required('Password is required'),   
+    .required('Password is required'),
 });

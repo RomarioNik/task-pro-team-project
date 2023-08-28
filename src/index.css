@@ -28,6 +28,9 @@
   /* user avatar */
   --background-color: #f6f6f7;
   --user-icon-color: #fff;
+  /* modal */
+  --modal-level-color: rgba(22, 22, 22, 0.3);
+  --modal-secondary-text-color: rgba(22, 22, 22, 0.1);
 }
 
 [data-theme='light'] {
@@ -63,6 +66,9 @@
   --task-card-description-color: rgba(22, 22, 22, 0.7);
   --task-card-secondary-title-color: rgba(22, 22, 22, 0.5);
   --task-card--line-color: rgba(22, 22, 22, 0.1);
+  /* modal */
+  --modal-level-color: rgba(22, 22, 22, 0.3);
+  --modal-secondary-text-color: rgba(22, 22, 22, 0.1);
 }
 
 [data-theme='dark'] {
@@ -99,6 +105,9 @@
   --task-card-description-color: rgba(255, 255, 255, 0.5);
   --task-card-secondary-title-color: rgba(22, 22, 22, 0.5);
   --task-card--line-color: rgba(22, 22, 22, 0.1);
+  /* modal */
+  --modal-level-color: rgba(255, 255, 255, 0.3);
+  --modal-secondary-text-color: rgba(255, 255, 255, 0.1);
 }
 
 [data-theme='violet'] {
@@ -133,6 +142,9 @@
   --task-card-description-color: rgba(22, 22, 22, 0.7);
   --task-card-secondary-title-color: rgba(22, 22, 22, 0.5);
   --task-card--line-color: rgba(22, 22, 22, 0.1);
+  /* modal */
+  --modal-level-color: rgba(22, 22, 22, 0.3);
+  --modal-secondary-text-color: rgba(22, 22, 22, 0.1);
 }
 
 * {

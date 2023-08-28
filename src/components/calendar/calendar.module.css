@@ -14,7 +14,6 @@
   flex-direction: row;
   max-width: 250px;
   padding: 0;
-
   justify-content: left;
 }
 
@@ -29,16 +28,16 @@
   background-color: transparent;
 }
 
-.myButton::after {
-  content: ''; /* Обязательно должно быть содержимое, например, пустая строка */
+/* .myButton::after {
+  content: '';
   display: inline-block;
   width: 24px;
   height: 24px;
-  background: url() -24px -24px; /* Измените координаты в соответствии с вашим спрайтом */
-}
+  background: url('') -24px -24px;
+} */
 
-.radioOptionHigh {
+/* .radioOptionHigh {
   width: 44px;
   color: #e09cb5;
   background-color: #e09cb5;
-}
+} */

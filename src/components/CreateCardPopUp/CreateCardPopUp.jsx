@@ -4,6 +4,10 @@ import { useState } from 'react';
 
 import sprite from '../img/svg/sprite-icon.svg';
 
+///////////////aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+//////////////////aaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
 // import Icon from '../img/svg/Icon.jsx';
 
 // const CustomRadio = ({ value, checked, onChange }) => {
@@ -26,10 +30,7 @@ import sprite from '../img/svg/sprite-icon.svg';
 
 const CustomRadio = ({ value, checked, onChange, color }) => {
   return (
-    <label
-      className={`${css.customRadio} ${checked ? css.checked : ''}`}
-      style={{ color }}
-    >
+    <label className={`${css.customRadio} ${checked ? css.checked : ''}`}>
       <input
         type="radio"
         name="radioGroup"
@@ -38,14 +39,11 @@ const CustomRadio = ({ value, checked, onChange, color }) => {
         onChange={onChange}
         className={css.hiddenRadio}
       />
-      <svg className={css.customIcon}>
+      <svg className={`${css.customIcon}`} style={{ fill: `${color}` }}>
         <use
-          xlinkHref={
-            // `${sprite}#radio-button`
-            `${sprite}#radio-button${value}-${
-              checked ? 'checked' : 'unchecked'
-            }`
-          }
+          xlinkHref={`${sprite}#radio-button-${
+            checked ? 'checked' : 'unchecked'
+          }`}
         />
       </svg>
     </label>
@@ -54,10 +52,11 @@ const CustomRadio = ({ value, checked, onChange, color }) => {
 
 export default function CreateCardPopUp() {
   const [selectedLabel, setSelectedLabel] = useState('Default');
+  const [titleValue, setTitleValue] = useState('');
+  const [descriptionValue, setDescriptionValue] = useState('');
 
   const handleRadioChange = event => {
     setSelectedLabel(event.target.value);
-    console.log(selectedLabel);
   };
 
   return (
@@ -69,18 +68,22 @@ export default function CreateCardPopUp() {
             type="text"
             action=""
             placeholder="Title"
+            value={titleValue}
+            onChange={event => setTitleValue(event.target.value)}
             className={css.inputCardTitle}
           />
           <textarea
             type="text"
             action=""
             placeholder="Description"
+            value={descriptionValue}
+            onChange={event => setDescriptionValue(event.target.value)}
             className={css.inputCardDescription}
           />
           <div action="" className={css.inputLabelColorContainer}>
             <h4 className={css.inputLabelColor}>Label color</h4>
 
-            <input
+            {/* <input
               type="radio"
               name="radioGroup"
               value="Default"
@@ -116,32 +119,32 @@ export default function CreateCardPopUp() {
               checked={selectedLabel === 'High'}
               onChange={handleRadioChange}
               className={css.radioOptionHigh}
-            />
+            /> */}
           </div>
 
           <CustomRadio
-            color="black"
+            color="#8fa1d04D"
             value="Default"
             checked={selectedLabel === 'Default'}
             onChange={handleRadioChange}
           />
 
           <CustomRadio
-            color="black"
+            color="#E09CB54D"
             value="Low"
             checked={selectedLabel === 'Low'}
             onChange={handleRadioChange}
           />
 
           <CustomRadio
-            color="black"
+            color="#BEDBB04D"
             value="Medium"
             checked={selectedLabel === 'Medium'}
             onChange={handleRadioChange}
           />
 
           <CustomRadio
-            color="black"
+            color="#FFFFFF4D"
             value="High"
             checked={selectedLabel === 'High'}
             onChange={handleRadioChange}
@@ -152,12 +155,12 @@ export default function CreateCardPopUp() {
           <h4 action="" className={css.deadlineTitle}>
             Deadline
           </h4>
-          <div className={css.calendarContainer}>
-            <Calendar />
-            {/* <svg className={css.chevronDown}>
+
+          <Calendar />
+          {/* <svg className={css.chevronDown}>
               <use xlinkHref={`${sprite}#chevron-down`} />
             </svg> */}
-          </div>
+          {/* <CalendarCom /> */}
         </div>
 
         <button className={`${css.inputAddBtn} buttonWithIcon`}>

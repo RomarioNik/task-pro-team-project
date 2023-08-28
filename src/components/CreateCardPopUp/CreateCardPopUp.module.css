@@ -1,3 +1,10 @@
+:root {
+  --color-default: #8fa1d0; /* Здесь указывается цвет по умолчанию */
+  --color-low: #e09cb5;
+  --color-medium: #bedbb0;
+  --color-high: #ffffff4d;
+}
+
 .modalBackdrop {
   position: fixed;
   top: 0;
@@ -143,7 +150,11 @@
   cursor: pointer;
 }
 
-.inputAddBtn:focus:hover {
+.inputAddBtn:focus {
+  background: #9dc888;
+}
+
+.inputAddBtn:hover {
   background: #9dc888;
 }
 
@@ -185,55 +196,11 @@
 }
 
 .customIcon {
-  width: 20px; /* Задайте ширину и высоту иконки */
-  height: 20px;
-  /* stroke: white; */
+  width: 14px;
+  height: 14px;
 }
 
 .checked .customIcon {
-  fill: white; /* Задайте цвет иконки для выбранного состояния */
-}
-
-/* Стили для не выбранного состояния */
-#radio-Default-unchecked {
-  /* Стили для не выбранного состояния иконки Default */
-}
-
-#radio-Low-unchecked {
-  /* Стили для не выбранного состояния иконки Low */
-}
-
-#radio-Medium-unchecked {
-  /* Стили для не выбранного состояния иконки Medium */
-}
-
-#radio-High-unchecked {
-  /* Стили для не выбранного состояния иконки High */
-}
-
-/* Стили для выбранного состояния */
-#radio-Default-checked {
-  /* Стили для выбранного состояния иконки Default */
-}
-
-#radio-Low-checked {
-  /* Стили для выбранного состояния иконки Low */
-}
-
-#radio-Medium-checked {
-  /* Стили для выбранного состояния иконки Medium */
-}
-
-#radio-High-checked {
-  /* Стили для выбранного состояния иконки High */
-}
-.chevronDown {
-  width: 50px;
-  height: 50px;
-  stroke: white;
-}
-.calendarContainer {
-  display: flex;
-  flex-direction: row;
-  position: relative;
+  width: 14px;
+  height: 14px;
 }

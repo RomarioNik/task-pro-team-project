@@ -10,8 +10,6 @@ import dayjs from 'dayjs';
 import { useState } from 'react';
 
 import css from './calendar.module.css';
-import sprite from '../img/svg/sprite-icon.svg';
-// import { Icon } from '../img/svg/Icon';
 
 function ButtonField(props) {
   const {
@@ -36,19 +34,6 @@ function ButtonField(props) {
         '&:hover': {
           backgroundColor: 'inherit',
         },
-        position: 'relative',
-        '&::after': {
-          content: "''",
-          stroke: 'white',
-          position: 'absolute',
-          width: '16px', // Установите ширину и высоту SVG
-          height: '16px',
-          backgroundImage: `url(${sprite}#chevron-down)`, // Путь к спрайту и ID SVG
-          backgroundSize: 'cover', // Растягиваем SVG на размер псевдоэлемента
-          top: '50%',
-          left: 'calc(100% + 8px)', // Расстояние между кнопкой и SVG
-          transform: 'translateY(-50%)',
-        },
       }}
       id={id}
       disabled={disabled}
@@ -57,7 +42,6 @@ function ButtonField(props) {
       onClick={() => setOpen?.(prev => !prev)}
       className={css.myButton}
     >
-      {/* <StyledLabel>{label ?? 'Pick a date'}</StyledLabel> */}
       {label ?? 'Pick a date'}
     </Button>
   );
@@ -116,3 +100,33 @@ export default function Calendar() {
     </LocalizationProvider>
   );
 }
+
+// function CalendarCom() {
+//   const [open, setOpen] = useState(false);
+//   const [selectedDate, setSelectedDate] = useState(null);
+
+//   const handleDateChange = date => {
+//     setSelectedDate(date);
+//     setOpen(false);
+//   };
+
+//   return (
+//     <LocalizationProvider dateAdapter={AdapterDayjs}>
+//       <div>
+//         <button onClick={() => setOpen(true)}>
+//           {selectedDate ? selectedDate.toDateString() : 'Выберите дату'}
+//         </button>
+//         {open && (
+//           <DateCalendar
+//             open={open}
+//             date={selectedDate}
+//             onChange={handleDateChange}
+//             onClose={() => setOpen(false)}
+//           />
+//         )}
+//       </div>
+//     </LocalizationProvider>
+//   );
+// }
+
+// export default CalendarCom;

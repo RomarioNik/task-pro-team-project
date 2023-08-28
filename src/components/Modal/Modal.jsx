@@ -29,11 +29,11 @@ const Modal = ({ children, openModal }) => {
   return createPortal(
     <div className={style.backdrop} onClick={handleBackdropClick}>
       <div className={style.modal}>
-        <div className={style.closeIcon}>
+        <button type="button" className={style.closeIcon}>
           <svg className={style.icon} onClick={handleBackdropClick}>
             <use href={sprite + '#plus'} />
           </svg>
-        </div>
+        </button>
         <div>{children}</div>
       </div>
     </div>,
@@ -45,10 +45,9 @@ export default Modal;
 
 // =================for testing============================================================================
 
-    //  const [openModal, setOpenModal] = useState(false)
+//  const [openModal, setOpenModal] = useState(false)
 
-  
-    //     <>
-    //         <p onClick={() => setOpenModal(true)}>Open</p>
-    //         {openModal && <Modal children={<YOU MODAL COMPONENT/>} openModal={setOpenModal} />}
-    //     </>
+//     <>
+//         <p onClick={() => setOpenModal(true)}>Open</p>
+//         {openModal && <Modal children={<YOU MODAL COMPONENT/>} openModal={setOpenModal} />}
+//     </>

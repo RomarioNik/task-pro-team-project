@@ -1,0 +1,43 @@
+.myButton {
+  color: #bedbb0;
+
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.28px;
+  border: 0px solid;
+  text-transform: inherit;
+  justify-content: left;
+  display: inline-block;
+  display: flex;
+  flex-direction: row;
+  max-width: 250px;
+  padding: 0;
+  justify-content: left;
+}
+
+.myButton:hover {
+  color: #9dc888;
+  border: none;
+  background-color: transparent;
+}
+.myButton:focus {
+  color: #9dc888;
+  border: none;
+  background-color: transparent;
+}
+
+/* .myButton::after {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: url('') -24px -24px;
+} */
+
+/* .radioOptionHigh {
+  width: 44px;
+  color: #e09cb5;
+  background-color: #e09cb5;
+} */

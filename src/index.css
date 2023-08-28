@@ -32,6 +32,9 @@
   /* user avatar */
   --background-color: #f6f6f7;
   --user-icon-color: #fff;
+  /* modal */
+  --modal-level-color: rgba(22, 22, 22, 0.3);
+  --modal-secondary-text-color: rgba(22, 22, 22, 0.1);
 }
 
 [data-theme='light'] {
@@ -44,6 +47,15 @@
   --bg-header: #fcfcfc;
   --bg-screen: #f6f6f7;
   --bg-column-title:#fff;
+  /* SELECT */
+  --bg-select: #fcfcfc;
+  --select-active-color: #bedbb0;
+  --slider-border-color: #bedbb0;
+  --select-text-color: #161616;
+  --slider-text: rgba(22, 22, 22, 0.8);
+  /* SVG */
+  --color1: #f6f6f7;
+  --color2: #fff;
   /* text-link */
   --text-color: rgba(22, 22, 22, 0.7);
   --text-link-color: #bedbb0;
@@ -71,6 +83,9 @@
   --task-card-description-color: rgba(22, 22, 22, 0.7);
   --task-card-secondary-title-color: rgba(22, 22, 22, 0.5);
   --task-card--line-color: rgba(22, 22, 22, 0.1);
+  /* modal */
+  --modal-level-color: rgba(22, 22, 22, 0.3);
+  --modal-secondary-text-color: rgba(22, 22, 22, 0.1);
 }
 
 [data-theme='dark'] {
@@ -82,7 +97,16 @@
   --bg-header: #161616;
   --bg-screen: #1f1f1f;
   --bg-column-title:#121212;
+  /* SELECT */
+  --bg-select: #151515;
+  --select-active-color: #bedbb0;
+  --slider-border-color: #bedbb0;
+  --select-text-color: rgba(255, 255, 255, 0.5);
+  --slider-text: rgba(255, 255, 255, 0.8);
   /* --text-secondary: none; */
+  /* SVG */
+  --color1: #1f1f1f;
+  --color2: #151515;
   /* Select */
   --select-bg-color: #151515;
   /* text-link */
@@ -112,6 +136,9 @@
   --task-card-description-color: rgba(255, 255, 255, 0.5);
   --task-card-secondary-title-color: rgba(22, 22, 22, 0.5);
   --task-card--line-color: rgba(22, 22, 22, 0.1);
+  /* modal */
+  --modal-level-color: rgba(255, 255, 255, 0.3);
+  --modal-secondary-text-color: rgba(255, 255, 255, 0.1);
 }
 
 [data-theme='violet'] {
@@ -123,6 +150,15 @@
   --bg-header: #fff;
   --bg-screen: #ecedfd;
   --bg-column-title:#fff;
+  /* SELECT */
+  --bg-select: #fcfcfc;
+  --select-active-color: #5255bc;
+  --slider-border-color: #ecedfd;
+  --select-text-color: #161616;
+  --slider-text: rgba(22, 22, 22, 0.8);
+  /* SVG  */
+  --color1: #ecedfd;
+  --color2: #fff;
   /* text-link */
   --text-color: rgba(22, 22, 22, 0.7);
   --text-link-color: #5255bc;
@@ -150,6 +186,9 @@
   --task-card-description-color: rgba(22, 22, 22, 0.7);
   --task-card-secondary-title-color: rgba(22, 22, 22, 0.5);
   --task-card--line-color: rgba(22, 22, 22, 0.1);
+  /* modal */
+  --modal-level-color: rgba(22, 22, 22, 0.3);
+  --modal-secondary-text-color: rgba(22, 22, 22, 0.1);
 }
 
 * {

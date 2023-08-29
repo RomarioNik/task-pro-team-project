@@ -32,10 +32,10 @@ const TaskCard = ({ data, onDelete, onEdit, onChange }) => {
     <div className={css.wrap}>
       <div
         className={cn(css.priorityIndicator, {
-          [css.priorityDefault]: priority === 'Default',
-          [css.priorityLow]: priority === 'Low',
-          [css.priorityMedium]: priority === 'Medium',
-          [css.priorityHigh]: priority === 'High',
+          [css.priorityDefault]: priority === 'without priority',
+          [css.priorityLow]: priority === 'low',
+          [css.priorityMedium]: priority === 'medium',
+          [css.priorityHigh]: priority === 'high',
         })}
       ></div>
       <div className={css.content}>
@@ -47,10 +47,10 @@ const TaskCard = ({ data, onDelete, onEdit, onChange }) => {
             <div className={css.priorityWrap}>
               <div
                 className={cn(css.priorityIcon, {
-                  [css.priorityDefault]: priority === 'Default',
-                  [css.priorityLow]: priority === 'Low',
-                  [css.priorityMedium]: priority === 'Medium',
-                  [css.priorityHigh]: priority === 'High',
+                  [css.priorityDefault]: priority === 'without priority',
+                  [css.priorityLow]: priority === 'low',
+                  [css.priorityMedium]: priority === 'medium',
+                  [css.priorityHigh]: priority === 'high',
                 })}
               ></div>
               <span className={css.additionValue}>{priority}</span>

@@ -1,8 +1,8 @@
 .modal {
-  
+  margin-top: 30px;
   border-radius: 8px;
   border: 1px solid rgba(190, 219, 176, 0.5);
-  background: #151515;
+  background: #4b90bb;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   width:350px;
   min-height: 450px;
@@ -13,7 +13,7 @@
 }
 
 .formStyle {
-  
+
   width: 350px;
   padding: 10px;
   text-align: center;
@@ -33,8 +33,14 @@
   width: 300px;
 }
 
-.btnAdd {
+.inputNameImg {
   display: block;
+ 
+  width: 100px;
+  opacity: 0;
+}
+
+.btnAdd {
   padding: 5px 20px;
   font-weight: 700;
   font-size: 20px;
@@ -43,22 +49,6 @@
   background-color: white;
 }
 
-.btnClose {
-  
-
-  outline: none;
-
-  padding: 0px;
-  border: 0px;
-
-  background-color: transparent;
-
-  cursor: pointer;
-  color: white;
-  width: 300px;
-}
-
 .titleName {
   color: white;
-  margin-bottom: 100px;
 }

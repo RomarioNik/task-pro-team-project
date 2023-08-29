@@ -4,6 +4,8 @@ import { useUserData } from 'hooks/useUserData';
 
 import css from './EditProfile.module.css';
 
+import sprite from '../../img/svg/sprite-icon.svg';
+
 
 const EditProfile = () => {
   
@@ -20,11 +22,23 @@ const EditProfile = () => {
     setEmail()
   };
 
+  if (user.avatarURL === '') {
+    console.log(`Аватара у пользователя нет, пришло ''`)
+  }
+
+  console.log(`avatarURL:   ${user.avatarURL}`)
+
   return (
       <div className={css.modal}>
         <h2 className={css.titleName}>Edit profile</h2>
         
-        <form className={css.formStyle}>
+      <form className={css.formStyle}>
+        <label className={css.labelStyle}>
+          <input className={css.inputNameImg} type="file"  />
+           <svg width="68" height="68" >
+              <use xlinkHref={`${sprite}#icon-user-ico`} />
+            </svg>
+          </label>
           <label className={css.labelStyle}>
             <input className={css.inputName} type="text" value={name} onChange={handleChangeName} />
           </label>

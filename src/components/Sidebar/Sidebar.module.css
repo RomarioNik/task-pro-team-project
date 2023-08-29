@@ -1,4 +1,9 @@
 .sidebar {
+  /* position: fixed; */
+  /* top: 0; */
+  /* left: -260px; */
+  /* transition: 0.3s; */
+
   width: 225px;
   min-height: 100vh;
 
@@ -7,6 +12,10 @@
   @media (min-width: 768px) {
     width: 260px;
   }
+
+  /* &.active {
+    left: 0;
+  } */
 }
 
 .logo {
@@ -113,11 +122,11 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #999;
+    background-color: var(--bg-sidebar);
     border-radius: 4px;
   }
   &::-webkit-scrollbar-track {
-    background-color: #f2f2f2;
+    background-color: transparent;
     border-radius: 4px;
   }
 }
@@ -133,11 +142,28 @@
   @media (min-width: 768px) {
     padding: 20px 24px;
   }
+
+  & > .boardTools {
+    visibility: hidden;
+  }
 }
 
-.boardsItem.active {
-  background-color: var(--background-color);
+.active {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+
+  padding: 20px 18px 20px 14px;
+  color: var(--primary-text-color);
+  background-color: var(--bg-screen);
   border-right: 4px var(--log-out-icon-color) solid;
+  border-top: 4px var(--bg-screen) solid;
+  border-bottom: 4px var(--bg-screen) solid;
+
+  @media (min-width: 768px) {
+    padding: 20px 24px;
+  }
 }
 
 .boardTitle {
@@ -251,12 +277,12 @@
 }
 
 .logoIcon {
-  stroke: var(--icon-logo-background-color);
   fill: var(--icon-logo-color);
 }
 
 .addIcon {
   stroke: var(--task-card-background-color);
+  border-radius: 4px;
 }
 
 .boardIcon {

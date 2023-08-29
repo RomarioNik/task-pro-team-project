@@ -175,8 +175,8 @@
 
 [data-theme='violet'] {
   --background-color: #d6d8ff;
-  --text-primary-color: #161616;
-  --text-secondary-color: #fff;
+  --text-primary-color: #fff;
+  --text-secondary-color: #161616;
   --text-btn-column: #fff;
   --bg-sidebar: #5255bc;
   --bg-header: #fff;

@@ -47,9 +47,8 @@
   --need-help-background-color: #f6f6f7;
 
   /* radio-button-cheked */
-  --radio-inside: #8FA1D0;
-  --radio-outside: #8FA1D0;
-
+  --radio-inside: #8fa1d0;
+  --radio-outside: #8fa1d0;
 }
 
 [data-theme='light'] {

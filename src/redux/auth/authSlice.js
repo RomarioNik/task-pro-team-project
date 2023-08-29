@@ -38,12 +38,7 @@ const handleRejectedLogIn = state => {
 };
 
 const handleFulfilledLogOut = state => {
-  state.user = {
-    name: '',
-    email: '',
-    avatar: '',
-    id: '',
-  };
+  state.user = {};
   state.token = '';
   state.isLoggedIn = false;
 };
@@ -80,7 +75,7 @@ const handleRejectedChangeTheme = state => {
 };
 
 const initialState = {
-  user: { name: '', email: '', avatar: '', id: '' },
+  user: {},
   token: '',
   isLoggedIn: false,
   isLoading: false,

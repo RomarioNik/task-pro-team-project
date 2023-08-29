@@ -35,6 +35,7 @@
   /* modal */
   --modal-level-color: rgba(22, 22, 22, 0.3);
   --modal-secondary-text-color: rgba(22, 22, 22, 0.1);
+
   /* sidebar */
   --my-boards-color: rgba(22, 22, 22, 0.5);
   --borders-color: rgba(22, 22, 22, 0.1);
@@ -44,6 +45,11 @@
   --item-background-color: #f6f6f7;
   --item-border-color: #bedbb0;
   --need-help-background-color: #f6f6f7;
+
+  /* radio-button-cheked */
+  --radio-inside: #8FA1D0;
+  --radio-outside: #8FA1D0;
+
 }
 
 [data-theme='light'] {

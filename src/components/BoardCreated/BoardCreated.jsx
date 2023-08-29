@@ -2,11 +2,11 @@ import React from 'react';
 import { Icon } from '../Svg/Icon';
 import Column from 'components/Column/Column';
 import style from './BoardCreated.module.css';
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 
 const BoardCreated = () => {
   // const [theme, setTheme] = useState('light');
-  const { boardName } = useParams();
+  // const { boardName } = useParams();
 
   //----функція-відкривання-модалки-створення-колонки
   const createColumn = () => {
@@ -15,14 +15,16 @@ const BoardCreated = () => {
 
   return (
     <div>
-      <div className={style.title__container}>
+      {/* <div className={style.title__container}>
         <p className={style.title__board}>{boardName}</p>
-      </div>
+      </div> */}
       <div className={style.column__container}>
         <div className={style.column__item}>
-          <Column />
-        </div>
-        <button
+          <Column />        
+        
+
+        </div> 
+          <button
           className={style.button__create}
           type="button"
           onClick={createColumn}
@@ -31,7 +33,7 @@ const BoardCreated = () => {
             <Icon id="plus" className={style.button__create__icon} />
           </div>
           <p className={style.button__create__title}>Add another column</p>
-        </button>
+        </button>     
       </div>
     </div>
   );

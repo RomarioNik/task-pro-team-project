@@ -5,9 +5,9 @@ const columns = [
     
   ];
   
-  export const getColumns = () => {
-    return products;
-  };
+  // export const getColumns = () => {
+  //   return products;
+  // };
   
   export const getColumnById = (columnId) => {
     return columns.find((column) => column.id === columnId);

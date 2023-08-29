@@ -1,27 +1,23 @@
 .container {
-  width: 486px;
-  height: 72px;
+  /* width: 486px;
+  height: 72px; */
   background-color: var(--background-color);
 }
 
-.component {
-  background-color: grey;
-}
-
-.title__board {
+/* .title__board {
   font-size: 18px;
   font-weight: 500;
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 24px;
   color: var(--text-secondary-color);
-}
+} */
 
-.title__container {
+/* .title__container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
+} */
 
 .column__item {
   display: flex;
@@ -29,6 +25,13 @@
 
 .column__container {
   display: flex;  
+  margin-left: 20px;
+  @media screen and (min-width: 768px) {
+    margin-left: 32px;
+    @media screen and (min-width: 1440px) {
+      margin-left: 24px;
+  }    
+}    
 }
 
 .button__create {
@@ -38,8 +41,16 @@
   align-items: center;
   justify-content: center;
   background-color: var(--bg-column-title);
-  margin-left: 24px;
+  /* margin-left: 20px; */
   border-radius: 8px;
+
+  @media screen and (min-width: 768px) {
+    /* margin-left: 32px; */
+    @media screen and (min-width: 1440px) {
+      /* margin-left: 24px; */
+  }    
+}    
+
 }
 
 .button__icon__background {

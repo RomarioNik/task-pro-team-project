@@ -2,8 +2,10 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import css from './Sidebar.module.css';
 import sprite from '../../img/svg/sprite-icon.svg';
+import { useDispatch } from 'react-redux';
+import { logOutUser } from 'redux/auth/operations';
 
-const Sidebar = () => {
+const Sidebar = ({ isOpen }) => {
   //дошки будуть приходити з бекенду, назви рендеряться в сайдбарі
   const boards = [
     {
@@ -28,6 +30,8 @@ const Sidebar = () => {
     },
   ];
 
+  const dispatch = useDispatch();
+
   const handleNeedHelp = () => {
     console.log('Modal window Need Help');
   };
@@ -44,17 +48,18 @@ const Sidebar = () => {
     console.log('Modal window Edit Board');
   };
 
-  const handleDeleteBoard = boardId => {
+  const handleDeleteBoard = (boardId, name) => {
     const indexToDelete = boards.findIndex(obj => obj.id === boardId);
     if (indexToDelete !== -1) {
       boards.splice(indexToDelete, 1);
     }
 
     console.log(boards);
+    console.log(window.location.pathname);
   };
 
   return (
-    <div className={css.sidebar}>
+    <div className={isOpen ? css.active : css.sidebar}>
       <Link to="/home" className={css.logo}>
         <svg width="32" height="32" className={css.logoIcon}>
           <use xlinkHref={`${sprite}#logo`} />
@@ -75,7 +80,12 @@ const Sidebar = () => {
         <ul className={css.boardsList}>
           {boards.map(({ name, id }) => (
             <li key={id}>
-              <NavLink to={`${name}`} className={css.boardsItem}>
+              <NavLink
+                to={`${name}`}
+                className={({ isActive }) =>
+                  isActive ? css.active : css.boardsItem
+                }
+              >
                 <div className={css.boardTitle}>
                   <svg width="18" height="18" className={css.boardIcon}>
                     <use xlinkHref={`${sprite}#puzzle-piece`} />
@@ -88,7 +98,7 @@ const Sidebar = () => {
                       <use xlinkHref={`${sprite}#pencil`} />
                     </svg>
                   </button>
-                  <button onClick={() => handleDeleteBoard(id)}>
+                  <button onClick={() => handleDeleteBoard(id, name)}>
                     <svg width="16" height="16" className={css.editBoardIcon}>
                       <use xlinkHref={`${sprite}#trash`} />
                     </svg>
@@ -116,7 +126,10 @@ const Sidebar = () => {
           <p>Need help?</p>
         </button>
       </div>
-      <button className={css.logOutButton} onClick={handleLogOut}>
+      <button
+        className={css.logOutButton}
+        onClick={() => dispatch(logOutUser())}
+      >
         <svg width="32" height="32" className={css.logoutIcon}>
           <use xlinkHref={`${sprite}#log-out`} />
         </svg>

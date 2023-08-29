@@ -1,52 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-// import { createPortal } from 'react-dom';
 import { useUserData } from 'hooks/useUserData';
 
 import css from './EditProfile.module.css';
 
-// const modalRoot = document.querySelector('#modalRoot');
+import sprite from '../../img/svg/sprite-icon.svg';
+
 
 const EditProfile = () => {
-  // useEffect(() => {
-  //   const keyDown = event => {
-  //     if (event.code === 'Escape') {
-  //       onClose();
-  //     }
-  //   };
-
-  //   window.addEventListener('keydown', keyDown);
-
-  //   return () => {
-  //     window.removeEventListener('keydown', keyDown);
-  //   };
-  // }, [onClose]);
-
-  // const onOverlayClose = event => {
-  //   if (event.currentTarget === event.target) {
-  //     onClose();
-  //   }
-  // };
-
-  // const modalClose = event => {
-  //   onClose();
-  // };
-
+  
   const user = useUserData();
 
+  const [name, setName] = useState(user.name);
+  const [email, setEmail] = useState(user.email);
+
+  const handleChangeName = (event) => {
+    setName()
+  };
+
+  const handleChangeEmail = (event) => {
+    setEmail()
+  };
+
+  if (user.avatarURL === '') {
+    console.log(`Аватара у пользователя нет, пришло ''`)
+  }
+
+  console.log(`avatarURL:   ${user.avatarURL}`)
+
   return (
-    // <div onClick={onOverlayClose} className={css.overlay}>
       <div className={css.modal}>
         <h2 className={css.titleName}>Edit profile</h2>
-        {/* <button type="button" className={css.btnClose} onClick={modalClose}>
-          Модалка ЗАКРОЙСЯ
-        </button> */}
-        <form className={css.formStyle}>
-          <label className={css.labelStyle}>
-            <input className={css.inputName} type="text" placeholder={user.name} />
+        
+      <form className={css.formStyle}>
+        <label className={css.labelStyle}>
+          <input className={css.inputNameImg} type="file"  />
+           <svg width="68" height="68" >
+              <use xlinkHref={`${sprite}#icon-user-ico`} />
+            </svg>
           </label>
           <label className={css.labelStyle}>
-            <input className={css.inputName} type="email" placeholder={user.email} />
+            <input className={css.inputName} type="text" value={name} onChange={handleChangeName} />
+          </label>
+          <label className={css.labelStyle}>
+            <input className={css.inputName} type="email" value={email} onChange={handleChangeEmail} />
           </label>
           <label className={css.labelStyle}>
             <input
@@ -60,8 +57,7 @@ const EditProfile = () => {
           </button>
         </form>
       </div>
-    // </div>,
-    // modalRoot
+    
   );
 };
 

@@ -14,96 +14,98 @@
 
 // export default LoginForm;
 
-import React, { useState, useEffect } from 'react';
+
+
+import React, {
+  // useState
+  // , useEffect
+} from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { loginUser } from '../../redux/auth/operations';
 import { loginFormSchema } from 'scheme/index';
 import css from '../RegisterForm/RegisterForm.module.css';
-import { useLoggedIn } from '../../hooks/useLoggedIn.js';
+// import { useLoggedIn } from '../../hooks/useLoggedIn.js';
 // import { useUserLoading } from 'hooks/useUserLoading';
-import sprite from 'img/svg/sprite-icon.svg';
-import AuthButton from 'components/AuthButton/AuthButton';
+import AuthBtn from 'components/AthBtn/AuthBtn';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const isLoggedIn = useLoggedIn();
-  // const isLoading = useUserLoading();
+  // const navigate = useNavigate();
+  // const isLoggedIn = useLoggedIn();
+  // console.log(isLoggedIn);
+    // const isLoading = useUserLoading();
+  // const [passwordVisible, setPasswordVisible] = useState(false);
 
-  const [passwordVisible, setPasswordVisible] = useState(false);
-
-  const togglePasswordVisibility = () => {
-    setPasswordVisible(!passwordVisible);
-  };
+  // const togglePasswordVisibility = () => {
+  //   setPasswordVisible(!passwordVisible);
+  // };
 
   const initialValues = {
     email: '',
     password: '',
   };
-
-  useEffect(() => {
-    if (isLoggedIn) {
-      navigate('/');
-    }
-  }, [isLoggedIn]);
+  // useEffect(() => {
+  //   if (isLoggedIn) {
+  //     navigate('/');
+  //   }
+  // }, [isLoggedIn]);
 
   const onSubmit = (values, { resetForm }) => {
+    console.log(values);
     dispatch(loginUser(values));
+    // console.log('onSubmit executed');
     resetForm();
   };
 
   return (
-    <>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={loginFormSchema}
-        onSubmit={onSubmit}
-      >
-        {() => (
-          <Form className={css.form}>
-            <label className={css.input}>
+    <Formik
+      initialValues={initialValues}
+      validationSchema={loginFormSchema}
+      onSubmit={onSubmit}
+    >
+      {() => (
+        <div className={css.form__container}>
+          <Form className={css.register__form}>
+            <label className={css.form__input}>
               <Field
                 type="email"
                 name="email"
                 placeholder="Enter your email"
-                className={css.inputField}
+                className={css.form__field}
               />
               <ErrorMessage
                 name="email"
                 component="div"
-                className={css.inputError}
+                className={css.form__error}
               />
             </label>
-            <label className={css.input}>
+            <label className={css.form__input}>
               <Field
-                type={passwordVisible ? 'text' : 'password'}
+                type={
+                  // passwordVisible ? 'text' :
+                    'password'}
                 name="password"
                 placeholder="Confirm a password"
-                className={css.inputField}
+                className={css.form__field}
               />
               <ErrorMessage
                 name="password"
                 component="div"
-                className={css.inputError}
+                className={css.form__error}
               />
-
-              <span
-                className={css.passwordToggle}
-                onClick={togglePasswordVisibility}
-              >
-                <svg width="18" height="18" className={css.fieldIcon}>
-                  <use xlinkHref={`${sprite}#eye`} />
-                </svg>
-              </span>
             </label>
 
-            <AuthButton textBtn="Login In Now" />
+            {/* <svg onClick={togglePasswordVisibility}>
+                <use href={sprite + '#eye'}></use>
+              </svg> */}
+
+            <AuthBtn textBtn="Login In Now" />
           </Form>
-        )}
-      </Formik>
-    </>
+        </div>
+      )}
+    </Formik>
   );
 };
 

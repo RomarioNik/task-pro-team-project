@@ -1,76 +1,45 @@
-.form {
-  width: 335px;
-  height: fit-content;
-  padding: 24px;
-  border-radius: 8px;
+.form__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center; 
+    width: 424px;  
+}
 
-  background-color: #151515;
-  /* background-color: var(--select-bg-color); */
-
-  @media screen and (min-width: 767px) {
-    width: 424px;
+.register__form {     
+    height: fit-content;      
+    margin: 0;
     padding: 40px;
-  }
+    background: #151515;
+    border-radius: 8px;
 }
 
-.input {
-  display: flex;
-  position: relative;
-  height: 49px;
-  margin-bottom: 14px;
-  padding: 14px 18px 14px;  
-  outline: none;
-  color: #fff;
-  border-radius: 8px;
-  border: 1px solid rgba(190, 219, 176, 0.4);
-  box-shadow: 0px 4px 16px rgba(22, 22, 22, 0.08);
-}
+.form__input {
+    display: block;
+    flex-direction: column;
+    align-items: center; 
+    padding-top: 14px;
+    padding-bottom: 14px;
+    padding-left: 18px;
+    padding-right: 5px;
+    border: 1px solid #BEDBB0;
+    border-radius: 8px;
+    background: #1F1F1F;
+    margin-bottom: 14px;
+ }
 
-.input:focus-within {
-  border: 1px solid rgba(190, 219, 176, 1);  
-}
 
-.inputField:focus {
-  opacity: 1;
-}
+ .form__field {
+width: 100%;
+align-items: center;
+font-size: 12px;
+font-weight: 400px;
+border: none;
+color: #FFFFFF;
+background-color:#1F1F1F;
+ }
 
-.inputField {
-  width: 100%;
-  font-size: 14px;
-  background: inherit;
-  letter-spacing: -0.02em;
-  border: none;
-  line-height: 21px;
-  outline: none;
-  color: #fff;   
-}
-
-.inputField:focus::placeholder {
-  transition: opacity 0.3s ease-in-out;
-  border: none;
-}
-
-.inputError {
-  font-size: 12px;
-  position: absolute;
-  top: 30px;
-  background: inherit;
-  border: none;
-  text-align: left;
-  color: #fff;
-  opacity: 0.4;
-}
-
-.passwordToggle {
-  position: relative;
-}
-
-.fieldIcon {
-  display: inline-block;
-  right: 5px;
-  top: 50%;
-  transform: translate(-50%);
-  fill: none;
-  stroke: rgb(176, 164, 164, 1);
-  cursor: pointer;
+.form__error {
+    color:#BEDBB0;
+    font-weight: 12px;
 }

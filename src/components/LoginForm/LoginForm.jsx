@@ -14,22 +14,25 @@
 
 // export default LoginForm;
 
-import React, { useState, useEffect } from 'react';
+import React, {
+  useState
+  // , useEffect
+} from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { loginUser } from '../../redux/auth/operations';
 import { loginFormSchema } from 'scheme/index';
 import css from '../RegisterForm/RegisterForm.module.css';
-import { useLoggedIn } from '../../hooks/useLoggedIn.js';
+// import { useLoggedIn } from '../../hooks/useLoggedIn.js';
 // import { useUserLoading } from 'hooks/useUserLoading';
 import sprite from 'img/svg/sprite-icon.svg';
 import AuthButton from 'components/AuthButton/AuthButton';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const isLoggedIn = useLoggedIn();
+  // const navigate = useNavigate();
+  // const isLoggedIn = useLoggedIn();
   // const isLoading = useUserLoading();
 
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -43,11 +46,11 @@ const LoginForm = () => {
     password: '',
   };
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      navigate('/');
-    }
-  }, [isLoggedIn]);
+  // useEffect(() => {
+  //   if (isLoggedIn) {
+  //     navigate('/');
+  //   }
+  // }, [isLoggedIn]);
 
   const onSubmit = (values, { resetForm }) => {
     dispatch(loginUser(values));

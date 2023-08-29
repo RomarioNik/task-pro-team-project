@@ -36,10 +36,6 @@ const Sidebar = ({ isOpen }) => {
     console.log('Modal window Need Help');
   };
 
-  const handleLogOut = () => {
-    console.log('Log out!');
-  };
-
   const handleCreateBoard = () => {
     console.log('Modal window New Board');
   };

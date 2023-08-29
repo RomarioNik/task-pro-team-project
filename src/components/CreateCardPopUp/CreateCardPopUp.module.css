@@ -9,9 +9,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */
 
-.modalBody {
+/* .modalBody {
+  position: fixed;
   display: inline-block;
   border-radius: 8px;
   border: 1px solid rgba(190, 219, 176, 0.5);
@@ -24,6 +25,25 @@
 
   margin-right: auto;
   margin-left: auto;
+} */
+.closeIcon {
+  rotate: 45deg;
+  width: 18px;
+  height: 18px;
+  fill: white;
+  stroke: #fff;
+}
+
+.closeIconContainer {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  fill: white;
+
+  top: 14px;
+  right: 14px;
+
+  cursor: pointer;
 }
 
 .modalTitle {
@@ -111,7 +131,7 @@
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.24px;
-  margin: 0 0 4px 0;
+  margin: 14px 0 0 4px 0;
 }
 
 .inputLabelColorContainer {
@@ -134,7 +154,7 @@
   padding: 10px 0px 11px 0px;
   justify-content: center;
   align-items: center;
-  margin-top: 14px;
+  margin-top: 40px;
   margin-left: auto;
   margin-right: auto;
 
@@ -180,6 +200,7 @@
   position: relative;
   cursor: pointer;
   margin: 0;
+  margin-right: 8px;
 }
 
 .hiddenRadio {

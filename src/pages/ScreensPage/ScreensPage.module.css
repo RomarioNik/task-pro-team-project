@@ -1,6 +1,37 @@
 /* .screen__section {
     width: 1500px;
 } */
+
+.title__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    /* padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 10px;
+    padding-bottom: 10px; */
+    
+    @media screen and (min-width: 768px) {
+        padding: 26px 32px;
+    
+        @media screen and (min-width: 1440px) {
+            padding: 10px 24px;
+        }    
+    }    
+
+  }
+
+  .title__board {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary-color);
+
+    @media screen and (min-width: 768px) {
+        font-size: 18px;
+    }    
+  }
+
 .button__filter {
     display: flex;
     width: 64px;

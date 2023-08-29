@@ -13,10 +13,10 @@ const columns = [
     name: 'In progress',
     id: '2',
   },
-  {
-    name: 'Done',
-    id: '3',
-  },
+  // {
+  //   name: 'Done',
+  //   id: '3',
+  // },
 ];
 
 const Column = () => {
@@ -26,7 +26,7 @@ const Column = () => {
   };
 
   return (
-    <div>
+    // <div>
       <ul>
         {columns.map(({ name, id }) => (
           <li key={id} className={style.column}>
@@ -54,7 +54,7 @@ const Column = () => {
           </li>
         ))}
       </ul>
-    </div>
+    // </div>
   );
 };
 

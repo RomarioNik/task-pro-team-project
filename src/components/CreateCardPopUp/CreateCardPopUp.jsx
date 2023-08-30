@@ -2,7 +2,9 @@ import Calendar from 'components/calendar/calendar';
 import css from './CreateCardPopUp.module.css';
 import { useState } from 'react';
 
-import sprite from '../img/svg/sprite-icon.svg';
+import sprite from '../../img/svg/sprite-icon.svg';
+import { useDispatch } from 'react-redux';
+import { addBoard } from 'redux/boards/boardsOperations';
 
 const CustomRadio = ({ value, checked, onChange, color }) => {
   return (
@@ -15,7 +17,11 @@ const CustomRadio = ({ value, checked, onChange, color }) => {
         onChange={onChange}
         className={css.hiddenRadio}
       />
-      <svg className={`${css.customIcon}`} style={{ fill: `${color}` }}>
+      <svg
+        className={`${css.customIcon}`}
+        style={{ fill: `${color}` }}
+        // className={`${css.customIcon} ${checked ? css['checked' + value] : ''}`}
+      >
         <use
           xlinkHref={`${sprite}#radio-button-${
             checked ? 'checked' : 'unchecked'
@@ -27,18 +33,28 @@ const CustomRadio = ({ value, checked, onChange, color }) => {
 };
 
 export default function CreateCardPopUp() {
+  const dispatch = useDispatch();
   const [selectedLabel, setSelectedLabel] = useState('without priority');
   const [titleValue, setTitleValue] = useState('');
   const [descriptionValue, setDescriptionValue] = useState('');
+  const [deadlineDate, setDeadlineDate] = useState('');
 
   const handleRadioChange = event => {
     setSelectedLabel(event.target.value);
   };
 
+  const AddNewCard = () => {
+    console.log('додаємо нову картку');
+    // dispatch(addBoard({ titleValue, descriptionValue, selectedLabel }));
+  };
+
   return (
-    <div className={css.modalBody}>
+    // <div className={css.modalBackdrop}>
+    <div
+    // className={css.modalBody}
+    >
       <h3 className={css.modalTitle}>Add card</h3>
-      <form action="" className={css.inputForm}>
+      <form action="submit" className={css.inputForm}>
         <input
           type="text"
           action=""
@@ -81,31 +97,32 @@ export default function CreateCardPopUp() {
         />
 
         <CustomRadio
-          color="#FFFFFF4D"
+          color="rgba(255, 255, 255, 0.30);"
           value="high"
           checked={selectedLabel === 'high'}
           onChange={handleRadioChange}
         />
       </form>
-
       <div className={css.deadlineContainer}>
         <h4 action="" className={css.deadlineTitle}>
           Deadline
         </h4>
 
         <Calendar />
-        {/* <svg className={css.chevronDown}>
-              <use xlinkHref={`${sprite}#chevron-down`} />
-            </svg> */}
-        {/* <CalendarCom /> */}
       </div>
-
-      <button className={`${css.inputAddBtn} buttonWithIcon`}>
-        <svg className={css.plusIcon}>
-          <use xlinkHref={`${sprite}#plus`} />
-        </svg>
+      <button
+        className={`${css.inputAddBtn} buttonWithIcon`}
+        onClick={AddNewCard}
+      >
+        <div className={css.plusIconContainer}>
+          <svg className={css.plusIcon}>
+            <use xlinkHref={`${sprite}#plus`} />
+          </svg>
+        </div>
         Add
       </button>
     </div>
+
+    // </div>
   );
 }

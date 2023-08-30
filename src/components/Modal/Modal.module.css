@@ -16,7 +16,7 @@
   max-width: 400px;
   min-width: 300px;
   border-radius: 8px;
-  background-color: var(--bg-header);
+  background-color: var(--bg-modal);
   padding: 24px;
 }
 

@@ -11,20 +11,40 @@ const EditProfile = () => {
   
   const user = useUserData();
 
+  const [avatar, setAvatar] = useState('');
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
+  const [password, setPassword] = useState('');
 
-  const handleChangeName = (event) => {
-    setName()
+  const handleChangeAvatar = (event) => {
+    setAvatar(event.target.files[0])
+    const formData = new FormData();
+
+    formData.append(
+      'avatar',
+      avatar
+    );
   };
 
-  const handleChangeEmail = (event) => {
-    setEmail()
+  const handleChange = ({ target: { name, value } }) => {
+    switch (name) {
+      case 'name':
+        return setName(value);
+      case 'email':
+        return setEmail(value);
+      case 'password':
+        return setPassword(value);
+      default:
+        return;
+    }
   };
 
-  if (user.avatarURL === '') {
-    console.log(`Аватара у пользователя нет, пришло ''`)
-  }
+  console.log( avatar);
+
+    if (user.avatarURL === '') {
+      console.log(`Аватара у пользователя нет, пришло ''`)
+    }
+  
 
   console.log(`avatarURL:   ${user.avatarURL}`)
 
@@ -34,22 +54,26 @@ const EditProfile = () => {
         
       <form className={css.formStyle}>
         <label className={css.labelStyle}>
-          <input className={css.inputNameImg} type="file"  />
-           <svg width="68" height="68" >
+          <input className={css.inputNameImg} type="file" onChange={handleChangeAvatar} />
+           <svg width="68" height="68" className={css.img}>
               <use xlinkHref={`${sprite}#icon-user-ico`} />
             </svg>
           </label>
           <label className={css.labelStyle}>
-            <input className={css.inputName} type="text" value={name} onChange={handleChangeName} />
+            <input className={css.inputName} type="text" name="name" value={name} onChange={handleChange} />
           </label>
           <label className={css.labelStyle}>
-            <input className={css.inputName} type="email" value={email} onChange={handleChangeEmail} />
+            <input className={css.inputName} type="email" name="email" value={email} onChange={handleChange} />
           </label>
           <label className={css.labelStyle}>
             <input
               className={css.inputName}
-              type="text"
-              placeholder="Password"
+            type="text"
+            name="password"
+            value={password}
+            placeholder="Password"
+            onChange={handleChange}
+              
             />
           </label>
           <button type="submit" className={css.btnAdd}>

@@ -33,7 +33,4 @@ export default function NeedHelp() {
       <button className={css.inputAddBtn}>Send</button>
     </div>
   );
-  {
-    /* </div> */
-  }
 }

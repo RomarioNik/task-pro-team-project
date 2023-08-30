@@ -11,7 +11,6 @@ import { useDispatch} from 'react-redux';
 //----------------------------------------
 import 'overlayscrollbars/overlayscrollbars.css';
 
-
 import { useEffect } from 'react';
 import { refreshUser } from 'redux/auth/operations';
 
@@ -49,7 +48,6 @@ const App = () => {
           element={<PrivateRoute redirectTo="/auth/login" component={<HomePage />} />}
         >
           <Route path=":boardName" element={<ScreensPage />} />
-        
         </Route>
         <Route path="*" element={<NotFound />} />
       </Route>

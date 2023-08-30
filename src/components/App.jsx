@@ -8,6 +8,9 @@ import HomePage from 'pages/HomePage';
 import NotFound from './NotFound';
 
 import { useDispatch} from 'react-redux';
+//----------------------------------------
+import 'overlayscrollbars/overlayscrollbars.css';
+
 
 import { useEffect } from 'react';
 import { refreshUser } from 'redux/auth/operations';

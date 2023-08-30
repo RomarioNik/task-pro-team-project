@@ -2,10 +2,13 @@ import React, { useEffect } from 'react';
 import style from './Modal.module.css';
 import sprite from '../../img/svg/sprite-icon.svg';
 import { createPortal } from 'react-dom';
+import { useUserData } from 'hooks/useUserData';
 
 const modalRoot = document.querySelector('#modal-root');
 
 const Modal = ({ children, openModal }) => {
+  const { userTheme } = useUserData();
+
   useEffect(() => {
     const handleKeyDown = e => {
       if (e.code === 'Escape') {
@@ -27,18 +30,22 @@ const Modal = ({ children, openModal }) => {
   };
 
   return createPortal(
-    <div className={style.backdrop} onClick={handleBackdropClick}>
+    <div
+      className={style.backdrop}
+      onClick={handleBackdropClick}
+      data-theme={userTheme}
+    >
       <div className={style.modal}>
         <button
           type="button"
           className={style.closeIcon}
-          onClick={handleBackdropClick}
+          onClick={() => openModal()}
         >
           <svg className={style.icon}>
             <use href={sprite + '#plus'} />
           </svg>
         </button>
-        <div>{children}</div>
+        {children}
       </div>
     </div>,
     modalRoot

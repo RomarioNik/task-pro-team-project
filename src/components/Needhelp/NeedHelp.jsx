@@ -1,14 +1,15 @@
-// import Calendar from 'components/calendar/calendar';
-import css from './CreateCardPopUp.module.css';
+import css from './NeedHelp.module.css';
 import { useState } from 'react';
 
 export default function NeedHelp() {
-  // const [selectedLabel, setSelectedLabel] = useState('Default');
   const [titleValue, setTitleValue] = useState('');
   const [descriptionValue, setDescriptionValue] = useState('');
 
   return (
-    <div className={css.modalBody}>
+    // <div className={css.modalBackdrop}>
+    <div
+    // className={css.modalBody}
+    >
       <h3 className={css.modalTitle}>Need help</h3>
       <form action="" className={css.inputForm}>
         <input

@@ -1,11 +1,14 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import css from './Sidebar.module.css';
 import sprite from '../../img/svg/sprite-icon.svg';
 import { useDispatch } from 'react-redux';
 import { logOutUser } from 'redux/auth/operations';
 
 const Sidebar = ({ isOpen }) => {
+
+  const navigate = useNavigate();
+
   //дошки будуть приходити з бекенду, назви рендеряться в сайдбарі
   const boards = [
     {
@@ -52,6 +55,12 @@ const Sidebar = ({ isOpen }) => {
 
     console.log(boards);
     console.log(window.location.pathname);
+  };
+
+
+  const handleLogout = () => {
+    dispatch(logOutUser());
+    navigate('/');
   };
 
   return (
@@ -122,10 +131,7 @@ const Sidebar = ({ isOpen }) => {
           <p>Need help?</p>
         </button>
       </div>
-      <button
-        className={css.logOutButton}
-        onClick={() => dispatch(logOutUser())}
-      >
+      <button className={css.logOutButton} onClick={handleLogout}>
         <svg width="32" height="32" className={css.logoutIcon}>
           <use xlinkHref={`${sprite}#log-out`} />
         </svg>

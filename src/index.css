@@ -33,6 +33,7 @@
   --background-color: #f6f6f7;
   --user-icon-color: #fff;
   /* modal */
+  --bg-modal: #fcfcfc;
   --modal-level-color: rgba(22, 22, 22, 0.3);
   --modal-secondary-text-color: rgba(22, 22, 22, 0.1);
 
@@ -98,6 +99,7 @@
   --task-card-secondary-title-color: rgba(22, 22, 22, 0.5);
   --task-card--line-color: rgba(22, 22, 22, 0.1);
   /* modal */
+  --bg-modal: #fcfcfc;
   --modal-level-color: rgba(22, 22, 22, 0.3);
   --modal-secondary-text-color: rgba(22, 22, 22, 0.1);
   /* sidebar */
@@ -160,6 +162,7 @@
   --task-card-secondary-title-color: rgba(22, 22, 22, 0.5);
   --task-card--line-color: rgba(22, 22, 22, 0.1);
   /* modal */
+  --bg-modal: #151515;
   --modal-level-color: rgba(255, 255, 255, 0.3);
   --modal-secondary-text-color: rgba(255, 255, 255, 0.1);
   /* sidebar */
@@ -219,6 +222,7 @@
   --task-card-secondary-title-color: rgba(22, 22, 22, 0.5);
   --task-card--line-color: rgba(22, 22, 22, 0.1);
   /* modal */
+  --bg-modal: #fcfcfc;
   --modal-level-color: rgba(22, 22, 22, 0.3);
   --modal-secondary-text-color: rgba(22, 22, 22, 0.1);
   /* sidebar */

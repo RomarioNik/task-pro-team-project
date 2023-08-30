@@ -114,7 +114,7 @@ export const deleteCard = createAsyncThunk(
   async (cardId, thunkAPI) => {
     try {
       const { data } = await apiPrivate.delete(`/api/cards/${cardId}`);
-      return data.deletedId;
+      return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }

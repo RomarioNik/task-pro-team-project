@@ -55,7 +55,7 @@ const EditProfile = () => {
       <form className={css.formStyle}>
         <label className={css.labelStyle}>
           <input className={css.inputNameImg} type="file" onChange={handleChangeAvatar} />
-           <svg width="68" height="68" >
+           <svg width="68" height="68" className={css.img}>
               <use xlinkHref={`${sprite}#icon-user-ico`} />
             </svg>
           </label>

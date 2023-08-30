@@ -11,8 +11,19 @@ const EditProfile = () => {
   
   const user = useUserData();
 
+  const [avatar, setAvatar] = useState('');
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
+
+  const handleChangeAvatar = (event) => {
+    setAvatar(event.target.files[0])
+    const formData = new FormData();
+
+    formData.append(
+      'avatar',
+      avatar
+    );
+  };
 
   const handleChangeName = (event) => {
     setName()
@@ -22,9 +33,12 @@ const EditProfile = () => {
     setEmail()
   };
 
-  if (user.avatarURL === '') {
-    console.log(`Аватара у пользователя нет, пришло ''`)
-  }
+  console.log( avatar);
+
+    if (user.avatarURL === '') {
+      console.log(`Аватара у пользователя нет, пришло ''`)
+    }
+  
 
   console.log(`avatarURL:   ${user.avatarURL}`)
 
@@ -34,7 +48,7 @@ const EditProfile = () => {
         
       <form className={css.formStyle}>
         <label className={css.labelStyle}>
-          <input className={css.inputNameImg} type="file"  />
+          <input className={css.inputNameImg} type="file" onChange={handleChangeAvatar} />
            <svg width="68" height="68" >
               <use xlinkHref={`${sprite}#icon-user-ico`} />
             </svg>

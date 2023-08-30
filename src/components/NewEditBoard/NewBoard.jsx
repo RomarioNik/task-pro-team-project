@@ -22,10 +22,7 @@ return (
 </ul>
 <h3 className={styles.textBackground}>Background</h3>
 <ul className={styles.listColorIcons}>
-    <li className={styles.listItem}><img src="src\img\background_list_icons\no-background.jpg" alt="" style={{
-        width:'100%',
-        height:'100%'
-    }} /></li>
+    <li className={styles.listItem}><img src="../../img/background_list_icons/clouds.jpg" alt=""/></li>
     <li className={styles.listItem}></li>
     <li className={styles.listItem}></li>
     <li className={styles.listItem}></li>

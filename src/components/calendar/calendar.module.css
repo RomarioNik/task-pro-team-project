@@ -1,5 +1,5 @@
 .myButton {
-  color: #bedbb0;
+  color: var(--btn-bg-color);
 
   font-size: 14px;
   font-style: normal;
@@ -18,14 +18,14 @@
 }
 
 .myButton:hover {
-  color: #9dc888;
+  color: var(--btn-bg-color);
   border: none;
-  background-color: transparent;
+  /* background-color: transparent; */
 }
 .myButton:focus {
-  color: #9dc888;
+  color: var(--btn-bg-color);
   border: none;
-  background-color: transparent;
+  /* background-color: transparent; */
 }
 
 .chevronDownContainer {
@@ -34,15 +34,10 @@
 }
 
 .chevronDown {
-  stroke: #bedbb0;
+  stroke: var(--btn-bg-color);
   width: 18px;
   height: 18px;
   transition: transform 250ms ease;
-}
-
-.chevronDown:focus {
-  stroke: #bd7517;
-  transform: rotate(180);
 }
 
 .rotate {

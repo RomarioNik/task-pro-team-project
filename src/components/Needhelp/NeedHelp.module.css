@@ -1,22 +1,23 @@
-/* .modalBackdrop {
+.modalBackdrop {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: var(--bg-screen);
   z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
-} */
+}
 
-/* .modalBody {
+.modalBody {
+  position: fixed;
   display: inline-block;
   border-radius: 8px;
-  border: 1px solid rgba(190, 219, 176, 0.5);
-  background: #151515;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--icon-card-color-active);
+  background: var(--background-color);
+  /* box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); */
   width: 312px;
   min-height: 456px;
 
@@ -24,29 +25,9 @@
 
   margin-right: auto;
   margin-left: auto;
-} */
-
-.closeIcon {
-  rotate: 45deg;
-  width: 18px;
-  height: 18px;
-  fill: white;
-  stroke: #fff;
-  cursor: pointer;
-}
-
-.closeIconContainer {
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  fill: white;
-  top: 14px;
-  right: 14px;
-  cursor: pointer;
 }
 
 .modalTitle {
-  color: #ffffff;
   /* font-family: Poppins; */
   font-size: 18px;
   font-weight: 500;
@@ -54,6 +35,7 @@
   letter-spacing: -0.02em;
   text-align: left;
   margin: 0;
+  color: var(--modal-title-color);
 }
 
 .inputForm {
@@ -63,26 +45,26 @@
 
 .inputCardTitle {
   border-radius: 8px;
-  border: 1px solid #bedbb0;
+  border: 1px solid var(--select-active-color);
   outline: none;
-  background: #1f1f1f;
-  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
+  background: var(--background-color);
+  /* box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08); */
   opacity: 0.4;
-  width: 296px;
+  width: 100%;
   height: 49px;
-  color: white;
+  color: var(--text-secondary-color);
   padding-left: 8px;
 }
 .inputCardTitle:focus {
   outline: none;
   opacity: 1;
 
-  border: 1px solid #bedbb0;
-  background-color: #1f1f1f54;
+  border: 1px solid var(--select-active-color);
+  background-color: var(--bg-screen);
 }
 
 .inputCardTitle::placeholder {
-  color: #fff;
+  color: var(--text-secondary-color);
   font-size: 14px;
   font-weight: 400;
   line-height: normal;
@@ -92,14 +74,14 @@
 .inputCardDescription {
   position: relative;
   border-radius: 8px;
-  border: 1px solid #bedbb0;
+  border: 1px solid var(--select-active-color);
   opacity: 0.4;
-  background: #1f1f1f;
-  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
-  color: #fff;
+  background: var(--background-color);
+  /* box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08); */
+  color: var(--text-primary-color);
 
   margin-top: 14px;
-  width: 290px;
+  width: 100%;
   height: 154px;
 
   padding: 14px 8px 14px 8px;
@@ -109,16 +91,56 @@
 .inputCardDescription:focus {
   outline: none;
   opacity: 1;
-  border: 1px solid #bedbb0;
-  background-color: #1f1f1f54;
+  border: 1px solid var(--select-active-color);
+  background-color: var(--bg-screen);
 }
 
 .inputCardDescription::placeholder {
   position: absolute;
-  color: #fff;
+  color: var(--text-secondary-color);
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 1.28;
   letter-spacing: -0.28px;
+}
+
+.inputAddBtn {
+  display: flex;
+  width: 100%;
+  padding: 10px 0px 11px 0px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+
+  border-radius: 8px;
+  background: var(--select-active-color);
+  cursor: pointer;
+}
+
+.inputAddBtn:focus {
+  background: var(--btn-bg-color-hover);
+}
+
+.inputAddBtn:hover {
+  background: var(--btn-bg-color-hover);
+}
+.plusIconContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background-color: var(--icon-logo-background-color);
+  margin-right: 8px;
+}
+.plusIcon {
+  display: inline-block;
+  stroke: var(--modal-btn-plus-icon-color);
+  width: 14px;
+  height: 14px;
 }

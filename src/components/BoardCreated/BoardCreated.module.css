@@ -2,6 +2,7 @@
   /* width: 486px;
   height: 72px; */
   background-color: var(--background-color);
+  /* overflow-x: scroll; */
 }
 
 /* .title__board {
@@ -21,10 +22,13 @@
 
 .column__item {
   display: flex;
+  /* overflow-x: scroll; */
 }
 
 .column__container {
-  display: flex;  
+  display: flex;
+     /* overflow-x: scroll;  */
+
   margin-left: 20px;
   @media screen and (min-width: 768px) {
     margin-left: 32px;

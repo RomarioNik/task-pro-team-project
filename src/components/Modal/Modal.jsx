@@ -36,7 +36,11 @@ const Modal = ({ children, openModal }) => {
       data-theme={userTheme}
     >
       <div className={style.modal}>
-        <button type="button" className={style.closeIcon} onClick={openModal}>
+        <button
+          type="button"
+          className={style.closeIcon}
+          onClick={() => openModal()}
+        >
           <svg className={style.icon}>
             <use href={sprite + '#plus'} />
           </svg>

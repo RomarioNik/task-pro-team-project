@@ -1,0 +1,54 @@
+.modal {
+  margin-top: 30px;
+  border-radius: 8px;
+  border: 1px solid rgba(190, 219, 176, 0.5);
+  background: #4b90bb;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  width:350px;
+  min-height: 450px;
+
+   padding: 14px;
+
+ 
+}
+
+.formStyle {
+
+  width: 350px;
+  padding: 10px;
+  text-align: center;
+}
+
+.labelStyle {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.inputName {
+  display: block;
+  font-size: 25px;
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 6px;
+  width: 300px;
+}
+
+.inputNameImg {
+  display: block;
+ 
+  width: 100px;
+  opacity: 0;
+}
+
+.btnAdd {
+  padding: 5px 20px;
+  font-weight: 700;
+  font-size: 20px;
+  border-radius: 6px;
+  width: 100%;
+  background-color: white;
+}
+
+.titleName {
+  color: white;
+}

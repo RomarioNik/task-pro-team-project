@@ -1,10 +1,12 @@
-import { useUserTheme } from 'hooks/useUserTheme';
+import { useUserData } from 'hooks/useUserData';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { changeTheme } from 'redux/auth/operations';
 
 const ThemeChanger = () => {
-  const theme = useUserTheme();
+  const { userTheme } = useUserData();
+  console.log(userTheme);
+
   const dispatch = useDispatch();
 
   const switchTheme = e => {
@@ -14,7 +16,7 @@ const ThemeChanger = () => {
 
   return (
     <div>
-      <select value={theme} onChange={switchTheme}>
+      <select value={userTheme} onChange={switchTheme}>
         <option value="light">Light</option>
         <option value="dark">Dark</option>
         <option value="violet">Violet</option>

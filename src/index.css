@@ -4,9 +4,17 @@
   --background-color: #fdfdfd;
   --text-primary-color: #161616;
   --text-secondary-color: #000;
+  --text-btn-column: #161616;
   --bg-sidebar: #fff;
   --bg-header: #fcfcfc;
   --bg-screen: #f6f6f7;
+  --bg-column-title: #fff;
+  /* Select */
+  --text-select-color: #bedbb0;
+
+  /* text-link */
+  --text-color: rgba(22, 22, 22, 0.7);
+  --text-link-color: #bedbb0;
   /* button */
   --btn-bg-color: #bedbb0;
   --btn-bg-color-hover: #9dc888;
@@ -19,22 +27,58 @@
   --icon-card-color-active: rgba(190, 219, 176, 1);
   --log-out-icon-color: #bedbb0;
   --log-out-icon-color-active: #9dc888;
+  --icon-btn-plus: #fff;
+  --icon-btn-plus-bg: #161616;
   /* user avatar */
   --background-color: #f6f6f7;
   --user-icon-color: #fff;
+  /* modal */
+  --bg-modal: #fcfcfc;
+  --modal-level-color: rgba(22, 22, 22, 0.3);
+  --modal-secondary-text-color: rgba(22, 22, 22, 0.1);
+
+  /* sidebar */
+  --my-boards-color: rgba(22, 22, 22, 0.5);
+  --borders-color: rgba(22, 22, 22, 0.1);
+  --create-board-button: #bedbb0;
+  --create-board-button-hover: #9dc888;
+  --create-board-button-plus: #121212;
+  --item-background-color: #f6f6f7;
+  --item-border-color: #bedbb0;
+  --need-help-background-color: #f6f6f7;
+
+  /* radio-button-cheked */
+  --radio-inside: #8fa1d0;
+  --radio-outside: #8fa1d0;
 }
 
 [data-theme='light'] {
   --background-color: #fdfdfd;
   --text-primary-color: #161616;
   --text-secondary-color: #000;
+  --text-select-color: #bedbb0;
+  --text-btn-column: #161616;
   --bg-sidebar: #fff;
   --bg-header: #fcfcfc;
   --bg-screen: #f6f6f7;
+  --bg-column-title: #fff;
+  /* SELECT */
+  --bg-select: #fcfcfc;
+  --select-active-color: #bedbb0;
+  --slider-border-color: #bedbb0;
+  --select-text-color: #161616;
+  --slider-text: rgba(22, 22, 22, 0.8);
+  /* SVG */
+  --color1: #f6f6f7;
+  --color2: #fff;
+  /* text-link */
+  --text-color: rgba(22, 22, 22, 0.7);
+  --text-link-color: #bedbb0;
   /* button */
   --btn-bg-color: #bedbb0;
   --btn-bg-color-hover: #9dc888;
   /* icon */
+  --mobile-menu-icon: #161616;
   --icon-logo-background-color: #1f1f1f;
   --icon-logo-color: #fff;
   --icon-pop-up-color: rgba(22, 22, 22, 0.5);
@@ -43,22 +87,61 @@
   --icon-card-color-active: rgba(190, 219, 176, 1);
   --log-out-icon-color: #bedbb0;
   --log-out-icon-color-active: #9dc888;
+  --icon-btn-plus: #fff;
+  --icon-btn-plus-bg: #161616;
   /* user avatar */
   --background-color: #f6f6f7;
   --user-icon-color: #fff;
+  /* task card */
+  --task-card-background-color: #fff;
+  --task-card-title-color: #161616;
+  --task-card-description-color: rgba(22, 22, 22, 0.7);
+  --task-card-secondary-title-color: rgba(22, 22, 22, 0.5);
+  --task-card--line-color: rgba(22, 22, 22, 0.1);
+  /* modal */
+  --bg-modal: #fcfcfc;
+  --modal-level-color: rgba(22, 22, 22, 0.3);
+  --modal-secondary-text-color: rgba(22, 22, 22, 0.1);
+  /* sidebar */
+  --my-boards-color: rgba(22, 22, 22, 0.5);
+  --borders-color: rgba(22, 22, 22, 0.1);
+  --create-board-button: #bedbb0;
+  --create-board-button-hover: #9dc888;
+  --create-board-button-plus: #121212;
+  --item-background-color: #f6f6f7;
+  --item-border-color: #bedbb0;
+  --need-help-background-color: #f6f6f7;
 }
 
 [data-theme='dark'] {
   --background-color: #232323;
   --text-primary-color: #fff;
+  --text-secondary-color: #fff;
+  --text-btn-column: #161616;
   --bg-sidebar: #121212;
   --bg-header: #161616;
   --bg-screen: #1f1f1f;
+  --bg-column-title: #121212;
+  /* SELECT */
+  --bg-select: #151515;
+  --select-active-color: #bedbb0;
+  --slider-border-color: #bedbb0;
+  --select-text-color: rgba(255, 255, 255, 0.5);
+  --slider-text: rgba(255, 255, 255, 0.8);
   /* --text-secondary: none; */
+  /* SVG */
+  --color1: #1f1f1f;
+  --color2: #151515;
+  /* Select */
+  --select-bg-color: #151515;
+  /* text-link */
+  --text-color: rgba(255, 255, 255, 0.5);
+  --text-link-color: #bedbb0;
   /* button */
   --btn-bg-color: #bedbb0;
   --btn-bg-color-hover: #9dc888;
   /* icon */
+  --mobile-menu-icon: #ffffff;
   --icon-logo-background-color: #1f1f1f;
   --icon-logo-color: #fff;
   --icon-pop-up-color: rgba(255, 255, 255, 0.5);
@@ -67,22 +150,58 @@
   --icon-card-color-active: #bedbb0;
   --log-out-icon-color: #bedbb0;
   --log-out-icon-color-active: #9dc888;
+  --icon-btn-plus: #161616;
+  --icon-btn-plus-bg: #ffffff;
   /* user avatar */
   --background-color: #1f1f1f;
   --user-icon-color: #151515;
+  /* task card */
+  --task-card-background-color: #121212;
+  --task-card-title-color: #fff;
+  --task-card-description-color: rgba(255, 255, 255, 0.5);
+  --task-card-secondary-title-color: rgba(22, 22, 22, 0.5);
+  --task-card--line-color: rgba(22, 22, 22, 0.1);
+  /* modal */
+  --bg-modal: #151515;
+  --modal-level-color: rgba(255, 255, 255, 0.3);
+  --modal-secondary-text-color: rgba(255, 255, 255, 0.1);
+  /* sidebar */
+  --my-boards-color: rgba(255, 255, 255, 0.5);
+  --borders-color: rgba(255, 255, 255, 0.1);
+  --create-board-button: #bedbb0;
+  --create-board-button-hover: #9dc888;
+  --create-board-button-plus: #121212;
+  --item-background-color: #1f1f1f;
+  --item-border-color: #bedbb0;
+  --need-help-background-color: #1f1f1f;
 }
 
 [data-theme='violet'] {
   --background-color: #d6d8ff;
   --text-primary-color: #fff;
   --text-secondary-color: #161616;
+  --text-btn-column: #fff;
   --bg-sidebar: #5255bc;
   --bg-header: #fff;
   --bg-screen: #ecedfd;
+  --bg-column-title: #fff;
+  /* SELECT */
+  --bg-select: #fcfcfc;
+  --select-active-color: #5255bc;
+  --slider-border-color: #ecedfd;
+  --select-text-color: #161616;
+  --slider-text: rgba(22, 22, 22, 0.8);
+  /* SVG  */
+  --color1: #ecedfd;
+  --color2: #fff;
+  /* text-link */
+  --text-color: rgba(22, 22, 22, 0.7);
+  --text-link-color: #5255bc;
   /* button */
   --btn-bg-color: #5255bc;
   --btn-bg-color-hover: #7b7ede;
   /* icon */
+  --mobile-menu-icon: #161616;
   --icon-logo-background-color: #ecedfd;
   --icon-logo-color: #5255bc;
   --icon-pop-up-color: rgba(22, 22, 22, 0.5);
@@ -91,9 +210,34 @@
   --icon-card-color-active: #5255bc;
   --log-out-icon-color: #fff;
   --log-out-icon-color-active: #b8bcfd;
+  --icon-btn-plus: #fff;
+  --icon-btn-plus-bg: #5255bc;
   /* user avatar */
   --background-color: #ecedfd;
   --user-icon-color: #fff;
+  /* task card */
+  --task-card-background-color: #fff;
+  --task-card-title-color: #161616;
+  --task-card-description-color: rgba(22, 22, 22, 0.7);
+  --task-card-secondary-title-color: rgba(22, 22, 22, 0.5);
+  --task-card--line-color: rgba(22, 22, 22, 0.1);
+  /* modal */
+  --bg-modal: #fcfcfc;
+  --modal-level-color: rgba(22, 22, 22, 0.3);
+  --modal-secondary-text-color: rgba(22, 22, 22, 0.1);
+  /* sidebar */
+  --my-boards-color: rgba(255, 255, 255, 0.5);
+  --borders-color: rgba(255, 255, 255, 0.1);
+  --create-board-button: #b8bcfd;
+  --create-board-button-hover: #979cea;
+  --create-board-button-plus: #fff;
+  --item-background-color: rgba(255, 255, 255, 0.5);
+  --item-border-color: #fff;
+  --need-help-background-color: rgba(236, 237, 253, 0.4);
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {

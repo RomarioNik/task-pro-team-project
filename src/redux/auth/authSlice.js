@@ -7,10 +7,9 @@ import {
   changeTheme,
 } from './operations';
 
-const handleFulfilledRegister = (state, action) => {
-  state.user.name = action.payload.user.name;
-  state.user.email = action.payload.user.email;
-  state.token = action.payload.token;
+const handleFulfilledRegister = (state, { payload }) => {
+  state.user = payload.user;
+  state.token = payload.token;
   state.isLoggedIn = true;
   state.isLoading = false;
 };
@@ -23,10 +22,9 @@ const handleRejectedRegister = state => {
   state.isLoading = false;
 };
 
-const handleFulfilledLogIn = (state, action) => {
-  state.user.name = action.payload.user.name;
-  state.user.email = action.payload.user.email;
-  state.token = action.payload.token;
+const handleFulfilledLogIn = (state, { payload }) => {
+  state.user = payload.user;
+  state.token = payload.token;
   state.isLoggedIn = true;
   state.isLoading = false;
 };
@@ -40,19 +38,13 @@ const handleRejectedLogIn = state => {
 };
 
 const handleFulfilledLogOut = state => {
-  state.user = {
-    name: '',
-    email: '',
-    avatar: '',
-    id: '',
-    userTheme: 'light',
-  };
+  state.user = {};
   state.token = '';
   state.isLoggedIn = false;
 };
 
 const handleFulfilledRefresh = (state, { payload }) => {
-  state.user = payload;
+  state.user = payload.user;
   state.isLoggedIn = true;
   state.isRefreshing = false;
   state.isLoading = false;
@@ -70,7 +62,7 @@ const handleRejectedRefresh = state => {
 };
 
 const handleFulfilledChangeTheme = (state, { payload }) => {
-  state.user = payload;
+  state.user = payload.user;
   state.isLoading = false;
 };
 
@@ -83,7 +75,7 @@ const handleRejectedChangeTheme = state => {
 };
 
 const initialState = {
-  user: { name: '', email: '', avatar: '', id: '', userTheme: 'light' },
+  user: {},
   token: '',
   isLoggedIn: false,
   isLoading: false,

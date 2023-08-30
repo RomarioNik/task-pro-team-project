@@ -1,0 +1,310 @@
+.sidebar {
+  /* position: fixed; */
+  /* top: 0; */
+  /* left: -260px; */
+  /* transition: 0.3s; */
+
+  width: 225px;
+  min-height: 100vh;
+
+  background-color: var(--bg-sidebar);
+
+  @media (min-width: 768px) {
+    width: 260px;
+  }
+
+  /* &.active {
+    left: 0;
+  } */
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+
+  padding: 14px 0 0 14px;
+
+  @media (min-width: 768px) {
+    padding: 24px 24px 0;
+  }
+}
+
+.logoText {
+  color: var(--text-primary-color);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.64px;
+}
+
+.myBoards {
+  margin-top: 70px;
+
+  @media (min-width: 768px) {
+    margin-top: 60px;
+  }
+}
+
+.myBoardsText {
+  color: var(--my-boards-color);
+  font-size: 12px;
+  letter-spacing: -0.24px;
+
+  padding: 0 14px;
+
+  @media (min-width: 768px) {
+    padding: 0 24px;
+  }
+}
+
+.createBoardSection {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  margin: 8px auto 0;
+  padding: 14px 0;
+
+  width: 197px;
+  box-sizing: border-box;
+
+  border-top: 1px solid var(--borders-color);
+  border-bottom: 1px solid var(--borders-color);
+
+  @media (min-width: 768px) {
+    width: 212px;
+  }
+}
+
+.createBoardText {
+  font-weight: 500;
+
+  width: 76px;
+}
+
+.createBoardButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 36px;
+
+  border-radius: 6px;
+  background: var(--create-board-button);
+
+  &:hover {
+    background-color: var(--create-board-button-hover);
+  }
+
+  margin-right: 4px;
+
+  @media (min-width: 768px) {
+    margin-right: 0;
+  }
+}
+
+.boardsList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  margin-top: 40px;
+
+  height: 130px;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 1px;
+    height: 1px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--bg-sidebar);
+    border-radius: 4px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 4px;
+  }
+}
+
+.boardsItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+
+  padding: 20px 18px 20px 14px;
+
+  @media (min-width: 768px) {
+    padding: 20px 24px;
+  }
+
+  & > .boardTools {
+    visibility: hidden;
+  }
+}
+
+.active {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+
+  padding: 20px 18px 20px 14px;
+  background-color: var(--item-background-color);
+  border-right: 4px var(--item-border-color) solid;
+  border-top: 4px transparent solid;
+  border-bottom: 4px transparent solid;
+
+  @media (min-width: 768px) {
+    padding: 20px 24px;
+  }
+
+  & .boardName,
+  & .boardIcon {
+    color: var(--text-primary-color);
+    stroke: var(--text-primary-color);
+  }
+}
+
+.boardTitle {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+
+  @media (min-width: 768px) {
+    gap: 8px;
+  }
+}
+
+.boardName {
+  color: var(--my-boards-color);
+  font-weight: 500;
+
+  width: 125px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @media (min-width: 768px) {
+    width: 140px;
+  }
+}
+
+.boardTools {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+}
+
+.needHelpSection {
+  margin: 116px 14px 0 14px;
+
+  border-radius: 8px;
+  background: var(--need-help-background-color);
+
+  @media (min-width: 768px) {
+    margin: 294px 24px 0 24px;
+  }
+
+  @media (min-width: 1140px) {
+    margin-top: 40px;
+  }
+}
+
+.needHelpImage {
+  margin-left: 14px;
+  padding-top: 14px;
+
+  width: 54px;
+  height: 78px;
+  background: url('../../img/png/flowerpot.png'), no-repeat;
+
+  @media (min-width: 768px) {
+    margin-left: 20px;
+    padding-top: 20px;
+  }
+}
+
+.needHelpText {
+  margin: 14px 14px 0 14px;
+  @media (min-width: 768px) {
+    margin: 14px 20px 0 20px;
+  }
+}
+
+.taskPro {
+  color: var(--btn-bg-color);
+  line-height: 16px;
+  @media (min-width: 768px) {
+    line-height: 20px;
+  }
+}
+
+.needHelpButton {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+
+  color: var(--text-primary-color);
+
+  margin-top: 19px;
+  padding: 0 0 14px 14px;
+
+  @media (min-width: 768px) {
+    padding: 0 0 20px 20px;
+  }
+}
+
+.logOutButton {
+  color: var(--text-primary-color);
+  font-size: 14px;
+  font-weight: 500;
+
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+  align-items: center;
+
+  margin-top: 24px;
+  padding: 0 0 24px 24px;
+
+  @media (min-width: 768px) {
+    font-size: 16px;
+  }
+}
+
+.logoIcon {
+  fill: var(--icon-logo-color);
+  /* наружная часть лого  --icon-logo-background-color: #ecedfd; */
+  /* внутренняя часть лого  --icon-logo-color: #5255bc; */
+}
+
+.addIcon {
+  stroke: var(--create-board-button-plus);
+  border-radius: 4px;
+}
+
+.boardIcon,
+.editBoardIcon {
+  stroke: var(--my-boards-color);
+}
+
+.helpIcon {
+  stroke: var(--text-primary-color);
+}
+
+.logoutIcon {
+  stroke: var(--log-out-icon-color);
+
+  &:hover {
+    stroke: var(--log-out-icon-color-active);
+  }
+}

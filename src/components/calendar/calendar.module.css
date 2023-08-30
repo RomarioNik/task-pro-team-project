@@ -1,0 +1,51 @@
+.myButton {
+  color: #bedbb0;
+
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.28px;
+  border: 0px solid;
+  text-transform: inherit;
+  justify-content: left;
+  display: inline-block;
+  display: flex;
+  flex-direction: row;
+  max-width: 250px;
+  padding: 0;
+  justify-content: left;
+}
+
+.myButton:hover {
+  color: #9dc888;
+  border: none;
+  background-color: transparent;
+}
+.myButton:focus {
+  color: #9dc888;
+  border: none;
+  background-color: transparent;
+}
+
+.chevronDownContainer {
+  display: flex;
+  align-items: center;
+}
+
+.chevronDown {
+  stroke: #bedbb0;
+  width: 18px;
+  height: 18px;
+  transition: transform 250ms ease;
+}
+
+.chevronDown:focus {
+  stroke: #bd7517;
+  transform: rotate(180);
+}
+
+.rotate {
+  transform: rotate(180deg);
+  transition: transform 250ms ease;
+}

@@ -14,10 +14,8 @@
 
 // export default LoginForm;
 
-
-
 import React, {
-  // useState
+  useState
   // , useEffect
 } from 'react';
 import { useDispatch } from 'react-redux';
@@ -28,24 +26,26 @@ import { loginFormSchema } from 'scheme/index';
 import css from '../RegisterForm/RegisterForm.module.css';
 // import { useLoggedIn } from '../../hooks/useLoggedIn.js';
 // import { useUserLoading } from 'hooks/useUserLoading';
-import AuthBtn from 'components/AthBtn/AuthBtn';
+import sprite from 'img/svg/sprite-icon.svg';
+import AuthButton from 'components/AuthButton/AuthButton';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
   // const navigate = useNavigate();
   // const isLoggedIn = useLoggedIn();
-  // console.log(isLoggedIn);
-    // const isLoading = useUserLoading();
-  // const [passwordVisible, setPasswordVisible] = useState(false);
+  // const isLoading = useUserLoading();
 
-  // const togglePasswordVisibility = () => {
-  //   setPasswordVisible(!passwordVisible);
-  // };
+  const [passwordVisible, setPasswordVisible] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
 
   const initialValues = {
     email: '',
     password: '',
   };
+
   // useEffect(() => {
   //   if (isLoggedIn) {
   //     navigate('/');
@@ -53,59 +53,60 @@ const LoginForm = () => {
   // }, [isLoggedIn]);
 
   const onSubmit = (values, { resetForm }) => {
-    console.log(values);
     dispatch(loginUser(values));
-    // console.log('onSubmit executed');
     resetForm();
   };
 
   return (
-    <Formik
-      initialValues={initialValues}
-      validationSchema={loginFormSchema}
-      onSubmit={onSubmit}
-    >
-      {() => (
-        <div className={css.form__container}>
-          <Form className={css.register__form}>
-            <label className={css.form__input}>
+    <>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={loginFormSchema}
+        onSubmit={onSubmit}
+      >
+        {() => (
+          <Form className={css.form}>
+            <label className={css.input}>
               <Field
                 type="email"
                 name="email"
                 placeholder="Enter your email"
-                className={css.form__field}
+                className={css.inputField}
               />
               <ErrorMessage
                 name="email"
                 component="div"
-                className={css.form__error}
+                className={css.inputError}
               />
             </label>
-            <label className={css.form__input}>
+            <label className={css.input}>
               <Field
-                type={
-                  // passwordVisible ? 'text' :
-                    'password'}
+                type={passwordVisible ? 'text' : 'password'}
                 name="password"
                 placeholder="Confirm a password"
-                className={css.form__field}
+                className={css.inputField}
               />
               <ErrorMessage
                 name="password"
                 component="div"
-                className={css.form__error}
+                className={css.inputError}
               />
+
+              <span
+                className={css.passwordToggle}
+                onClick={togglePasswordVisibility}
+              >
+                <svg width="18" height="18" className={css.fieldIcon}>
+                  <use xlinkHref={`${sprite}#eye`} />
+                </svg>
+              </span>
             </label>
 
-            {/* <svg onClick={togglePasswordVisibility}>
-                <use href={sprite + '#eye'}></use>
-              </svg> */}
-
-            <AuthBtn textBtn="Login In Now" />
+            <AuthButton textBtn="Login In Now" />
           </Form>
-        </div>
-      )}
-    </Formik>
+        )}
+      </Formik>
+    </>
   );
 };
 

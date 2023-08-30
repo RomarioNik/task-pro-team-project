@@ -26,6 +26,7 @@ export const loginUser = createAsyncThunk(
   async (user, thunkAPI) => {
     try {
       const { data } = await apiPublic.post('/api/auth/signin', user);
+      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
@@ -47,6 +48,11 @@ export const logOutUser = createAsyncThunk(
 export const refreshUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const token = state.auth.token;
+    if (!token) {
+      return thunkAPI.rejectWithValue('Unable to fetch user');
+    }
     try {
       const { data } = await apiPrivate.get('/api/auth/current');
       return data;

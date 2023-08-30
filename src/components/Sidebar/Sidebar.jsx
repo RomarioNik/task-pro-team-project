@@ -1,5 +1,8 @@
+
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+
 import React, { useEffect, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+
 import css from './Sidebar.module.css';
 import sprite from '../../img/svg/sprite-icon.svg';
 import { useDispatch } from 'react-redux';
@@ -16,9 +19,15 @@ import NeedHelp from '../Needhelp/NeedHelp';
 import NewBoard from '../NewEditBoard/NewBoard';
 
 const Sidebar = ({ isOpen }) => {
+
+
+  const navigate = useNavigate();
+
+
   const [openNeedHelpModal, setOpenNeedHelpModal] = useState(false);
   const [openNewBoardModal, setOpenNewBoardModal] = useState(false);
   const [openEditBoardModal, setOpenEditBoardModal] = useState(false);
+
 
   const dispatch = useDispatch();
 
@@ -45,6 +54,12 @@ const Sidebar = ({ isOpen }) => {
 
   const handleEditBoard = () => {
     setOpenEditBoardModal(true);
+  };
+
+
+  const handleLogout = () => {
+    dispatch(logOutUser());
+    navigate('/');
   };
 
   return (
@@ -125,10 +140,7 @@ const Sidebar = ({ isOpen }) => {
           <p>Need help?</p>
         </button>
       </div>
-      <button
-        className={css.logOutButton}
-        onClick={() => dispatch(logOutUser())}
-      >
+      <button className={css.logOutButton} onClick={handleLogout}>
         <svg width="32" height="32" className={css.logoutIcon}>
           <use xlinkHref={`${sprite}#log-out`} />
         </svg>

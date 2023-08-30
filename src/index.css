@@ -36,7 +36,8 @@
   --bg-modal: #fcfcfc;
   --modal-level-color: rgba(22, 22, 22, 0.3);
   --modal-secondary-text-color: rgba(22, 22, 22, 0.1);
-
+  /* filter */
+  --icon-filter: rgba(22, 22, 22, 0.8);
   /* sidebar */
   --my-boards-color: rgba(22, 22, 22, 0.5);
   --borders-color: rgba(22, 22, 22, 0.1);
@@ -102,6 +103,8 @@
   --bg-modal: #fcfcfc;
   --modal-level-color: rgba(22, 22, 22, 0.3);
   --modal-secondary-text-color: rgba(22, 22, 22, 0.1);
+  /* filter */
+  --icon-filter: rgba(22, 22, 22, 0.8);
   /* sidebar */
   --my-boards-color: rgba(22, 22, 22, 0.5);
   --borders-color: rgba(22, 22, 22, 0.1);
@@ -165,6 +168,8 @@
   --bg-modal: #151515;
   --modal-level-color: rgba(255, 255, 255, 0.3);
   --modal-secondary-text-color: rgba(255, 255, 255, 0.1);
+  /* filter */
+  --icon-filter: rgba(255, 255, 255, 0.8);
   /* sidebar */
   --my-boards-color: rgba(255, 255, 255, 0.5);
   --borders-color: rgba(255, 255, 255, 0.1);

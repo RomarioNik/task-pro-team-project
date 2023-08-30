@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useRef } from 'react';
 // import React, { useState } from 'react';
 import style from './Column.module.css';
-
+// import {Scroll} from '../Scroll/use-scroll.js'
 import { Icon } from '../Svg/Icon';
+import useScrollbar from '../Scroll/index';
 
 const columns = [
   {
@@ -13,20 +14,29 @@ const columns = [
     name: 'In progress',
     id: '2',
   },
-  // {
-  //   name: 'Done',
-  //   id: '3',
-  // },
+  {
+    name: 'Done',
+    id: '3',
+  },
+  {
+    name: 'Star',
+    id: '4',
+  },
 ];
 
 const Column = () => {
-  //*отсюда передать тему в глобальній стейт и записать в юзера
+ 
   const addColumn = () => {
     console.log('Add column');
   };
 
+  const columnWrapper = useRef(null)
+  const hasScroll =  columns.length > 2;
+ 
+useScrollbar(columnWrapper, hasScroll);
+
   return (
-    // <div>
+    <div style={{width: hasScroll ?  '300' : '500', minWidth: '900px'}} ref={columnWrapper}>
       <ul>
         {columns.map(({ name, id }) => (
           <li key={id} className={style.column}>
@@ -54,7 +64,7 @@ const Column = () => {
           </li>
         ))}
       </ul>
-    // </div>
+     </div>
   );
 };
 

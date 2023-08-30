@@ -33,6 +33,7 @@
   --background-color: #f6f6f7;
   --user-icon-color: #fff;
   /* modal */
+  --bg-modal: #fcfcfc;
   --modal-level-color: rgba(22, 22, 22, 0.3);
   --modal-secondary-text-color: rgba(22, 22, 22, 0.1);
 
@@ -47,9 +48,8 @@
   --need-help-background-color: #f6f6f7;
 
   /* radio-button-cheked */
-  --radio-inside: #8FA1D0;
-  --radio-outside: #8FA1D0;
-
+  --radio-inside: #8fa1d0;
+  --radio-outside: #8fa1d0;
 }
 
 [data-theme='light'] {
@@ -99,6 +99,7 @@
   --task-card-secondary-title-color: rgba(22, 22, 22, 0.5);
   --task-card--line-color: rgba(22, 22, 22, 0.1);
   /* modal */
+  --bg-modal: #fcfcfc;
   --modal-level-color: rgba(22, 22, 22, 0.3);
   --modal-secondary-text-color: rgba(22, 22, 22, 0.1);
   /* sidebar */
@@ -161,6 +162,7 @@
   --task-card-secondary-title-color: rgba(22, 22, 22, 0.5);
   --task-card--line-color: rgba(22, 22, 22, 0.1);
   /* modal */
+  --bg-modal: #151515;
   --modal-level-color: rgba(255, 255, 255, 0.3);
   --modal-secondary-text-color: rgba(255, 255, 255, 0.1);
   /* sidebar */
@@ -220,6 +222,7 @@
   --task-card-secondary-title-color: rgba(22, 22, 22, 0.5);
   --task-card--line-color: rgba(22, 22, 22, 0.1);
   /* modal */
+  --bg-modal: #fcfcfc;
   --modal-level-color: rgba(22, 22, 22, 0.3);
   --modal-secondary-text-color: rgba(22, 22, 22, 0.1);
   /* sidebar */

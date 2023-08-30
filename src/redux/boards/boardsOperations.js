@@ -41,12 +41,8 @@ export const deleteBoard = createAsyncThunk(
   'contacts/deleteBoard',
   async (boardId, thunkAPI) => {
     try {
-      // const response = await apiPrivate.delete(`/api/boards/${boardId}`);
-      // console.log(response);
-      // return response;
       const { data } = await apiPrivate.delete(`/api/boards/${boardId}`);
-      console.log(data.id);
-      return data.id;
+      return data.deletedId;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }

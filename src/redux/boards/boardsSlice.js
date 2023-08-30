@@ -37,14 +37,14 @@ const handleFulfilledAddBoard = (state, { payload }) => {
 const handleFulfilledDeleteBoard = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;
-  state.allBoards = state.allBoards.filter(({ id }) => id !== payload);
+  state.allBoards = state.allBoards.filter(({ _id }) => _id !== payload);
 };
 
 const handleFulfilledUpdateBoard = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;
-  state.allBoards = state.allBoards.map(el =>
-    el.id === payload.id ? (el = payload) : el
+  state.allBoards = state.items.map(el =>
+    el._id === payload._id ? (el = payload) : el
   );
 };
 

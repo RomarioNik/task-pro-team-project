@@ -6,7 +6,6 @@ const NewBoard = () => {
 
 return (
     <div className={styles.divCard}>
-        {/* <button>X</button> */}
 <h2 className={styles.textNew}>New board</h2>
 <input className={styles.titleInput} type="text" />
 <h3 className={styles.textIcons}>Icons</h3>

@@ -10,9 +10,7 @@ const AuthPage = () => {
 
   return (
     <div className={css.authPage}>
-      <div className={css.container}>
-        {id === 'login' ? <LoginForm /> : <RegisterForm />}
-      </div>
+      {id === 'login' ? <LoginForm /> : <RegisterForm />}
     </div>
   );
 };

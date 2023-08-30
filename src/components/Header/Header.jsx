@@ -7,7 +7,7 @@ import { useState } from 'react';
 import Modal from '../Modal/Modal';
 import EditProfile from '../EditProfile';
 
-const Header = () => {
+const Header = ({ handlerMenu }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const handlerModalIsOpen = () => {
@@ -17,7 +17,7 @@ const Header = () => {
   return (
     <header className={css.header}>
       <div className={css.container}>
-        <Button className={css.menu_btn}>
+        <Button className={css.menu_btn} handlerClick={handlerMenu}>
           <svg className={css.header_iconMenu}>
             <use href={`${icon}#icon-menu`}></use>
           </svg>

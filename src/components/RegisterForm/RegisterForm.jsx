@@ -15,23 +15,18 @@
 // export default RegisterForm;
 
 import React, {
-  useState
-  // , useEffect
+  useState  
 } from 'react';
 import { useDispatch } from 'react-redux';
-// import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { registerUser } from 'redux/auth/operations';
 import { registerFormSchema } from 'scheme/index';
 import css from './RegisterForm.module.css';
-// import { useLoggedIn } from '../../hooks/useLoggedIn.js';
 import sprite from 'img/svg/sprite-icon.svg';
 import AuthButton from 'components/AuthButton/AuthButton';
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
-  // const isLoggedIn = useLoggedIn();
   const [passwordVisible, setPasswordVisible] = useState(false);
 
   const togglePasswordVisibility = () => {
@@ -43,12 +38,6 @@ const RegisterForm = () => {
     email: '',
     password: '',
   };
-
-  // useEffect(() => {
-  //   if (isLoggedIn) {
-  //     navigate('/');
-  //   }
-  // }, [isLoggedIn]);
 
   const onSubmit = (values, { resetForm }) => {
     dispatch(registerUser(values));

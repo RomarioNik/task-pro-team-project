@@ -5,6 +5,7 @@ import {
   logOutUser,
   refreshUser,
   changeTheme,
+  updateProfile,
 } from './operations';
 
 const handleFulfilledRegister = (state, { payload }) => {
@@ -74,6 +75,23 @@ const handleRejectedChangeTheme = state => {
   state.isLoading = false;
 };
 
+const handleFulfilledUpdateProfile = (state, { payload }) => {
+  state.user = payload.user;
+  state.isLoading = false;
+  console.log(payload);
+  if (payload.token === '') {
+    state.isLoggedIn = false;
+  }
+};
+
+const handlePendingUpdateProfile = state => {
+  state.isLoading = true;
+};
+
+const handleRejectedUpdateProfile = state => {
+  state.isLoading = false;
+};
+
 const initialState = {
   user: {},
   token: '',
@@ -99,7 +117,10 @@ const authSlice = createSlice({
       .addCase(refreshUser.rejected, handleRejectedRefresh)
       .addCase(changeTheme.fulfilled, handleFulfilledChangeTheme)
       .addCase(changeTheme.pending, handlePendingChangeTheme)
-      .addCase(changeTheme.rejected, handleRejectedChangeTheme),
+      .addCase(changeTheme.rejected, handleRejectedChangeTheme)
+      .addCase(updateProfile.fulfilled, handleFulfilledUpdateProfile)
+      .addCase(updateProfile.pending, handlePendingUpdateProfile)
+      .addCase(updateProfile.rejected, handleRejectedUpdateProfile),
 });
 
 export const authReducer = authSlice.reducer;

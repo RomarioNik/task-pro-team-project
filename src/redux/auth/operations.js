@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { apiPublic, apiPrivate } from 'services/axios';
+import { apiPublic, apiPrivate, apiPrivateFormData } from 'services/axios';
 
 export const registerUser = createAsyncThunk(
   'auth/register',
@@ -67,6 +67,22 @@ export const changeTheme = createAsyncThunk(
   async (userTheme, thunkAPI) => {
     try {
       const { data } = await apiPrivate.patch('/api/auth', userTheme);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateProfile = createAsyncThunk(
+  'auth/updateprofile',
+  async (formData, thunkAPI) => {
+    try {
+      const { data } = await apiPrivateFormData.put(
+        '/api/auth/update',
+        formData
+      );
+      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

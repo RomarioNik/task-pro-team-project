@@ -41,7 +41,7 @@ const BoardCreated = () => {
         <div className={style.column__item}>
           <Column />
         </div>
-        <button
+        {/* <button
           className={style.button__create}
           type="button"
           onClick={createColumn}
@@ -50,7 +50,7 @@ const BoardCreated = () => {
             <Icon id="plus" className={style.button__create__icon} />
           </div>
           <p className={style.button__create__title}>Add another column</p>
-        </button>
+        </button> */}
       </div>
     </div>
   );

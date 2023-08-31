@@ -36,7 +36,7 @@ useScrollbar(columnWrapper, hasScroll);
 
   return (
     <div 
-    style={{ width: hasScroll ? '700px' : 'auto', minWidth: '334px'}} 
+    style={{ width: hasScroll ? '1280px' : 'auto', minWidth: '334px'}} 
     ref={columnWrapper}
     >
       <ul className={style.column__item}>
@@ -65,6 +65,18 @@ useScrollbar(columnWrapper, hasScroll);
             </button>
           </li>
         ))}
+        <li>
+        <button
+          className={style.button__create__column}
+          type="button"
+          // onClick={createColumn}
+        >
+          <div className={style.button__icon__bg}>
+            <Icon id="plus" className={style.button__icon} />
+          </div>
+          <p className={style.button__title}>Add another column</p>
+        </button>
+        </li>
       </ul>
      </div>
   );

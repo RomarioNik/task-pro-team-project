@@ -1,7 +1,14 @@
 
-.column {
-  display: inline-block;
+.column__item {
+  display: flex;
+   flex-wrap: nowrap;
 }
+
+.column {
+ 
+   display: block;
+
+ } 
 
 .column__section {
   background-color: var(--bg-column-title );

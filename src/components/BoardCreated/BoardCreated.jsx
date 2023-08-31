@@ -1,50 +1,47 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Icon } from '../Svg/Icon';
 import Column from 'components/Column/Column';
 import style from './BoardCreated.module.css';
-// import { useParams } from 'react-router-dom';
 
-//-------scroll------------------------- 
-// import 'overlayscrollbars/overlayscrollbars.css';
-// import useScrollbar from '../Scroll/Scroll';
 
-// import { OverlayScrollbars} from 'overlayscrollbars';
-//-----------------------------------------
+import { OverlayScrollbars } from 'overlayscrollbars';
+
 const BoardCreated = () => {
   // const [theme, setTheme] = useState('light');
   // const { boardName } = useParams();
-
+  
   //----функція-відкривання-модалки-створення-колонки
   const createColumn = () => {
     console.log('add column');
   };
-  
-  console.log()
 
-  // OverlayScrollbars({ 
+// -------------------скрол-варіант-3-(не политів)-----------------------------------
+
+  // useEffect(() => {
+  //   const containerElement = document.querySelector('#style.column__container');
+  //   const osInstance = OverlayScrollbars(containerElement, {});
+
+  //   return () => {
+  //     osInstance.destroy();
+  //   };
+  // }, []);
+
+
+  // ------------------скрол-варіант-2-(не политів)-------------------------------------
+  // OverlayScrollbars({
   //   target: document.querySelector('#column__item'),
-  //   scrollbars: {
-  //     slot: document.querySelector('#column__item').parentElement,
+  //   elements: {
+  //     viewport: document.querySelector('#column__container'),
   //   },
   //  }, {});
 
-
-  //  OverlayScrollbars(document.querySelector('#column__container'), {
-  //   overflow: {
-  //     x: 'hidden',
-  //   },
-  // });
-    
   return (
-    <div >
-      {/* <div className={style.title__container}>
-        <p className={style.title__board}>{boardName}</p>
-      </div> */}
+    <div>
       <div className={style.column__container}>
         <div className={style.column__item}>
-          <Column /> 
-        </div> 
-          <button
+          <Column />
+        </div>
+        <button
           className={style.button__create}
           type="button"
           onClick={createColumn}
@@ -53,7 +50,7 @@ const BoardCreated = () => {
             <Icon id="plus" className={style.button__create__icon} />
           </div>
           <p className={style.button__create__title}>Add another column</p>
-        </button>     
+        </button>
       </div>
     </div>
   );

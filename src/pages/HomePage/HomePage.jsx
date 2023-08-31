@@ -18,6 +18,7 @@ const HomePage = () => {
     <>
       <div className={css.test} data-theme={userTheme}>
         <div style={{ display: 'flex' }}>
+        <Sidebar />
           {isOpenMenu && <Sidebar />}
           <div className={css.homePage_wrap}>
             <Header handlerMenu={toggleIsOpenMenu} />

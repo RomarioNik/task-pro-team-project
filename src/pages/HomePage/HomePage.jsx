@@ -19,7 +19,7 @@ const HomePage = () => {
   return (
     <div className={css.test} data-theme={userTheme}>
       <div style={{ display: 'flex' }}>
-        {isOpenMenu && <Sidebar />}
+        {isOpenMenu && <Sidebar closeSidebar={toggleIsOpenMenu} />}
         <MediaQuery minWidth={1440}>{!isOpenMenu && <Sidebar />}</MediaQuery>
         <div className={css.homePage_wrap}>
           <Header handlerMenu={toggleIsOpenMenu} />

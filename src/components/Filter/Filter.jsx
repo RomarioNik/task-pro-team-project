@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import style from './Filter.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFilter } from 'redux/boards/boardsSelectors';
@@ -6,20 +6,58 @@ import { addFilter } from 'redux/boards/filterSlice';
 
 const Filter = () => {
   const dispatch = useDispatch();
+
+  // ===============Перевірка фільтрації
   const currentFilter = useSelector(getFilter);
-  // const [filter, setFilter] = useState(null);
+  const cards = [
+    [
+      { id: 'first', priority: 'high', name: 'card-11' },
+      { id: 'first', priority: 'low', name: 'card-12' },
+      { id: 'first', priority: 'high', name: 'card-13' },
+      { id: 'first', priority: 'high', name: 'card-14' },
+      { id: 'first', priority: 'medium', name: 'card-15' },
+      { id: 'first', priority: 'without priority', name: 'card-16' },
+      { id: 'first', priority: 'high', name: 'card-17' },
+    ],
+    [
+      { id: 'second', priority: 'without priority', name: 'card-21' },
+      { id: 'second', priority: 'low', name: 'card-22' },
+      { id: 'second', priority: 'high', name: 'card-23' },
+      { id: 'second', priority: 'low', name: 'card-24' },
+      { id: 'second', priority: 'without-priority', name: 'card-25' },
+      { id: 'second', priority: 'without-priority', name: 'card-26' },
+      { id: 'second', priority: 'medium', name: 'card-27' },
+    ],
+    [
+      { id: 'third', priority: 'low', name: 'card-31' },
+      { id: 'third', priority: 'low', name: 'card-32' },
+      { id: 'third', priority: 'without priority', name: 'card-33' },
+      { id: 'third', priority: 'high', name: 'card-34' },
+      { id: 'third', priority: 'medium', name: 'card-35' },
+      { id: 'third', priority: 'without priority', name: 'card-36' },
+      { id: 'third', priority: 'high', name: 'card-37' },
+    ],
+  ];
+
+  const filtered = (f, cards) => {
+    if (f === null) {
+      return cards;
+    }
+    const filteredCards = cards.map(card => {
+      const res = card.filter(card => {
+        return card.priority === f;
+      });
+      return res;
+    });
+
+    return filteredCards;
+  };
+
+  const result = filtered(currentFilter, cards);
 
   useEffect(() => {
-    console.log(currentFilter);
-  }, [currentFilter]);
-
-  // const setFilterValue = evt => {
-  //   setFilter(evt.target.value);
-  // };
-
-  // const onSubmitHandle = () => {
-  //   setFilter(null);
-  // };
+    console.log(result);
+  }, [result]);
 
   return (
     <>
@@ -102,52 +140,3 @@ const Filter = () => {
 };
 
 export default Filter;
-
-// ========================================function for filter=======================================
-// const cards = [
-//   [
-//     { id: 'first', priority: 'high', name: 'card-11' },
-//     { id: 'first', priority: 'low', name: 'card-12' },
-//     { id: 'first', priority: 'high', name: 'card-13' },
-//     { id: 'first', priority: 'high', name: 'card-14' },
-//     { id: 'first', priority: 'medium', name: 'card-15' },
-//     { id: 'first', priority: 'without-priority', name: 'card-16' },
-//     { id: 'first', priority: 'high', name: 'card-17' },
-//   ],
-//   [
-//     { id: 'second', priority: 'without-priority', name: 'card-21' },
-//     { id: 'second', priority: 'low', name: 'card-22' },
-//     { id: 'second', priority: 'high', name: 'card-23' },
-//     { id: 'second', priority: 'low', name: 'card-24' },
-//     { id: 'second', priority: 'without-priority', name: 'card-25' },
-//     { id: 'second', priority: 'without-priority', name: 'card-26' },
-//     { id: 'second', priority: 'medium', name: 'card-27' },
-//   ],
-//   [
-//     { id: 'third', priority: 'low', name: 'card-31' },
-//     { id: 'third', priority: 'low', name: 'card-32' },
-//     { id: 'third', priority: 'without-priority', name: 'card-33' },
-//     { id: 'third', priority: 'high', name: 'card-34' },
-//     { id: 'third', priority: 'medium', name: 'card-35' },
-//     { id: 'third', priority: 'without-priority', name: 'card-36' },
-//     { id: 'third', priority: 'high', name: 'card-37' },
-//   ],
-// ];
-
-// const filtered = (f, cards) => {
-//   if (f === null) {
-//     return cards;
-//   }
-//   const filteredCards = cards.map(card => {
-//     const res = card.filter(card => {
-//       return card.priority === f;
-//     });
-//     return res;
-//   });
-
-//   return filteredCards;
-// };
-
-// const result = filtered(filter, cards);
-
-// =============================================================================================

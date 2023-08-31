@@ -5,7 +5,7 @@ const NewBoard = () => {
   return (
     <div className={styles.divCard}>
       <h2 className={styles.textNew}>New board</h2>
-      <input className={styles.titleInput} type="text" />
+      <input className={styles.titleInput} type="text" placeholder="Title" />
       <h3 className={styles.textIcons}>Icons</h3>
       <ul className={styles.listDarkIcons}>
         <li>
@@ -55,7 +55,10 @@ const NewBoard = () => {
         <li className={styles.listItem}></li>
       </ul>
       <button className={styles.mainButton}>
-        <div className={styles.plusBtnZaglushka}></div>Create
+        <div className={styles.plusBtnZaglushka}>
+          <Icon id={'plus'} className={styles.plusIcon}></Icon>
+        </div>
+        Create
       </button>
     </div>
   );

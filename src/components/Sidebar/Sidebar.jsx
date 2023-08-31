@@ -17,7 +17,7 @@ import Modal from '../Modal/index.js';
 import NeedHelp from '../Needhelp/NeedHelp';
 import NewBoard from '../NewEditBoard/NewBoard';
 
-const Sidebar = ({ closeSidebar }) => {
+const Sidebar = ({ closeSidebar, isOpenMenu }) => {
   const navigate = useNavigate();
 
   const [openNeedHelpModal, setOpenNeedHelpModal] = useState(false);
@@ -64,7 +64,7 @@ const Sidebar = ({ closeSidebar }) => {
 
   return (
     <div className={css.backdrop} onClick={handleBackdropClick}>
-      <div className={css.sidebar}>
+      <div className={`${css.sidebar} ${isOpenMenu ? css.open : css.close}`}>
         {openNeedHelpModal && (
           <Modal children={<NeedHelp />} openModal={setOpenNeedHelpModal} />
         )}

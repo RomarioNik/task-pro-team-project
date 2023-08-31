@@ -17,6 +17,11 @@ const EditProfile = () => {
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
   const [password, setPassword] = useState('');
+   const [passwordVisible, setPasswordVisible] = useState(false);
+
+   const togglePasswordVisibility = () => {
+     setPasswordVisible(!passwordVisible);
+   };
 
   const handleChangeAvatar = event => {
     setAvatar(event.target.files[0]);
@@ -42,6 +47,10 @@ const EditProfile = () => {
 
   if (user.avatarURL === '') {
     console.log(`Аватара у пользователя нет, пришло ''`);
+  }
+
+  if (!user.avatarURL === '') {
+    console.log(`Аватар пришёл, должна быть фотка`);
   }
 
   console.log(`avatarURL:   ${user.avatarURL}`);
@@ -72,9 +81,12 @@ const EditProfile = () => {
             type="file"
             onChange={handleChangeAvatar}
           />
-          <svg width="68" height="68" className={css.img}>
+          
+          {user.avatarURL === ''
+          ? (<svg width="68" height="68" className={css.img}>
             <use xlinkHref={`${sprite}#icon-user-ico`} />
-          </svg>
+          </svg>)
+            : (<img   src={user.avatarURL}  className={css.imgUser} alt="avatar" />)}
         </label>
         <label className={css.labelStyle}>
           <input
@@ -97,12 +109,20 @@ const EditProfile = () => {
         <label className={css.labelStyle}>
           <input
             className={css.inputName}
-            type="text"
+             type={passwordVisible ? "text" : "password"}
             name="password"
             value={password}
             placeholder="Password"
             onChange={handleChange}
           />
+               <span
+                className={css.passwordToggle}
+                onClick={togglePasswordVisibility}
+              >
+                <svg width="18" height="18" className={css.fieldIcon}>
+                  <use xlinkHref={`${sprite}#eye`} />
+                </svg>
+              </span> 
         </label>
         <button type="submit" className={css.btnAdd}>
           Send

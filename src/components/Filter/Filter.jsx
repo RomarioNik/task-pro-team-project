@@ -1,22 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import style from './Filter.module.css';
-// import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getFilter } from 'redux/boards/boardsSelectors';
+import { addFilter } from 'redux/boards/filterSlice';
 
 const Filter = () => {
-  // const dispatch = useDispatch();
-  const [filter, setFilter] = useState(null);
+  const dispatch = useDispatch();
+  const currentFilter = useSelector(getFilter);
+  // const [filter, setFilter] = useState(null);
 
   useEffect(() => {
-    console.log(filter);
-  }, [filter]);
+    console.log(currentFilter);
+  }, [currentFilter]);
 
-  const setFilterValue = evt => {
-    setFilter(evt.target.value);
-  };
+  // const setFilterValue = evt => {
+  //   setFilter(evt.target.value);
+  // };
 
-  const onSubmitHandle = () => {
-    setFilter(null);
-  };
+  // const onSubmitHandle = () => {
+  //   setFilter(null);
+  // };
 
   return (
     <>
@@ -24,10 +27,13 @@ const Filter = () => {
       <div className={style.filterContainer}>
         <div className={style.filterListWrap}>
           <h3 className={style.listTitle}>Label color</h3>
-          <form onChange={setFilterValue} className={style.filterList}>
+          <form
+            onChange={e => dispatch(addFilter(e.target.value))}
+            className={style.filterList}
+          >
             <input
               className={style.visuallyHidden}
-              value="without-priority"
+              value="without priority"
               type="radio"
               name="filter"
               id="without-priority"
@@ -83,7 +89,11 @@ const Filter = () => {
             </label>
           </form>
         </div>
-        <button onClick={onSubmitHandle} className={style.btn} type="button">
+        <button
+          onClick={() => dispatch(addFilter(null))}
+          className={style.btn}
+          type="button"
+        >
           Show all
         </button>
       </div>

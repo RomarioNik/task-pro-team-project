@@ -1,7 +1,6 @@
 import React, { useRef } from 'react';
 // import React, { useState } from 'react';
 import style from './Column.module.css';
-// import {Scroll} from '../Scroll/use-scroll.js'
 import { Icon } from '../Svg/Icon';
 import useScrollbar from '../Scroll/index';
 
@@ -29,15 +28,18 @@ const Column = () => {
   const addColumn = () => {
     console.log('Add column');
   };
-
+//----------------скрол-віріант-1-(робочий)---------------------------
   const columnWrapper = useRef(null)
-  const hasScroll =  columns.length > 2;
+  const hasScroll =  columns.length >= 1; 
  
 useScrollbar(columnWrapper, hasScroll);
 
   return (
-    <div style={{width: hasScroll ?  '300' : '500', minWidth: '900px'}} ref={columnWrapper}>
-      <ul>
+    <div 
+    style={{ width: hasScroll ? '1280px' : 'auto', minWidth: '334px'}} 
+    ref={columnWrapper}
+    >
+      <ul className={style.column__item}>
         {columns.map(({ name, id }) => (
           <li key={id} className={style.column}>
             <div className={style.column__section}>
@@ -63,6 +65,18 @@ useScrollbar(columnWrapper, hasScroll);
             </button>
           </li>
         ))}
+        <li>
+        <button
+          className={style.button__create__column}
+          type="button"
+          // onClick={createColumn}
+        >
+          <div className={style.button__icon__bg}>
+            <Icon id="plus" className={style.button__icon} />
+          </div>
+          <p className={style.button__title}>Add another column</p>
+        </button>
+        </li>
       </ul>
      </div>
   );

@@ -17,6 +17,7 @@ const HomePage = () => {
   };
 
   return (
+
     <div className={css.test} data-theme={userTheme}>
       <div style={{ display: 'flex' }}>
         {isOpenMenu && <Sidebar closeSidebar={toggleIsOpenMenu} />}
@@ -25,6 +26,7 @@ const HomePage = () => {
           <Header handlerMenu={toggleIsOpenMenu} />
 
           <ScreensPage />
+
         </div>
       </div>
     </div>

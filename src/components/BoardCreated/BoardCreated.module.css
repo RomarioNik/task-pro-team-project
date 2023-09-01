@@ -25,7 +25,22 @@
 .column__item {
   display: flex;
   flex-wrap: nowrap;
-  /* overflow-x: scroll; */
+  width: 334px;
+  /* margin-left: 20px; */
+  margin-left: auto;
+    margin-right: auto;
+  @media screen and (min-width: 768px) {
+    width: 704px;
+    /* margin-left: 32px; */
+    margin-left: auto;
+    margin-right: auto;
+    @media screen and (min-width: 1440px) {
+      min-width: 1180px;
+      margin-left: 24px;
+
+  }    
+
+}
 }
 
 .column__container {
@@ -33,13 +48,13 @@
   /* flex-wrap: nowrap; */
      /* overflow-x: scroll;  */
 
-  margin-left: 20px;
+  /* margin-left: 20px;
   @media screen and (min-width: 768px) {
     margin-left: 32px;
     @media screen and (min-width: 1440px) {
-      margin-left: 24px;
-  }    
-}    
+      margin-left: 24px; */
+  /* }    
+}     */
 }
 
 .button__create {
@@ -80,3 +95,5 @@
   font-weight: 500;
   color: var(--icon-btn-plus-bg);
 }
+
+

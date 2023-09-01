@@ -36,6 +36,7 @@
   --bg-modal: #fcfcfc;
   --modal-level-color: rgba(22, 22, 22, 0.3);
   --modal-secondary-text-color: rgba(22, 22, 22, 0.1);
+  --modal-border: transparent;
   /* filter */
   --icon-filter: rgba(22, 22, 22, 0.8);
   /* sidebar */
@@ -48,9 +49,9 @@
   --item-border-color: #bedbb0;
   --need-help-background-color: #f6f6f7;
 
-  /* radio-button-cheked */
-  --radio-inside: #8fa1d0;
-  --radio-outside: #8fa1d0;
+  --addCard-plus-icon: #ffffff;
+
+  --modal-title-color: #161616;
 }
 
 [data-theme='light'] {
@@ -103,6 +104,7 @@
   --bg-modal: #fcfcfc;
   --modal-level-color: rgba(22, 22, 22, 0.3);
   --modal-secondary-text-color: rgba(22, 22, 22, 0.1);
+  --modal-border: transparent;
   /* filter */
   --icon-filter: rgba(22, 22, 22, 0.8);
   /* sidebar */
@@ -114,6 +116,8 @@
   --item-background-color: #f6f6f7;
   --item-border-color: #bedbb0;
   --need-help-background-color: #f6f6f7;
+  --addCard-plus-icon: #ffffff;
+  --modal-title-color: #161616;
 }
 
 [data-theme='dark'] {
@@ -168,6 +172,7 @@
   --bg-modal: #151515;
   --modal-level-color: rgba(255, 255, 255, 0.3);
   --modal-secondary-text-color: rgba(255, 255, 255, 0.1);
+  --modal-border: rgba(190, 219, 176, 0.5);
   /* filter */
   --icon-filter: rgba(255, 255, 255, 0.8);
   /* sidebar */
@@ -179,6 +184,8 @@
   --item-background-color: #1f1f1f;
   --item-border-color: #bedbb0;
   --need-help-background-color: #1f1f1f;
+  --modal-btn-plus: #161616;
+  --modal-title-color: #fff;
 }
 
 [data-theme='violet'] {
@@ -239,6 +246,8 @@
   --item-background-color: rgba(255, 255, 255, 0.5);
   --item-border-color: #fff;
   --need-help-background-color: rgba(236, 237, 253, 0.4);
+  --addCard-plus-icon: #161616;
+  --modal-title-color: #161616;
 }
 
 * {

@@ -116,7 +116,7 @@ const Column = () => {
         </li>
       </ul>
       {isOpenModalAddColumn && (
-        <Modal>
+        <Modal openModal={isOpenModalAddColumn}>
           <AddColumn />
         </Modal>
       )}

@@ -3,9 +3,8 @@ import { Icon } from '../Svg/Icon';
 import useScrollbar from '../Scroll/index';
 import 'overlayscrollbars/overlayscrollbars.css';
 import Modal from 'components/Modal/Modal';
-import AddColumn from 'AddColumn';
+import AddColumn from 'components/AddColumn';
 import style from './Column.module.css';
-
 
 const columns = [
   {
@@ -46,17 +45,15 @@ const cards = [
 ];
 
 const Column = () => {
-  
-  const [isOpenModalAddColumn, setIsOpenModalAddColumn] =  useState(false);
+  const [isOpenModalAddColumn, setIsOpenModalAddColumn] = useState(false);
 
   const addColumn = () => {
-setIsOpenModalAddColumn(!isOpenModalAddColumn);
+    setIsOpenModalAddColumn(!isOpenModalAddColumn);
   };
-    
+
   const addCard = () => {
     console.log('Add column');
   };
-
 
   //----------------скрол-віріант-1-(робочий)---------------------------
   const columnWrapper = useRef(null);
@@ -118,7 +115,11 @@ setIsOpenModalAddColumn(!isOpenModalAddColumn);
           </button>
         </li>
       </ul>
-      {isOpenModalAddColumn && <Modal><AddColumn/></Modal>}
+      {isOpenModalAddColumn && (
+        <Modal>
+          <AddColumn />
+        </Modal>
+      )}
     </div>
   );
 };

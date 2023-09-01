@@ -10,9 +10,6 @@
 .filterContainer {
   border-top: 1px solid var(--modal-secondary-text-color);
   padding-top: 14px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
 }
 
 .listTitle {
@@ -24,7 +21,14 @@
   margin-bottom: 14px;
 }
 
+.filterList {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
 .btn {
+  cursor: pointer;
   color: var(--icon-pop-up-color);
   font-size: 12px;
   line-height: 1.5;

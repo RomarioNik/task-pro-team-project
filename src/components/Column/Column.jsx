@@ -4,7 +4,9 @@ import useScrollbar from '../Scroll/index';
 import 'overlayscrollbars/overlayscrollbars.css';
 import Modal from 'components/Modal/Modal';
 import AddColumn from 'components/AddColumn';
+// import CreateCardPopUp from 'components/CreateCardPopUp/CreateCardPopUp';
 import EditColumn from 'components/EditColumn';
+
 import style from './Column.module.css';
 
 const columns = [
@@ -47,17 +49,14 @@ const cards = [
 
 const Column = () => {
   const [isOpenModalAddColumn, setIsOpenModalAddColumn] = useState(false);
-  const [isOpenModalEditColumn, setIsOpenModalEditColumn] = useState(false);
-  const addColumn = () => {
-    setIsOpenModalAddColumn(!isOpenModalAddColumn);
-  };
-
+  const [isOpenModalAddCard, setIsOpenModalAddCard] = useState(false);
+  
   const editColum = () => {
     setIsOpenModalEditColumn(!isOpenModalEditColumn);
   };
 
   const addCard = () => {
-    console.log('Add column');
+    setIsOpenModalAddCard(!isOpenModalAddCard);  
   };
 
   //----------------скрол-віріант-1-(робочий)---------------------------
@@ -123,7 +122,11 @@ const Column = () => {
       {isOpenModalAddColumn && (
         <Modal openModal={addColumn}>
           <AddColumn />
-        </Modal>
+        </Modal>)}
+         {isOpenModalAddCard && (
+          <Modal openModal={addCard}>
+            {/* <CreateCardPopUp/> */}
+          </Modal>
       )}
       {isOpenModalEditColumn && (
         <Modal openModal={editColum}>

@@ -4,6 +4,7 @@ import useScrollbar from '../Scroll/index';
 import 'overlayscrollbars/overlayscrollbars.css';
 import Modal from 'components/Modal/Modal';
 import AddColumn from 'components/AddColumn';
+import EditColumn from 'components/EditColumn';
 import style from './Column.module.css';
 
 const columns = [
@@ -46,9 +47,13 @@ const cards = [
 
 const Column = () => {
   const [isOpenModalAddColumn, setIsOpenModalAddColumn] = useState(false);
-
+  const [isOpenModalEditColumn, setIsOpenModalEditColumn] = useState(false);
   const addColumn = () => {
     setIsOpenModalAddColumn(!isOpenModalAddColumn);
+  };
+
+  const editColum = () => {
+    setIsOpenModalEditColumn(!isOpenModalEditColumn);
   };
 
   const addCard = () => {
@@ -73,7 +78,7 @@ const Column = () => {
               <p className={style.column_title}>{name}</p>
 
               <div className={style.column__edit__button}>
-                <button>
+                <button onClick={editColum}>
                   <Icon id="pencil" className={style.column__icon} />
                 </button>
                 <button>
@@ -116,8 +121,13 @@ const Column = () => {
         </li>
       </ul>
       {isOpenModalAddColumn && (
-        <Modal>
+        <Modal openModal={addColumn}>
           <AddColumn />
+        </Modal>
+      )}
+      {isOpenModalEditColumn && (
+        <Modal openModal={editColum}>
+          <EditColumn />
         </Modal>
       )}
     </div>

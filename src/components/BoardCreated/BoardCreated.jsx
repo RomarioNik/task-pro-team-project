@@ -1,21 +1,27 @@
-import React, { useEffect } from 'react';
-import { Icon } from '../Svg/Icon';
+import React, { useEffect, useRef, useState } from 'react';
+// import { Icon } from '../Svg/Icon';
 import Column from 'components/Column/Column';
 import style from './BoardCreated.module.css';
-
+import 'overlayscrollbars/overlayscrollbars.css';
+//import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 
 import { OverlayScrollbars } from 'overlayscrollbars';
+import Modal from 'components/Modal/Modal';
+import AddColumn from 'AddColumn/AddColumn';
+
+// import { OverlayScrollbars } from 'overlayscrollbars';
 
 const BoardCreated = () => {
+  const [isOpenCreateColumn, setIsOpenCreateColumn] = useState();
   // const [theme, setTheme] = useState('light');
   // const { boardName } = useParams();
-  
+
   //----функція-відкривання-модалки-створення-колонки
   const createColumn = () => {
-    console.log('add column');
+    setIsOpenCreateColumn(!isOpenCreateColumn);
   };
 
-// -------------------скрол-варіант-3-(не политів)-----------------------------------
+  // -------------------скрол-варіант-3-(не политів)-----------------------------------
 
   // useEffect(() => {
   //   const containerElement = document.querySelector('#style.column__container');
@@ -26,7 +32,6 @@ const BoardCreated = () => {
   //   };
   // }, []);
 
-
   // ------------------скрол-варіант-2-(не политів)-------------------------------------
   // OverlayScrollbars({
   //   target: document.querySelector('#column__item'),
@@ -36,10 +41,18 @@ const BoardCreated = () => {
   //  }, {});
 
   return (
+    //---------------скрол 4 варіант-не-полетів-------
+    //<OverlayScrollbarsComponent
+    // element="Column"
+    // options={{ scrollbars: { autoHide: 'never' } }}
+    // events={{ scroll: () => {} }}
+    // defer
+    //>
+
     <div>
       <div className={style.column__container}>
         <div className={style.column__item}>
-          <Column />
+          <Column createColumn={createColumn} />
         </div>
         {/* <button
           className={style.button__create}
@@ -52,7 +65,14 @@ const BoardCreated = () => {
           <p className={style.button__create__title}>Add another column</p>
         </button> */}
       </div>
+      {isOpenCreateColumn && (
+        <Modal openModal={createColumn}>
+          <AddColumn />
+        </Modal>
+      )}
     </div>
+
+    //</OverlayScrollbarsComponent>
   );
 };
 

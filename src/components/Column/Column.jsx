@@ -23,21 +23,20 @@ const columns = [
   },
 ];
 
-const Column = () => {
- 
+const Column = ({ createColumn }) => {
   const addColumn = () => {
     console.log('Add column');
   };
-//----------------скрол-віріант-1-(робочий)---------------------------
-  const columnWrapper = useRef(null)
-  const hasScroll =  columns.length >= 1; 
- 
-useScrollbar(columnWrapper, hasScroll);
+  //----------------скрол-віріант-1-(робочий)---------------------------
+  const columnWrapper = useRef(null);
+  const hasScroll = columns.length >= 1;
+
+  useScrollbar(columnWrapper, hasScroll);
 
   return (
-    <div 
-    style={{ width: hasScroll ? '1280px' : 'auto', minWidth: '334px'}} 
-    ref={columnWrapper}
+    <div
+      style={{ width: hasScroll ? '1280px' : 'auto', minWidth: '334px' }}
+      ref={columnWrapper}
     >
       <ul className={style.column__item}>
         {columns.map(({ name, id }) => (
@@ -66,19 +65,19 @@ useScrollbar(columnWrapper, hasScroll);
           </li>
         ))}
         <li>
-        <button
-          className={style.button__create__column}
-          type="button"
-          // onClick={createColumn}
-        >
-          <div className={style.button__icon__bg}>
-            <Icon id="plus" className={style.button__icon} />
-          </div>
-          <p className={style.button__title}>Add another column</p>
-        </button>
+          <button
+            className={style.button__create__column}
+            type="button"
+            onClick={createColumn}
+          >
+            <div className={style.button__icon__bg}>
+              <Icon id="plus" className={style.button__icon} />
+            </div>
+            <p className={style.button__title}>Add another column</p>
+          </button>
         </li>
       </ul>
-     </div>
+    </div>
   );
 };
 

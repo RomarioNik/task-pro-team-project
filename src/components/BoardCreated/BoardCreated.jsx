@@ -1,21 +1,23 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Icon } from '../Svg/Icon';
 import Column from 'components/Column/Column';
 import style from './BoardCreated.module.css';
 
-
 import { OverlayScrollbars } from 'overlayscrollbars';
+import Modal from 'components/Modal/Modal';
+import AddColumn from 'AddColumn/AddColumn';
 
 const BoardCreated = () => {
+  const [isOpenCreateColumn, setIsOpenCreateColumn] = useState();
   // const [theme, setTheme] = useState('light');
   // const { boardName } = useParams();
-  
+
   //----функція-відкривання-модалки-створення-колонки
   const createColumn = () => {
-    console.log('add column');
+    setIsOpenCreateColumn(!isOpenCreateColumn);
   };
 
-// -------------------скрол-варіант-3-(не политів)-----------------------------------
+  // -------------------скрол-варіант-3-(не политів)-----------------------------------
 
   // useEffect(() => {
   //   const containerElement = document.querySelector('#style.column__container');
@@ -25,7 +27,6 @@ const BoardCreated = () => {
   //     osInstance.destroy();
   //   };
   // }, []);
-
 
   // ------------------скрол-варіант-2-(не политів)-------------------------------------
   // OverlayScrollbars({
@@ -39,7 +40,7 @@ const BoardCreated = () => {
     <div>
       <div className={style.column__container}>
         <div className={style.column__item}>
-          <Column />
+          <Column createColumn={createColumn} />
         </div>
         {/* <button
           className={style.button__create}
@@ -52,6 +53,11 @@ const BoardCreated = () => {
           <p className={style.button__create__title}>Add another column</p>
         </button> */}
       </div>
+      {isOpenCreateColumn && (
+        <Modal openModal={createColumn}>
+          <AddColumn />
+        </Modal>
+      )}
     </div>
   );
 };

@@ -114,6 +114,10 @@
   --item-background-color: #f6f6f7;
   --item-border-color: #bedbb0;
   --need-help-background-color: #f6f6f7;
+  /* Column */
+  --input-border-color: #bedbb0;
+  --btn-icon-color-bg: #161616;
+  --btn-icon-color-plus: #fff;
 }
 
 [data-theme='dark'] {
@@ -179,6 +183,10 @@
   --item-background-color: #1f1f1f;
   --item-border-color: #bedbb0;
   --need-help-background-color: #1f1f1f;
+  /* Column */
+  --input-border-color: #bedbb0;
+  --btn-icon-color-bg: #161616;
+  --btn-icon-color-plus: #fff;
 }
 
 [data-theme='violet'] {
@@ -239,6 +247,10 @@
   --item-background-color: rgba(255, 255, 255, 0.5);
   --item-border-color: #fff;
   --need-help-background-color: rgba(236, 237, 253, 0.4);
+  /* Column */
+  --input-border-color: #5255bc;
+  --btn-icon-color-bg: #fff;
+  --btn-icon-color-plus: #161616;
 }
 
 * {

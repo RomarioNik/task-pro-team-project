@@ -1,10 +1,22 @@
 import { Button } from 'components/Button/Button';
 import css from './EditColumn.module.css';
 import { Icon } from 'components/Svg/Icon';
-const EditColumn = ({ id }) => {
-  console.log(id);
+import { useDispatch } from 'react-redux';
+import { updateColumnById } from 'redux/boards/boardsOperations';
+const EditColumn = ({ id, close }) => {
+  const dispatch = useDispatch();
   const handlerEditColumn = evt => {
     evt.preventDefault();
+    const title = evt.target.title.value.trim();
+    const editColumn = {
+      title,
+      _id: id,
+    };
+    if (title !== '') {
+      dispatch(updateColumnById(editColumn));
+      close();
+    }
+    return;
   };
   return (
     <div className={css.container}>

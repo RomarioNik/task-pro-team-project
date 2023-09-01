@@ -6,6 +6,7 @@ import Modal from 'components/Modal/Modal';
 import AddColumn from 'components/AddColumn';
 import EditColumn from 'components/EditColumn';
 import style from './Column.module.css';
+import CreateCardPopUp from 'components/CreateCardPopUp/CreateCardPopUp';
 
 const columns = [
   {
@@ -48,19 +49,19 @@ const cards = [
 const Column = () => {
   const [isOpenModalAddColumn, setIsOpenModalAddColumn] = useState(false);
   const [isOpenModalEditColumn, setIsOpenModalEditColumn] = useState(false);
-  let columnId;
+  const [getIdColumn, setIdColumn] = useState(null);
+  const [isOpenModalAddCard, setIsOpenModalAddCard] = useState(false);
+
   const addColumn = () => {
     setIsOpenModalAddColumn(!isOpenModalAddColumn);
   };
 
-  const editColum = id => {
-    console.log(id);
+  const handlerEditColum = () => {
     setIsOpenModalEditColumn(!isOpenModalEditColumn);
-    columnId = id;
   };
 
   const addCard = () => {
-    console.log('Add column');
+    setIsOpenModalAddCard(!isOpenModalAddCard);
   };
 
   //----------------скрол-віріант-1-(робочий)---------------------------
@@ -81,7 +82,12 @@ const Column = () => {
               <p className={style.column_title}>{name}</p>
 
               <div className={style.column__edit__button}>
-                <button onClick={e => editColum(id)}>
+                <button
+                  onClick={e => {
+                    handlerEditColum();
+                    setIdColumn(id);
+                  }}
+                >
                   <Icon id="pencil" className={style.column__icon} />
                 </button>
                 <button>
@@ -129,8 +135,13 @@ const Column = () => {
         </Modal>
       )}
       {isOpenModalEditColumn && (
-        <Modal openModal={editColum}>
-          <EditColumn id={columnId} />
+        <Modal openModal={handlerEditColum}>
+          <EditColumn id={getIdColumn} close={handlerEditColum} />
+        </Modal>
+      )}
+      {isOpenModalAddCard && (
+        <Modal openModal={addCard}>
+          <CreateCardPopUp />
         </Modal>
       )}
     </div>

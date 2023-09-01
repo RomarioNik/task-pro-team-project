@@ -18,6 +18,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.4.0",
     "classnames": "^2.3.2",
+    "date-fns": "^2.30.0",
     "dayjs": "^1.11.9",
     "formik": "^2.4.3",
     "overlayscrollbars": "^2.3.0",

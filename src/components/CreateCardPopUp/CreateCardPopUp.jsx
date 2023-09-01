@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import { addCard } from 'redux/boards/boardsOperations';
 // import { addBoard } from 'redux/boards/boardsOperations';
 
-export default function CreateCardPopUp({
+export function CreateCardPopUp({
   id = '1',
   boardName = 'test',
   deadline = 'test',
@@ -185,7 +185,7 @@ export default function CreateCardPopUp({
     </div>
   );
 }
-
+export default CreateCardPopUp;
 // const CustomRadio = ({ value, checked, onChange, color, id }) => {
 //   return (
 //     <label className={`${css.customRadio} ${checked ? css.checked : ''}`}>

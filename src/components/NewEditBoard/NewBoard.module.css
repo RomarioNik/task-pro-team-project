@@ -71,11 +71,28 @@ height: 28px;
     border-radius: 6px;
 margin: 2px;
   }
-.darkIcons {
+  .listItemActive {
+    width: 28px;
+height: 28px;
+    box-sizing: border-box;
+    background-color: rebeccapurple;
+    border: 1px solid #000;
+    border-radius: 6px;
+margin: 2px;
+  }
+
+.serIcons {
     width: 18px;
 height: 18px;
 margin: 4px;
 stroke: var(--text-secondary-color)
+}
+
+.darkIcons {
+    width: 18px;
+height: 18px;
+margin: 4px;
+stroke: var(--task-card--line-color)
 }
 .textBackground {
     color:  var(--text-primary-color);
@@ -140,6 +157,13 @@ justify-content: center;
     color: red; /* Меняем цвет иконки при выборе инпута */
   }
 
+  .buttonIcons {
+    z-index: 999;
+  }
+  .buttonBack {
+    width: 100%;
+    height: 100%;
+  }
 
 
   

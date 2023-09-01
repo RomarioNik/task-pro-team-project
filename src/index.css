@@ -48,9 +48,9 @@
   --item-border-color: #bedbb0;
   --need-help-background-color: #f6f6f7;
 
-  /* radio-button-cheked */
-  --radio-inside: #8fa1d0;
-  --radio-outside: #8fa1d0;
+  --addCard-plus-icon: #ffffff;
+
+  --modal-title-color: #161616;
 }
 
 [data-theme='light'] {
@@ -114,6 +114,8 @@
   --item-background-color: #f6f6f7;
   --item-border-color: #bedbb0;
   --need-help-background-color: #f6f6f7;
+  --addCard-plus-icon: #ffffff;
+  --modal-title-color: #161616;
 }
 
 [data-theme='dark'] {
@@ -179,6 +181,8 @@
   --item-background-color: #1f1f1f;
   --item-border-color: #bedbb0;
   --need-help-background-color: #1f1f1f;
+  --modal-btn-plus: #161616;
+  --modal-title-color: #fff;
 }
 
 [data-theme='violet'] {
@@ -239,6 +243,8 @@
   --item-background-color: rgba(255, 255, 255, 0.5);
   --item-border-color: #fff;
   --need-help-background-color: rgba(236, 237, 253, 0.4);
+  --addCard-plus-icon: #161616;
+  --modal-title-color: #161616;
 }
 
 * {

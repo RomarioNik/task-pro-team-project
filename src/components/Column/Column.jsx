@@ -4,6 +4,7 @@ import useScrollbar from '../Scroll/index';
 import 'overlayscrollbars/overlayscrollbars.css';
 import Modal from 'components/Modal/Modal';
 import AddColumn from 'components/AddColumn';
+// import CreateCardPopUp from 'components/CreateCardPopUp/CreateCardPopUp';
 import style from './Column.module.css';
 
 const columns = [
@@ -46,13 +47,15 @@ const cards = [
 
 const Column = () => {
   const [isOpenModalAddColumn, setIsOpenModalAddColumn] = useState(false);
-
+  const [isOpenModalAddCard, setIsOpenModalAddCard] = useState(false);
+  
+  
   const addColumn = () => {
     setIsOpenModalAddColumn(!isOpenModalAddColumn);
   };
 
   const addCard = () => {
-    console.log('Add column');
+    setIsOpenModalAddCard(!isOpenModalAddCard);  
   };
 
   //----------------скрол-віріант-1-(робочий)---------------------------
@@ -116,9 +119,13 @@ const Column = () => {
         </li>
       </ul>
       {isOpenModalAddColumn && (
-        <Modal>
+        <Modal openModal={addColumn}>
           <AddColumn />
-        </Modal>
+        </Modal>)}
+         {isOpenModalAddCard && (
+          <Modal openModal={addCard}>
+            {/* <CreateCardPopUp/> */}
+          </Modal>
       )}
     </div>
   );

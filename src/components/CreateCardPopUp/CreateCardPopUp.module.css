@@ -1,41 +1,13 @@
-.modalBackdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--bg-screen);
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.modalBody {
-  position: fixed;
-  display: inline-block;
-  border-radius: 8px;
-  border: 1px solid var(--icon-card-color-active);
-  background: var(--background-color);
-  /* box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); */
-  width: 312px;
-  min-height: 456px;
-
-  padding: 24px;
-
-  margin-right: auto;
-  margin-left: auto;
-}
-
 .modalTitle {
   /* font-family: Poppins; */
+  color: var(--modal-title-color);
+
   font-size: 18px;
   font-weight: 500;
   line-height: 27px;
   letter-spacing: -0.02em;
   text-align: left;
   margin: 0;
-  color: var(--modal-title-color);
 }
 
 .inputForm {
@@ -77,7 +49,7 @@
   border: 1px solid var(--select-active-color);
   opacity: 0.4;
   background: var(--background-color);
-  /* box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08); */
+
   color: var(--text-primary-color);
 
   margin-top: 14px;
@@ -174,9 +146,10 @@
 
 .plusIcon {
   display: inline-block;
-  stroke: var(--modal-btn-plus-icon-color);
+  stroke: var(--modal-btn-plus);
   width: 14px;
   height: 14px;
+  stroke: var(--addCard-plus-icon);
 }
 
 .customRadio {
@@ -195,16 +168,82 @@
   height: 24px;
 }
 
-.customIcon {
+.customIcon:checked {
   width: 14px;
   height: 14px;
 }
 
-/* .checked .customIcon {
-  stroke: white;
-} */
+.customIconcheked {
+  width: 14px;
+  height: 14px;
+  --radio-inside: rgb(0, 128, 96);
+  --radio-outside: rgb(0, 128, 64);
+}
+/* wiout */
+.customIconUncheckedWithout {
+  width: 14px;
+  height: 14px;
+  fill: #a7a6a6c2;
+  stroke: #a7a6a6c2;
+}
 
-/* .checkedlow {
- 
-  stroke: blue;
-} */
+.customIconchekedwithout {
+  width: 14px;
+  height: 14px;
+  --radio-inside: #a7a6a6c2;
+  --radio-outside: #a7a6a6c2;
+}
+
+/* low */
+
+.customIconUncheckedLow {
+  width: 14px;
+  height: 14px;
+
+  fill: #8fa1d0;
+}
+
+.customIconchekedlow {
+  width: 14px;
+  height: 14px;
+  --radio-inside: #8fa1d0;
+  --radio-outside: #8fa1d0;
+}
+
+/* medium */
+
+.customIconchekedmedium {
+  width: 14px;
+  height: 14px;
+  --radio-inside: #e09cb5;
+  --radio-outside: #e09cb5;
+}
+
+.customIconUncheckedmedium {
+  width: 14px;
+  height: 14px;
+
+  fill: #e09cb5;
+}
+
+/* high */
+
+.customIconchekedhigh {
+  width: 14px;
+  height: 14px;
+  --radio-inside: rgb(190, 217, 176);
+  --radio-outside: rgb(190, 217, 176);
+}
+
+.customIconUncheckedHigh {
+  width: 14px;
+  height: 14px;
+
+  fill: #bedbb0;
+}
+
+.radioBtnContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+}

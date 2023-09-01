@@ -1,4 +1,3 @@
-
 .column__item {
   display: flex;
    flex-wrap: nowrap;
@@ -12,7 +11,7 @@
   background-color: var(--bg-column-title );
   /* margin-left: 24px; */
   margin-bottom: 14px;
-  margin-right: 32px;
+  margin-right: 34px;
 }
 
 .column_title {
@@ -57,7 +56,7 @@
     display: flex;
     width: 334px;
     height: 56px;
-    font-size: 14;
+    font-size: 14px;
     font-weight: 500;
     align-items: center;
     justify-content: center;
@@ -94,16 +93,15 @@
   align-items: center;
   justify-content: center;
   background-color: var(--bg-column-title);
-  margin-left: 20px;
+  /* margin-left: 20px; */
   border-radius: 8px;
 
   @media screen and (min-width: 768px) {
-    margin-left: 32px;
+    /* margin-left: 32px; */
     @media screen and (min-width: 1440px) {
-      margin-left: 24px;
+      /* margin-left: 24px; */
   }    
-}    
-
+}  
 }
 
 .button__icon__bg {
@@ -124,4 +122,25 @@
   font-size: 14;
   font-weight: 500;
   color: var(--icon-btn-plus-bg);
+}
+/* card */
+
+.card {
+  width: 334px;
+  height: 154px;
+  font-size: 14px;
+    font-weight: 500;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000;
+    margin-bottom: 8px;
+}
+
+/* scroll */
+
+
+.os-host .os-theme-dark > .os-scrollbar-horizontal > .os-scrollbar-track > .os-scrollbar-handle {
+  max-width: 10px;
+  min-width: 10px;
+  background: red;
 }

@@ -3,6 +3,7 @@ import React, { useRef } from 'react';
 import style from './Column.module.css';
 import { Icon } from '../Svg/Icon';
 import useScrollbar from '../Scroll/index';
+import 'overlayscrollbars/overlayscrollbars.css';
 
 const columns = [
   {
@@ -17,13 +18,32 @@ const columns = [
     name: 'Done',
     id: '3',
   },
-  {
-    name: 'Star',
-    id: '4',
-  },
+  // {
+  //   name: 'Star',
+  //   id: '4',
+  // },
 ];
 
-const Column = ({ createColumn }) => {
+const cards = [
+  {
+    name: 'To Do',
+    id: '1',
+  },
+  {
+    name: 'In progress',
+    id: '2',
+  },
+  {
+    name: 'Done',
+    id: '3',
+  },
+  // {
+  //   name: 'Star',
+  //   id: '4',
+  // },
+];
+
+const Column = () => {
   const addColumn = () => {
     console.log('Add column');
   };
@@ -35,7 +55,7 @@ const Column = ({ createColumn }) => {
 
   return (
     <div
-      style={{ width: hasScroll ? '1280px' : 'auto', minWidth: '334px' }}
+      style={{ width: hasScroll ? '100%' : 'auto', minWidth: '320px' }}
       ref={columnWrapper}
     >
       <ul className={style.column__item}>
@@ -43,6 +63,7 @@ const Column = ({ createColumn }) => {
           <li key={id} className={style.column}>
             <div className={style.column__section}>
               <p className={style.column_title}>{name}</p>
+
               <div className={style.column__edit__button}>
                 <button>
                   <Icon id="pencil" className={style.column__icon} />
@@ -51,6 +72,15 @@ const Column = ({ createColumn }) => {
                   <Icon id="trash" className={style.column__icon} />
                 </button>
               </div>
+            </div>
+            <div>
+              <ul>
+                {cards.map(({ name, id }) => (
+                  <li key={id} className={style.card}>
+                    {name}
+                  </li>
+                ))}
+              </ul>
             </div>
             <button
               className={style.button_create}

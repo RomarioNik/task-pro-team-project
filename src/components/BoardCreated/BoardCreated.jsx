@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { Icon } from '../Svg/Icon';
+import React, { useEffect, useRef, useState } from 'react';
+// import { Icon } from '../Svg/Icon';
 import Column from 'components/Column/Column';
 import style from './BoardCreated.module.css';
+import 'overlayscrollbars/overlayscrollbars.css';
+//import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 
 import { OverlayScrollbars } from 'overlayscrollbars';
 import Modal from 'components/Modal/Modal';
 import AddColumn from 'AddColumn/AddColumn';
+
+// import { OverlayScrollbars } from 'overlayscrollbars';
 
 const BoardCreated = () => {
   const [isOpenCreateColumn, setIsOpenCreateColumn] = useState();
@@ -37,6 +41,14 @@ const BoardCreated = () => {
   //  }, {});
 
   return (
+    //---------------скрол 4 варіант-не-полетів-------
+    //<OverlayScrollbarsComponent
+    // element="Column"
+    // options={{ scrollbars: { autoHide: 'never' } }}
+    // events={{ scroll: () => {} }}
+    // defer
+    //>
+
     <div>
       <div className={style.column__container}>
         <div className={style.column__item}>
@@ -59,6 +71,8 @@ const BoardCreated = () => {
         </Modal>
       )}
     </div>
+
+    //</OverlayScrollbarsComponent>
   );
 };
 

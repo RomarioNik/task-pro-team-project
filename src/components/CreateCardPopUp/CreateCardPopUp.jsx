@@ -4,40 +4,22 @@ import { useState } from 'react';
 
 import sprite from '../../img/svg/sprite-icon.svg';
 import { useDispatch } from 'react-redux';
-import { addBoard } from 'redux/boards/boardsOperations';
+import { addCard } from 'redux/boards/boardsOperations';
+// import { addBoard } from 'redux/boards/boardsOperations';
 
-const CustomRadio = ({ value, checked, onChange, color }) => {
-  return (
-    <label className={`${css.customRadio} ${checked ? css.checked : ''}`}>
-      <input
-        type="radio"
-        name="radioGroup"
-        value={value}
-        checked={checked}
-        onChange={onChange}
-        className={css.hiddenRadio}
-      />
-      <svg
-        className={`${css.customIcon}`}
-        style={{ fill: `${color}` }}
-        // className={`${css.customIcon} ${checked ? css['checked' + value] : ''}`}
-      >
-        <use
-          xlinkHref={`${sprite}#radio-button-${
-            checked ? 'checked' : 'unchecked'
-          }`}
-        />
-      </svg>
-    </label>
-  );
-};
-
-export default function CreateCardPopUp() {
+export default function CreateCardPopUp({
+  id = '1',
+  boardName = 'test',
+  deadline = 'test',
+  column = 'exampleid',
+}) {
   const dispatch = useDispatch();
+
   const [selectedLabel, setSelectedLabel] = useState('without priority');
   const [titleValue, setTitleValue] = useState('');
   const [descriptionValue, setDescriptionValue] = useState('');
-  const [deadlineDate, setDeadlineDate] = useState('');
+  const [formattedDeadline, setFormattedDeadline] = useState('');
+  console.log('formattedDeadline', formattedDeadline);
 
   const handleRadioChange = event => {
     setSelectedLabel(event.target.value);
@@ -45,14 +27,28 @@ export default function CreateCardPopUp() {
 
   const AddNewCard = () => {
     console.log('додаємо нову картку');
-    // dispatch(addBoard({ titleValue, descriptionValue, selectedLabel }));
+
+    console.log({
+      title: titleValue,
+      description: descriptionValue,
+      priority: selectedLabel,
+      deadline: formattedDeadline,
+      column: column,
+    });
+
+    dispatch(
+      addCard({
+        title: titleValue,
+        description: descriptionValue,
+        priority: selectedLabel,
+        deadline: formattedDeadline,
+        column: column,
+      })
+    );
   };
 
   return (
-    // <div className={css.modalBackdrop}>
-    <div
-    // className={css.modalBody}
-    >
+    <div>
       <h3 className={css.modalTitle}>Add card</h3>
       <form action="submit" className={css.inputForm}>
         <input
@@ -75,40 +71,105 @@ export default function CreateCardPopUp() {
           <h4 className={css.inputLabelColor}>Label color</h4>
         </div>
 
-        <CustomRadio
+        {/* <CustomRadio
           color="#8fa1d04D"
           value="without priority"
           checked={selectedLabel === 'without priority'}
           onChange={handleRadioChange}
-        />
+          id={'without'}
+        /> */}
 
-        <CustomRadio
-          color="#E09CB54D"
-          value="low"
-          checked={selectedLabel === 'low'}
-          onChange={handleRadioChange}
-        />
+        <label className={`${css.customRadio}`}>
+          <input
+            type="radio"
+            name="radioGroup"
+            value="without priority"
+            onChange={handleRadioChange}
+            checked={selectedLabel === 'without priority'}
+            className={css.hiddenRadio}
+          />
 
-        <CustomRadio
-          color="#BEDBB04D"
-          value="medium"
-          checked={selectedLabel === 'medium'}
-          onChange={handleRadioChange}
-        />
+          {selectedLabel === 'without priority' ? (
+            <svg className={css.customIconchekedwithout}>
+              <use xlinkHref={`${sprite}#radio-button-checked`} />
+            </svg>
+          ) : (
+            <svg className={css.customIconUncheckedWithout}>
+              <use xlinkHref={`${sprite}#radio-button-unchecked`} />
+            </svg>
+          )}
+        </label>
 
-        <CustomRadio
-          color="rgba(255, 255, 255, 0.30);"
-          value="high"
-          checked={selectedLabel === 'high'}
-          onChange={handleRadioChange}
-        />
+        <label className={`${css.customRadio}`}>
+          <input
+            type="radio"
+            name="radioGroup"
+            value="low"
+            onChange={handleRadioChange}
+            checked={selectedLabel === 'low'}
+            className={css.hiddenRadio}
+          />
+
+          {selectedLabel === 'low' ? (
+            <svg className={css.customIconchekedlow}>
+              <use xlinkHref={`${sprite}#radio-button-checked`} />
+            </svg>
+          ) : (
+            <svg className={css.customIconUncheckedLow}>
+              <use xlinkHref={`${sprite}#radio-button-unchecked`} />
+            </svg>
+          )}
+        </label>
+
+        <label className={`${css.customRadio}`}>
+          <input
+            type="radio"
+            name="radioGroup"
+            value="medium"
+            onChange={handleRadioChange}
+            checked={selectedLabel === 'medium'}
+            className={css.hiddenRadio}
+          />
+
+          {selectedLabel === 'medium' ? (
+            <svg className={css.customIconchekedmedium}>
+              <use xlinkHref={`${sprite}#radio-button-checked`} />
+            </svg>
+          ) : (
+            <svg className={css.customIconUncheckedmedium}>
+              <use xlinkHref={`${sprite}#radio-button-unchecked`} />
+            </svg>
+          )}
+        </label>
+
+        <label className={`${css.customRadio}`}>
+          <input
+            type="radio"
+            name="radioGroup"
+            value="high"
+            onChange={handleRadioChange}
+            checked={selectedLabel === 'high'}
+            className={css.hiddenRadio}
+          />
+
+          {selectedLabel === 'high' ? (
+            <svg className={css.customIconchekedhigh}>
+              <use xlinkHref={`${sprite}#radio-button-checked`} />
+            </svg>
+          ) : (
+            <svg className={css.customIconUncheckedHigh}>
+              <use xlinkHref={`${sprite}#radio-button-unchecked`} />
+            </svg>
+          )}
+        </label>
       </form>
+
       <div className={css.deadlineContainer}>
         <h4 action="" className={css.deadlineTitle}>
           Deadline
         </h4>
 
-        <Calendar />
+        <Calendar setFormattedDeadline={setFormattedDeadline} />
       </div>
       <button
         className={`${css.inputAddBtn} buttonWithIcon`}
@@ -122,7 +183,34 @@ export default function CreateCardPopUp() {
         Add
       </button>
     </div>
-
-    // </div>
   );
 }
+
+// const CustomRadio = ({ value, checked, onChange, color, id }) => {
+//   return (
+//     <label className={`${css.customRadio} ${checked ? css.checked : ''}`}>
+//       <input
+//         type="radio"
+//         name="radioGroup"
+//         value={value}
+//         checked={checked}
+//         onChange={onChange}
+//         className={css.hiddenRadio}
+//       />
+
+//       {checked ? (
+//         <svg
+//           className={`${css.customIconcheked} ${css.id}`}
+//           style={{ fill: `${color}` }}
+//         >
+//           <use xlinkHref={`${sprite}#radio-button-checked`} />
+//         </svg>
+//       ) : (
+//         <svg className={`${css.customIcon}`} style={{ fill: `${color}` }}>
+//           <use xlinkHref={`${sprite}#radio-button-unchecked`} />
+//         </svg>
+//       )}
+
+//     </label>
+//   );
+// };

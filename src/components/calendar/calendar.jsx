@@ -44,13 +44,6 @@ function ButtonField(props) {
     inputProps: { 'aria-label': ariaLabel } = {},
   } = props;
 
-  // React.useEffect(() => {
-  //   const newTheme = calendarBtnThemChenger(userTheme);
-  //   setTheme(newTheme);
-  // }, [userTheme]);
-
-  console.log(theme);
-
   return (
     <Button
       sx={{
@@ -98,17 +91,18 @@ function ButtonDatePicker(props) {
   );
 }
 
-export default function Calendar() {
+export default function Calendar({ setFormattedDeadline }) {
   const [deadlineDate, setdDeadlineDate] = useState(null);
   const [sameDay, setsameDay] = useState(false);
   const today = dayjs();
 
   const chooseDeadlineDate = newValue => {
     const choisedDate = new Date(newValue.$d);
+    setFormattedDeadline(format(choisedDate, 'dd-MM-yyyy'));
 
     const isSameDay = dayjs(choisedDate).isSame(today, 'day');
     setdDeadlineDate(choisedDate);
-    console.log(isSameDay);
+
     if (isSameDay) {
       setsameDay(true);
     } else if (!isSameDay) {

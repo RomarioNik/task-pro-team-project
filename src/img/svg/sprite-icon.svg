@@ -75,10 +75,10 @@
 <path fill="none" stroke-width="1.5" d="M2.667 16h17.173"></path>
 <path fill="none" stroke-width="1.5" d="M16.867 11.533l4.467 4.467-4.467 4.467"></path>
 </symbol>
-<symbol id="radio-button-uncheked" viewBox="0 0 32 32" width="14" height="14">
+<symbol id="radio-button-unchecked" viewBox="0 0 32 32" width="14" height="14">
 <path d="M32 16c0 8.837-7.163 16-16 16s-16-7.163-16-16c0-8.837 7.163-16 16-16s16 7.163 16 16z"></path>
 </symbol>
-<symbol id="radio-button-cheked" width="14" height="14" viewBox="0 0 14 14" fill="none" >
+<symbol id="radio-button-checked" width="14" height="14" viewBox="0 0 14 14" fill="none" >
 <circle cx="7" cy="7" r="4" fill="#8FA1D0" style="fill: var(--radio-inside, #8FA1D0)"/>
 <circle cx="7" cy="7" r="6.5" stroke="#8FA1D0" style="stroke: var(--radio-outside, #8FA1D0)"/>
 </symbol>

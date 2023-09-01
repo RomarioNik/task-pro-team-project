@@ -9,7 +9,6 @@ import { useDispatch } from 'react-redux';
 import { updateProfile } from 'redux/auth/operations';
 
 const EditProfile = ({ onClose }) => {
-
   const user = useUserData();
   const dispatch = useDispatch();
 
@@ -18,16 +17,16 @@ const EditProfile = ({ onClose }) => {
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
   const [password, setPassword] = useState('');
-   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
-   const togglePasswordVisibility = () => {
-     setPasswordVisible(!passwordVisible);
-   };
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
 
   const handleChangeAvatar = event => {
     setAvatar(event.target.files[0]);
 
-    setAvatarUploaded(event.target.files[0])
+    setAvatarUploaded(event.target.files[0]);
     const formData = new FormData();
 
     formData.append('avatarUploaded', avatarUploaded);
@@ -53,18 +52,22 @@ const EditProfile = ({ onClose }) => {
   }
 
   if (user.avatarURL !== '') {
-    console.log(`Аватар пришёл, avatarURL:${user.avatarURL}, должна быть фотка`);
-    console.log(`Или фотка загружена только что пользователем, avatarURL:${avatarUploaded}`);
+    console.log(
+      `Аватар пришёл, avatarURL:${user.avatarURL}, должна быть фотка`
+    );
+    console.log(
+      `Или фотка загружена только что пользователем, avatarURL:${avatarUploaded}`
+    );
   }
 
-  console.log(avatarUploaded.type)
+  console.log(avatarUploaded.type);
 
   if (avatarUploaded.type) {
-  console.log(`Работает`)
-}
+    console.log(`Работает`);
+  }
 
   const modalClose = event => {
-      onClose();
+    onClose();
   };
 
   const handleFormSubmit = e => {
@@ -75,39 +78,39 @@ const EditProfile = ({ onClose }) => {
     if (user.avatarURL !== '' || user.avatarURL === '') {
       if (avatarUploaded.type) {
         if (password === '') {
-        updatedProfile = {
-      name,
-          email,
-      avatar,
-    } 
+          updatedProfile = {
+            name,
+            email,
+            avatar,
+          };
+        } else {
+          updatedProfile = {
+            name,
+            email,
+            password,
+            avatar,
+          };
+        }
       } else {
-      updatedProfile = {
-      name,
-      email,
-      password,
-      avatar,
-    };
-      }
-      } else {
-      if (password === '') {
-        updatedProfile = {
-      name,
-      email,
-    } 
-      } else {
-      updatedProfile = {
-      name,
-      email,
-      password,
-    };
-      }
+        if (password === '') {
+          updatedProfile = {
+            name,
+            email,
+          };
+        } else {
+          updatedProfile = {
+            name,
+            email,
+            password,
+          };
+        }
       }
     }
 
     // console.log(updatedProfile);
     dispatch(updateProfile(updatedProfile));
     //закрити модалку
-    modalClose()
+    modalClose();
   };
 
   return (
@@ -121,12 +124,14 @@ const EditProfile = ({ onClose }) => {
             type="file"
             onChange={handleChangeAvatar}
           />
-          
-          {user.avatarURL === ''
-          ? (<svg width="68" height="68" className={css.img}>
-            <use xlinkHref={`${sprite}#icon-user-ico`} />
-          </svg>)
-            : (<img   src={user.avatarURL}  className={css.imgUser} alt="avatar" />)}
+
+          {user.avatarURL === '' ? (
+            <svg width="68" height="68" className={css.img}>
+              <use xlinkHref={`${sprite}#icon-user-ico`} />
+            </svg>
+          ) : (
+            <img src={user.avatarURL} className={css.imgUser} alt="avatar" />
+          )}
         </label>
         <label className={css.labelStyle}>
           <input
@@ -149,20 +154,20 @@ const EditProfile = ({ onClose }) => {
         <label className={css.labelStyle}>
           <input
             className={css.inputName}
-             type={passwordVisible ? "text" : "password"}
+            type={passwordVisible ? 'text' : 'password'}
             name="password"
             value={password}
             placeholder="Password"
             onChange={handleChange}
           />
-               <span
-                className={css.passwordToggle}
-                onClick={togglePasswordVisibility}
-              >
-                <svg width="18" height="18" className={css.fieldIcon}>
-                  <use xlinkHref={`${sprite}#eye`} />
-                </svg>
-              </span> 
+          <span
+            className={css.passwordToggle}
+            onClick={togglePasswordVisibility}
+          >
+            <svg width="18" height="18" className={css.fieldIcon}>
+              <use xlinkHref={`${sprite}#eye`} />
+            </svg>
+          </span>
         </label>
         <button type="submit" className={css.btnAdd}>
           Send

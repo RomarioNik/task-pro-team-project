@@ -1,9 +1,11 @@
-import React, { useRef } from 'react';
-// import React, { useState } from 'react';
-import style from './Column.module.css';
+import React, { useRef, useState } from 'react';
 import { Icon } from '../Svg/Icon';
 import useScrollbar from '../Scroll/index';
 import 'overlayscrollbars/overlayscrollbars.css';
+import Modal from 'components/Modal/Modal';
+import AddColumn from 'AddColumn';
+import style from './Column.module.css';
+
 
 const columns = [
   {
@@ -44,9 +46,18 @@ const cards = [
 ];
 
 const Column = () => {
+  
+  const [isOpenModalAddColumn, setIsOpenModalAddColumn] =  useState(false);
+
   const addColumn = () => {
+setIsOpenModalAddColumn(!isOpenModalAddColumn);
+  };
+    
+  const addCard = () => {
     console.log('Add column');
   };
+
+
   //----------------скрол-віріант-1-(робочий)---------------------------
   const columnWrapper = useRef(null);
   const hasScroll = columns.length >= 1;
@@ -85,7 +96,7 @@ const Column = () => {
             <button
               className={style.button_create}
               type="button"
-              onClick={addColumn}
+              onClick={addCard}
             >
               <div className={style.button__icon__background}>
                 <Icon id="plus" className={style.button__create__icon} />
@@ -98,7 +109,7 @@ const Column = () => {
           <button
             className={style.button__create__column}
             type="button"
-            onClick={createColumn}
+            onClick={addColumn}
           >
             <div className={style.button__icon__bg}>
               <Icon id="plus" className={style.button__icon} />
@@ -107,6 +118,7 @@ const Column = () => {
           </button>
         </li>
       </ul>
+      {isOpenModalAddColumn && <Modal><AddColumn/></Modal>}
     </div>
   );
 };

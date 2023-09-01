@@ -1,8 +1,23 @@
 import { Button } from 'components/Button/Button';
 import css from './EditColumn.module.css';
 import { Icon } from 'components/Svg/Icon';
-const EditColumn = ({ id }) => {
-  const handlerEditColumn = () => {};
+import { useDispatch } from 'react-redux';
+import { updateColumnById } from 'redux/boards/boardsOperations';
+const EditColumn = ({ id, close }) => {
+  const dispatch = useDispatch();
+  const handlerEditColumn = evt => {
+    evt.preventDefault();
+    const title = evt.target.title.value.trim();
+    const editColumn = {
+      title,
+      _id: id,
+    };
+    if (title !== '') {
+      dispatch(updateColumnById(editColumn));
+      close();
+    }
+    return;
+  };
   return (
     <div className={css.container}>
       <p className={css.editColumn_title}>Edit column</p>
@@ -14,7 +29,11 @@ const EditColumn = ({ id }) => {
           className={css.editColumn_input}
           autoFocus
         />
-        <Button type="submit" className={css.editColumn_btn}>
+        <Button
+          type="submit"
+          className={css.editColumn_btn}
+          onSubmit={handlerEditColumn}
+        >
           <span className={css.iconWrap}>
             <Icon id={'icon-plus'} className={css.icon} />
           </span>

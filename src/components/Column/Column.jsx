@@ -4,10 +4,9 @@ import useScrollbar from '../Scroll/index';
 import 'overlayscrollbars/overlayscrollbars.css';
 import Modal from 'components/Modal/Modal';
 import AddColumn from 'components/AddColumn';
-// import CreateCardPopUp from 'components/CreateCardPopUp/CreateCardPopUp';
 import EditColumn from 'components/EditColumn';
-
 import style from './Column.module.css';
+import CreateCardPopUp from 'components/CreateCardPopUp/CreateCardPopUp';
 
 const columns = [
   {
@@ -49,14 +48,20 @@ const cards = [
 
 const Column = () => {
   const [isOpenModalAddColumn, setIsOpenModalAddColumn] = useState(false);
+  const [isOpenModalEditColumn, setIsOpenModalEditColumn] = useState(false);
+  const [getIdColumn, setIdColumn] = useState(null);
   const [isOpenModalAddCard, setIsOpenModalAddCard] = useState(false);
-  
-  const editColum = () => {
+
+  const addColumn = () => {
+    setIsOpenModalAddColumn(!isOpenModalAddColumn);
+  };
+
+  const handlerEditColum = () => {
     setIsOpenModalEditColumn(!isOpenModalEditColumn);
   };
 
   const addCard = () => {
-    setIsOpenModalAddCard(!isOpenModalAddCard);  
+    setIsOpenModalAddCard(!isOpenModalAddCard);
   };
 
   //----------------скрол-віріант-1-(робочий)---------------------------
@@ -77,7 +82,12 @@ const Column = () => {
               <p className={style.column_title}>{name}</p>
 
               <div className={style.column__edit__button}>
-                <button onClick={editColum}>
+                <button
+                  onClick={e => {
+                    handlerEditColum();
+                    setIdColumn(id);
+                  }}
+                >
                   <Icon id="pencil" className={style.column__icon} />
                 </button>
                 <button>
@@ -122,15 +132,16 @@ const Column = () => {
       {isOpenModalAddColumn && (
         <Modal openModal={addColumn}>
           <AddColumn />
-        </Modal>)}
-         {isOpenModalAddCard && (
-          <Modal openModal={addCard}>
-            {/* <CreateCardPopUp/> */}
-          </Modal>
+        </Modal>
       )}
       {isOpenModalEditColumn && (
-        <Modal openModal={editColum}>
-          <EditColumn />
+        <Modal openModal={handlerEditColum}>
+          <EditColumn id={getIdColumn} close={handlerEditColum} />
+        </Modal>
+      )}
+      {isOpenModalAddCard && (
+        <Modal openModal={addCard}>
+          <CreateCardPopUp />
         </Modal>
       )}
     </div>

@@ -91,7 +91,7 @@ function ButtonDatePicker(props) {
   );
 }
 
-export default function Calendar({ setFormattedDeadline }) {
+export function Calendar({ setFormattedDeadline }) {
   const [deadlineDate, setdDeadlineDate] = useState(null);
   const [sameDay, setsameDay] = useState(false);
   const today = dayjs();
@@ -130,3 +130,5 @@ export default function Calendar({ setFormattedDeadline }) {
     </LocalizationProvider>
   );
 }
+
+export default Calendar;

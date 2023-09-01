@@ -1,19 +1,17 @@
 .modal {
   margin-top: 10px;
-  border-radius: 8px;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  width:350px;
+
+  width: 350px;
   min-height: 300px;
- 
 }
 
 .formStyle {
-
   width: 350px;
   text-align: center;
 }
 
 .labelStyle {
+  position: relative;
   display: block;
   margin-bottom: 20px;
 }
@@ -29,30 +27,35 @@
   background: none;
   color: #949090cc;
   border: 1px solid rgba(190, 219, 176, 0.5);
-  
-  
 }
 
 .inputName:hover {
-  border: 1px solid #BEDBB0;
+  border: 1px solid #bedbb0;
 }
 
 .inputName:focus {
   border: 1px solid;
-  border-color: #BEDBB0;
-  color: #FFFFFF;
+  border-color: #bedbb0;
+  color: #ffffff;
 }
 
 .inputNameImg {
   display: block;
- 
+
   width: 100px;
   opacity: 0;
 }
 
 .img {
   display: inline-block;
- 
+
+  justify-content: center;
+}
+
+.imgUser {
+  display: inline-block;
+  width: 68px;
+  height: 68px;
   justify-content: center;
 }
 
@@ -64,7 +67,7 @@
   font-size: 14px;
   border-radius: 6px;
   width: 100%;
-  background-color: #BEDBB0;
+  background-color: #bedbb0;
   height: 49px;
   justify-content: center;
 }
@@ -73,4 +76,19 @@
   color: white;
   font-size: 18px;
   width: 96px;
+}
+
+.passwordToggle {
+  position: absolute;
+  right: 5px;
+  top: 33%;
+  transform: translate(-70%);
+}
+
+.fieldIcon {
+  display: inline-block;
+
+  fill: none;
+  stroke: #949090cc;
+  cursor: pointer;
 }

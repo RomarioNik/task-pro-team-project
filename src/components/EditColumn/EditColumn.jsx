@@ -1,11 +1,11 @@
 import { Button } from 'components/Button/Button';
 import css from './EditColumn.module.css';
 import { Icon } from 'components/Svg/Icon';
-const EditColumn = () => {
+const EditColumn = ({ id }) => {
   const handlerEditColumn = () => {};
   return (
     <div className={css.container}>
-      <p className={css.editColumn_title}>Add column</p>
+      <p className={css.editColumn_title}>Edit column</p>
       <form onSubmit={handlerEditColumn}>
         <input
           type="text"

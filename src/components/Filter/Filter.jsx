@@ -40,7 +40,7 @@ const Filter = () => {
   ];
 
   const filtered = (f, cards) => {
-    if (f === null) {
+    if (f === '') {
       return cards;
     }
     const filteredCards = cards.map(card => {
@@ -66,18 +66,19 @@ const Filter = () => {
       <div className={style.filterContainer}>
         <div className={style.filterListWrap}>
           <form
-            onChange={e => dispatch(addFilter(e.target.id))}
+            onChange={e => dispatch(addFilter(e.target.value))}
             className={style.filterList}
           >
             <div className={style.radioBtn}>
               <h3 className={style.listTitle}>Label color</h3>
               <input
+                value={'without priority'}
                 className={style.visuallyHidden}
                 type="radio"
                 name="filter"
                 id="without-priority"
                 defaultChecked={
-                  currentFilter === 'without-priority' ? true : false
+                  currentFilter === 'without priority' ? true : false
                 }
               />
               <label
@@ -91,6 +92,7 @@ const Filter = () => {
                 Without priority
               </label>
               <input
+                value={'low'}
                 className={style.visuallyHidden}
                 type="radio"
                 name="filter"
@@ -105,6 +107,7 @@ const Filter = () => {
                 Low
               </label>
               <input
+                value={'medium'}
                 className={style.visuallyHidden}
                 type="radio"
                 name="filter"
@@ -119,6 +122,7 @@ const Filter = () => {
                 Medium
               </label>
               <input
+                value={'high'}
                 className={style.visuallyHidden}
                 type="radio"
                 name="filter"
@@ -133,14 +137,18 @@ const Filter = () => {
                 High
               </label>
             </div>
-            <label className={style.btn}>
+            <label
+              className={style.btn}
+              onClick={() => {
+                dispatch(addFilter(null));
+              }}
+            >
               Show all
               <input
+                value={''}
                 className={style.visuallyHidden}
-                value={null}
                 type="radio"
                 name="filter"
-                id="null"
               />
             </label>
           </form>

@@ -7,7 +7,7 @@ import 'overlayscrollbars/overlayscrollbars.css';
 
 import { OverlayScrollbars } from 'overlayscrollbars';
 import Modal from 'components/Modal/Modal';
-import AddColumn from 'AddColumn/AddColumn';
+import AddColumn from 'components/AddColumn/AddColumn';
 
 // import { OverlayScrollbars } from 'overlayscrollbars';
 

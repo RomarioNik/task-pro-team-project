@@ -5,7 +5,7 @@ import style from './BoardCreated.module.css';
 import 'overlayscrollbars/overlayscrollbars.css';
 //import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 
-import { OverlayScrollbars } from 'overlayscrollbars';
+// import { OverlayScrollbars } from 'overlayscrollbars';
 import Modal from 'components/Modal/Modal';
 import AddColumn from 'components/AddColumn/AddColumn';
 

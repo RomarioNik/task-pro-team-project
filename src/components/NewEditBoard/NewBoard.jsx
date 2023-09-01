@@ -1,11 +1,13 @@
 import { Icon } from '../Svg/Icon';
 import styles from './NewBoard.module.css';
 import { useState } from 'react';
-
+import { useDispatch } from 'react-redux';
+import { addBoard } from 'redux/boards/boardsOperations';
 const NewBoard = () => {
   const [icons, setIcons] = useState('project');
   const [background, setBackground] = useState(null);
 const  [title,setTitle] = useState(null)
+const dispatch = useDispatch()
   const getTitle = event => {
     setTitle(event.target.value);
   };
@@ -126,7 +128,11 @@ const  [title,setTitle] = useState(null)
           <button className={styles.buttonBack} onClick={getBack} data-source='backgroundik15'></button>
         </li>
       </ul>
-      <button className={styles.mainButton}>
+      <button className={styles.mainButton} onClick={()=> {dispatch(addBoard({
+  "title": title,
+  "icon": icons,
+  "background": background
+}))}}>
         <div className={styles.plusBtnZaglushka}>
           <Icon id={'plus'} className={styles.plusIcon}></Icon>
         </div>

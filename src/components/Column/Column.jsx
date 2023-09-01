@@ -48,12 +48,15 @@ const cards = [
 const Column = () => {
   const [isOpenModalAddColumn, setIsOpenModalAddColumn] = useState(false);
   const [isOpenModalEditColumn, setIsOpenModalEditColumn] = useState(false);
+  let columnId;
   const addColumn = () => {
     setIsOpenModalAddColumn(!isOpenModalAddColumn);
   };
 
-  const editColum = () => {
+  const editColum = id => {
+    console.log(id);
     setIsOpenModalEditColumn(!isOpenModalEditColumn);
+    columnId = id;
   };
 
   const addCard = () => {
@@ -78,7 +81,7 @@ const Column = () => {
               <p className={style.column_title}>{name}</p>
 
               <div className={style.column__edit__button}>
-                <button onClick={editColum}>
+                <button onClick={e => editColum(id)}>
                   <Icon id="pencil" className={style.column__icon} />
                 </button>
                 <button>
@@ -127,7 +130,7 @@ const Column = () => {
       )}
       {isOpenModalEditColumn && (
         <Modal openModal={editColum}>
-          <EditColumn />
+          <EditColumn id={columnId} />
         </Modal>
       )}
     </div>

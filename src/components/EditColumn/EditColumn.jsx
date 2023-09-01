@@ -2,7 +2,10 @@ import { Button } from 'components/Button/Button';
 import css from './EditColumn.module.css';
 import { Icon } from 'components/Svg/Icon';
 const EditColumn = ({ id }) => {
-  const handlerEditColumn = () => {};
+  console.log(id);
+  const handlerEditColumn = evt => {
+    evt.preventDefault();
+  };
   return (
     <div className={css.container}>
       <p className={css.editColumn_title}>Edit column</p>
@@ -14,7 +17,11 @@ const EditColumn = ({ id }) => {
           className={css.editColumn_input}
           autoFocus
         />
-        <Button type="submit" className={css.editColumn_btn}>
+        <Button
+          type="submit"
+          className={css.editColumn_btn}
+          onSubmit={handlerEditColumn}
+        >
           <span className={css.iconWrap}>
             <Icon id={'icon-plus'} className={css.icon} />
           </span>

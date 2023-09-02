@@ -1,36 +1,28 @@
-.sectoion {    
-    align-items: center;
-    justify-content: center;
-    background-color: var(--background-color);
-}
-
-
 .container {
-width: 335px;
-height: 80px;
-font-size: 12px;
-font-weight: 400;
-text-align: center;
-margin-top: 292px;
-margin-left: auto;
-margin-right: auto;
-align-items: center;
-justify-content: center;
-color: var(--text-color);
+  width: 335px;
+  height: 80px;
+  font-size: 12px;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 292px;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
 
-
-@media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     width: 486px;
     height: 72px;
     font-size: 14px;
     margin-top: 408px;
 
- @media screen and (min-width: 1440px) {
-     margin-top: 281px;
-  }; 
+    @media screen and (min-width: 1440px) {
+      margin-top: 281px;
+    }
   }
 }
 
 .button_create {
-    color: var(--text-link-color);
+  color: var(--text-link-color);
 }

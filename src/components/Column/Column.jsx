@@ -1,12 +1,14 @@
 import React, { useRef, useState } from 'react';
 import { Icon } from '../Svg/Icon';
 import useScrollbar from '../Scroll/index';
-import 'overlayscrollbars/overlayscrollbars.css';
 import Modal from 'components/Modal/Modal';
 import AddColumn from 'components/AddColumn';
 import EditColumn from 'components/EditColumn';
-import style from './Column.module.css';
+import Card from 'components/Card/Card';
 import CreateCardPopUp from 'components/CreateCardPopUp/CreateCardPopUp';
+import 'overlayscrollbars/overlayscrollbars.css';
+import style from './Column.module.css';
+
 
 const columns = [
   {
@@ -27,24 +29,6 @@ const columns = [
   // },
 ];
 
-const cards = [
-  {
-    name: 'To Do',
-    id: '1',
-  },
-  {
-    name: 'In progress',
-    id: '2',
-  },
-  {
-    name: 'Done',
-    id: '3',
-  },
-  // {
-  //   name: 'Star',
-  //   id: '4',
-  // },
-];
 
 const Column = () => {
   const [isOpenModalAddColumn, setIsOpenModalAddColumn] = useState(false);
@@ -63,6 +47,10 @@ const Column = () => {
   const addCard = () => {
     setIsOpenModalAddCard(!isOpenModalAddCard);
   };
+
+  const deleteColumn =() => {
+    return alert('STOP!')
+  } 
 
   //----------------скрол-віріант-1-(робочий)---------------------------
   const columnWrapper = useRef(null);
@@ -90,19 +78,13 @@ const Column = () => {
                 >
                   <Icon id="pencil" className={style.column__icon} />
                 </button>
-                <button>
+                <button onClick={deleteColumn}>
                   <Icon id="trash" className={style.column__icon} />
                 </button>
               </div>
             </div>
-            <div>
-              <ul>
-                {cards.map(({ name, id }) => (
-                  <li key={id} className={style.card}>
-                    {name}
-                  </li>
-                ))}
-              </ul>
+            <div className={style.card__container}>
+              <Card/>
             </div>
             <button
               className={style.button_create}

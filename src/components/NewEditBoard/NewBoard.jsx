@@ -18,6 +18,7 @@ const closeModal = (event) => {
 
   const getIcon = event => {
     setIcons(event.currentTarget.dataset.source);
+    console.log(icons)
   };
 
   const getBack = event => {
@@ -48,86 +49,80 @@ const closeModal = (event) => {
       <h3 className={styles.textIcons}>Icons</h3>
       <ul className={styles.listDarkIcons}>
         <li>
-          <button
+          {/* <button
             data-source="project"
             className={styles.buttonIcons}
             onClick={getIcon}
-          >
+          > */}
+          <input type="radio" data-source="project" name='buttons'  className={styles.inputRad} onClick={getIcon}/>
             <Icon
               id={'project'}
               className={
                 icons === 'project' ? styles.darkIcons : styles.serIcons
               }
             ></Icon>
-          </button>
+
         </li>
         <li>
-          <button onClick={getIcon} data-source="star">
+        <input type="radio" data-source="star" name='buttons'  className={styles.inputRad} onClick={getIcon}/>
             <Icon
               id={'star'}
               className={icons === 'star' ? styles.darkIcons : styles.serIcons}
             ></Icon>
-          </button>
         </li>
         <li>
-          <button onClick={getIcon} data-source="loading">
+        <input type="radio" data-source="loading" name='buttons'  className={styles.inputRad} onClick={getIcon}/>
             <Icon
               id={'loading'}
               className={
                 icons === 'loading' ? styles.darkIcons : styles.serIcons
               }
             ></Icon>
-          </button>
         </li>
         <li>
-          <button onClick={getIcon} data-source="puzzle-piece">
+        <input type="radio" data-source="puzzle-piece" name='buttons'  className={styles.inputRad} onClick={getIcon}/>
             <Icon
               id={'puzzle-piece'}
               className={
                 icons === 'puzzle-piece' ? styles.darkIcons : styles.serIcons
               }
             ></Icon>
-          </button>
         </li>
         <li>
-          <button onClick={getIcon} data-source="container">
+        <input type="radio" data-source="container" name='buttons'  className={styles.inputRad} onClick={getIcon}/>
             <Icon
               id={'container'}
               className={
                 icons === 'container' ? styles.darkIcons : styles.serIcons
               }
             ></Icon>
-          </button>
         </li>
         <li>
-          <button onClick={getIcon} data-source="lightning">
+        <input type="radio" data-source="lightning" name='buttons'  className={styles.inputRad} onClick={getIcon}/>
             <Icon
               id={'lightning'}
               className={
                 icons === 'lightning' ? styles.darkIcons : styles.serIcons
               }
             ></Icon>
-          </button>
         </li>
         <li>
-          <button onClick={getIcon} data-source="colors">
+        <input type="radio" data-source="colors" name='buttons'  className={styles.inputRad} onClick={getIcon}/>
             <Icon
               id={'colors'}
               className={
                 icons === 'colors' ? styles.darkIcons : styles.serIcons
               }
             ></Icon>
-          </button>
         </li>
         <li>
-          <button onClick={getIcon} data-source="hexagon">
+        <input type="radio" data-source="hexagon" name='buttons'  className={styles.inputRad} onClick={getIcon}/>
             <Icon
               id={'hexagon'}
               className={
                 icons === 'hexagon' ? styles.darkIcons : styles.serIcons
               }
             ></Icon>
-          </button>
         </li>
       </ul>
       <h3 className={styles.textBackground}>Background</h3>

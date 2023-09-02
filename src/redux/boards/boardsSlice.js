@@ -12,6 +12,7 @@ import {
   deleteCard,
   updateCardById,
 } from './boardsOperations';
+import { toast } from 'react-hot-toast';
 
 const handlePending = state => {
   state.isLoading = true;
@@ -20,6 +21,7 @@ const handlePending = state => {
 const handleRejected = (state, { payload }) => {
   state.isLoading = false;
   state.error = payload;
+  toast.error(`Something went wrong`);
 };
 
 const handleFulfilledGetAllBoards = (state, { payload }) => {
@@ -44,6 +46,7 @@ const handleFulfilledDeleteBoard = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;
   state.allBoards = state.allBoards.filter(({ _id }) => _id !== payload);
+  toast.success(`Board deleted`);
 };
 
 const handleFulfilledUpdateBoard = (state, { payload }) => {
@@ -52,6 +55,7 @@ const handleFulfilledUpdateBoard = (state, { payload }) => {
   state.allBoards = state.allBoards.map(el =>
     el._id === payload._id ? (el = payload) : el
   );
+  toast.success(`Board updated`);
 };
 
 const handleFulfilledAddColumn = (state, { payload }) => {
@@ -66,6 +70,7 @@ const handleFulfilledDeleteColumn = (state, { payload }) => {
   state.shownBoard.columns = state.shownBoard.columns.filter(
     ({ _id }) => _id !== payload
   );
+  toast.success(`Column deleted`);
 };
 
 const handleFulfilledUpdateColumnById = (state, { payload }) => {
@@ -74,6 +79,7 @@ const handleFulfilledUpdateColumnById = (state, { payload }) => {
   state.shownBoard.columns = state.shownBoard.columns.map(el =>
     el._id === payload._id ? (el = payload) : el
   );
+  toast.success(`Column updated`);
 };
 
 const handleFulfilledAddCard = (state, { payload }) => {
@@ -94,6 +100,7 @@ const handleFulfilledDeleteCard = (state, { payload }) => {
       ? el.cards.filter(({ _id }) => _id !== payload._id)
       : el
   );
+  toast.success(`Card deleted`);
 };
 
 const handleFulfilledUpdateCardById = (state, { payload }) => {
@@ -104,6 +111,7 @@ const handleFulfilledUpdateCardById = (state, { payload }) => {
       ? el.cards.map(el => (el._id === payload._id ? (el = payload) : el))
       : el
   );
+  toast.success(`Card updated`);
 };
 
 const initialState = {

@@ -1,19 +1,3 @@
-// import React from 'react';
-// import { Link, NavLink } from 'react-router-dom';
-
-// const LoginForm = () => {
-//   return (
-//     <>
-//       <NavLink to="/auth/register">Registration  </NavLink>
-//       <NavLink to="/auth/login">Login</NavLink>
-//       <div>LoginForm</div>
-//       <Link to="/home">Login Now</Link>
-//     </>
-//   );
-// };
-
-// export default LoginForm;
-
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
@@ -22,6 +6,7 @@ import { loginFormSchema } from 'scheme/index';
 import css from '../RegisterForm/RegisterForm.module.css';
 import sprite from 'img/svg/sprite-icon.svg';
 import AuthButton from 'components/AuthButton/AuthButton';
+import { NavLink } from 'react-router-dom';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -50,6 +35,10 @@ const LoginForm = () => {
       >
         {() => (
           <Form className={css.form}>
+            <NavLink to="/auth/register"className={css.navLink}>
+                Registration
+              </NavLink>
+              <NavLink to="/auth/login" className={`${css.navLink} ${css.active}`}   >Login</NavLink> 
             <label className={css.input}>
               <Field
                 type="email"
@@ -80,9 +69,15 @@ const LoginForm = () => {
                 className={css.passwordToggle}
                 onClick={togglePasswordVisibility}
               >
-                <svg width="18" height="18" className={css.fieldIcon}>
-                  <use xlinkHref={`${sprite}#eye`} />
-                </svg>
+                {passwordVisible ? (
+                  <svg width="18" height="18" className={css.fieldIcon}>
+                    <use xlinkHref={`${sprite}#icon-eye-off`} />
+                  </svg>
+                ) : (
+                  <svg width="18" height="18" className={css.fieldIcon}>
+                    <use xlinkHref={`${sprite}#eye`} />
+                  </svg>
+                )}
               </span>
             </label>
 

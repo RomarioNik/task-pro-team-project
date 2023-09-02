@@ -85,14 +85,16 @@ margin: 2px;
     width: 18px;
 height: 18px;
 margin: 4px;
-stroke: var(--text-secondary-color)
+fill: var(--task-card--line-color);
+stroke: var(--task-card--line-color)
 }
 
 .darkIcons {
     width: 18px;
 height: 18px;
 margin: 4px;
-stroke: var(--task-card--line-color)
+fill: var(--text-secondary-color);
+stroke: var(--text-secondary-color)
 }
 .textBackground {
     color:  var(--text-primary-color);

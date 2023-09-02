@@ -3,7 +3,7 @@ import styles from './NewBoard.module.css';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addBoard } from 'redux/boards/boardsOperations';
-const NewBoard = ({ openModal }) => {
+const EditBoard = ({ openModal }) => {
   const [icons, setIcons] = useState('project');
   const [background, setBackground] = useState(null);
   const [title, setTitle] = useState(null);
@@ -12,9 +12,9 @@ const NewBoard = ({ openModal }) => {
     setTitle(event.target.value);
   };
 
-const closeModal = (event) => {
-  openModal()
-}
+  const closeModal = (event) => {
+    openModal()
+  }
 
   const getIcon = event => {
     setIcons(event.currentTarget.dataset.source);
@@ -25,20 +25,20 @@ const closeModal = (event) => {
     setBackground(event.currentTarget.dataset.source);
   };
 
-  const newBoardObject = {
+  const editBoardObject = {
     title: title,
     icon: icons,
     background: background,
   };
 
-  const newBoardFunc = () => {
-    dispatch(addBoard(newBoardObject));
-   closeModal()
+  const editBoardFunc = () => {
+    dispatch(addBoard(editBoardObject));
+    closeModal()
   };
 
   return (
     <div className={styles.divCard}>
-      <h2 className={styles.textNew}>New board</h2>
+      <h2 className={styles.textNew}>Edit board</h2>
       <input
         className={styles.titleInput}
         type="text"
@@ -47,7 +47,7 @@ const closeModal = (event) => {
       />
       <h3 className={styles.textIcons}>Icons</h3>
       <ul className={styles.listDarkIcons}>
-        <li>
+      <li>
           <button
             data-source="project"
             className={styles.buttonIcons}
@@ -323,7 +323,7 @@ const closeModal = (event) => {
           ></button>
         </li>
       </ul>
-      <button className={styles.mainButton} onClick={newBoardFunc}>
+      <button className={styles.mainButton} onClick={editBoardFunc}>
         <div className={styles.plusBtnZaglushka}>
           <Icon id={'plus'} className={styles.plusIcon}></Icon>
         </div>
@@ -333,4 +333,4 @@ const closeModal = (event) => {
   );
 };
 
-export default NewBoard;
+export default EditBoard;

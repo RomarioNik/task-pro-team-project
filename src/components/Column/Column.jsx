@@ -6,27 +6,31 @@ import AddColumn from 'components/AddColumn';
 import EditColumn from 'components/EditColumn';
 import Card from 'components/Card/Card';
 import CreateCardPopUp from 'components/CreateCardPopUp/CreateCardPopUp';
+import { deleteColumn } from 'redux/boards/boardsOperations';
 import 'overlayscrollbars/overlayscrollbars.css';
 import style from './Column.module.css';
+import { useDispatch } from 'react-redux';
+
+import { useBoardsList } from 'hooks/useBoardsList';
 
 
 const columns = [
   {
-    name: 'To Do',
-    id: '1',
+    title: 'To Do',
+    _id: '1',
   },
   {
-    name: 'In progress',
-    id: '2',
+    title: 'In progress',
+    _id: '2',
   },
   {
-    name: 'Done',
-    id: '3',
+    title: 'Done',
+    _id: '3',
   },
-  // {
-  //   name: 'Star',
-  //   id: '4',
-  // },
+  {
+    title: 'Star',
+    _id: '4',
+  },
 ];
 
 
@@ -35,6 +39,14 @@ const Column = () => {
   const [isOpenModalEditColumn, setIsOpenModalEditColumn] = useState(false);
   const [getIdColumn, setIdColumn] = useState(null);
   const [isOpenModalAddCard, setIsOpenModalAddCard] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const boards = useBoardsList();
+  console.log(boards)
+
+  // const {columns} = boards
+  // console.log(columns)
 
   const addColumn = () => {
     setIsOpenModalAddColumn(!isOpenModalAddColumn);
@@ -48,9 +60,9 @@ const Column = () => {
     setIsOpenModalAddCard(!isOpenModalAddCard);
   };
 
-  const deleteColumn =() => {
-    return alert('STOP!')
-  } 
+  // const deleteColumn =() => {
+  //   return alert('STOP!')
+  // } 
 
   //----------------скрол-віріант-1-(робочий)---------------------------
   const columnWrapper = useRef(null);
@@ -64,21 +76,21 @@ const Column = () => {
       ref={columnWrapper}
     >
       <ul className={style.column__item}>
-        {columns.map(({ name, id }) => (
-          <li key={id} className={style.column}>
+        {columns.map(({ title, _id, cards }) => (
+          <li key={_id} className={style.column}>
             <div className={style.column__section}>
-              <p className={style.column_title}>{name}</p>
+              <p className={style.column_title}>{title}</p>
 
               <div className={style.column__edit__button}>
                 <button
                   onClick={e => {
                     handlerEditColum();
-                    setIdColumn(id);
+                    setIdColumn(_id);
                   }}
                 >
                   <Icon id="pencil" className={style.column__icon} />
                 </button>
-                <button onClick={deleteColumn}>
+                <button onClick={()=>dispatch(deleteColumn(_id)) }>
                   <Icon id="trash" className={style.column__icon} />
                 </button>
               </div>

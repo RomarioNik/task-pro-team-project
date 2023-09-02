@@ -6,6 +6,7 @@
 .column {
     display: block;
     margin-right: 15px;
+    margin-bottom: 10px;
  } 
 
 .column__section {
@@ -62,7 +63,7 @@
     font-weight: 500;
     align-items: center;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: 15px;
     margin-bottom: 16px;
     /* margin-left: 24px; */
     border-radius: 8px;

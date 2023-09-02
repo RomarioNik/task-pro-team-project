@@ -9,7 +9,6 @@ export const registerFormSchema = yup
       .min(2, 'Username must be at least 2 characters')
       .max(32, 'Username can be at most 32 characters')
       .matches(
-        // /^[a-zA-Z0-9!@#$%^&*()_+{}\[\]:;<>,.?~-]+$/,
         /^[a-zA-Z0-9!@#$%^&*()_+{}[\]:;<>,.?~-]+$/,
         'Invalid name format'
       )

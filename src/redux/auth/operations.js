@@ -89,3 +89,16 @@ export const updateProfile = createAsyncThunk(
     }
   }
 );
+
+export const sendNeedHelpLetter = createAsyncThunk(
+  'auth/support',
+  async (formData, thunkAPI) => {
+    try {
+      const { data } = await apiPrivate.post('/api/auth/support', formData);
+      console.log(data);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

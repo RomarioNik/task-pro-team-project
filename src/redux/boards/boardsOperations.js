@@ -51,9 +51,9 @@ export const deleteBoard = createAsyncThunk(
 
 export const updateBoard = createAsyncThunk(
   'boards/updateBoard',
-  async (boardId, thunkAPI) => {
+  async ({_id, newBoardData}, thunkAPI) => {
     try {
-      const { data } = await apiPrivate.put(`/api/boards/${boardId}`);
+      const { data } = await apiPrivate.put(`/api/boards/${_id}`, newBoardData);
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -87,9 +87,9 @@ export const deleteColumn = createAsyncThunk(
 
 export const updateColumnById = createAsyncThunk(
   'boards/updateColumnById',
-  async (columnId, thunkAPI) => {
+  async ({ _id, newColumnData }, thunkAPI) => {
     try {
-      const { data } = await apiPrivate.put(`/api/columns/${columnId}`);
+      const { data } = await apiPrivate.put(`/api/columns/${_id}`, newColumnData);
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -114,7 +114,7 @@ export const deleteCard = createAsyncThunk(
   async (cardId, thunkAPI) => {
     try {
       const { data } = await apiPrivate.delete(`/api/cards/${cardId}`);
-      return data.deletedId;
+      return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
@@ -123,9 +123,9 @@ export const deleteCard = createAsyncThunk(
 
 export const updateCardById = createAsyncThunk(
   'boards/updateCardById',
-  async (cardId, thunkAPI) => {
+  async ({ _id, newCardData }, thunkAPI) => {
     try {
-      const { data } = await apiPrivate.put(`/api/cards/${cardId}`);
+      const { data } = await apiPrivate.put(`/api/cards/${_id}`, newCardData);
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

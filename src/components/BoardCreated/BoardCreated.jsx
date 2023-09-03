@@ -1,61 +1,44 @@
 import React from 'react';
-import { Icon } from '../Svg/Icon';
 import Column from 'components/Column/Column';
 import style from './BoardCreated.module.css';
-// import { useParams } from 'react-router-dom';
+import 'overlayscrollbars/overlayscrollbars.css';
+//import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
+// import { OverlayScrollbars } from 'overlayscrollbars';
 
-//-------scroll------------------------- 
-// import 'overlayscrollbars/overlayscrollbars.css';
-// import useScrollbar from '../Scroll/Scroll';
-
-// import { OverlayScrollbars} from 'overlayscrollbars';
-//-----------------------------------------
 const BoardCreated = () => {
-  // const [theme, setTheme] = useState('light');
-  // const { boardName } = useParams();
+  // -------------------скрол-варіант-3-(не политів)-----------------------------------
 
-  //----функція-відкривання-модалки-створення-колонки
-  const createColumn = () => {
-    console.log('add column');
-  };
-  
-  console.log()
+  // useEffect(() => {
+  //   const containerElement = document.querySelector('#style.column__container');
+  //   const osInstance = OverlayScrollbars(containerElement, {});
 
-  // OverlayScrollbars({ 
+  //   return () => {
+  //     osInstance.destroy();
+  //   };
+  // }, []);
+
+  // ------------------скрол-варіант-2-(не политів)-------------------------------------
+  // OverlayScrollbars({
   //   target: document.querySelector('#column__item'),
-  //   scrollbars: {
-  //     slot: document.querySelector('#column__item').parentElement,
+  //   elements: {
+  //     viewport: document.querySelector('#column__container'),
   //   },
   //  }, {});
 
-
-  //  OverlayScrollbars(document.querySelector('#column__container'), {
-  //   overflow: {
-  //     x: 'hidden',
-  //   },
-  // });
-    
   return (
-    <div >
-      {/* <div className={style.title__container}>
-        <p className={style.title__board}>{boardName}</p>
-      </div> */}
-      <div className={style.column__container}>
-        <div className={style.column__item}>
-          <Column /> 
-        </div> 
-          <button
-          className={style.button__create}
-          type="button"
-          onClick={createColumn}
-        >
-          <div className={style.button__icon__background}>
-            <Icon id="plus" className={style.button__create__icon} />
-          </div>
-          <p className={style.button__create__title}>Add another column</p>
-        </button>     
-      </div>
+    //---------------скрол 4 варіант-не-полетів-------
+    //<OverlayScrollbarsComponent
+    // element="Column"
+    // options={{ scrollbars: { autoHide: 'never' } }}
+    // events={{ scroll: () => {} }}
+    // defer
+    //>
+
+    <div className={style.column__container}>
+      <Column />
     </div>
+
+    //</OverlayScrollbarsComponent>
   );
 };
 

@@ -2,7 +2,7 @@ import React from 'react';
 import Column from 'components/Column/Column';
 import style from './BoardCreated.module.css';
 import 'overlayscrollbars/overlayscrollbars.css';
-//import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
+import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 // import { OverlayScrollbars } from 'overlayscrollbars';
 
 const BoardCreated = () => {
@@ -35,7 +35,10 @@ const BoardCreated = () => {
     //>
 
     <div className={style.column__container}>
-      <Column />
+      <OverlayScrollbarsComponent>
+            <Column />
+      </OverlayScrollbarsComponent>
+  
     </div>
 
     //</OverlayScrollbarsComponent>

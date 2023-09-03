@@ -135,7 +135,9 @@
 }
 
 
-
+.card {
+  margin-bottom: 8px;
+}
 /* .card {
   width: 334px;
   height: 154px;

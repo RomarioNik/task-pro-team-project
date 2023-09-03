@@ -7,6 +7,7 @@
 .select_btn {
   width: 100%;
   color: var(--slider-text);
+  stroke: var(--slider-text);
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,7 +1,7 @@
 <svg  xmlns="http://www.w3.org/2000/svg" style='display: none' >
 <defs>
-<symbol id="chevron-down" viewBox="0 0 30 32">
-<path fill="none" stroke-width="2.8235" d="M7.529 12.235l7.529 7.529 7.529-7.529"></path>
+<symbol id="chevron-down" viewBox="0 0 30 32"  fill="none">
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.8235" d="M7.529 12.235l7.529 7.529 7.529-7.529"></path>
 </symbol>
 <symbol id="chevron" viewBox="0 0 46 32">
 <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="6.8571" d="M4.571 6.857l18.286 18.286 18.286-18.286"></path>

@@ -3,7 +3,7 @@ import styles from './NewBoard.module.css';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addBoard } from 'redux/boards/boardsOperations';
-const NewBoard = ({ openModal }) => {
+const EditBoard = ({ openModal }) => {
   const [icons, setIcons] = useState('project');
   const [background, setBackground] = useState(null);
   const [title, setTitle] = useState(null);
@@ -12,13 +12,12 @@ const NewBoard = ({ openModal }) => {
     setTitle(event.target.value);
   };
 
-const closeModal = (event) => {
-  openModal()
-}
+  const closeModal = (event) => {
+    openModal()
+  }
 
   const getIcon = event => {
     setIcons(event.currentTarget.dataset.source);
-    console.log(icons)
   };
 
   const getBack = event => {
@@ -26,20 +25,20 @@ const closeModal = (event) => {
     setBackground(event.currentTarget.dataset.source);
   };
 
-  const newBoardObject = {
+  const editBoardObject = {
     title: title,
     icon: icons,
     background: background,
   };
 
-  const newBoardFunc = () => {
-    dispatch(addBoard(newBoardObject));
-   closeModal()
+  const editBoardFunc = () => {
+    dispatch(addBoard(editBoardObject));
+    closeModal()
   };
 
   return (
     <div className={styles.divCard}>
-      <h2 className={styles.textNew}>New board</h2>
+      <h2 className={styles.textNew}>Edit board</h2>
       <input
         className={styles.titleInput}
         type="text"
@@ -48,81 +47,87 @@ const closeModal = (event) => {
       />
       <h3 className={styles.textIcons}>Icons</h3>
       <ul className={styles.listDarkIcons}>
-        <li>
-          {/* <button
+      <li>
+          <button
             data-source="project"
             className={styles.buttonIcons}
             onClick={getIcon}
-          > */}
-          <input type="radio" data-source="project" name='buttons'  className={styles.inputRad} onClick={getIcon}/>
+          >
             <Icon
               id={'project'}
               className={
                 icons === 'project' ? styles.darkIcons : styles.serIcons
               }
             ></Icon>
-
+          </button>
         </li>
         <li>
-        <input type="radio" data-source="star" name='buttons'  className={styles.inputRad} onClick={getIcon}/>
+          <button onClick={getIcon} data-source="star">
             <Icon
               id={'star'}
               className={icons === 'star' ? styles.darkIcons : styles.serIcons}
             ></Icon>
+          </button>
         </li>
         <li>
-        <input type="radio" data-source="loading" name='buttons'  className={styles.inputRad} onClick={getIcon}/>
+          <button onClick={getIcon} data-source="loading">
             <Icon
               id={'loading'}
               className={
                 icons === 'loading' ? styles.darkIcons : styles.serIcons
               }
             ></Icon>
+          </button>
         </li>
         <li>
-        <input type="radio" data-source="puzzle-piece" name='buttons'  className={styles.inputRad} onClick={getIcon}/>
+          <button onClick={getIcon} data-source="puzzle-piece">
             <Icon
               id={'puzzle-piece'}
               className={
                 icons === 'puzzle-piece' ? styles.darkIcons : styles.serIcons
               }
             ></Icon>
+          </button>
         </li>
         <li>
-        <input type="radio" data-source="container" name='buttons'  className={styles.inputRad} onClick={getIcon}/>
+          <button onClick={getIcon} data-source="container">
             <Icon
               id={'container'}
               className={
                 icons === 'container' ? styles.darkIcons : styles.serIcons
               }
             ></Icon>
+          </button>
         </li>
         <li>
-        <input type="radio" data-source="lightning" name='buttons'  className={styles.inputRad} onClick={getIcon}/>
+          <button onClick={getIcon} data-source="lightning">
             <Icon
               id={'lightning'}
               className={
                 icons === 'lightning' ? styles.darkIcons : styles.serIcons
               }
             ></Icon>
+          </button>
         </li>
         <li>
-        <input type="radio" data-source="colors" name='buttons'  className={styles.inputRad} onClick={getIcon}/>
+          <button onClick={getIcon} data-source="colors">
             <Icon
               id={'colors'}
               className={
                 icons === 'colors' ? styles.darkIcons : styles.serIcons
               }
             ></Icon>
+          </button>
         </li>
         <li>
-        <input type="radio" data-source="hexagon" name='buttons'  className={styles.inputRad} onClick={getIcon}/>
+          <button onClick={getIcon} data-source="hexagon">
             <Icon
               id={'hexagon'}
               className={
                 icons === 'hexagon' ? styles.darkIcons : styles.serIcons
               }
             ></Icon>
+          </button>
         </li>
       </ul>
       <h3 className={styles.textBackground}>Background</h3>
@@ -318,7 +323,7 @@ const closeModal = (event) => {
           ></button>
         </li>
       </ul>
-      <button className={styles.mainButton} onClick={newBoardFunc}>
+      <button className={styles.mainButton} onClick={editBoardFunc}>
         <div className={styles.plusBtnZaglushka}>
           <Icon id={'plus'} className={styles.plusIcon}></Icon>
         </div>
@@ -328,4 +333,4 @@ const closeModal = (event) => {
   );
 };
 
-export default NewBoard;
+export default EditBoard;

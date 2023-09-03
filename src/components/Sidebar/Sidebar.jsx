@@ -10,6 +10,7 @@ import { logOutUser } from 'redux/auth/operations';
 import {
   deleteBoard,
   getAllBoards,
+  getBoardById,
   // addBoard,
 } from '../../redux/boards/boardsOperations';
 import { useBoardsList } from 'hooks/useBoardsList';
@@ -32,6 +33,12 @@ const Sidebar = ({ closeSidebar, isOpenMenu }) => {
   useEffect(() => {
     dispatch(getAllBoards());
   }, [dispatch]);
+
+  // useEffect(() => {
+  //   if (boards.length > 0) {
+  //     navigate(`${boards[0].title}`);
+  //   }
+  // }, [boards.length]);
 
   const handleCreateBoard = () => {
     setOpenNewBoardModal(true);
@@ -107,6 +114,9 @@ const Sidebar = ({ closeSidebar, isOpenMenu }) => {
                   className={({ isActive }) =>
                     isActive ? css.active : css.boardsItem
                   }
+                  onClick={() => {
+                    dispatch(getBoardById(_id));
+                  }}
                 >
                   <div className={css.boardTitle}>
                     <svg width="18" height="18" className={css.boardIcon}>

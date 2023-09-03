@@ -13,7 +13,6 @@ import style from './ScreensPage.module.css';
 
 const ScreensPage = () => {
   const { boardName } = useParams();
-  console.log(boardName);
 
   const [openFilter, setOpenFilter] = useState(false);
 

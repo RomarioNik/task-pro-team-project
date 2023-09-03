@@ -2,6 +2,7 @@ import { Icon } from '../Svg/Icon';
 import styles from './NewBoard.module.css';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router';
 import { addBoard } from 'redux/boards/boardsOperations';
 
 import noBack from '../../img/background_list_icons/no-background.jpg'
@@ -24,6 +25,7 @@ import yacht from '../../img/background_list_icons/yacht.jpg'
 
 
 const NewBoard = ({ openModal }) => {
+  const navigate = useNavigate();
   const [icons, setIcons] = useState('project');
   const [background, setBackground] = useState(null);
   const [title, setTitle] = useState(null);
@@ -54,7 +56,10 @@ const closeModal = (event) => {
 
   const newBoardFunc = () => {
     dispatch(addBoard(newBoardObject));
+
+
    closeModal()
+
   };
 
   return (

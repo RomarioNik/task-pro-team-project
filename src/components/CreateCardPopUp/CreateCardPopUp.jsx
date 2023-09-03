@@ -8,10 +8,12 @@ import { addCard } from 'redux/boards/boardsOperations';
 // import { addBoard } from 'redux/boards/boardsOperations';
 
 export function CreateCardPopUp({
-  id = '1',
-  boardName = 'test',
-  deadline = 'test',
-  column = 'exampleid',
+  // id = '1',
+  // boardName = 'test',
+  // deadline = 'test',
+  // column = 'exampleid',
+  id,
+  close,
 }) {
   const dispatch = useDispatch();
 
@@ -19,7 +21,7 @@ export function CreateCardPopUp({
   const [titleValue, setTitleValue] = useState('');
   const [descriptionValue, setDescriptionValue] = useState('');
   const [formattedDeadline, setFormattedDeadline] = useState('');
-  console.log('formattedDeadline', formattedDeadline);
+  // console.log('formattedDeadline', formattedDeadline);
 
   const handleRadioChange = event => {
     setSelectedLabel(event.target.value);
@@ -28,13 +30,13 @@ export function CreateCardPopUp({
   const AddNewCard = () => {
     console.log('додаємо нову картку');
 
-    console.log({
-      title: titleValue,
-      description: descriptionValue,
-      priority: selectedLabel,
-      deadline: formattedDeadline,
-      column: column,
-    });
+    // console.log({
+    //   title: titleValue,
+    //   description: descriptionValue,
+    //   priority: selectedLabel,
+    //   deadline: formattedDeadline,
+    //   column: id,
+    // });
 
     dispatch(
       addCard({
@@ -42,9 +44,11 @@ export function CreateCardPopUp({
         description: descriptionValue,
         priority: selectedLabel,
         deadline: formattedDeadline,
-        column: column,
+        column: id,
       })
     );
+
+    close();
   };
 
   return (

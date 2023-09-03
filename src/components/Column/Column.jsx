@@ -7,6 +7,7 @@ import EditColumn from 'components/EditColumn';
 // import Card from 'components/Card/Card';
 import CreateCardPopUp from 'components/CreateCardPopUp/CreateCardPopUp';
 import { deleteColumn } from 'redux/boards/boardsOperations';
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import 'overlayscrollbars/overlayscrollbars.css';
 import style from './Column.module.css';
 import { useDispatch } from 'react-redux';
@@ -103,14 +104,17 @@ const Column = () => {
                   </button>
                 </div>
               </div>
-              <ul className={style.card__container}>
-                {cards &&
-                  cards.map(card => (
-                    <li key={card._id}>
-                      <TaskCard data={card} />
-                    </li>
-                  ))}
-              </ul>
+              <OverlayScrollbarsComponent>
+                <ul className={style.card__container}>
+                  {cards &&
+                    cards.map(card => (
+                      <li key={card._id} className={style.card}>
+                        <TaskCard data={card} />
+                      </li>
+                    ))}
+                </ul>
+              </OverlayScrollbarsComponent>
+
               <button
                 className={style.button_create}
                 type="button"

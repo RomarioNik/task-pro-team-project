@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import Modal from 'components/Modal';
 
 import Board from 'components/Board';
-import BoardCreated from 'components/BoardCreated';
+import BoardCreated from 'components/BoardCreated/BoardCreated.jsx';
 import Filter from 'components/Filter';
 
 // import BoardCreated from 'components/BoardCreated';

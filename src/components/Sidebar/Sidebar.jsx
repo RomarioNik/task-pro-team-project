@@ -17,6 +17,7 @@ import { useBoardsList } from 'hooks/useBoardsList';
 import Modal from '../Modal/index.js';
 import NeedHelp from '../Needhelp/NeedHelp';
 import NewBoard from '../NewEditBoard/NewBoard';
+import EditBoard from 'components/NewEditBoard/EditBoard';
 
 const Sidebar = ({ closeSidebar, isOpenMenu }) => {
   const navigate = useNavigate();
@@ -76,10 +77,14 @@ const Sidebar = ({ closeSidebar, isOpenMenu }) => {
           <Modal children={<NeedHelp />} openModal={setOpenNeedHelpModal} />
         )}
         {openNewBoardModal && (
-          <Modal children={<NewBoard />} openModal={setOpenNewBoardModal} />
+          <Modal openModal={setOpenNewBoardModal}>
+            <NewBoard openModal={setOpenNewBoardModal} />
+          </Modal>
         )}
         {openEditBoardModal && (
-          <Modal children={<NewBoard />} openModal={setOpenEditBoardModal} />
+          <Modal openModal={setOpenEditBoardModal}>
+            <EditBoard openModal={setOpenEditBoardModal}></EditBoard>
+          </Modal>
         )}
         <Link to="/home" className={css.logo}>
           <svg width="32" height="32" className={css.logoIcon}>

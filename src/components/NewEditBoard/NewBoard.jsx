@@ -2,8 +2,10 @@ import { Icon } from '../Svg/Icon';
 import styles from './NewBoard.module.css';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router';
 import { addBoard } from 'redux/boards/boardsOperations';
 const NewBoard = ({ openModal }) => {
+  const navigate = useNavigate();
   const [icons, setIcons] = useState('project');
   const [background, setBackground] = useState(null);
   const [title, setTitle] = useState(null);
@@ -29,6 +31,7 @@ const NewBoard = ({ openModal }) => {
 
   const newBoardFunc = () => {
     dispatch(addBoard(newBoardObject));
+    navigate(`${title}`);
   };
 
   return (

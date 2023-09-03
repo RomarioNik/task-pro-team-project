@@ -5,6 +5,7 @@
 }
 
 .select_btn {
+  width: 100%;
   color: var(--slider-text);
   display: flex;
   justify-content: center;

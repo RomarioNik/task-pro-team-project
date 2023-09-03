@@ -3,6 +3,7 @@ import styles from './NewBoard.module.css';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addBoard } from 'redux/boards/boardsOperations';
+import { useNavigate } from 'react-router';
 
 import noBack from '../../img/background_list_icons/no-background.jpg'
 import cappodocia from '../../img/background_list_icons/cappodocia.jpg'
@@ -27,6 +28,10 @@ const NewBoard = ({ openModal }) => {
   const [icons, setIcons] = useState('project');
   const [background, setBackground] = useState(null);
   const [title, setTitle] = useState(null);
+
+
+
+  const navigate = useNavigate()
   const dispatch = useDispatch();
   const getTitle = event => {
     setTitle(event.target.value);
@@ -55,6 +60,7 @@ const closeModal = (event) => {
   const newBoardFunc = () => {
     dispatch(addBoard(newBoardObject));
    closeModal()
+   navigate(`${title}`);
   };
 
   return (

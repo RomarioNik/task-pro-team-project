@@ -1,6 +1,6 @@
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import css from './Sidebar.module.css';
 import sprite from '../../img/svg/sprite-icon.svg';
@@ -21,6 +21,7 @@ import EditBoard from 'components/NewEditBoard/EditBoard';
 
 const Sidebar = ({ closeSidebar, isOpenMenu }) => {
   const navigate = useNavigate();
+  const menuRef = useRef(null);
 
   const [openNeedHelpModal, setOpenNeedHelpModal] = useState(false);
   const [openNewBoardModal, setOpenNewBoardModal] = useState(false);
@@ -66,13 +67,19 @@ const Sidebar = ({ closeSidebar, isOpenMenu }) => {
 
   const handleBackdropClick = event => {
     if (event.currentTarget === event.target) {
-      closeSidebar();
+      menuRef.current.classList.toggle(css.close);
+      setTimeout(() => {
+        closeSidebar();
+      }, 300);
     }
   };
 
   return (
     <div className={css.backdrop} onClick={handleBackdropClick}>
-      <div className={`${css.sidebar} ${isOpenMenu ? css.open : css.close}`}>
+      <div
+        ref={menuRef}
+        className={`${css.sidebar} ${isOpenMenu ? css.open : ''}`}
+      >
         {openNeedHelpModal && (
           <Modal children={<NeedHelp />} openModal={setOpenNeedHelpModal} />
         )}

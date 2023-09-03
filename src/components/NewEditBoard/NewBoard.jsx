@@ -3,6 +3,26 @@ import styles from './NewBoard.module.css';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addBoard } from 'redux/boards/boardsOperations';
+
+import noBack from '../../img/background_list_icons/no-background.jpg'
+import cappodocia from '../../img/background_list_icons/cappodocia.jpg'
+import baloon from '../../img/background_list_icons/baloon.jpg'
+import clouds from '../../img/background_list_icons/clouds.jpg'
+import fullMoon from '../../img/background_list_icons/full-moon.jpg'
+import halfMoon from '../../img/background_list_icons/half-moon.jpg'
+import magnolia from '../../img/background_list_icons/magnolia.jpg'
+import mountains from '../../img/background_list_icons/mountains.jpg'
+import nightTrailer from '../../img/background_list_icons/night-trailer.jpg'
+import palmLeaves from '../../img/background_list_icons/palm-leaves.jpg'
+import rockyBeach from '../../img/background_list_icons/rocky-beach.jpg'
+import sakura from '../../img/background_list_icons/sakura.jpg'
+import sea from '../../img/background_list_icons/sea.jpg'
+import starrySky from '../../img/background_list_icons/starry-sky.jpg'
+import violetCircle from '../../img/background_list_icons/violet-circle.jpg'
+import yacht from '../../img/background_list_icons/yacht.jpg'
+
+
+
 const NewBoard = ({ openModal }) => {
   const [icons, setIcons] = useState('project');
   const [background, setBackground] = useState(null);
@@ -134,22 +154,16 @@ const closeModal = (event) => {
               : styles.listItem
           }
         >
-          <button
-            className={styles.buttonBack}
-            onClick={getBack}
-            data-source="no-background"
-          ></button>
+<input type="radio" name='backs' data-source='no-background' className={styles.inputBack} onClick={getBack}/>
+<img src={noBack} alt="noback" className={styles.img_back} />
         </li>
         <li
           className={
             background === 'magnolia' ? styles.listItemActive : styles.listItem
           }
         >
-          <button
-            className={styles.buttonBack}
-            onClick={getBack}
-            data-source="magnolia"
-          ></button>
+ <input type="radio" name='backs' className={styles.inputBack} data-source='magnolia' onClick={getBack}/>
+<img src={magnolia} alt="magnolia" className={styles.img_back} />
         </li>
         <li
           className={
@@ -158,33 +172,24 @@ const closeModal = (event) => {
               : styles.listItem
           }
         >
-          <button
-            className={styles.buttonBack}
-            onClick={getBack}
-            data-source="starry-sky"
-          ></button>
+          <input type="radio" name='backs' className={styles.inputBack} data-source='starry-sky' onClick={getBack}/>
+<img src={starrySky} alt="starrySky" className={styles.img_back} />
         </li>
         <li
           className={
             background === 'sakura' ? styles.listItemActive : styles.listItem
           }
         >
-          <button
-            className={styles.buttonBack}
-            onClick={getBack}
-            data-source="sakura"
-          ></button>
+ <input type="radio" name='backs' className={styles.inputBack} data-source='sakura' onClick={getBack}/>
+<img src={sakura} alt="sakura" className={styles.img_back} />
         </li>
         <li
           className={
             background === 'half-moon' ? styles.listItemActive : styles.listItem
           }
         >
-          <button
-            className={styles.buttonBack}
-            onClick={getBack}
-            data-source="half-moon"
-          ></button>
+ <input type="radio" name='backs' className={styles.inputBack} data-source='half-moon' onClick={getBack}/>
+<img src={halfMoon} alt="half-moon" className={styles.img_back} />
         </li>
         <li
           className={
@@ -193,22 +198,16 @@ const closeModal = (event) => {
               : styles.listItem
           }
         >
-          <button
-            className={styles.buttonBack}
-            onClick={getBack}
-            data-source="palm-leaves"
-          ></button>
+ <input type="radio" name='backs' className={styles.inputBack} data-source='palm-leaves' onClick={getBack}/>
+<img src={palmLeaves} alt="palm-leaves" className={styles.img_back} />
         </li>
         <li
           className={
             background === 'clouds' ? styles.listItemActive : styles.listItem
           }
         >
-          <button
-            className={styles.buttonBack}
-            onClick={getBack}
-            data-source="clouds"
-          ></button>
+ <input type="radio" name='backs' className={styles.inputBack} data-source='clouds' onClick={getBack}/>
+<img src={clouds} alt="clouds" className={styles.img_back} />
         </li>
         <li
           className={
@@ -217,11 +216,8 @@ const closeModal = (event) => {
               : styles.listItem
           }
         >
-          <button
-            className={styles.buttonBack}
-            onClick={getBack}
-            data-source="rocky-beach"
-          ></button>
+ <input type="radio" name='backs' className={styles.inputBack} data-source='rocky-beach' onClick={getBack}/>
+<img src={rockyBeach} alt="rocky-beach" className={styles.img_back} />
         </li>
         <li
           className={
@@ -230,66 +226,48 @@ const closeModal = (event) => {
               : styles.listItem
           }
         >
-          <button
-            className={styles.buttonBack}
-            onClick={getBack}
-            data-source="violet-circle"
-          ></button>
+ <input type="radio" name='backs' className={styles.inputBack} data-source='violet-circle' onClick={getBack}/>
+<img src={violetCircle} alt="violet-circle" className={styles.img_back} />
         </li>
         <li
           className={
             background === 'full-moon' ? styles.listItemActive : styles.listItem
           }
         >
-          <button
-            className={styles.buttonBack}
-            onClick={getBack}
-            data-source="full-moon"
-          ></button>
+ <input type="radio" name='backs' className={styles.inputBack} data-source='full-moon' onClick={getBack}/>
+<img src={fullMoon} alt="full-moon" className={styles.img_back} />
         </li>
         <li
           className={
             background === 'yacht' ? styles.listItemActive : styles.listItem
           }
         >
-          <button
-            className={styles.buttonBack}
-            onClick={getBack}
-            data-source="yacht"
-          ></button>
+ <input type="radio" name='backs' className={styles.inputBack} data-source='yacht' onClick={getBack}/>
+<img src={yacht} alt="yacht" className={styles.img_back} />
         </li>
         <li
           className={
             background === 'baloon' ? styles.listItemActive : styles.listItem
           }
         >
-          <button
-            className={styles.buttonBack}
-            onClick={getBack}
-            data-source="baloon"
-          ></button>
+ <input type="radio" name='backs' className={styles.inputBack} data-source='baloon' onClick={getBack}/>
+<img src={baloon} alt="baloon" className={styles.img_back} />
         </li>
         <li
           className={
             background === 'mountains' ? styles.listItemActive : styles.listItem
           }
         >
-          <button
-            className={styles.buttonBack}
-            onClick={getBack}
-            data-source="mountains"
-          ></button>
+ <input type="radio" name='backs' className={styles.inputBack} data-source='mountains' onClick={getBack}/>
+<img src={mountains} alt="mountains" className={styles.img_back} />
         </li>
         <li
           className={
             background === 'sea' ? styles.listItemActive : styles.listItem
           }
         >
-          <button
-            className={styles.buttonBack}
-            onClick={getBack}
-            data-source="sea"
-          ></button>
+ <input type="radio" name='backs' className={styles.inputBack} data-source='sea' onClick={getBack}/>
+<img src={sea} alt="sea" className={styles.img_back} />
         </li>
         <li
           className={
@@ -298,11 +276,8 @@ const closeModal = (event) => {
               : styles.listItem
           }
         >
-          <button
-            className={styles.buttonBack}
-            onClick={getBack}
-            data-source="cappodocia"
-          ></button>
+ <input type="radio" name='backs' className={styles.inputBack} data-source='cappodocia' onClick={getBack}/>
+<img src={cappodocia} alt="cappodocia" className={styles.img_back}/>
         </li>
         <li
           className={
@@ -311,11 +286,8 @@ const closeModal = (event) => {
               : styles.listItem
           }
         >
-          <button
-            className={styles.buttonBack}
-            onClick={getBack}
-            data-source="night-trailer"
-          ></button>
+ <input type="radio" name='backs' className={styles.inputBack} data-source='night-trailer' onClick={getBack}/>
+<img src={nightTrailer} alt="night-trailer" className={styles.img_back}  />
         </li>
       </ul>
       <button className={styles.mainButton} onClick={newBoardFunc}>

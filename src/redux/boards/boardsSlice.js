@@ -68,6 +68,7 @@ const handleFulfilledUpdateBoard = (state, { payload }) => {
 const handleFulfilledAddColumn = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;
+  payload.cards = [];
   state.shownBoard.columns.push(payload);
 };
 
@@ -103,8 +104,6 @@ const handleFulfilledAddCard = (state, { payload }) => {
 const handleFulfilledDeleteCard = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;
-  console.log(payload);
-
   const array = state.shownBoard.columns;
   const columnIndex = array.findIndex(el => el._id === payload.column);
   if (columnIndex !== -1) {

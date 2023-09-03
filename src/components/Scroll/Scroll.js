@@ -1,9 +1,14 @@
 import { useEffect } from 'react';
 import { OverlayScrollbars } from 'overlayscrollbars';
 
-const config = {};
+const config = {
+  scrollbars : {
+    visibility: "auto",
+    autoHide: "never",
+  }
+}; //----стилі-скрола----
 
-const useScrollbar = (root, hasScroll) => {
+const Scrollbar = (root, hasScroll) => {
   useEffect(() => {
     let scrollbars;
 
@@ -19,4 +24,4 @@ const useScrollbar = (root, hasScroll) => {
   }, [root, hasScroll]);
 };
 
-export default useScrollbar ;
+export default Scrollbar ;

@@ -6,7 +6,9 @@ import {
   refreshUser,
   changeTheme,
   updateProfile,
+  sendNeedHelpLetter,
 } from './operations';
+import { toast } from 'react-hot-toast';
 
 const handleFulfilledRegister = (state, { payload }) => {
   state.user = payload.user;
@@ -21,6 +23,7 @@ const handlePendingRegister = state => {
 
 const handleRejectedRegister = state => {
   state.isLoading = false;
+  toast.error('Error Register');
 };
 
 const handleFulfilledLogIn = (state, { payload }) => {
@@ -36,6 +39,7 @@ const handlePendingLogIn = state => {
 
 const handleRejectedLogIn = state => {
   state.isLoading = false;
+  toast.error('Error Login. Wrong email or password, or user does not exist');
 };
 
 const handleFulfilledLogOut = state => {
@@ -78,7 +82,7 @@ const handleRejectedChangeTheme = state => {
 const handleFulfilledUpdateProfile = (state, { payload }) => {
   state.user = payload.user;
   state.isLoading = false;
-  console.log(payload);
+  toast.success(`Profile updated!`);
   if (payload.token === '') {
     state.isLoggedIn = false;
   }
@@ -90,6 +94,21 @@ const handlePendingUpdateProfile = state => {
 
 const handleRejectedUpdateProfile = state => {
   state.isLoading = false;
+  toast.error(`Something went wrong`);
+};
+
+const handleFulfilledSendLetter = (state, { payload }) => {
+  state.isLoading = false;
+  toast.success(`${payload.message}`);
+};
+
+const handlePendingSendLetter = state => {
+  state.isLoading = true;
+};
+
+const handleRejectedSendLetter = (state, { payload }) => {
+  state.isLoading = false;
+  toast.error(`Something went wrong`);
 };
 
 const initialState = {
@@ -120,7 +139,10 @@ const authSlice = createSlice({
       .addCase(changeTheme.rejected, handleRejectedChangeTheme)
       .addCase(updateProfile.fulfilled, handleFulfilledUpdateProfile)
       .addCase(updateProfile.pending, handlePendingUpdateProfile)
-      .addCase(updateProfile.rejected, handleRejectedUpdateProfile),
+      .addCase(updateProfile.rejected, handleRejectedUpdateProfile)
+      .addCase(sendNeedHelpLetter.fulfilled, handleFulfilledSendLetter)
+      .addCase(sendNeedHelpLetter.pending, handlePendingSendLetter)
+      .addCase(sendNeedHelpLetter.rejected, handleRejectedSendLetter),
 });
 
 export const authReducer = authSlice.reducer;

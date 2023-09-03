@@ -29,7 +29,7 @@ const Header = ({ handlerMenu }) => {
       </div>
       {modalIsOpen && (
         <Modal openModal={handlerModalIsOpen}>
-          <EditProfile />
+          <EditProfile onClose={handlerModalIsOpen} />
         </Modal>
       )}
     </header>

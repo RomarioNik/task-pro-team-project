@@ -10,3 +10,15 @@
   line-height: normal;
   letter-spacing: -0.28px;
 }
+
+.profile_avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+}
+
+.profile_icon {
+  width: 32px;
+  height: 32px;
+  /* height={29} width={32} */
+}

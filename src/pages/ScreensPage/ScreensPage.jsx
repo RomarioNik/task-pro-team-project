@@ -35,7 +35,7 @@ const ScreensPage = () => {
           <p className={style.button__filter__title}>Filter</p>
         </button>
       </div>
-
+      {/* <BoardCreated /> */}
       {!boardName ? <Board /> : <BoardCreated />}
     </div>
   );

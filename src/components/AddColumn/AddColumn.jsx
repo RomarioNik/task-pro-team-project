@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { addColumn } from 'redux/boards/boardsOperations';
 // import { useParams } from 'react-router-dom';
 import { useShownBoard } from 'hooks/useShownBoard';
-import { useNavigate } from 'react-router';
+// import { useNavigate } from 'react-router';
 // import { useBoardsList } from 'hooks/useBoardsList';
 
 const AddColumn = ({ closeModal }) => {

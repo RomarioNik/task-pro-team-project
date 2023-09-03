@@ -64,44 +64,20 @@ const Sidebar = ({ closeSidebar, isOpenMenu }) => {
   };
 
   return (
-    <div className={isOpen ? css.active : css.sidebar}>
-      {openNeedHelpModal && (
-        <Modal children={<NeedHelp />} openModal={setOpenNeedHelpModal} />
-      )}
-      {openNewBoardModal && (
-        <Modal openModal={setOpenNewBoardModal} >
-<NewBoard openModal={setOpenNewBoardModal}/>
-        </Modal>
-      )}
-      {openEditBoardModal && (
-        <Modal openModal={setOpenEditBoardModal} >
-          <EditBoard openModal={setOpenEditBoardModal}></EditBoard>
-          </Modal>
-      )}
-      <Link to="/home" className={css.logo}>
-        <svg width="32" height="32" className={css.logoIcon}>
-          <use xlinkHref={`${sprite}#logo`} />
-        </svg>
-        <p className={css.logoText}>TaskPro</p>
-      </Link>
-
-      <div className={css.myBoards}>
-        <p className={css.myBoardsText}>My Boards</p>
-        <div className={css.createBoardSection}>
-          <p className={css.createBoardText}>Create a new board</p>
-          <button className={css.createBoardButton} onClick={handleCreateBoard}>
-            <svg width="20" height="20" className={css.addIcon}>
-              <use xlinkHref={`${sprite}#plus`} />
     <div className={css.backdrop} onClick={handleBackdropClick}>
       <div className={`${css.sidebar} ${isOpenMenu ? css.open : css.close}`}>
         {openNeedHelpModal && (
           <Modal children={<NeedHelp />} openModal={setOpenNeedHelpModal} />
         )}
         {openNewBoardModal && (
-          <Modal children={<NewBoard />} openModal={setOpenNewBoardModal} />
+          <Modal openModal={setOpenNewBoardModal}>
+            <NewBoard openModal={setOpenNewBoardModal} />
+          </Modal>
         )}
         {openEditBoardModal && (
-          <Modal children={<NewBoard />} openModal={setOpenEditBoardModal} />
+          <Modal openModal={setOpenEditBoardModal}>
+            <EditBoard openModal={setOpenEditBoardModal}></EditBoard>
+          </Modal>
         )}
         <Link to="/home" className={css.logo}>
           <svg width="32" height="32" className={css.logoIcon}>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Icon } from '../Svg/Icon';
 // import useScrollbar from '../Scroll/index';
 import Modal from 'components/Modal/Modal';
@@ -12,10 +12,8 @@ import 'overlayscrollbars/overlayscrollbars.css';
 import style from './Column.module.css';
 import { useDispatch } from 'react-redux';
 
-
 import { useShownBoard } from 'hooks/useShownBoard';
 import TaskCard from 'components/TaskCard/TaskCard';
-
 
 const Column = () => {
   const [isOpenModalAddColumn, setIsOpenModalAddColumn] = useState(false);
@@ -23,13 +21,23 @@ const Column = () => {
   const [getIdColumn, setIdColumn] = useState(null);
   const [isOpenModalAddCard, setIsOpenModalAddCard] = useState(false);
 
+  const [containerHeight, setContainerHeight] = useState(0);
+
   const dispatch = useDispatch();
 
   const shownBoard = useShownBoard();
-  console.log(shownBoard);
 
   const columns = shownBoard.columns;
- 
+
+  useEffect(() => {
+    const handleResize = () => {
+      setContainerHeight(window.innerHeight);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const addColumn = () => {
     setIsOpenModalAddColumn(!isOpenModalAddColumn);
   };
@@ -42,7 +50,6 @@ const Column = () => {
     setIsOpenModalAddCard(!isOpenModalAddCard);
   };
 
-  
   //----------------скрол-віріант-1-(робочий)---------------------------
   // const columnWrapper = useRef(null);
   // const hasScroll = columns.length >= 1;
@@ -52,8 +59,8 @@ const Column = () => {
 
   return (
     <div
-      // style={{ width: hasScroll ? '100%' : 'auto', minWidth: '320px' }}
-      // ref={columnWrapper}
+    // style={{ width: hasScroll ? '100%' : 'auto', minWidth: '320px' }}
+    // ref={columnWrapper}
     >
       <ul className={style.column__item}>
         {columns.length !== 0 &&
@@ -77,17 +84,20 @@ const Column = () => {
                 </div>
               </div>
               <OverlayScrollbarsComponent>
-                <div className={style.card__container}>
+                <div
+                  className={style.card__container}
+                  style={{ maxHeight: `${containerHeight - 300}px` }}
+                  // style={{ height: `1920px` }}
+                >
                   <ul>
-                  {cards &&
-                    cards.map(card => (
-                      <li key={card._id} className={style.card}>
-                        <TaskCard data={card} />
-                      </li>
-                    ))}
-                </ul>
+                    {cards &&
+                      cards.map(card => (
+                        <li key={card._id} className={style.card}>
+                          <TaskCard data={card} />
+                        </li>
+                      ))}
+                  </ul>
                 </div>
-                
               </OverlayScrollbarsComponent>
 
               <button

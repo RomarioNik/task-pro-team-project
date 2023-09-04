@@ -5,18 +5,15 @@
   align-items: center; */
   color: var(--text-primary-color);
   background-color: var(--background-color);
-  transition: all 0.5s; 
+  transition: all 0.5s;
 }
 
 .homePage_wrap {
-  width: 100%;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
 
-  
-    @media screen and (min-width: 1440px) {
- width: calc(100% - 260px);
-}  
-
-
+  @media screen and (min-width: 1440px) {
+    width: calc(100% - 260px);
+  }
 }

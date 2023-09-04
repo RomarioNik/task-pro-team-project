@@ -19,7 +19,7 @@ const HomePage = () => {
   return (
 
     <div className={css.test} data-theme={userTheme}>
-      <div style={{ display: 'flex' }}>
+      <div className={css.navigate}>
         {isOpenMenu && (
           <Sidebar
             closeSidebar={() => setIsOpenMenu(false)}
@@ -29,9 +29,7 @@ const HomePage = () => {
         <MediaQuery minWidth={1440}>{!isOpenMenu && <Sidebar />}</MediaQuery>
         <div className={css.homePage_wrap}>
           <Header handlerMenu={toggleIsOpenMenu} />
-
           <ScreensPage />
-
         </div>
       </div>
     </div>

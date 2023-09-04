@@ -1,17 +1,25 @@
 .test {
-  /* height: 100vh;
-  display: flex;
+  height: 100%;
+  /* display: flex;
   justify-content: center;
-  align-items: center; */
+  align-items: center; 
   color: var(--text-primary-color);
   background-color: var(--background-color);
-  transition: all 0.5s;
+  transition: all 0.5s; */
+}
+
+.navigate {
+  height: 100%;
+  @media screen and (min-width: 1440px) {
+    display: flex;
+  }
 }
 
 .homePage_wrap {
   overflow: hidden;
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
+  height: 100%;
 
   @media screen and (min-width: 1440px) {
     width: calc(100% - 260px);

@@ -1,6 +1,6 @@
-/* .screen__section {
-    width: 1500px;
-} */
+.screen__section {
+height: 100vh;
+}
 
 .title__container {
     display: flex;

@@ -2,8 +2,8 @@ import { Icon } from '../Svg/Icon';
 import styles from './NewBoard.module.css';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router';
 import { addBoard } from 'redux/boards/boardsOperations';
+import { useNavigate } from 'react-router';
 
 import noBack from '../../img/background_list_icons/no-background.jpg'
 import cappodocia from '../../img/background_list_icons/cappodocia.jpg'
@@ -24,26 +24,22 @@ import yacht from '../../img/background_list_icons/yacht.jpg'
 
 
 
-const NewBoard = ({ openModal }) => {
-  const navigate = useNavigate();
+const EditBoard = ({ openModal }) => {
   const [icons, setIcons] = useState('project');
   const [background, setBackground] = useState(null);
   const [title, setTitle] = useState(null);
-
-
-
+  const navigate = useNavigate()
   const dispatch = useDispatch();
   const getTitle = event => {
     setTitle(event.target.value);
   };
 
-const closeModal = (event) => {
-  openModal()
-}
+  const closeModal = (event) => {
+    openModal()
+  }
 
   const getIcon = event => {
     setIcons(event.currentTarget.dataset.source);
-    console.log(icons)
   };
 
   const getBack = event => {
@@ -51,21 +47,21 @@ const closeModal = (event) => {
     setBackground(event.currentTarget.dataset.source);
   };
 
-  const newBoardObject = {
+  const editBoardObject = {
     title: title,
     icon: icons,
     background: background,
   };
 
-  const newBoardFunc = () => {
-    dispatch(addBoard(newBoardObject));
-   closeModal()
-   navigate(`${title}`);
+  const editBoardFunc = () => {
+    dispatch(addBoard(editBoardObject));
+    closeModal()
+    navigate(`${title}`);
   };
 
   return (
     <div className={styles.divCard}>
-      <h2 className={styles.textNew}>New board</h2>
+      <h2 className={styles.textNew}>Edit board</h2>
       <input
         className={styles.titleInput}
         type="text"
@@ -74,86 +70,92 @@ const closeModal = (event) => {
       />
       <h3 className={styles.textIcons}>Icons</h3>
       <ul className={styles.listDarkIcons}>
-        <li>
-          {/* <button
+      <li>
+          <button
             data-source="project"
             className={styles.buttonIcons}
             onClick={getIcon}
-          > */}
-          <input type="radio" data-source="project" name='buttons'  className={styles.inputRad} onClick={getIcon}/>
+          >
             <Icon
               id={'project'}
               className={
                 icons === 'project' ? styles.darkIcons : styles.serIcons
               }
             ></Icon>
-
+          </button>
         </li>
         <li>
-        <input type="radio" data-source="star" name='buttons'  className={styles.inputRad} onClick={getIcon}/>
+          <button onClick={getIcon} data-source="star">
             <Icon
               id={'star'}
               className={icons === 'star' ? styles.darkIcons : styles.serIcons}
             ></Icon>
+          </button>
         </li>
         <li>
-        <input type="radio" data-source="loading" name='buttons'  className={styles.inputRad} onClick={getIcon}/>
+          <button onClick={getIcon} data-source="loading">
             <Icon
               id={'loading'}
               className={
                 icons === 'loading' ? styles.darkIcons : styles.serIcons
               }
             ></Icon>
+          </button>
         </li>
         <li>
-        <input type="radio" data-source="puzzle-piece" name='buttons'  className={styles.inputRad} onClick={getIcon}/>
+          <button onClick={getIcon} data-source="puzzle-piece">
             <Icon
               id={'puzzle-piece'}
               className={
                 icons === 'puzzle-piece' ? styles.darkIcons : styles.serIcons
               }
             ></Icon>
+          </button>
         </li>
         <li>
-        <input type="radio" data-source="container" name='buttons'  className={styles.inputRad} onClick={getIcon}/>
+          <button onClick={getIcon} data-source="container">
             <Icon
               id={'container'}
               className={
                 icons === 'container' ? styles.darkIcons : styles.serIcons
               }
             ></Icon>
+          </button>
         </li>
         <li>
-        <input type="radio" data-source="lightning" name='buttons'  className={styles.inputRad} onClick={getIcon}/>
+          <button onClick={getIcon} data-source="lightning">
             <Icon
               id={'lightning'}
               className={
                 icons === 'lightning' ? styles.darkIcons : styles.serIcons
               }
             ></Icon>
+          </button>
         </li>
         <li>
-        <input type="radio" data-source="colors" name='buttons'  className={styles.inputRad} onClick={getIcon}/>
+          <button onClick={getIcon} data-source="colors">
             <Icon
               id={'colors'}
               className={
                 icons === 'colors' ? styles.darkIcons : styles.serIcons
               }
             ></Icon>
+          </button>
         </li>
         <li>
-        <input type="radio" data-source="hexagon" name='buttons'  className={styles.inputRad} onClick={getIcon}/>
+          <button onClick={getIcon} data-source="hexagon">
             <Icon
               id={'hexagon'}
               className={
                 icons === 'hexagon' ? styles.darkIcons : styles.serIcons
               }
             ></Icon>
+          </button>
         </li>
       </ul>
       <h3 className={styles.textBackground}>Background</h3>
       <ul className={styles.listColorIcons}>
-        <li
+      <li
           className={
             background === 'no-background'
               ? styles.listItemActive
@@ -296,7 +298,7 @@ const closeModal = (event) => {
 <img src={nightTrailer} alt="night-trailer" className={styles.img_back}  />
         </li>
       </ul>
-      <button className={styles.mainButton} onClick={newBoardFunc}>
+      <button className={styles.mainButton} onClick={editBoardFunc}>
         <div className={styles.plusBtnZaglushka}>
           <Icon id={'plus'} className={styles.plusIcon}></Icon>
         </div>
@@ -306,4 +308,4 @@ const closeModal = (event) => {
   );
 };
 
-export default NewBoard;
+export default EditBoard;

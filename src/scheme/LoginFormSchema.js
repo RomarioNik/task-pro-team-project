@@ -5,7 +5,6 @@ export const loginFormSchema = yup.object().shape({
     .string()
     .required('Email is required')
     .matches(
-      // /^[a-zA-Z0-9!@#$%^&*()_+{}\[\]:;<>,.?~-]+$/,
       /^[a-zA-Z0-9!@#$%^&*()_+{}[\]:;<>,.?~-]+$/,
       'Invalid email format'
     )

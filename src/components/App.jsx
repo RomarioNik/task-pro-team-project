@@ -17,6 +17,7 @@ import { refreshUser } from 'redux/auth/operations';
 import { PrivateRoute, RestrictedRoute } from './Routes/Routes';
 import ScreensPage from 'pages/ScreensPage/ScreensPage';
 import { useIsUserRefresh } from 'hooks/useIsUserRefreshing';
+import { Toaster } from 'react-hot-toast';
 
 const App = () => {
   const isRefreshing = useIsUserRefresh();
@@ -29,31 +30,33 @@ const App = () => {
   return isRefreshing ? (
     <b>Refreshing user...</b>
   ) : (
-    <Routes>
-      <Route>
-        <Route path="/" element={<Layout />} />
-        <Route index element={<WelcomePage />} />
-        <Route
-          path="auth/:id"
-          element={
-            <RestrictedRoute redirectTo="/home" component={<AuthPage />} />
-          }
-        >
-          <Route path="login" element={<LoginForm />} />
-          <Route path="register" element={<RegisterForm />} />
+    <>
+      <Toaster />
+      <Routes>
+        <Route>
+          <Route path="/" element={<Layout />} />
+          <Route index element={<WelcomePage />} />
+          <Route
+            path="auth/:id"
+            element={
+              <RestrictedRoute redirectTo="/home" component={<AuthPage />} />
+            }
+          >
+            <Route path="login" element={<LoginForm />} />
+            <Route path="register" element={<RegisterForm />} />
+          </Route>
+          <Route
+            path="home"
+            element={
+              <PrivateRoute redirectTo="/auth/login" component={<HomePage />} />
+            }
+          >
+            <Route path=":boardName" element={<ScreensPage />} />
+          </Route>
+          <Route path="*" element={<NotFound />} />
         </Route>
-
-        <Route
-          path="home"
-          element={
-            <PrivateRoute redirectTo="/auth/login" component={<HomePage />} />
-          }
-        >
-          <Route path=":boardName" element={<ScreensPage />} />
-        </Route>
-        <Route path="*" element={<NotFound />} />
-      </Route>
-    </Routes>
+      </Routes>
+    </>
   );
 };
 

@@ -51,9 +51,9 @@ export const deleteBoard = createAsyncThunk(
 
 export const updateBoard = createAsyncThunk(
   'boards/updateBoard',
-  async (boardId, thunkAPI) => {
+  async ({_id, newBoardData}, thunkAPI) => {
     try {
-      const { data } = await apiPrivate.put(`/api/boards/${boardId}`);
+      const { data } = await apiPrivate.put(`/api/boards/${_id}`, newBoardData);
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

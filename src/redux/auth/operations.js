@@ -27,8 +27,6 @@ export const loginUser = createAsyncThunk(
     try {
       const { data } = await apiPublic.post('/api/auth/signin', user);
       console.log(data);
-      // data.accessToken to request
-      // data.refreshToken to state
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
@@ -85,6 +83,18 @@ export const updateProfile = createAsyncThunk(
         formData
       );
       console.log(data);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const sendNeedHelpLetter = createAsyncThunk(
+  'auth/support',
+  async (formData, thunkAPI) => {
+    try {
+      const { data } = await apiPrivate.post('/api/auth/support', formData);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

@@ -6,7 +6,6 @@
     left: 0;
     top: 0;
     background-color: rgba(21, 21, 21, 0.5);
-    z-index: 100;
   }
 }
 
@@ -23,7 +22,7 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: var(--bg-sidebar);
+    background-color: transparent;
     border-radius: 4px;
   }
   &::-webkit-scrollbar-track {
@@ -32,13 +31,11 @@
   }
 
   @media (min-width: 768px) {
-    width: 260px;
+    width: 100%;
+    max-width: 260px;
   }
 
   @media (max-width: 1439px) {
-    position: absolute;
-    height: 100vh;
-    top: 0;
     transform: translateX(-100%);
     &.open {
       transform: translateX(0);
@@ -49,6 +46,11 @@
       transform: translateX(-100%);
       animation: slideOut 300ms linear;
     }
+  }
+
+  @media (min-width: 1439px) and (max-width: 1439px) {
+    position: relative;
+    top: 0;
   }
 }
 
@@ -127,10 +129,12 @@
 
   @media (min-width: 768px) {
     width: 212px;
+    margin: 8px 24px 0;
   }
 }
 
 .createBoardText {
+  color: var(--text-primary-color);
   font-weight: 500;
 
   width: 76px;
@@ -174,7 +178,7 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: var(--bg-sidebar);
+    background-color: transparent;
     border-radius: 4px;
   }
   &::-webkit-scrollbar-track {
@@ -191,12 +195,12 @@
 
   padding: 20px 18px 20px 14px;
 
-  @media (min-width: 768px) {
-    padding: 20px 24px;
-  }
-
   & > .boardTools {
     visibility: hidden;
+  }
+
+  @media (min-width: 768px) {
+    padding: 20px 24px;
   }
 }
 
@@ -212,14 +216,14 @@
   border-top: 4px transparent solid;
   border-bottom: 4px transparent solid;
 
-  @media (min-width: 768px) {
-    padding: 20px 24px;
-  }
-
   & .boardName,
   & .boardIcon {
     color: var(--text-primary-color);
     stroke: var(--text-primary-color);
+  }
+
+  @media (min-width: 768px) {
+    padding: 20px 24px;
   }
 }
 
@@ -285,6 +289,7 @@
 }
 
 .needHelpText {
+  color: var(--text-primary-color);
   margin: 14px 14px 0 14px;
   @media (min-width: 768px) {
     margin: 14px 20px 0 20px;
@@ -331,12 +336,6 @@
   @media (min-width: 768px) {
     font-size: 16px;
   }
-}
-
-.logoIcon {
-  fill: var(--icon-logo-color);
-  /* наружная часть лого  --icon-logo-background-color: #ecedfd; */
-  /* внутренняя часть лого  --icon-logo-color: #5255bc; */
 }
 
 .addIcon {

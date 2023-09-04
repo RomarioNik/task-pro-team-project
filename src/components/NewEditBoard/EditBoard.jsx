@@ -2,8 +2,9 @@ import { Icon } from '../Svg/Icon';
 import styles from './NewBoard.module.css';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addBoard } from 'redux/boards/boardsOperations';
+import { updateBoard } from 'redux/boards/boardsOperations';
 import { useNavigate } from 'react-router';
+import { useShownBoard } from 'hooks/useShownBoard';
 
 import noBack from '../../img/background_list_icons/no-background.jpg'
 import cappodocia from '../../img/background_list_icons/cappodocia.jpg'
@@ -25,11 +26,15 @@ import yacht from '../../img/background_list_icons/yacht.jpg'
 
 
 const EditBoard = ({ openModal }) => {
-  const [icons, setIcons] = useState('project');
-  const [background, setBackground] = useState(null);
-  const [title, setTitle] = useState(null);
+  const {_id,title,icon,background,backgroundURL,owner} = useShownBoard();
+  const [icons, setIcons] = useState(icon);
+  const [backgroundIcon, setBackground] = useState(background);
+  const [titleIc, setTitle] = useState(title);
   const navigate = useNavigate()
   const dispatch = useDispatch();
+ 
+
+
   const getTitle = event => {
     setTitle(event.target.value);
   };
@@ -48,15 +53,18 @@ const EditBoard = ({ openModal }) => {
   };
 
   const editBoardObject = {
-    title: title,
+    _id,
+   title:titleIc,
     icon: icons,
-    background: background,
+    background: backgroundIcon,
+    backgroundURL,
+    owner
   };
 
   const editBoardFunc = () => {
-    dispatch(addBoard(editBoardObject));
+    dispatch(updateBoard(editBoardObject));
     closeModal()
-    navigate(`${title}`);
+    navigate(`${titleIc}`);
   };
 
   return (
@@ -66,6 +74,7 @@ const EditBoard = ({ openModal }) => {
         className={styles.titleInput}
         type="text"
         placeholder="Title"
+        value={titleIc}
         onChange={getTitle}
       />
       <h3 className={styles.textIcons}>Icons</h3>
@@ -157,7 +166,7 @@ const EditBoard = ({ openModal }) => {
       <ul className={styles.listColorIcons}>
       <li
           className={
-            background === 'no-background'
+            backgroundIcon === 'no-background'
               ? styles.listItemActive
               : styles.listItem
           }
@@ -167,7 +176,7 @@ const EditBoard = ({ openModal }) => {
         </li>
         <li
           className={
-            background === 'magnolia' ? styles.listItemActive : styles.listItem
+            backgroundIcon === 'magnolia' ? styles.listItemActive : styles.listItem
           }
         >
  <input type="radio" name='backs' className={styles.inputBack} data-source='magnolia' onClick={getBack}/>
@@ -175,7 +184,7 @@ const EditBoard = ({ openModal }) => {
         </li>
         <li
           className={
-            background === 'starry-sky'
+            backgroundIcon === 'starry-sky'
               ? styles.listItemActive
               : styles.listItem
           }
@@ -185,7 +194,7 @@ const EditBoard = ({ openModal }) => {
         </li>
         <li
           className={
-            background === 'sakura' ? styles.listItemActive : styles.listItem
+            backgroundIcon === 'sakura' ? styles.listItemActive : styles.listItem
           }
         >
  <input type="radio" name='backs' className={styles.inputBack} data-source='sakura' onClick={getBack}/>
@@ -193,7 +202,7 @@ const EditBoard = ({ openModal }) => {
         </li>
         <li
           className={
-            background === 'half-moon' ? styles.listItemActive : styles.listItem
+            backgroundIcon === 'half-moon' ? styles.listItemActive : styles.listItem
           }
         >
  <input type="radio" name='backs' className={styles.inputBack} data-source='half-moon' onClick={getBack}/>
@@ -201,7 +210,7 @@ const EditBoard = ({ openModal }) => {
         </li>
         <li
           className={
-            background === 'palm-leaves'
+            backgroundIcon === 'palm-leaves'
               ? styles.listItemActive
               : styles.listItem
           }
@@ -211,7 +220,7 @@ const EditBoard = ({ openModal }) => {
         </li>
         <li
           className={
-            background === 'clouds' ? styles.listItemActive : styles.listItem
+            backgroundIcon === 'clouds' ? styles.listItemActive : styles.listItem
           }
         >
  <input type="radio" name='backs' className={styles.inputBack} data-source='clouds' onClick={getBack}/>
@@ -219,7 +228,7 @@ const EditBoard = ({ openModal }) => {
         </li>
         <li
           className={
-            background === 'rocky-beach'
+            backgroundIcon === 'rocky-beach'
               ? styles.listItemActive
               : styles.listItem
           }
@@ -229,7 +238,7 @@ const EditBoard = ({ openModal }) => {
         </li>
         <li
           className={
-            background === 'violet-circle'
+            backgroundIcon === 'violet-circle'
               ? styles.listItemActive
               : styles.listItem
           }
@@ -239,7 +248,7 @@ const EditBoard = ({ openModal }) => {
         </li>
         <li
           className={
-            background === 'full-moon' ? styles.listItemActive : styles.listItem
+            backgroundIcon === 'full-moon' ? styles.listItemActive : styles.listItem
           }
         >
  <input type="radio" name='backs' className={styles.inputBack} data-source='full-moon' onClick={getBack}/>
@@ -247,7 +256,7 @@ const EditBoard = ({ openModal }) => {
         </li>
         <li
           className={
-            background === 'yacht' ? styles.listItemActive : styles.listItem
+            backgroundIcon === 'yacht' ? styles.listItemActive : styles.listItem
           }
         >
  <input type="radio" name='backs' className={styles.inputBack} data-source='yacht' onClick={getBack}/>
@@ -255,7 +264,7 @@ const EditBoard = ({ openModal }) => {
         </li>
         <li
           className={
-            background === 'baloon' ? styles.listItemActive : styles.listItem
+            backgroundIcon === 'baloon' ? styles.listItemActive : styles.listItem
           }
         >
  <input type="radio" name='backs' className={styles.inputBack} data-source='baloon' onClick={getBack}/>
@@ -263,7 +272,7 @@ const EditBoard = ({ openModal }) => {
         </li>
         <li
           className={
-            background === 'mountains' ? styles.listItemActive : styles.listItem
+            backgroundIcon === 'mountains' ? styles.listItemActive : styles.listItem
           }
         >
  <input type="radio" name='backs' className={styles.inputBack} data-source='mountains' onClick={getBack}/>
@@ -271,7 +280,7 @@ const EditBoard = ({ openModal }) => {
         </li>
         <li
           className={
-            background === 'sea' ? styles.listItemActive : styles.listItem
+            backgroundIcon === 'sea' ? styles.listItemActive : styles.listItem
           }
         >
  <input type="radio" name='backs' className={styles.inputBack} data-source='sea' onClick={getBack}/>
@@ -279,7 +288,7 @@ const EditBoard = ({ openModal }) => {
         </li>
         <li
           className={
-            background === 'cappodocia'
+            backgroundIcon === 'cappodocia'
               ? styles.listItemActive
               : styles.listItem
           }
@@ -289,7 +298,7 @@ const EditBoard = ({ openModal }) => {
         </li>
         <li
           className={
-            background === 'night-trailer'
+            backgroundIcon === 'night-trailer'
               ? styles.listItemActive
               : styles.listItem
           }

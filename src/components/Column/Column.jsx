@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { Icon } from '../Svg/Icon';
-import useScrollbar from '../Scroll/index';
+// import useScrollbar from '../Scroll/index';
 import Modal from 'components/Modal/Modal';
 import AddColumn from 'components/AddColumn';
 import EditColumn from 'components/EditColumn';
@@ -12,28 +12,10 @@ import 'overlayscrollbars/overlayscrollbars.css';
 import style from './Column.module.css';
 import { useDispatch } from 'react-redux';
 
-// import { useBoardsList } from 'hooks/useBoardsList';
+
 import { useShownBoard } from 'hooks/useShownBoard';
 import TaskCard from 'components/TaskCard/TaskCard';
 
-// const columns = [
-// {
-//   title: 'To Do',
-//   _id: '1',
-// },
-// {
-//   title: 'In progress',
-//   _id: '2',
-// },
-// {
-//   title: 'Done',
-//   _id: '3',
-// },
-// {
-//   title: 'Star',
-//   _id: '4',
-// },
-// ];
 
 const Column = () => {
   const [isOpenModalAddColumn, setIsOpenModalAddColumn] = useState(false);
@@ -47,14 +29,7 @@ const Column = () => {
   console.log(shownBoard);
 
   const columns = shownBoard.columns;
-  // console.log('shownBoard.columns ', columns);
-
-  // const boards = useBoardsList();
-  // console.log(boards)
-
-  // const {columns} = boards
-  // console.log(columns)
-
+ 
   const addColumn = () => {
     setIsOpenModalAddColumn(!isOpenModalAddColumn);
   };
@@ -67,21 +42,18 @@ const Column = () => {
     setIsOpenModalAddCard(!isOpenModalAddCard);
   };
 
-  // const deleteColumn =() => {
-  //   return alert('STOP!')
-  // }
-
+  
   //----------------скрол-віріант-1-(робочий)---------------------------
-  const columnWrapper = useRef(null);
+  // const columnWrapper = useRef(null);
   // const hasScroll = columns.length >= 1;
-  const hasScroll = true;
+  // const hasScroll = true;
 
-  useScrollbar(columnWrapper, hasScroll);
+  // useScrollbar(columnWrapper, hasScroll);
 
   return (
     <div
-      style={{ width: hasScroll ? '100%' : 'auto', minWidth: '320px' }}
-      ref={columnWrapper}
+      // style={{ width: hasScroll ? '100%' : 'auto', minWidth: '320px' }}
+      // ref={columnWrapper}
     >
       <ul className={style.column__item}>
         {columns.length !== 0 &&
@@ -105,7 +77,8 @@ const Column = () => {
                 </div>
               </div>
               <OverlayScrollbarsComponent>
-                <ul className={style.card__container}>
+                <div className={style.card__container}>
+                  <ul>
                   {cards &&
                     cards.map(card => (
                       <li key={card._id} className={style.card}>
@@ -113,6 +86,8 @@ const Column = () => {
                       </li>
                     ))}
                 </ul>
+                </div>
+                
               </OverlayScrollbarsComponent>
 
               <button
@@ -131,7 +106,7 @@ const Column = () => {
               </button>
             </li>
           ))}
-        <li>
+        <li className={style.column}>
           <button
             className={style.button__create__column}
             type="button"

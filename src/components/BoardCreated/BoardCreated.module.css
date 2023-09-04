@@ -1,20 +1,14 @@
 .column__container {
   display: flex;
   flex-wrap: nowrap;
-  /* margin-top: 10px; */
-  /* margin-bottom: 19px; */
-  width: 334px;
-  /* margin-left: 20px; */
-  margin-left: auto;
-    margin-right: auto;
+  margin-top: 10px;
+  width: 100%;
+  margin-left: 20px;
+
   @media screen and (min-width: 768px) {
-    width: 704px;
-    /* margin-left: 32px; */
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 32px;
     @media screen and (min-width: 1440px) {
-      min-width: 1180px;
       margin-left: 24px;
-  }    
-}
+    }
+  }
 }

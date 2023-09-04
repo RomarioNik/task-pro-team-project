@@ -4,7 +4,7 @@ import WelcomePage from 'pages/WelcomePage';
 import AuthPage from 'pages/AuthPage';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
-import HomePage from 'pages/HomePage';
+import HomePage from 'pages/HomePage/HomePage';
 import NotFound from './NotFound';
 
 import { useDispatch } from 'react-redux';

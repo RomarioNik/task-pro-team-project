@@ -47,6 +47,7 @@ const Column = () => {
   };
 
   const addCard = () => {
+    console.log(getIdColumn);
     setIsOpenModalAddCard(!isOpenModalAddCard);
   };
 
@@ -142,7 +143,7 @@ const Column = () => {
       {isOpenModalAddCard && (
         <Modal openModal={addCard}>
           <CreateCardPopUp
-            id={getIdColumn}
+            _id={getIdColumn}
             isEditing={false}
             initialValues={{
               title: '',

@@ -8,7 +8,7 @@ import { addCard, updateCardById } from 'redux/boards/boardsOperations';
 // import { addBoard } from 'redux/boards/boardsOperations';
 
 export function CreateCardPopUp({
-  _id = '1',
+  _id,
   column = 'exampleid',
   isEditing = true,
   initialValues = {
@@ -16,7 +16,7 @@ export function CreateCardPopUp({
     description: 'EDITING MOD',
     priority: 'without priority',
     deadline: 'EDITING MOD',
-  }, // Начальные значения для редактирования
+  },
 }) {
   const dispatch = useDispatch();
 
@@ -33,7 +33,8 @@ export function CreateCardPopUp({
     setSelectedLabel(event.target.value);
   };
 
-  const handleEditCard = () => {
+  const handleEditCard = e => {
+    e.preventDefault();
     console.log('Редактировать карточку', {
       title: titleValue,
       description: descriptionValue,
@@ -55,7 +56,8 @@ export function CreateCardPopUp({
     );
   };
 
-  const handleAddNewCard = () => {
+  const handleAddNewCard = e => {
+    e.preventDefault();
     console.log('додаємо нову картку');
 
     console.log({
@@ -100,7 +102,6 @@ export function CreateCardPopUp({
         <div action="" className={css.inputLabelColorContainer}>
           <h4 className={css.inputLabelColor}>Label color</h4>
         </div>
-
         <label className={`${css.customRadio}`}>
           <input
             type="radio"
@@ -121,7 +122,6 @@ export function CreateCardPopUp({
             </svg>
           )}
         </label>
-
         <label className={`${css.customRadio}`}>
           <input
             type="radio"
@@ -142,7 +142,6 @@ export function CreateCardPopUp({
             </svg>
           )}
         </label>
-
         <label className={`${css.customRadio}`}>
           <input
             type="radio"
@@ -163,7 +162,6 @@ export function CreateCardPopUp({
             </svg>
           )}
         </label>
-
         <label className={`${css.customRadio}`}>
           <input
             type="radio"
@@ -183,27 +181,25 @@ export function CreateCardPopUp({
               <use xlinkHref={`${sprite}#radio-button-unchecked`} />
             </svg>
           )}
-        </label>
-      </form>
-
-      <div className={css.deadlineContainer}>
-        <h4 action="" className={css.deadlineTitle}>
-          Deadline
-        </h4>
-
-        <Calendar setFormattedDeadline={setFormattedDeadline} />
-      </div>
-      <button
-        className={`${css.inputAddBtn} buttonWithIcon`}
-        onClick={isEditing ? handleEditCard : handleAddNewCard}
-      >
-        <div className={css.plusIconContainer}>
-          <svg className={css.plusIcon}>
-            <use xlinkHref={`${sprite}#plus`} />
-          </svg>
+        </label>{' '}
+        <div className={css.deadlineContainer}>
+          <h4 action="" className={css.deadlineTitle}>
+            Deadline
+          </h4>
+          <Calendar setFormattedDeadline={setFormattedDeadline} />
         </div>
-        {isEditing ? 'Edit' : 'Add'}
-      </button>
+        <button
+          className={`${css.inputAddBtn} buttonWithIcon`}
+          onClick={isEditing ? handleEditCard : handleAddNewCard}
+        >
+          <div className={css.plusIconContainer}>
+            <svg className={css.plusIcon}>
+              <use xlinkHref={`${sprite}#plus`} />
+            </svg>
+          </div>
+          {isEditing ? 'Edit' : 'Add'}
+        </button>
+      </form>
     </div>
   );
 }

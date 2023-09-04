@@ -5,9 +5,13 @@ import cn from 'classnames';
 import { Icon } from './../Svg/Icon';
 import { useDispatch } from 'react-redux';
 import { deleteCard } from 'redux/boards/boardsOperations';
+import { useState } from 'react';
+import Modal from 'components/Modal/Modal';
+import CreateCardPopUp from 'components/CreateCardPopUp/CreateCardPopUp';
 
 // const TaskCard = ({ data, onDelete, onEdit, onChange }) => {
 const TaskCard = ({ data }) => {
+  const [isOpenModalEditCard, setIsOpenModalEditCard] = useState(false);
   const dispatch = useDispatch();
 
   const { _id, title, description, priority, deadline } = data;
@@ -38,11 +42,21 @@ const TaskCard = ({ data }) => {
   const onDateCompare = isoDate => {
     const date = new Date();
     const currentDate = date.toISOString();
-    if (isoDate.substring(0, 10) === currentDate.substring(0, 10)) {
+    if (isoDate === currentDate.substring(0, 10)) {
       return true;
     }
 
     return false;
+  };
+
+  const editCard = () => {
+    console.log({
+      title: title,
+      description: description,
+      priority: priority,
+      deadline: deadline,
+    });
+    setIsOpenModalEditCard(!isOpenModalEditCard);
   };
 
   return (
@@ -94,7 +108,7 @@ const TaskCard = ({ data }) => {
               <li className={css.actionItem}>
                 <button
                   type="button"
-                  onClick={() => onEdit(_id)}
+                  onClick={() => editCard()}
                   className={css.actionBtn}
                 >
                   <Icon id="pencil" className={css.actionIcon} />
@@ -111,6 +125,23 @@ const TaskCard = ({ data }) => {
               </li>
             </ul>
           </div>
+        </div>
+        <div>
+          {isOpenModalEditCard && (
+            <Modal openModal={editCard}>
+              <CreateCardPopUp
+                _id={_id}
+                isEditing={true}
+                initialValues={{
+                  title: title,
+                  description: description,
+                  priority: priority,
+                  deadline: deadline,
+                }}
+                close={editCard}
+              />
+            </Modal>
+          )}
         </div>
       </div>
     </div>

@@ -1,4 +1,11 @@
 import axios from 'axios';
+import { setTokens } from 'redux/auth/authSlice';
+
+let store;
+
+export const injectStore = _store => {
+  store = _store;
+};
 
 const BASE_URL = 'https://askpro-backend.onrender.com';
 
@@ -22,10 +29,14 @@ apiPublic.interceptors.response.use(
     const { status, config } = error.response;
     switch (status) {
       case HTTP_STATUS_CODES.INTERNAL_SERVER_ERROR:
-        console.log('An unexpected issue has occurred. Please try again later.');
+        console.log(
+          'An unexpected issue has occurred. Please try again later.'
+        );
         break;
       case HTTP_STATUS_CODES.BAD_REQUEST:
-        console.log('An issue has been encountered. Kindly inform us about this error!');
+        console.log(
+          'An issue has been encountered. Kindly inform us about this error!'
+        );
         break;
       case HTTP_STATUS_CODES.NOT_FOUND:
         if (config.url === '/api/auth/signin') {
@@ -44,13 +55,14 @@ apiPublic.interceptors.response.use(
   }
 );
 
-const addAuthorizationHeader = async (config) => {
-  const user = localStorage.getItem('persist:auth');
-  const parsedUser = JSON.parse(user);
-  const token = parsedUser.token.slice(1, -1);
-  if (token) {
+const addAuthorizationHeader = async config => {
+  // const user = localStorage.getItem('persist:auth');
+  // const parsedUser = JSON.parse(user);
+  // const token = parsedUser.token.slice(1, -1);
+  const accessToken = store.getState().auth.accessToken;
+  if (accessToken) {
     if (config?.headers) {
-      config.headers['Authorization'] = `Bearer ${token}`;
+      config.headers['Authorization'] = `Bearer ${accessToken}`;
     }
   } else {
     return;
@@ -65,7 +77,9 @@ export const apiPrivate = axios.create({
   },
 });
 
-apiPrivate.interceptors.request.use(addAuthorizationHeader, error => Promise.reject(error));
+apiPrivate.interceptors.request.use(addAuthorizationHeader, error =>
+  Promise.reject(error)
+);
 
 export const apiPrivateFormData = axios.create({
   baseURL: BASE_URL,
@@ -74,7 +88,28 @@ export const apiPrivateFormData = axios.create({
   },
 });
 
-apiPrivateFormData.interceptors.request.use(addAuthorizationHeader, error => Promise.reject(error));
+apiPrivate.interceptors.response.use(
+  async response => response,
+  async error => {
+    if (error.response.status === 401) {
+      try {
+        const refreshToken = store.getState().auth.token;
+        const { data } = await apiPrivate.post('/api/auth/refresh', {
+          refreshToken,
+        });
+        store.dispatch(setTokens(data));
+        return apiPrivate(error.config);
+      } catch (error) {
+        return Promise.reject(error);
+      }
+    }
+    return Promise.reject(error);
+  }
+);
+
+apiPrivateFormData.interceptors.request.use(addAuthorizationHeader, error =>
+  Promise.reject(error)
+);
 
 apiPrivateFormData.interceptors.response.use(
   async response => {
@@ -84,6 +119,19 @@ apiPrivateFormData.interceptors.response.use(
     return response;
   },
   async error => {
+    if (error.response.status === 401) {
+      try {
+        const refreshToken = store.getState().auth.token;
+        const { data } = await apiPrivateFormData.post('/api/auth/refresh', {
+          refreshToken,
+        });
+        store.dispatch(setTokens(data));
+        return apiPrivateFormData(error.config);
+      } catch (error) {
+        return Promise.reject(error);
+      }
+    }
+
     if (error.response.status === HTTP_STATUS_CODES.INTERNAL_SERVER_ERROR) {
       console.log('Something has happened. Please try again later.');
     }

@@ -75,14 +75,6 @@ export function CreateCardPopUp({
           <h4 className={css.inputLabelColor}>Label color</h4>
         </div>
 
-        {/* <CustomRadio
-          color="#8fa1d04D"
-          value="without priority"
-          checked={selectedLabel === 'without priority'}
-          onChange={handleRadioChange}
-          id={'without'}
-        /> */}
-
         <label className={`${css.customRadio}`}>
           <input
             type="radio"

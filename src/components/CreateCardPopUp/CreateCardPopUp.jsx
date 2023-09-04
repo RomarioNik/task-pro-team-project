@@ -73,7 +73,7 @@ export function CreateCardPopUp({
         description: descriptionValue,
         priority: selectedLabel,
         deadline: formattedDeadline,
-        column: id,
+        column: _id,
       })
     );
 

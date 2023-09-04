@@ -33,6 +33,7 @@ const Sidebar = ({ closeSidebar, isOpenMenu }) => {
   const dispatch = useDispatch();
 
   const boards = useBoardsList();
+ 
 
   useEffect(() => {
     const handleResize = () => {
@@ -123,6 +124,7 @@ const Sidebar = ({ closeSidebar, isOpenMenu }) => {
         </div>
         <ul className={css.boardsList}>
           {boards.map(({ _id, title, icon }) => (
+            
             <li key={_id}>
               <NavLink
                 to={`${title}`}

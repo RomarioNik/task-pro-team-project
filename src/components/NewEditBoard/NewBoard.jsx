@@ -54,6 +54,8 @@ const NewBoard = ({ openModal }) => {
     background: background,
   };
 
+
+
   const newBoardFunc = () => {
     dispatch(addBoard(newBoardObject));
     closeModal();

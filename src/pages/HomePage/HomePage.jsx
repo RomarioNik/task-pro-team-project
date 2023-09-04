@@ -3,7 +3,8 @@ import MediaQuery from 'react-responsive';
 import css from './HomePage.module.css';
 
 import Header from 'components/Header';
-import Sidebar from 'components/Sidebar';
+// import Sidebar from 'components/Sidebar';
+import Sidebar from 'components/Sidebar/Sidebar';
 import { useUserData } from 'hooks/useUserData';
 
 import ScreensPage from '../ScreensPage/ScreensPage';

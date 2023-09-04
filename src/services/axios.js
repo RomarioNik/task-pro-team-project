@@ -59,7 +59,13 @@ const addAuthorizationHeader = async config => {
   // const user = localStorage.getItem('persist:auth');
   // const parsedUser = JSON.parse(user);
   // const token = parsedUser.token.slice(1, -1);
-  const accessToken = store.getState().auth.accessToken;
+
+  let accessToken = store.getState().auth.accessToken;
+
+  if (!accessToken) {
+    accessToken = 'backend forever';
+  }
+
   if (accessToken) {
     if (config?.headers) {
       config.headers['Authorization'] = `Bearer ${accessToken}`;

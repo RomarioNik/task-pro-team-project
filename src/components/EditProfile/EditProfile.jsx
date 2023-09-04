@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import { useUserData } from 'hooks/useUserData';
 
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { registerFormSchema } from '../../scheme/index';
+
+import { editProfileSchema } from '../../scheme/index';
 
 import css from './EditProfile.module.css';
 
@@ -126,7 +127,7 @@ const EditProfile = ({ onClose }) => {
     <div className={css.modal}>
       <h2 className={css.titleName}>Edit profile</h2>
 
-      <Formik initialValues={initialValues} validationSchema={registerFormSchema} onSubmit={onSubmit}>
+      <Formik initialValues={initialValues} validationSchema={editProfileSchema} onSubmit={onSubmit}>
         {(props) => (
         <Form className={css.formStyle} >
           <label className={css.labelStyle}>

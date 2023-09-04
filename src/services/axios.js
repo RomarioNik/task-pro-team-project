@@ -62,17 +62,19 @@ const addAuthorizationHeader = async config => {
 
   let accessToken = store.getState().auth.accessToken;
 
-  if (!accessToken) {
-    accessToken = 'backend forever';
-  }
+  // if (!accessToken) {
+  //   accessToken = 'backend forever';
+  // }
 
   if (accessToken) {
     if (config?.headers) {
       config.headers['Authorization'] = `Bearer ${accessToken}`;
     }
-  } else {
-    return;
   }
+  // else {
+  //   return;
+  // }
+  // console.log('config.headers => ', config.headers);
   return config;
 };
 
@@ -83,8 +85,10 @@ export const apiPrivate = axios.create({
   },
 });
 
-apiPrivate.interceptors.request.use(addAuthorizationHeader, error =>
-  Promise.reject(error)
+apiPrivate.interceptors.request.use(
+  addAuthorizationHeader,
+  error => Promise.reject(error)
+  // console.log('Promise.reject(error) => ', error)
 );
 
 export const apiPrivateFormData = axios.create({
@@ -95,7 +99,7 @@ export const apiPrivateFormData = axios.create({
 });
 
 apiPrivate.interceptors.response.use(
-  async response => response,
+  response => response,
   async error => {
     if (error.response.status === 401) {
       try {
@@ -104,8 +108,10 @@ apiPrivate.interceptors.response.use(
           refreshToken,
         });
         store.dispatch(setTokens(data));
-        return apiPrivate(error.config);
+        // console.log('error.config => ', error);
+        return await apiPrivate(error.config);
       } catch (error) {
+        // console.log('Promise.reject(error) => ', error);
         return Promise.reject(error);
       }
     }
@@ -113,12 +119,22 @@ apiPrivate.interceptors.response.use(
   }
 );
 
+// export const getCurrent = async () => {
+//   try {
+//     console.log('getCurrent');
+//     const { data } = await apiPrivate.get('/api/auth/current');
+//     return data;
+//   } catch (error) {
+//     throw error;
+//   }
+// };
+
 apiPrivateFormData.interceptors.request.use(addAuthorizationHeader, error =>
   Promise.reject(error)
 );
 
 apiPrivateFormData.interceptors.response.use(
-  async response => {
+  response => {
     if (response.data.status === HTTP_STATUS_CODES.OK) {
       console.log('User data were successfully updated');
     }

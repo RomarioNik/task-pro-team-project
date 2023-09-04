@@ -57,7 +57,7 @@ const authPersistConfig = {
   key: 'auth',
   storage,
   // whitelist: ['token', 'user', 'theme'],
-  whitelist: ['token', 'accessToken'],
+  whitelist: ['token'],
 };
 
 const boardsPersistConfig = {

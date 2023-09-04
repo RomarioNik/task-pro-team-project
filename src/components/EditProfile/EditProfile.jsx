@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useUserData } from 'hooks/useUserData';
 
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-// import { registerFormSchema } from '../../scheme/index';
+import { registerFormSchema } from '../../scheme/index';
 
 import css from './EditProfile.module.css';
 
@@ -17,10 +17,7 @@ const EditProfile = ({ onClose }) => {
 
   const [avatar, setAvatar] = useState(user.avatarURL);
   const [avatarUploaded, setAvatarUploaded] = useState('false');
-  const [name, setName] = useState(user.name);
-  const [email, setEmail] = useState(user.email);
-  const [password, setPassword] = useState('');
-  const [passwordVisible, setPasswordVisible] = useState(false);
+    const [passwordVisible, setPasswordVisible] = useState(false);
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -35,20 +32,7 @@ const EditProfile = ({ onClose }) => {
     formData.append('avatarUploaded', avatarUploaded);
   };
 
-  const handleChange = ({ target: { name, value } }) => {
-    switch (name) {
-       case 'name':
-         return setName(value);
-      case 'email':
-        return setEmail(value);
-      case 'password':
-        return setPassword(value);
-      default:
-        return;
-    }
-  };
-
-  // console.log(avatar);
+  
 
   if (user.avatarURL === '') {
     console.log(`Аватара у пользователя нет, пришло ''`);
@@ -80,8 +64,11 @@ const EditProfile = ({ onClose }) => {
     password: '',
   };
 
-  const onSubmit = ({avatar, name, email, password}) => {
+  const onSubmit = ({ name, email, password}) => {
     
+    let formData = new FormData();
+
+    formData.set('avatar', avatar);
     
 
     let updatedProfile;
@@ -90,7 +77,7 @@ const EditProfile = ({ onClose }) => {
     
 
     if (user.avatarURL !== '' || user.avatarURL === '') {
-      if ( avatar ) {
+      if ( avatarUploaded.type ) {
  
 
         if (password === '') {
@@ -134,66 +121,20 @@ const EditProfile = ({ onClose }) => {
 
   };
 
-  const handleFormSubmit = e => {
-    e.preventDefault();
-
-    let updatedProfile;
-
-    if (user.avatarURL !== '' || user.avatarURL === '') {
-      if (avatarUploaded.type) {
-        if (password === '') {
-          updatedProfile = {
-            name,
-            email,
-            avatar,
-          };
-        } else {
-          updatedProfile = {
-            name,
-            email,
-            password,
-            avatar,
-          };
-        }
-      } else {
-        if (password === '') {
-          updatedProfile = {
-            name,
-            email,
-          };
-        } else {
-          updatedProfile = {
-            name,
-            email,
-            password,
-          };
-        }
-      }
-    }
-
-    // console.log(updatedProfile);
-    dispatch(updateProfile(updatedProfile));
-    //закрити модалку
-    modalClose();
-  };
-
+  
   return (
     <div className={css.modal}>
       <h2 className={css.titleName}>Edit profile</h2>
 
-      <Formik initialValues={initialValues} onSubmit={onSubmit}>
+      <Formik initialValues={initialValues} validationSchema={registerFormSchema} onSubmit={onSubmit}>
         {(props) => (
         <Form className={css.formStyle} >
           <label className={css.labelStyle}>
-            <Field
+            <input
                 className={css.inputNameImg}
-                id="file"
                 type="file"
-                accept="image/*"
                 name="avatar"
-               onChange={(event) => {
- props.setFieldValue('avatar', event.currentTarget.files[0]);
- }}
+               onChange={handleChangeAvatar}
             />
   
             {user.avatarURL === '' ? (
@@ -214,7 +155,8 @@ const EditProfile = ({ onClose }) => {
               />
               <ErrorMessage
               name="name"
-              component="div"
+                component="div"
+                className={css.inputError}
             />
           </label>
           <label className={css.labelStyle}>
@@ -223,11 +165,12 @@ const EditProfile = ({ onClose }) => {
               type="email"
               name="email"
               value={props.values.email}
-              onChange={handleChange}
+              onChange={props.handleChange}
               />
               <ErrorMessage
               name="email"
-              component="div"
+                component="div"
+                className={css.inputError}
             />
           </label>
           <label className={css.labelStyle}>
@@ -237,11 +180,12 @@ const EditProfile = ({ onClose }) => {
               name="password"
               value={props.values.password}
               placeholder="Password"
-              onChange={handleChange}
+              onChange={props.handleChange}
               />
               <ErrorMessage
               name="password"
-              component="div"
+                component="div"
+                className={css.inputError}
             />
             <span
               className={css.passwordToggle}

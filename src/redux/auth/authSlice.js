@@ -51,8 +51,8 @@ const handleFulfilledLogOut = state => {
 };
 
 const handleFulfilledRefresh = (state, { payload }) => {
-  state.token = payload.refreshToken;
-  state.accessToken = payload.accessToken;
+  // state.token = payload.refreshToken;
+  // state.accessToken = payload.accessToken;
   state.user = payload.user;
   state.isLoggedIn = true;
   state.isRefreshing = false;

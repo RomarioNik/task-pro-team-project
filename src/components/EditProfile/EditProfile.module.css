@@ -92,3 +92,45 @@
   stroke: #949090cc;
   cursor: pointer;
 }
+
+.inputError {
+  font-size: 12px;
+  position: absolute;
+  top: 30px;
+  background: inherit;
+  border: none;
+  text-align: left;
+  color: #fff;
+  opacity: 0.4;
+  padding-left: 10px;
+}
+
+.plusIcon {
+  stroke: var(--create-board-button-plus);
+  border-radius: 4px;
+  
+ 
+}
+
+.plusIconBackground {
+  position: absolute;
+  right: 148px;
+  top: 73%;
+  transform: translate(-70%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+
+  border-radius: 6px;
+  background: var(--create-board-button);
+
+ 
+  }
+
+.imgBackground {
+  position: relative;
+}

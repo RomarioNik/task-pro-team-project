@@ -141,7 +141,17 @@ const Column = () => {
       )}
       {isOpenModalAddCard && (
         <Modal openModal={addCard}>
-          <CreateCardPopUp id={getIdColumn} close={addCard} />
+          <CreateCardPopUp
+            id={getIdColumn}
+            isEditing={false}
+            initialValues={{
+              title: '',
+              description: '',
+              priority: 'without priority',
+              deadline: '',
+            }}
+            close={addCard}
+          />
         </Modal>
       )}
     </div>

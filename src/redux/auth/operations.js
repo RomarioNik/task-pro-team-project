@@ -27,6 +27,8 @@ export const loginUser = createAsyncThunk(
     try {
       const { data } = await apiPublic.post('/api/auth/signin', user);
       console.log(data);
+      // data.accessToken to request
+      // data.refreshToken to state
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);

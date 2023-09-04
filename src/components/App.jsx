@@ -7,7 +7,7 @@ import RegisterForm from './RegisterForm';
 import HomePage from 'pages/HomePage';
 import NotFound from './NotFound';
 
-import { useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 //----------------------------------------
 import 'overlayscrollbars/overlayscrollbars.css';
 
@@ -45,7 +45,9 @@ const App = () => {
 
         <Route
           path="home"
-          element={<PrivateRoute redirectTo="/auth/login" component={<HomePage />} />}
+          element={
+            <PrivateRoute redirectTo="/auth/login" component={<HomePage />} />
+          }
         >
           <Route path=":boardName" element={<ScreensPage />} />
         </Route>

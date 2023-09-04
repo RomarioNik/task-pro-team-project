@@ -12,7 +12,8 @@ import { toast } from 'react-hot-toast';
 
 const handleFulfilledRegister = (state, { payload }) => {
   state.user = payload.user;
-  state.token = payload.token;
+  state.token = payload.refreshToken;
+  state.accessToken = payload.accessToken;
   state.isLoggedIn = true;
   state.isLoading = false;
 };
@@ -28,7 +29,8 @@ const handleRejectedRegister = state => {
 
 const handleFulfilledLogIn = (state, { payload }) => {
   state.user = payload.user;
-  state.token = payload.token;
+  state.token = payload.refreshToken;
+  state.accessToken = payload.accessToken;
   state.isLoggedIn = true;
   state.isLoading = false;
 };
@@ -49,6 +51,8 @@ const handleFulfilledLogOut = state => {
 };
 
 const handleFulfilledRefresh = (state, { payload }) => {
+  state.token = payload.refreshToken;
+  state.accessToken = payload.accessToken;
   state.user = payload.user;
   state.isLoggedIn = true;
   state.isRefreshing = false;
@@ -114,6 +118,7 @@ const handleRejectedSendLetter = (state, { payload }) => {
 const initialState = {
   user: {},
   token: '',
+  accessToken: '',
   isLoggedIn: false,
   isLoading: false,
   isRefreshing: false,
@@ -122,6 +127,12 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    setTokens(state, { payload }) {
+      state.token = payload.refreshToken;
+      state.accessToken = payload.accessToken;
+    },
+  },
   extraReducers: builder =>
     builder
       .addCase(registerUser.fulfilled, handleFulfilledRegister)
@@ -145,4 +156,5 @@ const authSlice = createSlice({
       .addCase(sendNeedHelpLetter.rejected, handleRejectedSendLetter),
 });
 
+export const { setTokens } = authSlice.actions;
 export const authReducer = authSlice.reducer;

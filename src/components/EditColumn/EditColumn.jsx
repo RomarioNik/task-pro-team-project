@@ -9,8 +9,10 @@ const EditColumn = ({ id, close }) => {
     evt.preventDefault();
     const title = evt.target.title.value.trim();
     const editColumn = {
-      title,
       _id: id,
+      newColumnData: {
+        title,
+      },
     };
     if (title !== '') {
       dispatch(updateColumnById(editColumn));

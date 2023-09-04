@@ -33,13 +33,20 @@ const handleFulfilledGetAllBoards = (state, { payload }) => {
 const handleFulfilledGetBoardById = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;
-  state.shownBoard = payload;
+  if (payload.columns.length && payload.columns[0]._id) {
+    state.shownBoard = payload;
+  } else {
+    state.shownBoard = payload;
+    state.shownBoard.columns = [];
+  }
 };
 
 const handleFulfilledAddBoard = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;
+  // state.allBoards.unshift(payload);
   state.allBoards.push(payload);
+  state.shownBoard.columns = [];
 };
 
 const handleFulfilledDeleteBoard = (state, { payload }) => {
@@ -61,6 +68,7 @@ const handleFulfilledUpdateBoard = (state, { payload }) => {
 const handleFulfilledAddColumn = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;
+  payload.cards = [];
   state.shownBoard.columns.push(payload);
 };
 
@@ -85,21 +93,24 @@ const handleFulfilledUpdateColumnById = (state, { payload }) => {
 const handleFulfilledAddCard = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;
-  state.shownBoard.columns.find(el =>
-    el._id === payload._id ? el.cards.push(payload) : el
-  );
+
+  const array = state.shownBoard.columns;
+  const columnIndex = array.findIndex(el => el._id === payload.column);
+  if (columnIndex !== -1) {
+    array[columnIndex].cards.push(payload);
+  }
 };
 
 const handleFulfilledDeleteCard = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;
-  console.log(payload);
-  //знайти по айді колонку, в ній по айді відфільтрувати зайву картку
-  state.shownBoard.columns.find(el =>
-    el._id === payload.column
-      ? el.cards.filter(({ _id }) => _id !== payload._id)
-      : el
-  );
+  const array = state.shownBoard.columns;
+  const columnIndex = array.findIndex(el => el._id === payload.column);
+  if (columnIndex !== -1) {
+    array[columnIndex].cards = array[columnIndex].cards.filter(
+      ({ _id }) => _id !== payload._id
+    );
+  }
   toast.success(`Card deleted`);
 };
 

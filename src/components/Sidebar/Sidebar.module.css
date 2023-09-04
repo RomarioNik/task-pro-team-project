@@ -6,6 +6,7 @@
     left: 0;
     top: 0;
     background-color: rgba(21, 21, 21, 0.5);
+    z-index: 100;
   }
 }
 
@@ -38,34 +39,34 @@
     position: absolute;
     height: 100vh;
     top: 0;
-    transition: left 1s ease;
-
+    transform: translateX(-100%);
     &.open {
-      left: 0;
-      animation: slideIn 1s forwards;
+      transform: translateX(0);
+      animation: slideIn 300ms linear;
     }
 
     &.close {
-      animation: slideOut 1s forwards;
+      transform: translateX(-100%);
+      animation: slideOut 300ms linear;
     }
   }
 }
 
 @keyframes slideIn {
-  from {
-    left: -50%;
+  0% {
+    transform: translateX(-100%);
   }
-  to {
-    left: 0;
+  100% {
+    transform: translateX(0%);
   }
 }
 
 @keyframes slideOut {
-  from {
-    left: 0;
+  0% {
+    transform: translateX(0%);
   }
-  to {
-    left: -50%;
+  100% {
+    transform: translateX(-100%);
   }
 }
 

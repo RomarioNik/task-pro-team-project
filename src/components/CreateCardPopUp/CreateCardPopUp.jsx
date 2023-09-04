@@ -7,8 +7,7 @@ import { useDispatch } from 'react-redux';
 import { addCard, updateCardById } from 'redux/boards/boardsOperations';
 
 export function CreateCardPopUp({
-  _id = '1',
-
+   _id = '1',
   column = 'exampleid',
   isEditing = false, // Стан режиму редагування
   initialValues = {
@@ -29,6 +28,7 @@ export function CreateCardPopUp({
     initialValues.deadline
   );
   console.log('formattedDeadline', formattedDeadline);
+
 
   const handleRadioChange = event => {
     setSelectedLabel(event.target.value);
@@ -59,13 +59,13 @@ export function CreateCardPopUp({
   const handleAddNewCard = () => {
     console.log('додаємо нову картку');
 
-    console.log({
-      title: titleValue,
-      description: descriptionValue,
-      priority: selectedLabel,
-      deadline: formattedDeadline,
-      column: column,
-    });
+    // console.log({
+    //   title: titleValue,
+    //   description: descriptionValue,
+    //   priority: selectedLabel,
+    //   deadline: formattedDeadline,
+    //   column: id,
+    // });
 
     dispatch(
       addCard({
@@ -73,9 +73,11 @@ export function CreateCardPopUp({
         description: descriptionValue,
         priority: selectedLabel,
         deadline: formattedDeadline,
-        column: column,
+        column: id,
       })
     );
+
+    close();
   };
 
   return (

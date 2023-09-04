@@ -115,3 +115,7 @@
   width: 14px;
   height: 14px;
 }
+
+.errorText {
+  color: var(--text-secondary-color);
+}

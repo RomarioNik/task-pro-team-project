@@ -139,12 +139,27 @@ const EditProfile = ({ onClose }) => {
             />
   
             {user.avatarURL === '' ? (
-              <svg width="68" height="68" className={css.img}>
-                <use xlinkHref={`${sprite}#icon-user-ico`} />
-              </svg>
+              <div className={css.imgBackground}>
+                <svg width="68" height="68" className={css.img}>
+                  <use xlinkHref={`${sprite}#icon-user-ico`} />
+                  </svg>
+                  <div className={css.plusIconBackground}>
+                  <svg width="10" height="10" className={css.plusIcon}>
+                    <use xlinkHref={`${sprite}#plus`} />
+                  </svg>
+                  </div>
+              </div>
             ) : (
-              <img src={user.avatarURL} className={css.imgUser} alt="avatar" />
-            )}
+                  <div className={css.imgBackground}>
+                    <img src={user.avatarURL} className={css.imgUser} alt="avatar" />
+                    <div className={css.plusIconBackground}>
+                  <svg width="10" height="10" className={css.plusIcon}>
+                    <use xlinkHref={`${sprite}#plus`} />
+                  </svg>
+                  </div>
+                </div>
+              )}
+                
           </label>
           <label className={css.labelStyle}>
             <Field

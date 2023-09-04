@@ -104,3 +104,33 @@
   opacity: 0.4;
   padding-left: 10px;
 }
+
+.plusIcon {
+  stroke: var(--create-board-button-plus);
+  border-radius: 4px;
+  
+ 
+}
+
+.plusIconBackground {
+  position: absolute;
+  right: 148px;
+  top: 73%;
+  transform: translate(-70%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+
+  border-radius: 6px;
+  background: var(--create-board-button);
+
+ 
+  }
+
+.imgBackground {
+  position: relative;
+}

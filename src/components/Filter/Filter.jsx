@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import style from './Filter.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFilter } from 'redux/boards/boardsSelectors';
@@ -7,10 +7,6 @@ import { addFilter } from 'redux/boards/filterSlice';
 const Filter = () => {
   const dispatch = useDispatch();
   const currentFilter = useSelector(getFilter);
-
-  useEffect(() => {
-    console.log(currentFilter);
-  }, [currentFilter]);
 
   return (
     <>

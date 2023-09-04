@@ -4,28 +4,59 @@ import { useState } from 'react';
 
 import sprite from '../../img/svg/sprite-icon.svg';
 import { useDispatch } from 'react-redux';
-import { addCard } from 'redux/boards/boardsOperations';
-// import { addBoard } from 'redux/boards/boardsOperations';
+import { addCard, updateCardById } from 'redux/boards/boardsOperations';
 
 export function CreateCardPopUp({
-  id = '1',
-  boardName = 'test',
-  deadline = 'test',
+  _id = '1',
+
   column = 'exampleid',
+  isEditing = false, // Стан режиму редагування
+  initialValues = {
+    title: 'TEST TITLE',
+    description: 'TEST description',
+    priority: 'without priority',
+    deadline: '05-09-2024',
+  },
 }) {
   const dispatch = useDispatch();
 
-  const [selectedLabel, setSelectedLabel] = useState('without priority');
-  const [titleValue, setTitleValue] = useState('');
-  const [descriptionValue, setDescriptionValue] = useState('');
-  const [formattedDeadline, setFormattedDeadline] = useState('');
+  const [selectedLabel, setSelectedLabel] = useState(initialValues.priority);
+  const [titleValue, setTitleValue] = useState(initialValues.title);
+  const [descriptionValue, setDescriptionValue] = useState(
+    initialValues.description
+  );
+  const [formattedDeadline, setFormattedDeadline] = useState(
+    initialValues.deadline
+  );
   console.log('formattedDeadline', formattedDeadline);
 
   const handleRadioChange = event => {
     setSelectedLabel(event.target.value);
   };
 
-  const AddNewCard = () => {
+  const handleEditCard = () => {
+    dispatch(
+      updateCardById({
+        _id,
+        newBoardData: {
+          title: titleValue,
+          description: descriptionValue,
+          priority: selectedLabel,
+          deadline: formattedDeadline,
+        },
+      })
+    );
+    console.log('Редактировать карточку', {
+      _id,
+      title: titleValue,
+      description: descriptionValue,
+      priority: selectedLabel,
+      deadline: formattedDeadline,
+      column: column,
+    });
+  };
+
+  const handleAddNewCard = () => {
     console.log('додаємо нову картку');
 
     console.log({
@@ -70,14 +101,6 @@ export function CreateCardPopUp({
         <div action="" className={css.inputLabelColorContainer}>
           <h4 className={css.inputLabelColor}>Label color</h4>
         </div>
-
-        {/* <CustomRadio
-          color="#8fa1d04D"
-          value="without priority"
-          checked={selectedLabel === 'without priority'}
-          onChange={handleRadioChange}
-          id={'without'}
-        /> */}
 
         <label className={`${css.customRadio}`}>
           <input
@@ -173,44 +196,17 @@ export function CreateCardPopUp({
       </div>
       <button
         className={`${css.inputAddBtn} buttonWithIcon`}
-        onClick={AddNewCard}
+        onClick={isEditing ? handleEditCard : handleAddNewCard}
       >
         <div className={css.plusIconContainer}>
           <svg className={css.plusIcon}>
             <use xlinkHref={`${sprite}#plus`} />
           </svg>
         </div>
-        Add
+
+        {isEditing ? 'Edit' : 'Add'}
       </button>
     </div>
   );
 }
 export default CreateCardPopUp;
-// const CustomRadio = ({ value, checked, onChange, color, id }) => {
-//   return (
-//     <label className={`${css.customRadio} ${checked ? css.checked : ''}`}>
-//       <input
-//         type="radio"
-//         name="radioGroup"
-//         value={value}
-//         checked={checked}
-//         onChange={onChange}
-//         className={css.hiddenRadio}
-//       />
-
-//       {checked ? (
-//         <svg
-//           className={`${css.customIconcheked} ${css.id}`}
-//           style={{ fill: `${color}` }}
-//         >
-//           <use xlinkHref={`${sprite}#radio-button-checked`} />
-//         </svg>
-//       ) : (
-//         <svg className={`${css.customIcon}`} style={{ fill: `${color}` }}>
-//           <use xlinkHref={`${sprite}#radio-button-unchecked`} />
-//         </svg>
-//       )}
-
-//     </label>
-//   );
-// };

@@ -6,6 +6,7 @@ import { addFilter } from 'redux/boards/filterSlice';
 
 const Filter = () => {
   const dispatch = useDispatch();
+
   const currentFilter = useSelector(getFilter);
 
   return (

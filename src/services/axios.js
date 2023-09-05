@@ -29,27 +29,27 @@ apiPublic.interceptors.response.use(
     const { status, config } = error.response;
     switch (status) {
       case HTTP_STATUS_CODES.INTERNAL_SERVER_ERROR:
-        console.log(
-          'An unexpected issue has occurred. Please try again later.'
-        );
+        // console.log(
+        //   'An unexpected issue has occurred. Please try again later.'
+        // );
         break;
       case HTTP_STATUS_CODES.BAD_REQUEST:
-        console.log(
-          'An issue has been encountered. Kindly inform us about this error!'
-        );
+        // console.log(
+        //   'An issue has been encountered. Kindly inform us about this error!'
+        // );
         break;
       case HTTP_STATUS_CODES.NOT_FOUND:
         if (config.url === '/api/auth/signin') {
-          console.log('Invalid email or password provided.');
+          // console.log('Invalid email or password provided.');
         }
         break;
       case HTTP_STATUS_CODES.CONFLICT:
         if (config.url === '/api/auth/signup') {
-          console.log('User with such email already exists.');
+          // console.log('User with such email already exists.');
         }
         break;
       default:
-        console.log('An error occurred:', error.message);
+      // console.log('An error occurred:', error.message);
     }
     return Promise.reject(error);
   }
@@ -74,7 +74,6 @@ const addAuthorizationHeader = async config => {
   // else {
   //   return;
   // }
-  // console.log('config.headers => ', config.headers);
   return config;
 };
 
@@ -85,10 +84,8 @@ export const apiPrivate = axios.create({
   },
 });
 
-apiPrivate.interceptors.request.use(
-  addAuthorizationHeader,
-  error => Promise.reject(error)
-  // console.log('Promise.reject(error) => ', error)
+apiPrivate.interceptors.request.use(addAuthorizationHeader, error =>
+  Promise.reject(error)
 );
 
 export const apiPrivateFormData = axios.create({
@@ -108,26 +105,14 @@ apiPrivate.interceptors.response.use(
           refreshToken,
         });
         store.dispatch(setTokens(data));
-        // console.log('error.config => ', error);
         return await apiPrivate(error.config);
       } catch (error) {
-        // console.log('Promise.reject(error) => ', error);
         return Promise.reject(error);
       }
     }
     return Promise.reject(error);
   }
 );
-
-// export const getCurrent = async () => {
-//   try {
-//     console.log('getCurrent');
-//     const { data } = await apiPrivate.get('/api/auth/current');
-//     return data;
-//   } catch (error) {
-//     throw error;
-//   }
-// };
 
 apiPrivateFormData.interceptors.request.use(addAuthorizationHeader, error =>
   Promise.reject(error)
@@ -136,7 +121,7 @@ apiPrivateFormData.interceptors.request.use(addAuthorizationHeader, error =>
 apiPrivateFormData.interceptors.response.use(
   response => {
     if (response.data.status === HTTP_STATUS_CODES.OK) {
-      console.log('User data were successfully updated');
+      // console.log('User data were successfully updated');
     }
     return response;
   },
@@ -155,16 +140,16 @@ apiPrivateFormData.interceptors.response.use(
     }
 
     if (error.response.status === HTTP_STATUS_CODES.INTERNAL_SERVER_ERROR) {
-      console.log('Something has happened. Please try again later.');
+      // console.log('Something has happened. Please try again later.');
     }
     if (error.response.status === HTTP_STATUS_CODES.UNAUTHORIZED) {
-      window.location.href = '/project-task-pro/auth/login';
+      // window.location.href = '/project-task-pro/auth/login';
     }
     if (error.response.status === HTTP_STATUS_CODES.BAD_REQUEST) {
-      console.log('Something has happened. Please report us an error!');
+      // console.log('Something has happened. Please report us an error!');
     }
     if (error.response.status === HTTP_STATUS_CODES.CONFLICT) {
-      console.log('User with such email already exists.');
+      // console.log('User with such email already exists.');
     }
     return Promise.reject(error);
   }

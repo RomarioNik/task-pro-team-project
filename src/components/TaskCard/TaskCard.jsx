@@ -121,6 +121,13 @@ const TaskCard = ({ data, columnId }) => {
               </ul>
             </div>
           </div>
+          {isOpenChangeColumn && (
+            <ChangeColumn
+              columnId={columnId}
+              handlerClose={onChange}
+              cardId={_id}
+            />
+          )}
         </div>
       </div>
       {isOpenModalEditCard && (
@@ -138,13 +145,6 @@ const TaskCard = ({ data, columnId }) => {
             close={onEdit}
           />
         </Modal>
-      )}
-      {isOpenChangeColumn && (
-        <ChangeColumn
-          columnId={columnId}
-          handlerClose={onChange}
-          cardId={_id}
-        />
       )}
     </>
   );

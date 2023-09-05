@@ -1,11 +1,15 @@
 .container {
   min-width: 135px;
+  max-width: 290px;
+  height: 100px;
   padding: 18px;
   background-color: var(--background-color);
   position: absolute;
-  right: 0;
+  right: 20px;
+  top: 14px;
   z-index: 100;
   border-radius: 8px;
+  overflow-y: auto;
 }
 .list {
   display: flex;
@@ -37,4 +41,29 @@
   width: 16px;
   height: 16px;
   stroke: var(--select-text-color);
+}
+
+/* Стилі для смуги прокрутки */
+.container::-webkit-scrollbar {
+  width: 5px; /* Ширина смуги прокрутки */
+  height: 10%;
+}
+
+.container::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 8px;
+
+  /* Колір фону смуги прокрутки */
+  /* position: fixed;
+  right: 20px; */
+}
+
+.container::-webkit-scrollbar-thumb {
+  background-color: var(--scroll-color-horiz); /* Колір самої смуги прокрутки */
+  border-radius: 8px; /* Закруглені кути смуги прокрутки */
+}
+
+/* Змінити колір смуги прокрутки при наведенні */
+.container::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scroll-hover);
 }

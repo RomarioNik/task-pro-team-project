@@ -54,9 +54,6 @@ function ButtonField(props) {
         fontSize: '16px',
         justifyContent: 'left',
         align: 'center',
-        // '&:hover': {
-        //   backgroundColor: in,
-        // },
       }}
       id={id}
       disabled={disabled}
@@ -91,13 +88,18 @@ function ButtonDatePicker(props) {
   );
 }
 
-export function Calendar({ setFormattedDeadline }) {
+export function Calendar({ setFormattedDeadline, isEditing, deadline }) {
   const [deadlineDate, setdDeadlineDate] = useState(null);
   const [sameDay, setsameDay] = useState(false);
   const today = dayjs();
 
+  if (deadlineDate === null) {
+    setFormattedDeadline(format(today.$d, 'dd-MM-yyyy'));
+  }
+
   const chooseDeadlineDate = newValue => {
     const choisedDate = new Date(newValue.$d);
+
     setFormattedDeadline(format(choisedDate, 'dd-MM-yyyy'));
 
     const isSameDay = dayjs(choisedDate).isSame(today, 'day');
@@ -116,13 +118,12 @@ export function Calendar({ setFormattedDeadline }) {
         <ButtonDatePicker
           label={`${
             deadlineDate == null
-              ? 'Choose a deadline date'
+              ? `Today, ${today.format('MMMM D')}`
               : sameDay
               ? `Today, ${format(deadlineDate, 'MMMM d')}`
               : format(deadlineDate, 'MM/dd/yyyy')
           }`}
           disablePast
-          value={deadlineDate}
           onChange={chooseDeadlineDate}
           className={css.myButton}
         />

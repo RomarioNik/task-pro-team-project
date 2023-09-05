@@ -1,9 +1,0 @@
-.test {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--text-primary-color);
-  background-color: var(--background-color);
-  transition: all 0.5s;
-}

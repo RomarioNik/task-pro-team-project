@@ -8,15 +8,20 @@ import { addCard, updateCardById } from 'redux/boards/boardsOperations';
 // import { addBoard } from 'redux/boards/boardsOperations';
 
 export function CreateCardPopUp({
-  _id = '1',
-  column = 'exampleid',
-  isEditing = true,
-  initialValues = {
-    title: 'EDITING MOD',
-    description: 'EDITING MOD',
-    priority: 'without priority',
-    deadline: 'EDITING MOD',
-  }, // Начальные значения для редактирования
+  // _id = '1',
+  // column = 'exampleid',
+  // isEditing = true,
+  // initialValues = {
+  //   title: 'EDITING MOD',
+  //   description: 'EDITING MOD',
+  //   priority: 'without priority',
+  //   deadline: 'EDITING MOD',
+  // },
+  _id,
+  column,
+  isEditing,
+  initialValues,
+  close,
 }) {
   const dispatch = useDispatch();
 
@@ -35,11 +40,12 @@ export function CreateCardPopUp({
 
   const handleEditCard = () => {
     console.log('Редактировать карточку', {
+      _id,
       title: titleValue,
       description: descriptionValue,
       priority: selectedLabel,
       deadline: formattedDeadline,
-      column: column,
+      // column: column,
     });
 
     dispatch(
@@ -53,6 +59,7 @@ export function CreateCardPopUp({
         },
       })
     );
+    close();
   };
 
   const handleAddNewCard = () => {
@@ -63,7 +70,7 @@ export function CreateCardPopUp({
       description: descriptionValue,
       priority: selectedLabel,
       deadline: formattedDeadline,
-      column: _id,
+      column,
     });
 
     dispatch(
@@ -72,9 +79,10 @@ export function CreateCardPopUp({
         description: descriptionValue,
         priority: selectedLabel,
         deadline: formattedDeadline,
-        column: _id,
+        column,
       })
     );
+    close();
   };
 
   return (

@@ -1,11 +1,18 @@
 import React from 'react';
 import Column from 'components/Column/Column';
 import style from './BoardCreated.module.css';
-import 'overlayscrollbars/overlayscrollbars.css';
-import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
-// import { OverlayScrollbars } from 'overlayscrollbars';
+// import 'overlayscrollbars/overlayscrollbars.css';
+// import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
+// // import { OverlayScrollbars } from 'overlayscrollbars';
 
 const BoardCreated = () => {
+
+  // const scrollContainer = document.getElementById("scrollContainer");
+  // const scrollBar = scrollContainer.querySelector(".column__container::-webkit-scrollbar-thumb")
+
+  // if (!scrollBar) {
+  //   scrollContainer.classList.add("-webkit-scrollbar-track");
+  // }
   // -------------------скрол-варіант-3-(не политів)-----------------------------------
 
   // useEffect(() => {
@@ -34,10 +41,18 @@ const BoardCreated = () => {
     // defer
     //>
 
-    <div className={style.column__container}>
-      <OverlayScrollbarsComponent>
+
+
+    
+    <div id="scrollContainer" className={style.column__container}
+    
+    >
+
+
+
+      {/* <OverlayScrollbarsComponent> */}
             <Column />
-      </OverlayScrollbarsComponent>
+      {/* </OverlayScrollbarsComponent> */}
   
     </div>
 

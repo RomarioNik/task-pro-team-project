@@ -52,6 +52,14 @@
   --addCard-plus-icon: #ffffff;
 
   --modal-title-color: #161616;
+
+/* scrolle */
+--scroll-bg-color-vert: rgba(22, 22, 22, 0.1);
+--scroll-bg-color-horiz: #ffffff;
+--scroll-color-vert: rgba(22, 22, 22, 0.1);
+--scroll-color-horiz: #8d8b8b;
+
+
 }
 
 [data-theme='light'] {
@@ -122,6 +130,11 @@
   --btn-icon-color-plus: #fff;
   --addCard-plus-icon: #ffffff;
   --modal-title-color: #161616;
+  /* scrolle */
+  --scroll-bg-color-vert: rgba(22, 22, 22, 0.1);
+  --scroll-bg-color-horiz: #ffffff;
+  --scroll-color-vert: rgba(22, 22, 22, 0.1);
+  --scroll-color-horiz: #c4c4c4;
 }
 
 [data-theme='dark'] {
@@ -194,6 +207,11 @@
   --btn-icon-color-plus: #fff;
   --modal-btn-plus: #161616;
   --modal-title-color: #fff;
+  /* scrolle */
+  --scroll-bg-color-vert: #3b3838;
+  --scroll-bg-color-horiz: #161616;
+  --scroll-color-vert: #161616;
+  --scroll-color-horiz:rgba(255, 255, 255, 0.1);
 }
 
 [data-theme='violet'] {
@@ -260,6 +278,11 @@
   --btn-icon-color-plus: #161616;
   --addCard-plus-icon: #161616;
   --modal-title-color: #161616;
+  /* scrolle */
+  --scroll-bg-color-vert: #ffffff;
+  --scroll-bg-color-horiz: #ffffff;
+  --scroll-color-vert: #B8BCFD;
+  --scroll-color-horiz: #B8BCFD;
 }
 
 * {

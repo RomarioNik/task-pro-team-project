@@ -30,6 +30,8 @@ const Sidebar = ({ closeSidebar, isOpenMenu }) => {
   const [openEditBoardModal, setOpenEditBoardModal] = useState(false);
   const [isWideScreen, setIsWideScreen] = useState(window.outerWidth >= 1440);
 
+  const [containerHeight, setContainerHeight] = useState(0);
+
   const dispatch = useDispatch();
 
   const boards = useBoardsList();
@@ -54,6 +56,15 @@ const Sidebar = ({ closeSidebar, isOpenMenu }) => {
   useEffect(() => {
     dispatch(getAllBoards());
   }, [dispatch]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setContainerHeight(window.innerHeight);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const preventPropagation = event => {
     event.stopPropagation();
@@ -92,7 +103,10 @@ const Sidebar = ({ closeSidebar, isOpenMenu }) => {
   return isWideScreen ? (
     <div className={`${css.sidebar} ${isOpenMenu ? css.open : ''}`}>
       {openNeedHelpModal && (
-        <Modal children={<NeedHelp />} openModal={setOpenNeedHelpModal} />
+        <Modal
+          children={<NeedHelp openModal={setOpenNeedHelpModal} />}
+          openModal={setOpenNeedHelpModal}
+        />
       )}
       {openNewBoardModal && (
         <Modal openModal={setOpenNewBoardModal}>
@@ -121,7 +135,10 @@ const Sidebar = ({ closeSidebar, isOpenMenu }) => {
             </svg>
           </button>
         </div>
-        <ul className={css.boardsList}>
+        <ul
+          className={css.boardsList}
+          style={{ maxHeight: `${containerHeight - 650}px` }}
+        >
           {boards.map(({ _id, title, icon }) => (
             <li key={_id}>
               <NavLink
@@ -150,6 +167,7 @@ const Sidebar = ({ closeSidebar, isOpenMenu }) => {
                     onClick={event => {
                       preventPropagation(event);
                       dispatch(deleteBoard(_id));
+                      navigate('/home');
                     }}
                   >
                     <svg width="16" height="16" className={css.editBoardIcon}>

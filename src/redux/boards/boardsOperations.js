@@ -132,3 +132,15 @@ export const updateCardById = createAsyncThunk(
     }
   }
 );
+
+export const transportCard = createAsyncThunk(
+  'boards/transportCard',
+  async ({ _id, moveData }, thunkAPI) => {
+    try {
+      const { data } = await apiPrivate.patch(`/api/cards/${_id}/transport`, moveData);
+      return data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);

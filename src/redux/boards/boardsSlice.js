@@ -46,6 +46,7 @@ const handleFulfilledAddBoard = (state, { payload }) => {
   state.error = null;
   // state.allBoards.unshift(payload);
   state.allBoards.push(payload);
+  state.shownBoard._id = payload._id;
   state.shownBoard.columns = [];
 };
 
@@ -53,6 +54,9 @@ const handleFulfilledDeleteBoard = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;
   state.allBoards = state.allBoards.filter(({ _id }) => _id !== payload);
+  state.shownBoard = {
+    columns: [],
+  };
   toast.success(`Board deleted`);
 };
 
@@ -127,7 +131,9 @@ const handleFulfilledUpdateCardById = (state, { payload }) => {
 
 const initialState = {
   allBoards: [],
-  shownBoard: {},
+  shownBoard: {
+    columns: [],
+  },
   isLoading: false,
   error: null,
 };

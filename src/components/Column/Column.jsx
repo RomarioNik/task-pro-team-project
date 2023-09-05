@@ -32,10 +32,12 @@ const Column = () => {
 
   const currentFilter = useSelector(getFilter);
 
-  const filteredColumns = allColumns.map(column => {
-    const result = column.cards.filter(item => item.priority === currentFilter);
-    return { ...column, cards: result };
-  });
+  const filteredColumns = allColumns;
+
+  // const filteredColumns = allColumns.map(column => {
+  //   const result = column.cards.filter(item => item.priority === currentFilter);
+  //   return { ...column, cards: result };
+  // });
   const columns = currentFilter === '' ? allColumns : filteredColumns;
 
   useEffect(() => {

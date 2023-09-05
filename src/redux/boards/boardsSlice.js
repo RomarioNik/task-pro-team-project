@@ -11,6 +11,7 @@ import {
   addCard,
   deleteCard,
   updateCardById,
+  transportCard,
 } from './boardsOperations';
 import { toast } from 'react-hot-toast';
 
@@ -131,6 +132,25 @@ const handleFulfilledUpdateCardById = (state, { payload }) => {
   toast.success(`Card updated`);
 };
 
+const handleFulfilledTransportCard = (state, { payload }) => {
+  state.isLoading = false;
+  state.error = null;
+  console.log(payload);
+  const array = state.shownBoard.columns;
+  const newColumnIndex = array.findIndex(el => el._id === payload.column);
+  if (newColumnIndex !== -1) {
+    array[newColumnIndex].cards.push(payload);
+  }
+
+  const oldColumnIndex = array.findIndex(el => el._id === payload.oldColumnId);
+  if (oldColumnIndex !== -1) {
+    array[oldColumnIndex].cards = array[oldColumnIndex].cards.filter(
+      ({ _id }) => _id !== payload._id
+    );
+  }
+  toast.success(`Card moved`);
+};
+
 const initialState = {
   allBoards: [],
   shownBoard: {
@@ -156,6 +176,7 @@ const boardsSlice = createSlice({
       .addCase(addCard.fulfilled, handleFulfilledAddCard)
       .addCase(deleteCard.fulfilled, handleFulfilledDeleteCard)
       .addCase(updateCardById.fulfilled, handleFulfilledUpdateCardById)
+      .addCase(transportCard.fulfilled, handleFulfilledTransportCard)
 
       .addMatcher(action => action.type.endsWith('/pending'), handlePending)
       .addMatcher(action => action.type.endsWith('/rejected'), handleRejected),

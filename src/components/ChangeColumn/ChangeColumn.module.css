@@ -3,7 +3,9 @@
   padding: 18px;
   background-color: #161616;
   position: absolute;
-  bottom: 0;
+  bottom: -100%;
+  right: 0;
+  z-index: 100;
 }
 .list {
   display: flex;

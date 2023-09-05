@@ -104,7 +104,7 @@ const Column = () => {
                     {cards &&
                       cards.map(card => (
                         <li key={card._id} className={style.card}>
-                          <TaskCard data={card} />
+                          <TaskCard data={card} columnId={_id} />
                         </li>
                       ))}
                   </ul>

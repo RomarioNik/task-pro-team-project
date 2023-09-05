@@ -8,17 +8,19 @@ import { deleteCard } from 'redux/boards/boardsOperations';
 import Modal from 'components/Modal/Modal';
 import CreateCardPopUp from 'components/CreateCardPopUp/CreateCardPopUp';
 import { useState } from 'react';
+import ChangeColumn from 'components/ChangeColumn/ChangeColumn';
 
 // const TaskCard = ({ data, onDelete, onEdit, onChange }) => {
-const TaskCard = ({ data }) => {
+const TaskCard = ({ data, columnId }) => {
   const dispatch = useDispatch();
   const [isOpenModalEditCard, setIsOpenModalEditCard] = useState(false);
   const [idCardForEdit, setIdCardForEdit] = useState(null);
+  const [isOpenChangeColumn, setIsOpenChangeColumn] = useState(false);
 
   const { _id, title, description, priority, deadline, column } = data;
 
   const onChange = () => {
-    console.log('onChange');
+    setIsOpenChangeColumn(!isOpenChangeColumn);
   };
 
   const onDelete = _id => {
@@ -136,6 +138,13 @@ const TaskCard = ({ data }) => {
             close={onEdit}
           />
         </Modal>
+      )}
+      {isOpenChangeColumn && (
+        <ChangeColumn
+          columnId={columnId}
+          handlerClose={onChange}
+          cardId={_id}
+        />
       )}
     </>
   );

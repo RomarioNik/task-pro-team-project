@@ -37,7 +37,7 @@ const ScreensPage = () => {
           onClick={handleOpenFilter}
         >
           <Icon id="filter" className={style.button__filter__icon} />
-          <p className={style.button__filter__title}>Filter</p>
+          <p className={style.button__filter__title}>Filters</p>
         </button>
       </div>
       {/* <BoardCreated /> */}

@@ -89,9 +89,11 @@ const handleFulfilledDeleteColumn = (state, { payload }) => {
 const handleFulfilledUpdateColumnById = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;
-  state.shownBoard.columns = state.shownBoard.columns.map(el =>
-    el._id === payload._id ? (el = payload) : el
-  );
+  const array = state.shownBoard.columns;
+  const columnIndex = array.findIndex(el => el._id === payload._id);
+  if (columnIndex !== -1) {
+    array[columnIndex].title = payload.title;
+  }
   toast.success(`Column updated`);
 };
 

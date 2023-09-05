@@ -26,7 +26,7 @@ import yacht from '../../img/background_list_icons/yacht.jpg'
 
 
 const EditBoard = ({ openModal }) => {
-  const {_id,title,icon,background,backgroundURL,owner} = useShownBoard();
+  const {_id,title,icon,background} = useShownBoard();
   const [icons, setIcons] = useState(icon);
   const [backgroundIcon, setBackground] = useState(background);
   const [titleIc, setTitle] = useState(title);
@@ -48,17 +48,17 @@ const EditBoard = ({ openModal }) => {
   };
 
   const getBack = event => {
-    console.log(event.currentTarget.dataset.source);
+
     setBackground(event.currentTarget.dataset.source);
   };
 
   const editBoardObject = {
     _id,
-   title:titleIc,
-    icon: icons,
-    background: backgroundIcon,
-    backgroundURL,
-    owner
+    newBoardData: {
+      title: titleIc,
+      icon: icons,
+      background: backgroundIcon,
+    },
   };
 
   const editBoardFunc = () => {

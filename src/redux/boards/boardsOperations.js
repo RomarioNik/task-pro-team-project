@@ -51,7 +51,7 @@ export const deleteBoard = createAsyncThunk(
 
 export const updateBoard = createAsyncThunk(
   'boards/updateBoard',
-  async ({_id, newBoardData}, thunkAPI) => {
+  async ({ _id, newBoardData }, thunkAPI) => {
     try {
       const { data } = await apiPrivate.put(`/api/boards/${_id}`, newBoardData);
       return data;
@@ -89,7 +89,10 @@ export const updateColumnById = createAsyncThunk(
   'boards/updateColumnById',
   async ({ _id, newColumnData }, thunkAPI) => {
     try {
-      const { data } = await apiPrivate.put(`/api/columns/${_id}`, newColumnData);
+      const { data } = await apiPrivate.put(
+        `/api/columns/${_id}`,
+        newColumnData
+      );
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -137,7 +140,11 @@ export const transportCard = createAsyncThunk(
   'boards/transportCard',
   async ({ _id, moveData }, thunkAPI) => {
     try {
-      const { data } = await apiPrivate.patch(`/api/cards/${_id}/transport`, moveData);
+      const { data } = await apiPrivate.patch(
+        `/api/cards/${_id}/transport`,
+        moveData
+      );
+      data.oldColumnId = moveData.source;
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

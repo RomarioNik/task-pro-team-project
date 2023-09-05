@@ -31,23 +31,23 @@ const TaskCard = ({ data }) => {
   };
 
   const formatDate = isoDate => {
-    const date = new Date(isoDate);
-    const day = date.getDate();
-    const month = date.getMonth() + 1;
-    const year = date.getFullYear();
+    const dateParts = isoDate.split('-');
+    const formattedDate = dateParts.join('/');
+    return formattedDate;
+  };
 
-    return `${day.toString().padStart(2, '0')}/${month
-      .toString()
-      .padStart(2, '0')}/${year}`;
+  const onDateFlip = date => {
+    const dateParts = date.split('-');
+    const outputString = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
+    return outputString;
   };
 
   const onDateCompare = isoDate => {
     const date = new Date();
     const currentDate = date.toISOString();
-    if (isoDate.substring(0, 10) === currentDate.substring(0, 10)) {
+    if (onDateFlip(isoDate) === currentDate.substring(0, 10)) {
       return true;
     }
-
     return false;
   };
 

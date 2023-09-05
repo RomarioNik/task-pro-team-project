@@ -50,6 +50,8 @@ const EditProfile = ({ onClose }) => {
 
   console.log(avatarUploaded.type);
 
+  console.log(`Текущая тема:${user.userTheme}`);
+
   if (avatarUploaded.type) {
     console.log(`Работает`);
   }
@@ -122,7 +124,10 @@ const EditProfile = ({ onClose }) => {
 
   };
 
-  
+  if (avatarUploaded.type) {
+    window.alert("Фото завантажено. Якщо ви закінчили редагувати профіль, то для оновлення Аватарки натисніть кнопку Send");
+  }
+
   return (
     <div className={css.modal}>
       <h2 className={css.titleName}>Edit profile</h2>

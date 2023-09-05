@@ -8,15 +8,20 @@ import { addCard, updateCardById } from 'redux/boards/boardsOperations';
 // import { addBoard } from 'redux/boards/boardsOperations';
 
 export function CreateCardPopUp({
-  _id = '1',
-  column = 'exampleid',
-  isEditing = true,
-  initialValues = {
-    title: 'EDITING MOD',
-    description: 'EDITING MOD',
-    priority: 'without priority',
-    deadline: 'EDITING MOD',
-  }, // Начальные значения для редактирования
+  // _id = '1',
+  // column = 'exampleid',
+  // isEditing = true,
+  // initialValues = {
+  //   title: 'EDITING MOD',
+  //   description: 'EDITING MOD',
+  //   priority: 'without priority',
+  //   deadline: 'EDITING MOD',
+  // },
+  _id,
+  column,
+  isEditing,
+  initialValues,
+  close,
 }) {
   const dispatch = useDispatch();
 
@@ -34,12 +39,12 @@ export function CreateCardPopUp({
   };
 
   const handleEditCard = () => {
-    console.log('Редактировать карточку', {
+    console.log({
+      _id,
       title: titleValue,
       description: descriptionValue,
       priority: selectedLabel,
       deadline: formattedDeadline,
-      column: column,
     });
 
     dispatch(
@@ -53,17 +58,16 @@ export function CreateCardPopUp({
         },
       })
     );
+    close();
   };
 
   const handleAddNewCard = () => {
-    console.log('додаємо нову картку');
-
     console.log({
       title: titleValue,
       description: descriptionValue,
       priority: selectedLabel,
       deadline: formattedDeadline,
-      column: _id,
+      column,
     });
 
     dispatch(
@@ -72,9 +76,10 @@ export function CreateCardPopUp({
         description: descriptionValue,
         priority: selectedLabel,
         deadline: formattedDeadline,
-        column: _id,
+        column,
       })
     );
+    close();
   };
 
   return (
@@ -83,7 +88,6 @@ export function CreateCardPopUp({
       <form action="submit" className={css.inputForm}>
         <input
           type="text"
-          action=""
           placeholder="Title"
           value={titleValue}
           onChange={event => setTitleValue(event.target.value)}
@@ -91,13 +95,12 @@ export function CreateCardPopUp({
         />
         <textarea
           type="text"
-          action=""
           placeholder="Description"
           value={descriptionValue}
           onChange={event => setDescriptionValue(event.target.value)}
           className={css.inputCardDescription}
         />
-        <div action="" className={css.inputLabelColorContainer}>
+        <div className={css.inputLabelColorContainer}>
           <h4 className={css.inputLabelColor}>Label color</h4>
         </div>
 
@@ -191,7 +194,11 @@ export function CreateCardPopUp({
           Deadline
         </h4>
 
-        <Calendar setFormattedDeadline={setFormattedDeadline} />
+        <Calendar
+          setFormattedDeadline={setFormattedDeadline}
+          isEditing={isEditing}
+          deadline={initialValues.deadline}
+        />
       </div>
       <button
         className={`${css.inputAddBtn} buttonWithIcon`}

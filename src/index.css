@@ -52,6 +52,14 @@
   --addCard-plus-icon: #ffffff;
 
   --modal-title-color: #161616;
+
+/* scrolle */
+--scroll-bg-color-vert: rgba(22, 22, 22, 0.1);
+--scroll-bg-color-horiz: #ffffff;
+--scroll-color-vert: rgba(22, 22, 22, 0.1);
+--scroll-color-horiz: #8d8b8b;
+
+
 }
 
 [data-theme='light'] {
@@ -127,6 +135,11 @@
   --btn-and-hover-color: #BEDBB0;
   --btn-text-color: #161616;
   --plus-icon-background: #BEDBB0;
+  /* scrolle */
+  --scroll-bg-color-vert: rgba(22, 22, 22, 0.1);
+  --scroll-bg-color-horiz: #ffffff;
+  --scroll-color-vert: rgba(22, 22, 22, 0.1);
+  --scroll-color-horiz: #c4c4c4;
 }
 
 [data-theme='dark'] {
@@ -204,6 +217,11 @@
   --btn-and-hover-color: #BEDBB0;
   --btn-text-color: #161616;
   --plus-icon-background: #BEDBB0;
+  /* scrolle */
+  --scroll-bg-color-vert: #3b3838;
+  --scroll-bg-color-horiz: #161616;
+  --scroll-color-vert: #161616;
+  --scroll-color-horiz:rgba(255, 255, 255, 0.1);
 }
 
 [data-theme='violet'] {
@@ -275,6 +293,11 @@
     --btn-and-hover-color: #5255BC;
     --btn-text-color: #FFFFFF;
     --plus-icon-background: #ECEDFD;
+  /* scrolle */
+  --scroll-bg-color-vert: #ffffff;
+  --scroll-bg-color-horiz: #ffffff;
+  --scroll-color-vert: #B8BCFD;
+  --scroll-color-horiz: #B8BCFD;
 }
 
 * {
@@ -291,6 +314,7 @@ body {
   color: var(--text-primary-color);
   background-color: var(--background-color);
   margin: 0;
+  height: 100vh;
 }
 
 a {
@@ -344,4 +368,8 @@ img {
   width: 100%;
   height: auto;
   max-width: 100%;
+}
+
+#root {
+  height: 100%;
 }

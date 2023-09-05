@@ -7,8 +7,8 @@ import EditColumn from 'components/EditColumn';
 // import Card from 'components/Card/Card';
 import CreateCardPopUp from 'components/CreateCardPopUp/CreateCardPopUp';
 import { deleteColumn } from 'redux/boards/boardsOperations';
-import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
-import 'overlayscrollbars/overlayscrollbars.css';
+// import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
+// import 'overlayscrollbars/overlayscrollbars.css';
 import style from './Column.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -32,10 +32,19 @@ const Column = () => {
 
   const currentFilter = useSelector(getFilter);
 
+  // const filteredColumns = allColumns;
+
   const filteredColumns = allColumns.map(column => {
-    const result = column.cards.filter(item => item.priority === currentFilter);
-    return { ...column, cards: result };
+    if (column.cards) {
+      const result = column.cards.filter(
+        item => item.priority === currentFilter
+      );
+      return { ...column, cards: result };
+    } else {
+      return column;
+    }
   });
+
   const columns = currentFilter === '' ? allColumns : filteredColumns;
 
   useEffect(() => {
@@ -92,22 +101,22 @@ const Column = () => {
                   </button>
                 </div>
               </div>
-              <OverlayScrollbarsComponent>
-                <div
+              {/* <OverlayScrollbarsComponent> */}
+                <div 
                   className={style.card__container}
                   style={{ maxHeight: `${containerHeight - 300}px` }}
                   // style={{ height: `1920px` }}
                 >
-                  <ul>
+                  <ul className={style.scroll__container}>
                     {cards &&
                       cards.map(card => (
                         <li key={card._id} className={style.card}>
-                          <TaskCard data={card} />
+                          <TaskCard data={card} columnId={_id} />
                         </li>
                       ))}
                   </ul>
                 </div>
-              </OverlayScrollbarsComponent>
+              {/* </OverlayScrollbarsComponent> */}
 
               <button
                 className={style.button_create}
@@ -151,7 +160,7 @@ const Column = () => {
       {isOpenModalAddCard && (
         <Modal openModal={addCard}>
           <CreateCardPopUp
-            id={getIdColumn}
+            column={getIdColumn}
             isEditing={false}
             initialValues={{
               title: '',

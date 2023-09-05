@@ -12,3 +12,34 @@
     }
   }
 }
+
+.column__container {
+  width: 100%; 
+  overflow-x: auto; /* Додати вертикальну смугу прокрутки */
+  /* position: relative; */
+  overflow-y: hidden;
+margin-bottom: 15px;
+}
+
+/* Стилі для смуги прокрутки */
+.column__container::-webkit-scrollbar {
+  width: 5px; /* Ширина смуги прокрутки */
+  height: 10px;
+}
+
+.column__container::-webkit-scrollbar-track {
+  background-color: var(--scroll-bg-color-horiz); 
+  /* Колір фону смуги прокрутки */
+  /* position: fixed;
+  right: 20px; */
+}
+
+.column__container::-webkit-scrollbar-thumb {
+  background-color: var(--scroll-color-horiz); /* Колір самої смуги прокрутки */
+  border-radius: 5px; /* Закруглені кути смуги прокрутки */
+}
+
+/* Змінити колір смуги прокрутки при наведенні */
+.column__container::-webkit-scrollbar-thumb:hover {
+  background-color: #666;
+}

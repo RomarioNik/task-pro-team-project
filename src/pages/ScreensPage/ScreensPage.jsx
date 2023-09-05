@@ -23,7 +23,12 @@ const ScreensPage = () => {
 
   return (
     <div className={style.screen__section}>
-      {openFilter && <Modal children={<Filter />} openModal={setOpenFilter} />}
+      {openFilter && (
+        <Modal
+          children={<Filter openModal={setOpenFilter} />}
+          openModal={setOpenFilter}
+        />
+      )}
       <div className={style.title__container}>
         <p className={style.title__board}>{boardName}</p>
         <button

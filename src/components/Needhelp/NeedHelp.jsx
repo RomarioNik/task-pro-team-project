@@ -3,7 +3,7 @@ import css from './NeedHelp.module.css';
 import { useState } from 'react';
 import { sendNeedHelpLetter } from 'redux/auth/operations';
 
-export default function NeedHelp() {
+export default function NeedHelp({ openModal }) {
   const [emailValue, setamEilValueValue] = useState('');
   const [descriptionValue, setDescriptionValue] = useState('');
   const [emailError, setEmailError] = useState('');
@@ -26,6 +26,7 @@ export default function NeedHelp() {
     } else {
       setEmailError('Invalid email address');
     }
+    openModal();
   };
 
   return (
@@ -34,7 +35,6 @@ export default function NeedHelp() {
       <form action="" className={css.inputForm}>
         <input
           type="text"
-          action=""
           placeholder="Email address"
           value={emailValue}
           onChange={event => setamEilValueValue(event.target.value)}
@@ -43,15 +43,14 @@ export default function NeedHelp() {
         {emailError && <p className={css.errorText}>{emailError}</p>}
         <textarea
           type="text"
-          action=""
           placeholder="Comment"
           value={descriptionValue}
           onChange={event => setDescriptionValue(event.target.value)}
           className={css.inputCardDescription}
         />
         <button
-          type="submit"
-          onSubmit={handleSubmit}
+          type="button  "
+          onClick={handleSubmit}
           className={css.inputAddBtn}
         >
           Send

@@ -1,5 +1,5 @@
 .backdrop {
-  @media (max-width: 1439px) {
+  @media (max-width: 1439.5px) {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -13,21 +13,26 @@
   width: 225px;
   height: 100vh;
 
-  background-color: var(--bg-sidebar);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
+  background-color: var(--bg-sidebar);
   overflow-x: auto;
+
   &::-webkit-scrollbar {
-    width: 1px;
-    height: 1px;
+    width: 4px;
+    height: 4px;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: transparent;
-    border-radius: 4px;
+    background-color: var(--scroll-bg-color-vert);
+    border-radius: 12px;
   }
+
   &::-webkit-scrollbar-track {
-    background-color: transparent;
-    border-radius: 4px;
+    background-color: var(--scroll-color-vert);
+    border-radius: 12px;
   }
 
   @media (min-width: 768px) {
@@ -35,7 +40,7 @@
     max-width: 260px;
   }
 
-  @media (max-width: 1439px) {
+  @media (max-width: 1439.5px) {
     transform: translateX(-100%);
     &.open {
       transform: translateX(0);
@@ -46,11 +51,6 @@
       transform: translateX(-100%);
       animation: slideOut 300ms linear;
     }
-  }
-
-  @media (min-width: 1439px) and (max-width: 1439px) {
-    position: relative;
-    top: 0;
   }
 }
 
@@ -168,22 +168,24 @@
   gap: 4px;
 
   margin-top: 40px;
+  margin-bottom: 40px;
 
-  height: 130px;
+  min-height: 130px;
   overflow-y: auto;
 
   &::-webkit-scrollbar {
-    width: 1px;
+    width: 3px;
     height: 1px;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: transparent;
-    border-radius: 4px;
+    background-color: var(--scroll-bg-color-vert);
+    border-radius: 12px;
   }
+  
   &::-webkit-scrollbar-track {
-    background-color: transparent;
-    border-radius: 4px;
+    background-color: var(--scroll-color-vert);
+    border-radius: 12px;
   }
 }
 
@@ -210,7 +212,7 @@
   justify-content: space-between;
   align-items: baseline;
 
-  padding: 20px 18px 20px 14px;
+  padding: 16px 18px 16px 14px;
   background-color: var(--item-background-color);
   border-right: 4px var(--item-border-color) solid;
   border-top: 4px transparent solid;
@@ -223,7 +225,7 @@
   }
 
   @media (min-width: 768px) {
-    padding: 20px 24px;
+    padding: 16px 24px;
   }
 }
 
@@ -260,17 +262,13 @@
 }
 
 .needHelpSection {
-  margin: 116px 14px 0 14px;
+  margin: 0 14px 0 14px;
 
   border-radius: 8px;
   background: var(--need-help-background-color);
 
   @media (min-width: 768px) {
-    margin: 294px 24px 0 24px;
-  }
-
-  @media (min-width: 1140px) {
-    margin-top: 40px;
+    margin: 0 24px 0 24px;
   }
 }
 

@@ -4,8 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getFilter } from 'redux/boards/boardsSelectors';
 import { addFilter } from 'redux/boards/filterSlice';
 
-const Filter = () => {
+const Filter = ({ openModal }) => {
   const dispatch = useDispatch();
+
   const currentFilter = useSelector(getFilter);
 
   return (
@@ -14,7 +15,10 @@ const Filter = () => {
       <div className={style.filterContainer}>
         <div className={style.filterListWrap}>
           <form
-            onChange={e => dispatch(addFilter(e.target.value))}
+            onChange={e => {
+              openModal();
+              dispatch(addFilter(e.target.value));
+            }}
             className={style.filterList}
           >
             <div className={style.radioBtn}>

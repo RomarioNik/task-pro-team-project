@@ -11,6 +11,7 @@ import {
   addCard,
   deleteCard,
   updateCardById,
+  transportCard,
 } from './boardsOperations';
 import { toast } from 'react-hot-toast';
 
@@ -46,6 +47,7 @@ const handleFulfilledAddBoard = (state, { payload }) => {
   state.error = null;
   // state.allBoards.unshift(payload);
   state.allBoards.push(payload);
+  state.shownBoard._id = payload._id;
   state.shownBoard.columns = [];
 };
 
@@ -53,6 +55,9 @@ const handleFulfilledDeleteBoard = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;
   state.allBoards = state.allBoards.filter(({ _id }) => _id !== payload);
+  state.shownBoard = {
+    columns: [],
+  };
   toast.success(`Board deleted`);
 };
 
@@ -117,17 +122,40 @@ const handleFulfilledDeleteCard = (state, { payload }) => {
 const handleFulfilledUpdateCardById = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;
-  state.shownBoard.columns.find(el =>
-    el._id === payload.column
-      ? el.cards.map(el => (el._id === payload._id ? (el = payload) : el))
-      : el
-  );
+  const array = state.shownBoard.columns;
+  const columnIndex = array.findIndex(el => el._id === payload.column);
+  if (columnIndex !== -1) {
+    array[columnIndex].cards = array[columnIndex].cards.map(el =>
+      el._id === payload._id ? (el = payload) : el
+    );
+  }
   toast.success(`Card updated`);
+};
+
+const handleFulfilledTransportCard = (state, { payload }) => {
+  state.isLoading = false;
+  state.error = null;
+  console.log(payload);
+  const array = state.shownBoard.columns;
+  const newColumnIndex = array.findIndex(el => el._id === payload.column);
+  if (newColumnIndex !== -1) {
+    array[newColumnIndex].cards.push(payload);
+  }
+
+  const oldColumnIndex = array.findIndex(el => el._id === payload.oldColumnId);
+  if (oldColumnIndex !== -1) {
+    array[oldColumnIndex].cards = array[oldColumnIndex].cards.filter(
+      ({ _id }) => _id !== payload._id
+    );
+  }
+  toast.success(`Card moved`);
 };
 
 const initialState = {
   allBoards: [],
-  shownBoard: {},
+  shownBoard: {
+    columns: [],
+  },
   isLoading: false,
   error: null,
 };
@@ -148,6 +176,7 @@ const boardsSlice = createSlice({
       .addCase(addCard.fulfilled, handleFulfilledAddCard)
       .addCase(deleteCard.fulfilled, handleFulfilledDeleteCard)
       .addCase(updateCardById.fulfilled, handleFulfilledUpdateCardById)
+      .addCase(transportCard.fulfilled, handleFulfilledTransportCard)
 
       .addMatcher(action => action.type.endsWith('/pending'), handlePending)
       .addMatcher(action => action.type.endsWith('/rejected'), handleRejected),

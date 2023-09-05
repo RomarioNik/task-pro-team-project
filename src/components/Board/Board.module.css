@@ -6,6 +6,7 @@
   font-weight: 400;
   text-align: center;
   margin-top: 292px;
+  margin-bottom: 380px;
   margin-left: auto;
   margin-right: auto;
   align-items: center;
@@ -14,6 +15,8 @@
 
   @media screen and (min-width: 768px) {
     width: 486px;
+    width: 100%;
+    max-width: 486px;
     height: 72px;
     font-size: 14px;
     margin-top: 408px;

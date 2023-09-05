@@ -1,25 +1,25 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { createPortal } from 'react-dom';
-import { useUserData } from 'hooks/useUserData';
-
-import css from './Sidebar.module.css';
-import sprite from '../../img/svg/sprite-icon.svg';
 import { useDispatch } from 'react-redux';
-import { logOutUser } from 'redux/auth/operations';
+
 import {
   deleteBoard,
   getAllBoards,
   getBoardById,
 } from '../../redux/boards/boardsOperations';
-
+import { logOutUser } from 'redux/auth/operations';
 import { useBoardsList } from 'hooks/useBoardsList';
+import { useUserData } from 'hooks/useUserData';
+
+import css from './Sidebar.module.css';
+import sprite from '../../img/svg/sprite-icon.svg';
 import Modal from '../Modal/index.js';
 import NeedHelp from '../Needhelp/NeedHelp';
 import NewBoard from '../NewEditBoard/NewBoard';
 import EditBoard from 'components/NewEditBoard/EditBoard';
 
-const modalRoot = document.querySelector('#modal-root');
+const mobMenu = document.querySelector('#modal-root');
 
 const Sidebar = ({ closeSidebar, isOpenMenu }) => {
   const navigate = useNavigate();
@@ -30,6 +30,8 @@ const Sidebar = ({ closeSidebar, isOpenMenu }) => {
   const [openEditBoardModal, setOpenEditBoardModal] = useState(false);
   const [isWideScreen, setIsWideScreen] = useState(window.outerWidth >= 1440);
 
+  const [containerHeight, setContainerHeight] = useState(0);
+
   const dispatch = useDispatch();
 
   const boards = useBoardsList();
@@ -39,7 +41,7 @@ const Sidebar = ({ closeSidebar, isOpenMenu }) => {
       const windowWidth = window.outerWidth;
       if (windowWidth >= 1440) {
         setIsWideScreen(true);
-      } else if (windowWidth < 1440) {
+      } else {
         setIsWideScreen(false);
       }
     };
@@ -54,6 +56,15 @@ const Sidebar = ({ closeSidebar, isOpenMenu }) => {
   useEffect(() => {
     dispatch(getAllBoards());
   }, [dispatch]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setContainerHeight(window.innerHeight);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const preventPropagation = event => {
     event.stopPropagation();
@@ -92,7 +103,10 @@ const Sidebar = ({ closeSidebar, isOpenMenu }) => {
   return isWideScreen ? (
     <div className={`${css.sidebar} ${isOpenMenu ? css.open : ''}`}>
       {openNeedHelpModal && (
-        <Modal children={<NeedHelp />} openModal={setOpenNeedHelpModal} />
+        <Modal
+          children={<NeedHelp openModal={setOpenNeedHelpModal} />}
+          openModal={setOpenNeedHelpModal}
+        />
       )}
       {openNewBoardModal && (
         <Modal openModal={setOpenNewBoardModal}>
@@ -104,87 +118,98 @@ const Sidebar = ({ closeSidebar, isOpenMenu }) => {
           <EditBoard openModal={setOpenEditBoardModal}></EditBoard>
         </Modal>
       )}
-      <Link to="/home" className={css.logo}>
-        <svg width="32" height="32" className={css.logoIcon}>
-          <use xlinkHref={`${sprite}#logo`} />
-        </svg>
-        <p className={css.logoText}>TaskPro</p>
-      </Link>
+      <div>
+        <Link to="/home" className={css.logo}>
+          <svg width="32" height="32" className={css.logoIcon}>
+            <use xlinkHref={`${sprite}#logo`} />
+          </svg>
+          <p className={css.logoText}>TaskPro</p>
+        </Link>
 
-      <div className={css.myBoards}>
-        <p className={css.myBoardsText}>My Boards</p>
-        <div className={css.createBoardSection}>
-          <p className={css.createBoardText}>Create a new board</p>
-          <button className={css.createBoardButton} onClick={handleCreateBoard}>
-            <svg width="20" height="20" className={css.addIcon}>
-              <use xlinkHref={`${sprite}#plus`} />
+        <div className={css.myBoards}>
+          <p className={css.myBoardsText}>My Boards</p>
+          <div className={css.createBoardSection}>
+            <p className={css.createBoardText}>Create a new board</p>
+            <button
+              className={css.createBoardButton}
+              onClick={handleCreateBoard}
+            >
+              <svg width="20" height="20" className={css.addIcon}>
+                <use xlinkHref={`${sprite}#plus`} />
+              </svg>
+            </button>
+          </div>
+          <ul
+            className={css.boardsList}
+            style={{ maxHeight: `${containerHeight - 650}px` }}
+          >
+            {boards.map(({ _id, title, icon }) => (
+              <li key={_id}>
+                <NavLink
+                  to={`${title}`}
+                  className={({ isActive }) =>
+                    isActive ? css.active : css.boardsItem
+                  }
+                  onClick={() => {
+                    dispatch(getBoardById(_id));
+                  }}
+                >
+                  <div className={css.boardTitle}>
+                    <svg width="18" height="18" className={css.boardIcon}>
+                      <use xlinkHref={`${sprite}#${icon}`} />
+                    </svg>
+                    <p className={css.boardName}>{title}</p>
+                  </div>
+                  <div className={css.boardTools}>
+                    <button onClick={handleEditBoard}>
+                      <svg width="16" height="16" className={css.editBoardIcon}>
+                        <use xlinkHref={`${sprite}#pencil`} />
+                      </svg>
+                    </button>
+
+                    <button
+                      onClick={event => {
+                        preventPropagation(event);
+                        dispatch(deleteBoard(_id));
+                        navigate('/home');
+                      }}
+                    >
+                      <svg width="16" height="16" className={css.editBoardIcon}>
+                        <use xlinkHref={`${sprite}#trash`} />
+                      </svg>
+                    </button>
+                  </div>
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div className={css.needHelpSection}>
+          <div className={css.needHelpImage}></div>
+          <p className={css.needHelpText}>
+            If you need help with{' '}
+            <Link to="/home" className={css.taskPro}>
+              TaskPro
+            </Link>
+            , check out our support resources or reach out to our customer
+            support team.
+          </p>
+          <button className={css.needHelpButton} onClick={handleNeedHelp}>
+            <svg width="20" height="20" className={css.helpIcon}>
+              <use xlinkHref={`${sprite}#help_circle`} />
             </svg>
+            <p>Need help?</p>
           </button>
         </div>
-        <ul className={css.boardsList}>
-          {boards.map(({ _id, title, icon }) => (
-            <li key={_id}>
-              <NavLink
-                to={`${title}`}
-                className={({ isActive }) =>
-                  isActive ? css.active : css.boardsItem
-                }
-                onClick={() => {
-                  dispatch(getBoardById(_id));
-                }}
-              >
-                <div className={css.boardTitle}>
-                  <svg width="18" height="18" className={css.boardIcon}>
-                    <use xlinkHref={`${sprite}#${icon}`} />
-                  </svg>
-                  <p className={css.boardName}>{title}</p>
-                </div>
-                <div className={css.boardTools}>
-                  <button onClick={handleEditBoard}>
-                    <svg width="16" height="16" className={css.editBoardIcon}>
-                      <use xlinkHref={`${sprite}#pencil`} />
-                    </svg>
-                  </button>
-
-                  <button
-                    onClick={event => {
-                      preventPropagation(event);
-                      dispatch(deleteBoard(_id));
-                    }}
-                  >
-                    <svg width="16" height="16" className={css.editBoardIcon}>
-                      <use xlinkHref={`${sprite}#trash`} />
-                    </svg>
-                  </button>
-                </div>
-              </NavLink>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className={css.needHelpSection}>
-        <div className={css.needHelpImage}></div>
-        <p className={css.needHelpText}>
-          If you need help with{' '}
-          <Link to="/home" className={css.taskPro}>
-            TaskPro
-          </Link>
-          , check out our support resources or reach out to our customer support
-          team.
-        </p>
-        <button className={css.needHelpButton} onClick={handleNeedHelp}>
-          <svg width="20" height="20" className={css.helpIcon}>
-            <use xlinkHref={`${sprite}#help_circle`} />
+        <button className={css.logOutButton} onClick={handleLogout}>
+          <svg width="32" height="32" className={css.logoutIcon}>
+            <use xlinkHref={`${sprite}#log-out`} />
           </svg>
-          <p>Need help?</p>
+          <p>Log out</p>
         </button>
       </div>
-      <button className={css.logOutButton} onClick={handleLogout}>
-        <svg width="32" height="32" className={css.logoutIcon}>
-          <use xlinkHref={`${sprite}#log-out`} />
-        </svg>
-        <p>Log out</p>
-      </button>
     </div>
   ) : (
     createPortal(
@@ -210,101 +235,107 @@ const Sidebar = ({ closeSidebar, isOpenMenu }) => {
               <EditBoard openModal={setOpenEditBoardModal}></EditBoard>
             </Modal>
           )}
-          <Link to="/home" className={css.logo}>
-            <svg width="32" height="32" className={css.logoIcon}>
-              <use xlinkHref={`${sprite}#logo`} />
-            </svg>
-            <p className={css.logoText}>TaskPro</p>
-          </Link>
 
-          <div className={css.myBoards}>
-            <p className={css.myBoardsText}>My Boards</p>
-            <div className={css.createBoardSection}>
-              <p className={css.createBoardText}>Create a new board</p>
-              <button
-                className={css.createBoardButton}
-                onClick={handleCreateBoard}
-              >
-                <svg width="20" height="20" className={css.addIcon}>
-                  <use xlinkHref={`${sprite}#plus`} />
+          <div>
+            <Link to="/home" className={css.logo}>
+              <svg width="32" height="32" className={css.logoIcon}>
+                <use xlinkHref={`${sprite}#logo`} />
+              </svg>
+              <p className={css.logoText}>TaskPro</p>
+            </Link>
+
+            <div className={css.myBoards}>
+              <p className={css.myBoardsText}>My Boards</p>
+              <div className={css.createBoardSection}>
+                <p className={css.createBoardText}>Create a new board</p>
+                <button
+                  className={css.createBoardButton}
+                  onClick={handleCreateBoard}
+                >
+                  <svg width="20" height="20" className={css.addIcon}>
+                    <use xlinkHref={`${sprite}#plus`} />
+                  </svg>
+                </button>
+              </div>
+              <ul className={css.boardsList}>
+                {boards.map(({ _id, title, icon }) => (
+                  <li key={_id}>
+                    <NavLink
+                      to={`${title}`}
+                      className={({ isActive }) =>
+                        isActive ? css.active : css.boardsItem
+                      }
+                      onClick={() => {
+                        dispatch(getBoardById(_id));
+                      }}
+                    >
+                      <div className={css.boardTitle}>
+                        <svg width="18" height="18" className={css.boardIcon}>
+                          <use xlinkHref={`${sprite}#${icon}`} />
+                        </svg>
+                        <p className={css.boardName}>{title}</p>
+                      </div>
+                      <div className={css.boardTools}>
+                        <button onClick={handleEditBoard}>
+                          <svg
+                            width="16"
+                            height="16"
+                            className={css.editBoardIcon}
+                          >
+                            <use xlinkHref={`${sprite}#pencil`} />
+                          </svg>
+                        </button>
+
+                        <button
+                          onClick={event => {
+                            preventPropagation(event);
+                            dispatch(deleteBoard(_id));
+                          }}
+                        >
+                          <svg
+                            width="16"
+                            height="16"
+                            className={css.editBoardIcon}
+                          >
+                            <use xlinkHref={`${sprite}#trash`} />
+                          </svg>
+                        </button>
+                      </div>
+                    </NavLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <div className={css.needHelpSection}>
+              <div className={css.needHelpImage}></div>
+              <p className={css.needHelpText}>
+                If you need help with{' '}
+                <Link to="/home" className={css.taskPro}>
+                  TaskPro
+                </Link>
+                , check out our support resources or reach out to our customer
+                support team.
+              </p>
+              <button className={css.needHelpButton} onClick={handleNeedHelp}>
+                <svg width="20" height="20" className={css.helpIcon}>
+                  <use xlinkHref={`${sprite}#help_circle`} />
                 </svg>
+                <p>Need help?</p>
               </button>
             </div>
-            <ul className={css.boardsList}>
-              {boards.map(({ _id, title, icon }) => (
-                <li key={_id}>
-                  <NavLink
-                    to={`${title}`}
-                    className={({ isActive }) =>
-                      isActive ? css.active : css.boardsItem
-                    }
-                    onClick={() => {
-                      dispatch(getBoardById(_id));
-                    }}
-                  >
-                    <div className={css.boardTitle}>
-                      <svg width="18" height="18" className={css.boardIcon}>
-                        <use xlinkHref={`${sprite}#${icon}`} />
-                      </svg>
-                      <p className={css.boardName}>{title}</p>
-                    </div>
-                    <div className={css.boardTools}>
-                      <button onClick={handleEditBoard}>
-                        <svg
-                          width="16"
-                          height="16"
-                          className={css.editBoardIcon}
-                        >
-                          <use xlinkHref={`${sprite}#pencil`} />
-                        </svg>
-                      </button>
-
-                      <button
-                        onClick={event => {
-                          preventPropagation(event);
-                          dispatch(deleteBoard(_id));
-                        }}
-                      >
-                        <svg
-                          width="16"
-                          height="16"
-                          className={css.editBoardIcon}
-                        >
-                          <use xlinkHref={`${sprite}#trash`} />
-                        </svg>
-                      </button>
-                    </div>
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className={css.needHelpSection}>
-            <div className={css.needHelpImage}></div>
-            <p className={css.needHelpText}>
-              If you need help with{' '}
-              <Link to="/home" className={css.taskPro}>
-                TaskPro
-              </Link>
-              , check out our support resources or reach out to our customer
-              support team.
-            </p>
-            <button className={css.needHelpButton} onClick={handleNeedHelp}>
-              <svg width="20" height="20" className={css.helpIcon}>
-                <use xlinkHref={`${sprite}#help_circle`} />
+            <button className={css.logOutButton} onClick={handleLogout}>
+              <svg width="32" height="32" className={css.logoutIcon}>
+                <use xlinkHref={`${sprite}#log-out`} />
               </svg>
-              <p>Need help?</p>
+              <p>Log out</p>
             </button>
           </div>
-          <button className={css.logOutButton} onClick={handleLogout}>
-            <svg width="32" height="32" className={css.logoutIcon}>
-              <use xlinkHref={`${sprite}#log-out`} />
-            </svg>
-            <p>Log out</p>
-          </button>
         </div>
       </div>,
-      modalRoot
+      mobMenu
     )
   );
 };

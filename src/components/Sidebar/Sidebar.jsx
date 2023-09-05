@@ -92,7 +92,10 @@ const Sidebar = ({ closeSidebar, isOpenMenu }) => {
   return isWideScreen ? (
     <div className={`${css.sidebar} ${isOpenMenu ? css.open : ''}`}>
       {openNeedHelpModal && (
-        <Modal children={<NeedHelp />} openModal={setOpenNeedHelpModal} />
+        <Modal
+          children={<NeedHelp openModal={setOpenNeedHelpModal} />}
+          openModal={setOpenNeedHelpModal}
+        />
       )}
       {openNewBoardModal && (
         <Modal openModal={setOpenNewBoardModal}>

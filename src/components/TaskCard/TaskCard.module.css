@@ -41,6 +41,7 @@
 /*  */
 
 .content {
+  position: relative;
   width: fit-content;
   padding: 14px 20px;
 }
@@ -125,7 +126,7 @@
   height: 16px;
   margin-left: auto;
 
-  stroke: #BEDBB0;
+  stroke: #bedbb0;
 }
 
 /* ACTIONS */

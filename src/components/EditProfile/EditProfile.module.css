@@ -26,17 +26,16 @@
   height: 49px;
   background: none;
   color: #949090cc;
-  border: 1px solid rgba(190, 219, 176, 0.5);
+  border: 1px solid var(--input-border-color);
 }
 
 .inputName:hover {
-  border: 1px solid #bedbb0;
+  border: 1px solid var(--btn-and-hover-color);
 }
 
 .inputName:focus {
-  border: 1px solid;
-  border-color: #bedbb0;
-  color: #ffffff;
+  outline: 1px solid var(--btn-and-hover-color);
+  color: var(--text-secondary-color);
 }
 
 .inputNameImg {
@@ -50,6 +49,7 @@
   display: inline-block;
 
   justify-content: center;
+  fill: var(--mobile-menu-icon);
 }
 
 .imgUser {
@@ -67,13 +67,14 @@
   font-size: 14px;
   border-radius: 6px;
   width: 100%;
-  background-color: #bedbb0;
+  background-color: var(--btn-and-hover-color);
   height: 49px;
   justify-content: center;
+  color: var(--btn-text-color);
 }
 
 .titleName {
-  color: white;
+  color: var(--text-secondary-color);
   font-size: 18px;
   width: 96px;
 }
@@ -106,10 +107,8 @@
 }
 
 .plusIcon {
-  stroke: var(--create-board-button-plus);
+  stroke: #121212;
   border-radius: 4px;
-  
- 
 }
 
 .plusIconBackground {
@@ -126,10 +125,8 @@
   height: 24px;
 
   border-radius: 6px;
-  background: var(--create-board-button);
-
- 
-  }
+  background: var(--plus-icon-background);
+}
 
 .imgBackground {
   position: relative;

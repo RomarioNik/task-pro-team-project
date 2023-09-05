@@ -130,6 +130,11 @@
   --btn-icon-color-plus: #fff;
   --addCard-plus-icon: #ffffff;
   --modal-title-color: #161616;
+  /* EditProfile */
+  --input-border-color: #dae9d3;
+  --btn-and-hover-color: #BEDBB0;
+  --btn-text-color: #161616;
+  --plus-icon-background: #BEDBB0;
   /* scrolle */
   --scroll-bg-color-vert: rgba(22, 22, 22, 0.1);
   --scroll-bg-color-horiz: #ffffff;
@@ -207,6 +212,11 @@
   --btn-icon-color-plus: #fff;
   --modal-btn-plus: #161616;
   --modal-title-color: #fff;
+/* EditProfile */
+  --input-border-color: #8fa78476;
+  --btn-and-hover-color: #BEDBB0;
+  --btn-text-color: #161616;
+  --plus-icon-background: #BEDBB0;
   /* scrolle */
   --scroll-bg-color-vert: #3b3838;
   --scroll-bg-color-horiz: #161616;
@@ -278,6 +288,11 @@
   --btn-icon-color-plus: #161616;
   --addCard-plus-icon: #161616;
   --modal-title-color: #161616;
+  /* EditProfile */
+    --input-border-color: #9e9fcd;
+    --btn-and-hover-color: #5255BC;
+    --btn-text-color: #FFFFFF;
+    --plus-icon-background: #ECEDFD;
   /* scrolle */
   --scroll-bg-color-vert: #ffffff;
   --scroll-bg-color-horiz: #ffffff;

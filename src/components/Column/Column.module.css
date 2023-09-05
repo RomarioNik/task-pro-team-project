@@ -63,7 +63,7 @@
 .button_create {
   display: flex;
   /* width: calc(100% - 20px); */
-  width: 334;
+  width: 334px;
   height: 56px;
   font-size: 14px;
   font-weight: 500;

@@ -18,7 +18,8 @@
 
 .column__section {
   display: flex;
-  width: calc(100% - 22px);
+  /* width: calc(100% - 22px); */
+  width: 334px;
   background-color: var(--bg-column-title);
   /* margin-left: 24px; */
   margin-bottom: 10px;
@@ -61,7 +62,8 @@
 
 .button_create {
   display: flex;
-  width: calc(100% - 20px);
+  /* width: calc(100% - 20px); */
+  width: 334;
   height: 56px;
   font-size: 14px;
   font-weight: 500;

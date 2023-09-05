@@ -2,10 +2,10 @@
   height: 100%;
   /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   color: var(--text-primary-color);
   background-color: var(--background-color);
-  transition: all 0.5s; */
+  /* transition: all 0.5s; */
 }
 
 .navigate {

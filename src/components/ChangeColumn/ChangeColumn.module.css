@@ -3,9 +3,8 @@
   padding: 18px;
   background-color: var(--background-color);
   position: absolute;
-  bottom: -50%;
   right: 0;
-  transform: translateY(-50%);
+
   z-index: 100;
   border-radius: 8px;
 }

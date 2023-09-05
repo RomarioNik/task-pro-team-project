@@ -27,7 +27,6 @@
   background: none;
   color: #949090cc;
   border: 1px solid var(--input-border-color);
-  
 }
 
 .inputName:hover {
@@ -110,8 +109,6 @@
 .plusIcon {
   stroke: #121212;
   border-radius: 4px;
-  
- 
 }
 
 .plusIconBackground {
@@ -129,9 +126,7 @@
 
   border-radius: 6px;
   background: var(--plus-icon-background);
-
- 
-  }
+}
 
 .imgBackground {
   position: relative;

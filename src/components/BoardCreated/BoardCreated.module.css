@@ -41,5 +41,5 @@ margin-bottom: 15px;
 
 /* Змінити колір смуги прокрутки при наведенні */
 .column__container::-webkit-scrollbar-thumb:hover {
-  background-color: #666;
+  background-color: var(--scroll-hover);
 }

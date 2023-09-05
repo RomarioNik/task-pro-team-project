@@ -58,7 +58,7 @@
 --scroll-bg-color-horiz: #ffffff;
 --scroll-color-vert: rgba(22, 22, 22, 0.1);
 --scroll-color-horiz: #8d8b8b;
-
+--scroll-hover:#bcb4b4;
 
 }
 
@@ -135,6 +135,7 @@
   --scroll-bg-color-horiz: #ffffff;
   --scroll-color-vert: rgba(22, 22, 22, 0.1);
   --scroll-color-horiz: #c4c4c4;
+  --scroll-hover:#bcb4b4;
 }
 
 [data-theme='dark'] {
@@ -212,6 +213,7 @@
   --scroll-bg-color-horiz: #161616;
   --scroll-color-vert: #161616;
   --scroll-color-horiz:rgba(255, 255, 255, 0.1);
+  --scroll-hover:#bcb4b4;
 }
 
 [data-theme='violet'] {
@@ -283,6 +285,7 @@
   --scroll-bg-color-horiz: #ffffff;
   --scroll-color-vert: #B8BCFD;
   --scroll-color-horiz: #B8BCFD;
+  --scroll-hover:#9da3eaf6;
 }
 
 * {

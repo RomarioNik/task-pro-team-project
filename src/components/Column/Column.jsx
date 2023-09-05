@@ -32,12 +32,19 @@ const Column = () => {
 
   const currentFilter = useSelector(getFilter);
 
-  const filteredColumns = allColumns;
+  // const filteredColumns = allColumns;
 
-  // const filteredColumns = allColumns.map(column => {
-  //   const result = column.cards.filter(item => item.priority === currentFilter);
-  //   return { ...column, cards: result };
-  // });
+  const filteredColumns = allColumns.map(column => {
+    if (column.cards) {
+      const result = column.cards.filter(
+        item => item.priority === currentFilter
+      );
+      return { ...column, cards: result };
+    } else {
+      return column;
+    }
+  });
+
   const columns = currentFilter === '' ? allColumns : filteredColumns;
 
   useEffect(() => {

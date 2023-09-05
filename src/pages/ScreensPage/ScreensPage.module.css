@@ -2,59 +2,62 @@
     width: 1500px;
 } */
 
+.screen__section {
+  height: 100vh;
+}
+
 .title__container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    /* padding-left: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  /* padding-left: 24px;
     padding-right: 24px;
     padding-top: 10px;
     padding-bottom: 10px; */
-    
-    @media screen and (min-width: 768px) {
-        padding: 20px 32px;
-    
-        @media screen and (min-width: 1440px) {
-            padding: 10px 24px;
-        }    
-    }    
 
+  @media screen and (min-width: 768px) {
+    padding: 20px 32px;
+
+    @media screen and (min-width: 1440px) {
+      padding: 10px 24px;
+    }
   }
+}
 
-  .title__board {
-    height: 24px;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--icon-filter);
+.title__board {
+  height: 24px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--icon-filter);
 
-    @media screen and (min-width: 768px) {
-        height: 28px;
-        font-size: 18px;
-    }    
+  @media screen and (min-width: 768px) {
+    height: 28px;
+    font-size: 18px;
   }
+}
 
 .button__filter {
-    display: flex;
-    width: 64px;
-    height: 20px;
-    align-items: center;
-    justify-content: center;
-    /* padding: 0;
+  display: flex;
+  width: 64px;
+  height: 20px;
+  align-items: center;
+  justify-content: center;
+  /* padding: 0;
     margin-left: auto; */
-    }
+}
 
-    .button__filter__icon {
-        width: 13px; 
-        height: 12px;
-        align-items: center;
-        justify-content: center;
-        stroke: var(--icon-filter);      
-    }
+.button__filter__icon {
+  width: 13px;
+  height: 12px;
+  align-items: center;
+  justify-content: center;
+  stroke: var(--icon-filter);
+}
 
-    .button__filter__title {
-        font-size: 12px;
-        font-weight: 500;
-        margin-left: 8px;
-        color: var(--icon-filter);
-    }
+.button__filter__title {
+  font-size: 12px;
+  font-weight: 500;
+  margin-left: 8px;
+  color: var(--icon-filter);
+}

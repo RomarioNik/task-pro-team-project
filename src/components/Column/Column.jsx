@@ -153,7 +153,7 @@ const Column = () => {
       {isOpenModalAddCard && (
         <Modal openModal={addCard}>
           <CreateCardPopUp
-            id={getIdColumn}
+            column={getIdColumn}
             isEditing={false}
             initialValues={{
               title: '',

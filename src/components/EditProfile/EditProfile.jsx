@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import { useUserData } from 'hooks/useUserData';
 
@@ -225,6 +226,11 @@ const EditProfile = ({ onClose }) => {
       </Formik>
     </div>
   );
+};
+
+EditProfile.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  
 };
 
 export default EditProfile;

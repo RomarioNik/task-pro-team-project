@@ -1,6 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { apiPublic, apiPrivate, apiPrivateFormData } from 'services/axios';
 
+// import { getCurrent } from 'services/axios';
+
 export const registerUser = createAsyncThunk(
   'auth/register',
   async (user, thunkAPI) => {
@@ -55,8 +57,10 @@ export const refreshUser = createAsyncThunk(
     }
     try {
       const { data } = await apiPrivate.get('/api/auth/current');
+      // const { data } = await getCurrent();
       return data;
     } catch (error) {
+      // console.log('rejectWithValue', error);
       return thunkAPI.rejectWithValue(error.message);
     }
   }

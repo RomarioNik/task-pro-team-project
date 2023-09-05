@@ -17,9 +17,8 @@ const HomePage = () => {
   };
 
   return (
-
     <div className={css.test} data-theme={userTheme}>
-      <div style={{ display: 'flex' }}>
+      <div className={css.navigate}>
         {isOpenMenu && (
           <Sidebar
             closeSidebar={() => setIsOpenMenu(false)}
@@ -31,7 +30,6 @@ const HomePage = () => {
           <Header handlerMenu={toggleIsOpenMenu} />
 
           <ScreensPage />
-
         </div>
       </div>
     </div>

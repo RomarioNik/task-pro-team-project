@@ -4,39 +4,74 @@ import { useState } from 'react';
 
 import sprite from '../../img/svg/sprite-icon.svg';
 import { useDispatch } from 'react-redux';
-import { addCard } from 'redux/boards/boardsOperations';
+import { addCard, updateCardById } from 'redux/boards/boardsOperations';
 // import { addBoard } from 'redux/boards/boardsOperations';
 
 export function CreateCardPopUp({
-  // id = '1',
-  // boardName = 'test',
-  // deadline = 'test',
+  // _id = '1',
   // column = 'exampleid',
-  id,
+  // isEditing = true,
+  // initialValues = {
+  //   title: 'EDITING MOD',
+  //   description: 'EDITING MOD',
+  //   priority: 'without priority',
+  //   deadline: 'EDITING MOD',
+  // },
+  _id,
+  column,
+  isEditing,
+  initialValues,
   close,
 }) {
   const dispatch = useDispatch();
 
-  const [selectedLabel, setSelectedLabel] = useState('without priority');
-  const [titleValue, setTitleValue] = useState('');
-  const [descriptionValue, setDescriptionValue] = useState('');
-  const [formattedDeadline, setFormattedDeadline] = useState('');
-  // console.log('formattedDeadline', formattedDeadline);
+  const [selectedLabel, setSelectedLabel] = useState(initialValues.priority);
+  const [titleValue, setTitleValue] = useState(initialValues.title);
+  const [descriptionValue, setDescriptionValue] = useState(
+    initialValues.description
+  );
+  const [formattedDeadline, setFormattedDeadline] = useState(
+    initialValues.deadline
+  );
 
   const handleRadioChange = event => {
     setSelectedLabel(event.target.value);
   };
 
-  const AddNewCard = () => {
+  const handleEditCard = () => {
+    console.log('Редактировать карточку', {
+      _id,
+      title: titleValue,
+      description: descriptionValue,
+      priority: selectedLabel,
+      deadline: formattedDeadline,
+      // column: column,
+    });
+
+    dispatch(
+      updateCardById({
+        _id,
+        newCardData: {
+          title: titleValue,
+          description: descriptionValue,
+          priority: selectedLabel,
+          deadline: formattedDeadline,
+        },
+      })
+    );
+    close();
+  };
+
+  const handleAddNewCard = () => {
     console.log('додаємо нову картку');
 
-    // console.log({
-    //   title: titleValue,
-    //   description: descriptionValue,
-    //   priority: selectedLabel,
-    //   deadline: formattedDeadline,
-    //   column: id,
-    // });
+    console.log({
+      title: titleValue,
+      description: descriptionValue,
+      priority: selectedLabel,
+      deadline: formattedDeadline,
+      column,
+    });
 
     dispatch(
       addCard({
@@ -44,16 +79,15 @@ export function CreateCardPopUp({
         description: descriptionValue,
         priority: selectedLabel,
         deadline: formattedDeadline,
-        column: _id,
+        column,
       })
     );
-
     close();
   };
 
   return (
     <div>
-      <h3 className={css.modalTitle}>Add card</h3>
+      <h3 className={css.modalTitle}>{isEditing ? 'Edit card' : 'Add card'}</h3>
       <form action="submit" className={css.inputForm}>
         <input
           type="text"
@@ -74,14 +108,6 @@ export function CreateCardPopUp({
         <div action="" className={css.inputLabelColorContainer}>
           <h4 className={css.inputLabelColor}>Label color</h4>
         </div>
-
-        {/* <CustomRadio
-          color="#8fa1d04D"
-          value="without priority"
-          checked={selectedLabel === 'without priority'}
-          onChange={handleRadioChange}
-          id={'without'}
-        /> */}
 
         <label className={`${css.customRadio}`}>
           <input
@@ -177,44 +203,16 @@ export function CreateCardPopUp({
       </div>
       <button
         className={`${css.inputAddBtn} buttonWithIcon`}
-        onClick={AddNewCard}
+        onClick={isEditing ? handleEditCard : handleAddNewCard}
       >
         <div className={css.plusIconContainer}>
           <svg className={css.plusIcon}>
             <use xlinkHref={`${sprite}#plus`} />
           </svg>
         </div>
-        Add
+        {isEditing ? 'Edit' : 'Add'}
       </button>
     </div>
   );
 }
 export default CreateCardPopUp;
-// const CustomRadio = ({ value, checked, onChange, color, id }) => {
-//   return (
-//     <label className={`${css.customRadio} ${checked ? css.checked : ''}`}>
-//       <input
-//         type="radio"
-//         name="radioGroup"
-//         value={value}
-//         checked={checked}
-//         onChange={onChange}
-//         className={css.hiddenRadio}
-//       />
-
-//       {checked ? (
-//         <svg
-//           className={`${css.customIconcheked} ${css.id}`}
-//           style={{ fill: `${color}` }}
-//         >
-//           <use xlinkHref={`${sprite}#radio-button-checked`} />
-//         </svg>
-//       ) : (
-//         <svg className={`${css.customIcon}`} style={{ fill: `${color}` }}>
-//           <use xlinkHref={`${sprite}#radio-button-unchecked`} />
-//         </svg>
-//       )}
-
-//     </label>
-//   );
-// };

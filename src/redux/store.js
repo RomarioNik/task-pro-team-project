@@ -57,21 +57,20 @@ const authPersistConfig = {
   key: 'auth',
   storage,
   // whitelist: ['token', 'user', 'theme'],
-  whitelist: ['token', 'accessToken'],
+  whitelist: ['token'],
 };
 
-const boardsPersistConfig = {
-  key: 'boards',
-  storage,
-  // whitelist: ['token', 'user', 'theme'],
-  whitelist: ['shownBoard'],
-};
+// const boardsPersistConfig = {
+//   key: 'boards',
+//   storage,
+//   whitelist: ['shownBoard'],
+// };
 
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-    // boards: boardsReducer,
-    boards: persistReducer(boardsPersistConfig, boardsReducer),
+    boards: boardsReducer,
+    // boards: persistReducer(boardsPersistConfig, boardsReducer),
     filter: filterReducer,
   },
   middleware: getDefaultMiddleware =>

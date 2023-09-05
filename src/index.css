@@ -276,6 +276,7 @@ body {
   color: var(--text-primary-color);
   background-color: var(--background-color);
   margin: 0;
+  height: 100vh;
 }
 
 a {
@@ -329,4 +330,8 @@ img {
   width: 100%;
   height: auto;
   max-width: 100%;
+}
+
+#root {
+  height: 100%;
 }

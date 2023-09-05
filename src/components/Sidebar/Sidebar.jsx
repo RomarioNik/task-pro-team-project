@@ -1,25 +1,25 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { createPortal } from 'react-dom';
-import { useUserData } from 'hooks/useUserData';
-
-import css from './Sidebar.module.css';
-import sprite from '../../img/svg/sprite-icon.svg';
 import { useDispatch } from 'react-redux';
-import { logOutUser } from 'redux/auth/operations';
+
 import {
   deleteBoard,
   getAllBoards,
   getBoardById,
 } from '../../redux/boards/boardsOperations';
-
+import { logOutUser } from 'redux/auth/operations';
 import { useBoardsList } from 'hooks/useBoardsList';
+import { useUserData } from 'hooks/useUserData';
+
+import css from './Sidebar.module.css';
+import sprite from '../../img/svg/sprite-icon.svg';
 import Modal from '../Modal/index.js';
 import NeedHelp from '../Needhelp/NeedHelp';
 import NewBoard from '../NewEditBoard/NewBoard';
 import EditBoard from 'components/NewEditBoard/EditBoard';
 
-const modalRoot = document.querySelector('#modal-root');
+const mobMenu = document.querySelector('#modal-root');
 
 const Sidebar = ({ closeSidebar, isOpenMenu }) => {
   const navigate = useNavigate();
@@ -39,7 +39,7 @@ const Sidebar = ({ closeSidebar, isOpenMenu }) => {
       const windowWidth = window.outerWidth;
       if (windowWidth >= 1440) {
         setIsWideScreen(true);
-      } else if (windowWidth < 1440) {
+      } else {
         setIsWideScreen(false);
       }
     };
@@ -304,7 +304,7 @@ const Sidebar = ({ closeSidebar, isOpenMenu }) => {
           </button>
         </div>
       </div>,
-      modalRoot
+      mobMenu
     )
   );
 };

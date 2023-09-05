@@ -10,10 +10,11 @@ import { deleteColumn } from 'redux/boards/boardsOperations';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import 'overlayscrollbars/overlayscrollbars.css';
 import style from './Column.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { useShownBoard } from 'hooks/useShownBoard';
 import TaskCard from 'components/TaskCard/TaskCard';
+import { getFilter } from 'redux/boards/boardsSelectors';
 
 const Column = () => {
   const [isOpenModalAddColumn, setIsOpenModalAddColumn] = useState(false);
@@ -27,7 +28,17 @@ const Column = () => {
 
   const shownBoard = useShownBoard();
 
-  const columns = shownBoard.columns;
+  const allColumns = shownBoard.columns;
+
+  const currentFilter = useSelector(getFilter);
+
+  const filteredColumns = allColumns;
+
+  // const filteredColumns = allColumns.map(column => {
+  //   const result = column.cards.filter(item => item.priority === currentFilter);
+  //   return { ...column, cards: result };
+  // });
+  const columns = currentFilter === '' ? allColumns : filteredColumns;
 
   useEffect(() => {
     const handleResize = () => {
@@ -141,7 +152,17 @@ const Column = () => {
       )}
       {isOpenModalAddCard && (
         <Modal openModal={addCard}>
-          <CreateCardPopUp id={getIdColumn} close={addCard} />
+          <CreateCardPopUp
+            column={getIdColumn}
+            isEditing={false}
+            initialValues={{
+              title: '',
+              description: '',
+              priority: 'without priority',
+              deadline: '',
+            }}
+            close={addCard}
+          />
         </Modal>
       )}
     </div>

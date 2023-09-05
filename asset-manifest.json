@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/task-pro-team-project/static/css/main.7b803887.css",
-    "main.js": "/task-pro-team-project/static/js/main.4715dc7e.js",
+    "main.js": "/task-pro-team-project/static/js/main.bbbada2f.js",
     "static/media/start-user_desctop@2x-324.png": "/task-pro-team-project/static/media/start-user_desctop@2x-324.3c16d94f191851bfebc3.png",
     "static/media/start-user@2x-248.png": "/task-pro-team-project/static/media/start-user@2x-248.35196a60de72c609bf93.png",
     "static/media/sprite-icon.svg": "/task-pro-team-project/static/media/sprite-icon.f5eca9643725bb0ee354a19beabd5c5c.svg",
@@ -9,10 +9,10 @@
     "static/media/start-user-124.png": "/task-pro-team-project/static/media/start-user-124.ab8975fbcf6ee9be7f2f.png",
     "index.html": "/task-pro-team-project/index.html",
     "main.7b803887.css.map": "/task-pro-team-project/static/css/main.7b803887.css.map",
-    "main.4715dc7e.js.map": "/task-pro-team-project/static/js/main.4715dc7e.js.map"
+    "main.bbbada2f.js.map": "/task-pro-team-project/static/js/main.bbbada2f.js.map"
   },
   "entrypoints": [
     "static/css/main.7b803887.css",
-    "static/js/main.4715dc7e.js"
+    "static/js/main.bbbada2f.js"
   ]
 }

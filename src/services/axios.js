@@ -23,37 +23,37 @@ export const apiPublic = axios.create({
   },
 });
 
-apiPublic.interceptors.response.use(
-  response => response,
-  async error => {
-    const { status, config } = error.response;
-    switch (status) {
-      case HTTP_STATUS_CODES.INTERNAL_SERVER_ERROR:
-        console.log(
-          'An unexpected issue has occurred. Please try again later.'
-        );
-        break;
-      case HTTP_STATUS_CODES.BAD_REQUEST:
-        console.log(
-          'An issue has been encountered. Kindly inform us about this error!'
-        );
-        break;
-      case HTTP_STATUS_CODES.NOT_FOUND:
-        if (config.url === '/api/auth/signin') {
-          console.log('Invalid email or password provided.');
-        }
-        break;
-      case HTTP_STATUS_CODES.CONFLICT:
-        if (config.url === '/api/auth/signup') {
-          console.log('User with such email already exists.');
-        }
-        break;
-      default:
-        console.log('An error occurred:', error.message);
-    }
-    return Promise.reject(error);
-  }
-);
+// apiPublic.interceptors.response.use(
+//   response => response,
+//   async error => {
+//     const { status, config } = error.response;
+//     switch (status) {
+//       case HTTP_STATUS_CODES.INTERNAL_SERVER_ERROR:
+//         console.log(
+//           'An unexpected issue has occurred. Please try again later.'
+//         );
+//         break;
+//       case HTTP_STATUS_CODES.BAD_REQUEST:
+//         console.log(
+//           'An issue has been encountered. Kindly inform us about this error!'
+//         );
+//         break;
+//       case HTTP_STATUS_CODES.NOT_FOUND:
+//         if (config.url === '/api/auth/signin') {
+//           console.log('Invalid email or password provided.');
+//         }
+//         break;
+//       case HTTP_STATUS_CODES.CONFLICT:
+//         if (config.url === '/api/auth/signup') {
+//           console.log('User with such email already exists.');
+//         }
+//         break;
+//       default:
+//         console.log('An error occurred:', error.message);
+//     }
+//     return Promise.reject(error);
+//   }
+// );
 
 const addAuthorizationHeader = async config => {
   // const user = localStorage.getItem('persist:auth');
@@ -85,11 +85,10 @@ export const apiPrivate = axios.create({
   },
 });
 
-apiPrivate.interceptors.request.use(
-  addAuthorizationHeader,
-  error => Promise.reject(error)
-  // console.log('Promise.reject(error) => ', error)
-);
+apiPrivate.interceptors.request.use(addAuthorizationHeader, error => {
+  Promise.reject(error);
+  console.log('Promise.reject(error) => ', error);
+});
 
 export const apiPrivateFormData = axios.create({
   baseURL: BASE_URL,
@@ -104,12 +103,14 @@ apiPrivate.interceptors.response.use(
     if (error.response.status === 401) {
       try {
         const refreshToken = store.getState().auth.token;
-        const { data } = await apiPrivate.post('/api/auth/refresh', {
+        console.log('refreshToken => ', refreshToken);
+        const { data } = await apiPublic.post('/api/auth/refresh', {
           refreshToken,
         });
         store.dispatch(setTokens(data));
+        console.log('error.response => ', error.response);
         // console.log('error.config => ', error);
-        return await apiPrivate(error.config);
+        return apiPrivate(error.response.config);
       } catch (error) {
         // console.log('Promise.reject(error) => ', error);
         return Promise.reject(error);
@@ -144,11 +145,12 @@ apiPrivateFormData.interceptors.response.use(
     if (error.response.status === 401) {
       try {
         const refreshToken = store.getState().auth.token;
-        const { data } = await apiPrivateFormData.post('/api/auth/refresh', {
+        const { data } = await apiPublic.post('/api/auth/refresh', {
           refreshToken,
         });
         store.dispatch(setTokens(data));
-        return apiPrivateFormData(error.config);
+        console.log('error.response => ', error.response);
+        return apiPrivateFormData(error.response.config);
       } catch (error) {
         return Promise.reject(error);
       }

@@ -18,6 +18,7 @@ const EditProfile = ({ onClose }) => {
   const dispatch = useDispatch();
 
   const [avatar, setAvatar] = useState(user.avatarURL);
+  const [localAvatar, setLocalAvatar] = useState(null);
   const [avatarUploaded, setAvatarUploaded] = useState('false');
   const [passwordVisible, setPasswordVisible] = useState(false);
 
@@ -31,29 +32,34 @@ const EditProfile = ({ onClose }) => {
     setAvatarUploaded(event.target.files[0]);
     const formData = new FormData();
 
+    setLocalAvatar(URL.createObjectURL(event.target.files[0]));
+
     formData.append('avatarUploaded', avatarUploaded);
   };
 
-  if (user.avatarURL === '') {
-    console.log(`Аватара у пользователя нет, пришло ''`);
-  }
+  // if (user.avatarURL === '') {
+  //   console.log(`Аватара у пользователя нет, пришло ''`);
+  // }
 
-  if (user.avatarURL !== '') {
-    console.log(
-      `Аватар пришёл, avatarURL:${user.avatarURL}, должна быть фотка`
-    );
-    console.log(
-      `Или фотка загружена только что пользователем, avatarURL:${avatarUploaded}`
-    );
-  }
+  // if (user.avatarURL !== '') {
+  //   console.log(
+  //     `Аватар пришёл, avatarURL:${user.avatarURL}, должна быть фотка`
+  //   );
+  //   console.log(
+  //     `Или фотка загружена только что пользователем, avatarURL:${avatarUploaded}`
+  //   );
+  // }
 
-  console.log(avatarUploaded.type);
+  // console.log(avatarUploaded.type);
 
-  console.log(`Текущая тема:${user.userTheme}`);
+  // console.log(`Текущая тема:${user.userTheme}`);
 
-  if (avatarUploaded.type) {
-    console.log(`Работает`);
-  }
+  // if (avatarUploaded.type) {
+  //   console.log(`Работает`);
+  // }
+
+  console.log(localAvatar);
+  console.log(user?.avatarURL);
 
   const modalClose = event => {
     onClose();
@@ -73,7 +79,7 @@ const EditProfile = ({ onClose }) => {
 
     let updatedProfile;
 
-    console.log(`Вот такой аватар ${avatar}`);
+    // console.log(`Вот такой аватар ${avatar}`);
 
     if (user.avatarURL !== '' || user.avatarURL === '') {
       if (avatarUploaded.type) {
@@ -113,11 +119,11 @@ const EditProfile = ({ onClose }) => {
     modalClose();
   };
 
-  if (avatarUploaded.type) {
-    window.alert(
-      'Фото завантажено. Якщо ви закінчили редагувати профіль, то для оновлення Аватарки натисніть кнопку Send'
-    );
-  }
+  // if (avatarUploaded.type) {
+  //   window.alert(
+  //     'Фото завантажено. Якщо ви закінчили редагувати профіль, то для оновлення Аватарки натисніть кнопку Send'
+  //   );
+  // }
 
   return (
     <div className={css.modal}>
@@ -138,7 +144,7 @@ const EditProfile = ({ onClose }) => {
                 onChange={handleChangeAvatar}
               />
 
-              {user.avatarURL === '' ? (
+              {!localAvatar && user.avatarURL === '' ? (
                 <div className={css.imgBackground}>
                   <svg width="68" height="68" className={css.img}>
                     <use xlinkHref={`${sprite}#icon-user-ico`} />
@@ -152,7 +158,7 @@ const EditProfile = ({ onClose }) => {
               ) : (
                 <div className={css.imgBackground}>
                   <img
-                    src={user.avatarURL}
+                    src={localAvatar ? localAvatar : user.avatarURL}
                     className={css.imgUser}
                     alt="avatar"
                   />

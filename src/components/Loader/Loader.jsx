@@ -11,7 +11,7 @@ const Loader = () => {
   }, []);
 
   return (
-    <div className={css.wrapper}>
+    <div>
       <LoadingBar
         color="#7d81ff"
         height={3}

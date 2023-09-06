@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Modal from 'components/Modal';
 
@@ -10,19 +10,61 @@ import Filter from 'components/Filter';
 // import Filter from 'components/Filter/Filter';
 import { Icon } from '../../components/Svg/Icon.jsx';
 import style from './ScreensPage.module.css';
+import { useShownBoard } from 'hooks/useShownBoard.js';
 
 const ScreensPage = () => {
-  const { boardName } = useParams();
-
+  const [bgImage, setBgImages] = useState('');
   const [openFilter, setOpenFilter] = useState(false);
+  const { boardName } = useParams();
+  const { backgroundURL } = useShownBoard();
 
   const handleOpenFilter = () => {
     setOpenFilter(true);
     console.log('filter');
   };
 
+  useEffect(() => {
+    if (boardName && backgroundURL) {
+      const isRetina = window.matchMedia('(min-resolution: 2dppx)').matches;
+      setBgImages(() => {
+        return isRetina ? backgroundURL.mobile_2x : backgroundURL.mobile_1x;
+      });
+      // MEDIA MOBILE
+      if (
+        window.matchMedia('(min-width: 375px) and (max-width: 767px)').matches
+      ) {
+        setBgImages(() => {
+          return isRetina ? backgroundURL.tablet_2x : backgroundURL.tablet_1x;
+        });
+        return;
+      }
+
+      // MEDIA TABLET
+      if (
+        window.matchMedia('(min-width: 768px) and (max-width: 1439px)').matches
+      ) {
+        setBgImages(() => {
+          return isRetina ? backgroundURL.desktop_2x : backgroundURL.desktop_1x;
+        });
+
+        return;
+      }
+
+      // MEDIA DESCTOP
+      if (window.matchMedia('(min-width: 1440px)').matches) {
+        setBgImages(() => {
+          return backgroundURL.desktop_2x;
+        });
+        return;
+      }
+    }
+  }, [backgroundURL, boardName]);
+
   return (
-    <div className={style.screen__section}>
+    <div
+      className={style.screen__section}
+      style={{ backgroundImage: `url(${bgImage})` }}
+    >
       {openFilter && (
         <Modal
           children={<Filter openModal={setOpenFilter} />}

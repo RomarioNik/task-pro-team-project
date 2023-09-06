@@ -58,8 +58,8 @@ const EditProfile = ({ onClose }) => {
   //   console.log(`Работает`);
   // }
 
-  console.log(localAvatar);
-  console.log(user?.avatarURL);
+  // console.log(localAvatar);
+  // console.log(user?.avatarURL);
 
   const modalClose = event => {
     onClose();

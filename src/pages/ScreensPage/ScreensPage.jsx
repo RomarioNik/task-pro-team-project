@@ -28,7 +28,7 @@ const ScreensPage = () => {
     const handleResizePage = () => setInnerWidth(window.innerWidth);
     window.addEventListener('resize', handleResizePage);
 
-    if (boardName && backgroundURL) {
+    if (backgroundURL) {
       const isRetina = window.matchMedia('(min-resolution: 2dppx)').matches;
       setBgImages(() => {
         return isRetina ? backgroundURL.mobile_2x : backgroundURL.mobile_1x;
@@ -54,7 +54,7 @@ const ScreensPage = () => {
         return;
       }
 
-      // MEDIA DESCTOP
+      // MEDIA DESKTOP
       if (window.matchMedia('(min-width: 1440px)').matches) {
         setBgImages(() => {
           return backgroundURL.desktop_2x;

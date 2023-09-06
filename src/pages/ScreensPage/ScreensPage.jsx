@@ -14,6 +14,7 @@ import { useShownBoard } from 'hooks/useShownBoard.js';
 
 const ScreensPage = () => {
   const [bgImage, setBgImages] = useState('');
+  const [innerWidth, setInnerWidth] = useState(null);
   const [openFilter, setOpenFilter] = useState(false);
   const { boardName } = useParams();
   const { backgroundURL } = useShownBoard();
@@ -24,6 +25,9 @@ const ScreensPage = () => {
   };
 
   useEffect(() => {
+    const handleResizePage = () => setInnerWidth(window.innerWidth);
+    window.addEventListener('resize', handleResizePage);
+
     if (boardName && backgroundURL) {
       const isRetina = window.matchMedia('(min-resolution: 2dppx)').matches;
       setBgImages(() => {
@@ -58,7 +62,9 @@ const ScreensPage = () => {
         return;
       }
     }
-  }, [backgroundURL, boardName]);
+
+    return () => window.removeEventListener('resize', handleResizePage);
+  }, [backgroundURL, boardName, bgImage, innerWidth]);
 
   return (
     <div

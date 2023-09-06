@@ -7,7 +7,7 @@ const Board = () => {
   const [openNewBoardModal, setOpenEditBoardModal] = useState(false);
 
   const openModal = () => {
-    setOpenEditBoardModal(true);
+    setOpenEditBoardModal(!openNewBoardModal);
   };
   return (
     <div className={style.container}>
@@ -21,8 +21,8 @@ const Board = () => {
       collaboration among team members.
       <div>
         {openNewBoardModal && (
-          <Modal openModal={setOpenEditBoardModal}>
-            <NewBoard />
+          <Modal openModal={openModal}>
+            <NewBoard openModal={openModal} />
           </Modal>
         )}
       </div>

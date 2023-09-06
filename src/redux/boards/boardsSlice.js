@@ -168,6 +168,16 @@ const initialState = {
 const boardsSlice = createSlice({
   name: 'boards',
   initialState,
+
+  reducers: {
+    goHome(state) {
+      state.shownBoard = {
+        columns: [],
+        backgroundURL: {},
+      };
+    },
+  },
+
   extraReducers: builder =>
     builder
       .addCase(getAllBoards.fulfilled, handleFulfilledGetAllBoards)
@@ -188,3 +198,4 @@ const boardsSlice = createSlice({
 });
 
 export const boardsReducer = boardsSlice.reducer;
+export const { goHome } = boardsSlice.actions;

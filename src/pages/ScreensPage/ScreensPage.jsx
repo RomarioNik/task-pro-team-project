@@ -12,6 +12,7 @@ import { Icon } from '../../components/Svg/Icon.jsx';
 import style from './ScreensPage.module.css';
 import { useShownBoard } from 'hooks/useShownBoard.js';
 import { useDispatch } from 'react-redux';
+import { goHome } from 'redux/boards/boardsSlice.js';
 
 const ScreensPage = () => {
   const [bgImage, setBgImages] = useState('');
@@ -71,7 +72,7 @@ const ScreensPage = () => {
   }, [backgroundURL, boardName, bgImage, innerWidth]);
 
   useEffect(() => {
-    if (!boardName) dispatch();
+    if (!boardName) dispatch(goHome());
   }, [boardName, dispatch]);
 
   return (

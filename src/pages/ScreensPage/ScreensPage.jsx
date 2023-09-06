@@ -78,15 +78,19 @@ const ScreensPage = () => {
         />
       )}
       <div className={style.title__container}>
-        <p className={style.title__board}>{boardName}</p>
-        <button
-          className={style.button__filter}
-          type="button"
-          onClick={handleOpenFilter}
-        >
-          <Icon id="filter" className={style.button__filter__icon} />
-          <p className={style.button__filter__title}>Filters</p>
-        </button>
+        <span className={style.title__wrap}>
+          <p className={style.title__board}>{boardName}</p>
+        </span>
+        <span className={style.title__wrap}>
+          <button
+            className={style.button__filter}
+            type="button"
+            onClick={handleOpenFilter}
+          >
+            <Icon id="filter" className={style.button__filter__icon} />
+            <p className={style.button__filter__title}>Filters</p>
+          </button>
+        </span>
       </div>
       {/* <BoardCreated /> */}
       {!boardName ? <Board /> : <BoardCreated />}

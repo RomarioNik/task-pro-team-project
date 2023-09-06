@@ -17,7 +17,11 @@ const Header = ({ handlerMenu }) => {
   return (
     <header className={css.header}>
       <div className={css.container}>
-        <Button className={css.menu_btn} handlerClick={handlerMenu}>
+        <Button
+          className={css.menu_btn}
+          handlerClick={handlerMenu}
+          label="Open menu"
+        >
           <svg className={css.header_iconMenu}>
             <use href={`${icon}#icon-menu`}></use>
           </svg>

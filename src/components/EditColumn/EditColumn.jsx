@@ -8,6 +8,7 @@ import { useState } from 'react';
 
 const EditColumn = ({ id, close }) => {
   const { title } = useShownBoard().columns.find(({ _id }) => _id === id);
+  const { _id } = useShownBoard();
   const [editColumnValue, setEditColumnValue] = useState(title);
 
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ const EditColumn = ({ id, close }) => {
       _id: id,
       newColumnData: {
         title: editColumnValue,
+        board: _id,
       },
     };
 

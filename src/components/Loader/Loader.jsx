@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import LoadingBar from 'react-top-loading-bar';
-import css from './Loader.module.css';
 
 const Loader = () => {
   const [progress, setProgress] = useState(0);

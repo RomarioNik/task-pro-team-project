@@ -22,7 +22,7 @@ const handlePending = state => {
 const handleRejected = (state, { payload }) => {
   state.isLoading = false;
   state.error = payload;
-  toast.error(`Something went wrong`);
+  // toast.error(`Something went wrong`);
 };
 
 const handleFulfilledGetAllBoards = (state, { payload }) => {

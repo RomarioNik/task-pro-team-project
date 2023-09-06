@@ -25,6 +25,12 @@
   }
 }
 
+.title__wrap {
+  background-color: var(--background-color);
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
 .title__board {
   height: 24px;
   font-size: 14px;

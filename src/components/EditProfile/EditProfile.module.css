@@ -57,6 +57,7 @@
   width: 68px;
   height: 68px;
   justify-content: center;
+  border-radius: 8px;
 }
 
 .btnAdd {

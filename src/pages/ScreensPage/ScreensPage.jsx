@@ -26,15 +26,15 @@ const ScreensPage = () => {
   useEffect(() => {
     if (boardName && backgroundURL) {
       const isRetina = window.matchMedia('(min-resolution: 2dppx)').matches;
-
+      setBgImages(() => {
+        return isRetina ? backgroundURL.mobile_2x : backgroundURL.mobile_1x;
+      });
       // MEDIA MOBILE
-      if (window.matchMedia('(max-width: 767px)').matches) {
-        console.log(
-          'mobile --',
-          window.matchMedia('(max-width: 767px)').matches
-        );
+      if (
+        window.matchMedia('(min-width: 375px) and (max-width: 767px)').matches
+      ) {
         setBgImages(() => {
-          return isRetina ? backgroundURL.mobile_2x : backgroundURL.mobile_1x;
+          return isRetina ? backgroundURL.tablet_2x : backgroundURL.tablet_1x;
         });
         return;
       }
@@ -43,13 +43,8 @@ const ScreensPage = () => {
       if (
         window.matchMedia('(min-width: 768px) and (max-width: 1439px)').matches
       ) {
-        console.log(
-          'tablet --',
-          window.matchMedia('(min-width: 768px) and (max-width: 1439px)')
-            .matches
-        );
         setBgImages(() => {
-          return isRetina ? backgroundURL.tablet_2x : backgroundURL.tablet_1x;
+          return isRetina ? backgroundURL.desktop_2x : backgroundURL.desktop_1x;
         });
 
         return;
@@ -57,12 +52,8 @@ const ScreensPage = () => {
 
       // MEDIA DESCTOP
       if (window.matchMedia('(min-width: 1440px)').matches) {
-        console.log(
-          'desctop --',
-          window.matchMedia('(min-width: 1440px)').matches
-        );
         setBgImages(() => {
-          return isRetina ? backgroundURL.desktop_2x : backgroundURL.desktop_1x;
+          return backgroundURL.desktop_2x;
         });
         return;
       }

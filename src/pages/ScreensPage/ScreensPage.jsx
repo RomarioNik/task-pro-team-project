@@ -11,6 +11,8 @@ import Filter from 'components/Filter';
 import { Icon } from '../../components/Svg/Icon.jsx';
 import style from './ScreensPage.module.css';
 import { useShownBoard } from 'hooks/useShownBoard.js';
+import { useDispatch } from 'react-redux';
+import { goHome } from 'redux/boards/boardsSlice.js';
 
 const ScreensPage = () => {
   const [bgImage, setBgImages] = useState('');
@@ -18,6 +20,7 @@ const ScreensPage = () => {
   const [openFilter, setOpenFilter] = useState(false);
   const { boardName } = useParams();
   const { backgroundURL } = useShownBoard();
+  const dispatch = useDispatch();
 
   const handleOpenFilter = () => {
     setOpenFilter(true);
@@ -63,8 +66,14 @@ const ScreensPage = () => {
       }
     }
 
-    return () => window.removeEventListener('resize', handleResizePage);
+    return () => {
+      window.removeEventListener('resize', handleResizePage);
+    };
   }, [backgroundURL, boardName, bgImage, innerWidth]);
+
+  useEffect(() => {
+    if (!boardName) dispatch(goHome());
+  }, [boardName, dispatch]);
 
   return (
     <div
@@ -77,20 +86,25 @@ const ScreensPage = () => {
           openModal={setOpenFilter}
         />
       )}
+
       <div className={style.title__container}>
-        <span className={style.title__wrap}>
-          <p className={style.title__board}>{boardName}</p>
-        </span>
-        <span className={style.title__wrap}>
-          <button
-            className={style.button__filter}
-            type="button"
-            onClick={handleOpenFilter}
-          >
-            <Icon id="filter" className={style.button__filter__icon} />
-            <p className={style.button__filter__title}>Filters</p>
-          </button>
-        </span>
+        {boardName && (
+          <>
+            <span className={style.title__wrap}>
+              <p className={style.title__board}>{boardName}</p>
+            </span>
+            <span className={style.title__wrap}>
+              <button
+                className={style.button__filter}
+                type="button"
+                onClick={handleOpenFilter}
+              >
+                <Icon id="filter" className={style.button__filter__icon} />
+                <p className={style.button__filter__title}>Filters</p>
+              </button>
+            </span>
+          </>
+        )}
       </div>
       {/* <BoardCreated /> */}
       {!boardName ? <Board /> : <BoardCreated />}

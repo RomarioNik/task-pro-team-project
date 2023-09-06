@@ -14,11 +14,12 @@ import { PrivateRoute, RestrictedRoute } from './Routes/Routes';
 import { useIsUserRefresh } from 'hooks/useIsUserRefreshing';
 import { Toaster } from 'react-hot-toast';
 
+import HomePage from 'pages/HomePage/HomePage';
+
 const WelcomePage = lazy(() => import('../pages/WelcomePage'));
 const AuthPage = lazy(() => import('../pages/AuthPage'));
 const LoginForm = lazy(() => import('./LoginForm'));
 const RegisterForm = lazy(() => import('./RegisterForm'));
-const HomePage = lazy(() => import('../pages/HomePage'));
 const ScreensPage = lazy(() => import('../pages/ScreensPage'));
 const NotFound = lazy(() => import('./NotFound'));
 

@@ -48,6 +48,7 @@ const handleFulfilledAddBoard = (state, { payload }) => {
   // state.allBoards.unshift(payload);
   state.allBoards.push(payload);
   state.shownBoard._id = payload._id;
+  state.shownBoard.backgroundURL = payload.backgroundURL;
   state.shownBoard.columns = [];
 };
 
@@ -57,6 +58,7 @@ const handleFulfilledDeleteBoard = (state, { payload }) => {
   state.allBoards = state.allBoards.filter(({ _id }) => _id !== payload);
   state.shownBoard = {
     columns: [],
+    backgroundURL: {},
   };
   toast.success(`Board deleted`);
 };
@@ -67,6 +69,7 @@ const handleFulfilledUpdateBoard = (state, { payload }) => {
   state.allBoards = state.allBoards.map(el =>
     el._id === payload._id ? (el = payload) : el
   );
+  state.shownBoard.backgroundURL = payload.backgroundURL;
   toast.success(`Board updated`);
 };
 

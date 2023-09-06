@@ -24,7 +24,7 @@ import yacht from '../../img/background_list_icons/yacht.jpg';
 
 const NewBoard = ({ openModal }) => {
   const [icons, setIcons] = useState('project');
-  const [background, setBackground] = useState(null);
+  const [background, setBackground] = useState('no-background');
   const [title, setTitle] = useState(null);
 
   const navigate = useNavigate();

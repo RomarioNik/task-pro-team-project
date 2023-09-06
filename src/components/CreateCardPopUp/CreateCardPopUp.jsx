@@ -5,18 +5,8 @@ import { useState } from 'react';
 import sprite from '../../img/svg/sprite-icon.svg';
 import { useDispatch } from 'react-redux';
 import { addCard, updateCardById } from 'redux/boards/boardsOperations';
-// import { addBoard } from 'redux/boards/boardsOperations';
 
 export function CreateCardPopUp({
-  // _id = '1',
-  // column = 'exampleid',
-  // isEditing = true,
-  // initialValues = {
-  //   title: 'EDITING MOD',
-  //   description: 'EDITING MOD',
-  //   priority: 'without priority',
-  //   deadline: 'EDITING MOD',
-  // },
   _id,
   column,
   isEditing,
@@ -39,14 +29,6 @@ export function CreateCardPopUp({
   };
 
   const handleEditCard = () => {
-    console.log({
-      _id,
-      title: titleValue,
-      description: descriptionValue,
-      priority: selectedLabel,
-      deadline: formattedDeadline,
-    });
-
     dispatch(
       updateCardById({
         _id,
@@ -62,14 +44,6 @@ export function CreateCardPopUp({
   };
 
   const handleAddNewCard = () => {
-    console.log({
-      title: titleValue,
-      description: descriptionValue,
-      priority: selectedLabel,
-      deadline: formattedDeadline,
-      column,
-    });
-
     dispatch(
       addCard({
         title: titleValue,

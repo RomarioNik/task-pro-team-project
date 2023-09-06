@@ -85,10 +85,8 @@ export const apiPrivate = axios.create({
   },
 });
 
-apiPrivate.interceptors.request.use(
-  addAuthorizationHeader,
-  error => Promise.reject(error)
-  // console.log('Promise.reject(error) => ', error)
+apiPrivate.interceptors.request.use(addAuthorizationHeader, error =>
+  Promise.reject(error)
 );
 
 export const apiPrivateFormData = axios.create({
@@ -104,12 +102,14 @@ apiPrivate.interceptors.response.use(
     if (error.response.status === 401) {
       try {
         const refreshToken = store.getState().auth.token;
-        const { data } = await apiPrivate.post('/api/auth/refresh', {
+        // console.log('refreshToken => ', refreshToken);
+        const { data } = await apiPublic.post('/api/auth/refresh', {
           refreshToken,
         });
         store.dispatch(setTokens(data));
+        // console.log('error.response => ', error.response);
         // console.log('error.config => ', error);
-        return await apiPrivate(error.config);
+        return apiPrivate(error.response.config);
       } catch (error) {
         // console.log('Promise.reject(error) => ', error);
         return Promise.reject(error);
@@ -144,28 +144,29 @@ apiPrivateFormData.interceptors.response.use(
     if (error.response.status === 401) {
       try {
         const refreshToken = store.getState().auth.token;
-        const { data } = await apiPrivateFormData.post('/api/auth/refresh', {
+        const { data } = await apiPublic.post('/api/auth/refresh', {
           refreshToken,
         });
         store.dispatch(setTokens(data));
-        return apiPrivateFormData(error.config);
+        console.log('error.response => ', error.response);
+        return apiPrivateFormData(error.response.config);
       } catch (error) {
         return Promise.reject(error);
       }
     }
 
-    if (error.response.status === HTTP_STATUS_CODES.INTERNAL_SERVER_ERROR) {
-      console.log('Something has happened. Please try again later.');
-    }
-    if (error.response.status === HTTP_STATUS_CODES.UNAUTHORIZED) {
-      window.location.href = '/project-task-pro/auth/login';
-    }
-    if (error.response.status === HTTP_STATUS_CODES.BAD_REQUEST) {
-      console.log('Something has happened. Please report us an error!');
-    }
-    if (error.response.status === HTTP_STATUS_CODES.CONFLICT) {
-      console.log('User with such email already exists.');
-    }
+    // if (error.response.status === HTTP_STATUS_CODES.INTERNAL_SERVER_ERROR) {
+    //   console.log('Something has happened. Please try again later.');
+    // }
+    // if (error.response.status === HTTP_STATUS_CODES.UNAUTHORIZED) {
+    //   window.location.href = '/project-task-pro/auth/login';
+    // }
+    // if (error.response.status === HTTP_STATUS_CODES.BAD_REQUEST) {
+    //   console.log('Something has happened. Please report us an error!');
+    // }
+    // if (error.response.status === HTTP_STATUS_CODES.CONFLICT) {
+    //   console.log('User with such email already exists.');
+    // }
     return Promise.reject(error);
   }
 );

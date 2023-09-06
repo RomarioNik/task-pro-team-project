@@ -9,12 +9,12 @@ export const injectStore = _store => {
 
 const BASE_URL = 'https://askpro-backend.onrender.com';
 
-const HTTP_STATUS_CODES = {
-  INTERNAL_SERVER_ERROR: 500,
-  BAD_REQUEST: 400,
-  NOT_FOUND: 404,
-  CONFLICT: 409,
-};
+// const HTTP_STATUS_CODES = {
+//   INTERNAL_SERVER_ERROR: 500,
+//   BAD_REQUEST: 400,
+//   NOT_FOUND: 404,
+//   CONFLICT: 409,
+// };
 
 export const apiPublic = axios.create({
   baseURL: BASE_URL,
@@ -115,9 +115,9 @@ apiPrivateFormData.interceptors.request.use(addAuthorizationHeader, error =>
 
 apiPrivateFormData.interceptors.response.use(
   response => {
-    if (response.data.status === HTTP_STATUS_CODES.OK) {
-      console.log('User data were successfully updated');
-    }
+    // if (response.data.status === HTTP_STATUS_CODES.OK) {
+    //   console.log('User data were successfully updated');
+    // }
     return response;
   },
   async error => {
@@ -128,7 +128,6 @@ apiPrivateFormData.interceptors.response.use(
           refreshToken,
         });
         store.dispatch(setTokens(data));
-        console.log('error.response => ', error.response);
         return apiPrivateFormData(error.response.config);
       } catch (error) {
         return Promise.reject(error);

@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunktask_pro_team_project=self.webpackChunktask_pro_team_project||[]).push([[423],{3423:function(t,e,n){n.r(e),n.d(e,{default:function(){return u}});n(2791);var r=n(184),u=function(){return(0,r.jsx)("div",{children:"NotFound"})}}}]);
+//# sourceMappingURL=423.558a65a7.chunk.js.map

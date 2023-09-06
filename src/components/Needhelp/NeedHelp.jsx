@@ -2,11 +2,12 @@ import { useDispatch } from 'react-redux';
 import css from './NeedHelp.module.css';
 import { useState } from 'react';
 import { sendNeedHelpLetter } from 'redux/auth/operations';
+import { toast } from 'react-hot-toast';
 
 export default function NeedHelp({ openModal }) {
-  const [emailValue, setamEilValueValue] = useState('');
+  const [emailValue, setEmailValue] = useState('');
   const [descriptionValue, setDescriptionValue] = useState('');
-  const [emailError, setEmailError] = useState('');
+
   const dispatch = useDispatch();
 
   const validateEmail = email => {
@@ -14,33 +15,44 @@ export default function NeedHelp({ openModal }) {
     return regex.test(email);
   };
 
-  const handleSubmit = () => {
-    if (validateEmail(emailValue)) {
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    let hasError = false;
+
+    if (!validateEmail(emailValue)) {
+      toast.error(`Invalid email address`);
+      hasError = true;
+    }
+
+    if (!descriptionValue.trim()) {
+      // setDescriptionError('Comment cannot be empty');
+      toast.error(`Comment cannot be empty`);
+      hasError = true;
+    }
+
+    if (!hasError) {
       dispatch(
         sendNeedHelpLetter({
           email: emailValue,
           comment: descriptionValue,
         })
       );
-      setEmailError('');
-    } else {
-      setEmailError('Invalid email address');
+      openModal();
     }
-    openModal();
   };
-
   return (
     <div>
       <h3 className={css.modalTitle}>Need help</h3>
-      <form action="" className={css.inputForm}>
+      <form className={css.inputForm}>
         <input
           type="text"
           placeholder="Email address"
           value={emailValue}
-          onChange={event => setamEilValueValue(event.target.value)}
+          onChange={event => setEmailValue(event.target.value)}
           className={css.inputCardTitle}
         />
-        {emailError && <p className={css.errorText}>{emailError}</p>}
+
         <textarea
           type="text"
           placeholder="Comment"
@@ -48,8 +60,9 @@ export default function NeedHelp({ openModal }) {
           onChange={event => setDescriptionValue(event.target.value)}
           className={css.inputCardDescription}
         />
+
         <button
-          type="button  "
+          type="submit"
           onClick={handleSubmit}
           className={css.inputAddBtn}
         >

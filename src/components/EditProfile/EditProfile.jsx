@@ -37,30 +37,6 @@ const EditProfile = ({ onClose }) => {
     formData.append('avatarUploaded', avatarUploaded);
   };
 
-  // if (user.avatarURL === '') {
-  //   console.log(`Аватара у пользователя нет, пришло ''`);
-  // }
-
-  // if (user.avatarURL !== '') {
-  //   console.log(
-  //     `Аватар пришёл, avatarURL:${user.avatarURL}, должна быть фотка`
-  //   );
-  //   console.log(
-  //     `Или фотка загружена только что пользователем, avatarURL:${avatarUploaded}`
-  //   );
-  // }
-
-  // console.log(avatarUploaded.type);
-
-  // console.log(`Текущая тема:${user.userTheme}`);
-
-  // if (avatarUploaded.type) {
-  //   console.log(`Работает`);
-  // }
-
-  // console.log(localAvatar);
-  // console.log(user?.avatarURL);
-
   const modalClose = event => {
     onClose();
   };
@@ -78,8 +54,6 @@ const EditProfile = ({ onClose }) => {
     formData.set('avatar', avatar);
 
     let updatedProfile;
-
-    // console.log(`Вот такой аватар ${avatar}`);
 
     if (user.avatarURL !== '' || user.avatarURL === '') {
       if (avatarUploaded.type) {
@@ -113,9 +87,7 @@ const EditProfile = ({ onClose }) => {
       }
     }
 
-    // console.log(updatedProfile);
     dispatch(updateProfile(updatedProfile));
-    //закрити модалку
     modalClose();
   };
 

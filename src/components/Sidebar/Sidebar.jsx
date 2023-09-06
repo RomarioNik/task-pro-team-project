@@ -133,6 +133,7 @@ const Sidebar = ({ closeSidebar, isOpenMenu }) => {
             <button
               className={css.createBoardButton}
               onClick={handleCreateBoard}
+              aria-label="Add board"
             >
               <svg width="20" height="20" className={css.addIcon}>
                 <use xlinkHref={`${sprite}#plus`} />
